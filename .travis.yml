@@ -36,6 +36,6 @@ deploy:
     github-token: $GITHUB_TOKEN
     # repo: qlcchain/docs
     keep-history: true
-    # target-branch: master
+    target-branch: master
     on:
-        branch: master
+        branch: raw

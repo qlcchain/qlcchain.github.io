@@ -1,19 +1,28 @@
-## QLC docs
+## QLC Chain docs
+
+[![Build Status](https://travis-ci.org/qlcchain/qlcchain.github.io.svg?branch=master)](https://travis-ci.org/qlcchain/qlcchain.github.io)
 
 ### Env
 
-* node: >= 9.xx
-* yarn: >= 1.3.xx
+- node: >= 9.xx
+- yarn: >= 1.3.xx
 
 ### Install vuepress
 
 ```
-yarn global add vuepress # 或者：npm install -g vuepress
+yarn global add vuepress@next
 ```
 
 ### Start Writing
 
 ```
-vuepress dev docs
+yarn docs:dev
 ```
+
+### build
+
+```
+yarn docs:build
+```
+
 
