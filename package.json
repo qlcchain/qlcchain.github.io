@@ -1,0 +1,50 @@
+{
+  "name": "qlcchain.docs",
+  "homepage": "https://qlcchain.github.io",
+  "license": "MIT",
+  "description": "Wallet for interacting with QLC Chain",
+  "author": {
+    "name": "QLC Chain Team",
+    "email": "admin@qlink.mobi"
+  },
+  "copyright": "Copyright © 2019 QLC Chain Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qlcchain/qlcchain.github.io.git"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.0",
+    "@vuepress/plugin-i18n-ui": "^1.0.0-alpha.0",
+    "@vuepress/plugin-pwa": "^1.0.0-alpha.0",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.7",
+    "vuepress": "^1.0.0-alpha.24"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/vue-fontawesome": "^0.1.1",
+    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0",
+    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.0",
+    "@vuepress/plugin-notification": "^1.0.0-alpha.5",
+    "deepmerge": "^2.1.1",
+    "markdown-it-mathjax-chtml": "^0.1.0",
+    "vue-codemirror": "^4.0.5",
+    "vue-tabs-component": "^1.4.0",
+    "vue-toasted": "^1.1.24",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
