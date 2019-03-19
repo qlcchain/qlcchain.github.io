@@ -1,1 +1,0 @@
-# QLC Chain Javascript SDK
