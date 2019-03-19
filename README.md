@@ -1,6 +1,6 @@
 ## QLC Chain docs
 
-[![Build Status](https://travis-ci.org/qlcchain/qlcchain.github.io.svg?branch=master)](https://travis-ci.org/qlcchain/qlcchain.github.io)
+[![Build Status](https://travis-ci.org/qlcchain/qlcchain.github.io.svg?branch=raw)](https://travis-ci.org/qlcchain/qlcchain.github.io)
 
 ### Env
 
