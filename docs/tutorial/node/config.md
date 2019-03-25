@@ -1,4 +1,4 @@
-# config
+# Config
 
 ## Configuration path
 
@@ -27,7 +27,7 @@
 
 ## Directory Structure
 
-```yaml
+```shell
 ├── GQlcchain\
 |   ├── ledger\
 |       ├── 000000.vlog
@@ -48,7 +48,7 @@
 
 ## Detailed description of the configuration file
 
-```go
+```shell
 {
 	"version": 2, // Node version
 	"dataDir": "C:\\Users\\65967\\AppData\\Roaming\\GQlcchain_test", // Default data directory to use for the databases and other persistence requirements
