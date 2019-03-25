@@ -26,4 +26,5 @@ please read the [documentation](<https://qlcchain.github.io/api/qlcjs/>) for mor
 
 ## Golang SDK
 
-please read the [documentation](<<https://qlcchain.github.io/api/qlcgo/>/>) for more
+please read the [documentation](<https://qlcchain.github.io/api/qlcgo/>) for more
+
