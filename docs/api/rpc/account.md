@@ -160,7 +160,6 @@ Returns whether the address is valid or not
   "params":  ["qlc_3nihnp4a5zf5iq9pz54twp1dmksxnouc4i5k4y6f8gbnkc41p1b5ewm3inpw"]
 }
 
-
 ```
 
 ```json tab:Response
