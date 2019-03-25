@@ -29,6 +29,8 @@ Create a new account by seed and index
     "method": "account_create",
     "params": ["1234567890123456789012345678901234567890123456789012345678901234"]
 }
+
+
 ```
 
 ```json tab:Response
@@ -40,6 +42,8 @@ Create a new account by seed and index
     "pubKey": "c39010e6c0a9d53a3e83f3a36970b660257f000ee940648d6cdfbc1d7a932b71"
   }
 }
+
+
 ```
 
 ```json test
@@ -49,6 +53,8 @@ Create a new account by seed and index
     "method": "account_create",
     "params": ["1234567890123456789012345678901234567890123456789012345678901234"]
 }
+
+
 ```
 :::
 
