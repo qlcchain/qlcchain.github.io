@@ -14,7 +14,7 @@ go-qlc node install and start documentation can be found [here](https://qlcchain
 
 ## RPC Interface
 
-RPC API documentationcan be found [here](<https://qlcchain.github.io/api/rpc/>)
+RPC API documentation can be found [here](<https://qlcchain.github.io/api/rpc/>)
 
 ## Javascript SDK
 
@@ -27,4 +27,3 @@ please read the [documentation](<https://qlcchain.github.io/api/qlcjs/>) for mor
 ## Golang SDK
 
 please read the [documentation](<https://qlcchain.github.io/api/qlcgo/>) for more
-
