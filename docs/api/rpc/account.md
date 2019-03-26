@@ -5,9 +5,9 @@
 
 **Supported protocols:**
 
-| JSON-RPC 2.0 | HTTP |Websocket | IPC | Publish–subscribe | 
-|:------------:|:-----------:|:-----:|:-----:|:-----:|
-| &#x2713; | &#x2713; | &#x2713; | &#x2713;|TBD |
+| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
+|:------------:|:-----------:|:-----:|:-----:|
+| &#x2713; | &#x2713; |  &#x2713;|TBD |
 
 ## account_create
 Create a new account by seed and index
@@ -24,7 +24,8 @@ Create a new account by seed and index
 - **Example**:
 
 ::: demo
-```json tab::Request
+
+```json tab:Request
 {
     "jsonrpc": "2.0",
     "id": 3,
@@ -62,6 +63,7 @@ Create a new account by seed and index
 
 ## account_forPublicKey
 Return account address by public key
+
 - **Parameters**: 
   - `string`: public key
   

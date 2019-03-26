@@ -3,9 +3,9 @@
 
 **Supported protocols:**
 
-| JSON-RPC 2.0 | HTTP |Websocket | IPC | Publish–subscribe | 
-|:------------:|:-----------:|:-----:|:-----:|:-----:|
-| &#x2713; | &#x2713; | &#x2713; | &#x2713;|TBD |
+| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
+|:------------:|:-----------:|:-----:|:-----:|
+| &#x2713; | &#x2713; |  &#x2713;|TBD |
 
 ## ledger_accountBlocksCount
 Return number of blocks for a specific account
@@ -815,6 +815,56 @@ Return blocks list of chain
 
 
 
+## ledger_blocksCount
+Return the number of blocks (include smartcontrant block)  and unchecked blocks of chain
+
+- **Parameters**: `null`
+  
+- **Returns**: 
+    - number of blocks, means:
+        - `count`: `int`, number of blocks , include smartcontrant block
+        - `unchecked`: `int`, number of unchecked blocks
+
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"ledger_blocksCount",
+}
+
+
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+        "count": 9000,
+        "unchecked": 100
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"ledger_blocksCount",
+}
+
+
+```
+:::
+
+
+
 ## ledger_blocksCountByType
 Report number of blocks by type of chain
 - **Parameters**: `null`
@@ -967,7 +1017,7 @@ Accept a specific block hash and return a consecutive blocks hash list， starti
   - `int`: get the maximum number of blocks, if set n to -1,  will list blocks to open block
 
 - **Returns**: 
-  - `[]string`:  block hash list
+  - `[]string`:  block hash list (if block not found, return error)
 
 - **Example**:
 
@@ -1002,6 +1052,758 @@ Accept a specific block hash and return a consecutive blocks hash list， starti
   "id":1,
   "method":"ledger_chain",
   "params":  ["203042e945be24f6c177846ad101a3f9e829e7f1d314bad323578508af23dd28",2]
+}
+
+
+```
+:::
+
+
+
+## ledger_delegators
+Return a list of pairs of delegator and it's balance for a specific representative account
+- **Parameters**: 
+  - `string`:  representative account address
+  
+- **Returns**: 
+  - each delegator and it's balance
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_delegators",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+      "balance": "59998900000000000"
+    },
+    {
+      "address": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+      "balance": "100000000000"
+    }
+  ]
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_delegators",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+:::
+
+
+
+
+## ledger_delegatorsCount
+Return number of delegators for a specific representative account
+- **Parameters**: 
+  - `string`: representative account address
+  
+- **Returns**: 
+  - `int`:  number of delegators for the account
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"ledger_delegatorsCount",
+  "params":  ["qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic"]
+}
+
+
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result":3
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"ledger_delegatorsCount",
+  "params":  ["qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic"]
+}
+
+
+```
+:::
+
+
+
+
+
+## ledger_generateSendBlock
+Return send block by send parameter and private key 
+- **Parameters**: 
+    - `sendinfo` : send parameter for the block
+        - `from`: send address for the transaction 
+        - `to`: receive address for the transaction 
+        - `tokenName`: token name
+        - `amount`: transaction amount
+        - `sender`: `optional`, sms sender
+        - `receiver`: `optional`, sms receiver
+        - `message`: `optional`, sms message hash
+    - `string`: private key 
+- **Returns**: 
+    - `block`: send block
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 2,
+	"method": "ledger_generateSendBlock",
+	"params": [
+		{
+			"from": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+			"tokenName": "QLC",
+			"to": "qlc_371pkh5kkd1dn43cwxnbb1a4yg363rh9un9a13kkezbcppuicejxgixyyrrw",
+			"amount": "1000000",
+			"sender": "158111100000",
+			"receiver": "18500001111",
+			"message": "086802b5b3def1802882740cb91bac8929edd80901e5db4c95786389bfcf7ae4"
+		},
+		"8911d87b2cfed6872be509a0e5b95ff068c4dd5e439538444424aa139f9612b0681bf5253c64672fc54c93d3b5b9a20d28965cb8f80ba70460ed3f99cb547231"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "type": "Send",
+    "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
+    "address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+    "balance": "59998899999000000",
+    "previous": "bd348dc1c2567060ce596bc5c7fd41ed1ded27752f0e088c8c0b54d1abd6d7c4",
+    "link": "941693c7292c0ba082ae768948102f38240e1e7dd0e80065267d2ab5b705323d",
+    "sender": "IjE1ODExMTEwMDAwMCI=",
+    "receiver": "IjE4NTAwMDAxMTExIg==",
+    "message": "086802b5b3def1802882740cb91bac8929edd80901e5db4c95786389bfcf7ae4",
+    "quota": 0,
+    "timestamp": 1552469200,
+    "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+    "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+    "work": "000000000055a435",
+    "signature": "02ba735276f3e7d4b43aa16255df141765739e4df10b585cf43d69653df6b30c994a727867b74d19978872c66850d1fce79436940d9f96044ad35367b06fe809"
+  }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 2,
+	"method": "ledger_generateSendBlock",
+	"params": [
+		{
+			"from": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+			"tokenName": "QLC",
+			"to": "qlc_371pkh5kkd1dn43cwxnbb1a4yg363rh9un9a13kkezbcppuicejxgixyyrrw",
+			"amount": "1000000",
+			"sender": "158111100000",
+			"receiver": "18500001111",
+			"message": "086802b5b3def1802882740cb91bac8929edd80901e5db4c95786389bfcf7ae4"
+		},
+		"8911d87b2cfed6872be509a0e5b95ff068c4dd5e439538444424aa139f9612b0681bf5253c64672fc54c93d3b5b9a20d28965cb8f80ba70460ed3f99cb547231"
+	]
+}
+
+
+```
+:::
+
+
+
+
+## ledger_generateReceiveBlock
+Return receive block by send block and private key
+- **Parameters**: 
+   - `block`:  send block
+   - `string`: private key 
+ 
+- **Returns**: 
+  - `block`:  receive block
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 2,
+	"method": "ledger_generateReceiveBlock",
+	"params": [
+		{
+			"type": "Send",
+			"token": "cfb64601dee031fc045a2880ea0b8b4823c4f0ce9241d245a012d40910137536",
+			"address": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+			"balance": "59999999999999990",
+			"previous": "0a5f919673c3a95b66c520b74a7b2416abf6fe6cc8606d04303819f81e6db1a1",
+			"link": "941693c7292c0ba082ae768948102f38240e1e7dd0e80065267d2ab5b705323d",
+			"sender": "",
+			"receiver": "",
+			"message": "0000000000000000000000000000000000000000000000000000000000000000",
+			"data": null,
+			"quota": 0,
+			"timestamp": 0,
+			"extra": "0000000000000000000000000000000000000000000000000000000000000000",
+			"representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+			"work": "0000000001063d8a",
+			"signature": "edfb07a3575853fe833efc9f5288de89df69d243239b8d92723452cd456fcd2170e239eedc16c9650b626f26b305dcaf6a03ad8c4cb99302e6284df019c6790d"
+		},
+		"5f760341a57b35a09b6ea61b16d3309651ed349cbda964c976f3d54acb801d20941693c7292c0ba082ae768948102f38240e1e7dd0e80065267d2ab5b705323d"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "type": "Open",
+    "token": "cfb64601dee031fc045a2880ea0b8b4823c4f0ce9241d245a012d40910137536",
+    "address": "qlc_371pkh5kkd1dn43cwxnbb1a4yg363rh9un9a13kkezbcppuicejxgixyyrrw",
+    "balance": "10",
+    "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+    "link": "4438eb09b1469b72a436fe42df3af0f6acb28b085042917210301500c0cea576",
+    "sender": "",
+    "receiver": "",
+    "message": "0000000000000000000000000000000000000000000000000000000000000000",
+    "data": null,
+    "quota": 0,
+    "timestamp": 0,
+    "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+    "representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+    "work": "000000000007faf2",
+    "signature": "c80bdeeebf4263337316965afc9cf6835a04c59e6af1dd7abbe51df7683cfb8704e9f7d802e330fcd31eedb6ff390c4af520215732d7ea1cb3c3ca2f63537a07"
+  }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 2,
+	"method": "ledger_generateReceiveBlock",
+	"params": [
+		{
+			"type": "Send",
+			"token": "cfb64601dee031fc045a2880ea0b8b4823c4f0ce9241d245a012d40910137536",
+			"address": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+			"balance": "59999999999999990",
+			"previous": "0a5f919673c3a95b66c520b74a7b2416abf6fe6cc8606d04303819f81e6db1a1",
+			"link": "941693c7292c0ba082ae768948102f38240e1e7dd0e80065267d2ab5b705323d",
+			"sender": "",
+			"receiver": "",
+			"message": "0000000000000000000000000000000000000000000000000000000000000000",
+			"data": null,
+			"quota": 0,
+			"timestamp": 0,
+			"extra": "0000000000000000000000000000000000000000000000000000000000000000",
+			"representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+			"work": "0000000001063d8a",
+			"signature": "edfb07a3575853fe833efc9f5288de89df69d243239b8d92723452cd456fcd2170e239eedc16c9650b626f26b305dcaf6a03ad8c4cb99302e6284df019c6790d"
+		},
+		"5f760341a57b35a09b6ea61b16d3309651ed349cbda964c976f3d54acb801d20941693c7292c0ba082ae768948102f38240e1e7dd0e80065267d2ab5b705323d"
+	]
+}
+
+
+```
+:::
+
+
+
+## ledger_generateChangeBlock
+Return change block by account and private key
+- **Parameters**: 
+    - `string`: account address
+    - `string`: new representative account  
+    - `string`: private key  
+
+  
+- **Returns**: 
+  - `block`:  change block
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 2,
+	"method": "ledger_generateChangeBlock",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+		"qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+		"df5d9818629e5d77bac5c99c79c2b437e3661e8ef3b443a81a4de8fd8442158993d31686ecd3922de39a634271360990f0ad100053483b9bcdaa19e504998104"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "type": "Change",
+    "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
+    "address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+    "balance": "59998900000000000",
+    "previous": "bd348dc1c2567060ce596bc5c7fd41ed1ded27752f0e088c8c0b54d1abd6d7c4",
+    "link": "0000000000000000000000000000000000000000000000000000000000000000",
+    "message": "0000000000000000000000000000000000000000000000000000000000000000",
+    "quota": 0,
+    "timestamp": 1552469321,
+    "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+    "representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+    "work": "000000000055a435",
+    "signature": "2f3555e4a6d4e91e736cdc8074f3e070017a95ee42a049034cf596e6384522b4c0e4b608b35a8c4f408c1f4ffc9221c05c1b3f59ae828b5cd3ca87b0f1539a04"
+  }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 2,
+	"method": "ledger_generateChangeBlock",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+		"qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+		"df5d9818629e5d77bac5c99c79c2b437e3661e8ef3b443a81a4de8fd8442158993d31686ecd3922de39a634271360990f0ad100053483b9bcdaa19e504998104"
+	]
+}
+
+
+```
+:::
+
+
+
+
+## ledger_process
+Check block base info, update chain info for the block, and broadcast block 
+- **Parameters**: 
+  - `block`: block
+  
+- **Returns**: 
+  - `string`:  hash of the block
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "ledger_process",
+	"params": [
+		{
+			"type": "Change",
+			"token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
+			"address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+			"balance": "59998900000000000",
+			"previous": "bd348dc1c2567060ce596bc5c7fd41ed1ded27752f0e088c8c0b54d1abd6d7c4",
+			"link": "0000000000000000000000000000000000000000000000000000000000000000",
+			"message": "0000000000000000000000000000000000000000000000000000000000000000",
+			"quota": 0,
+			"timestamp": 1552469321,
+			"extra": "0000000000000000000000000000000000000000000000000000000000000000",
+			"representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+			"work": "000000000055a435",
+			"signature": "2f3555e4a6d4e91e736cdc8074f3e070017a95ee42a049034cf596e6384522b4c0e4b608b35a8c4f408c1f4ffc9221c05c1b3f59ae828b5cd3ca87b0f1539a04"
+		}
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": "7f22b5987e351ce80b62733c3d5faec362662db48911fcfc743e582c3e5ee40c"
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "ledger_process",
+	"params": [
+		{
+			"type": "Change",
+			"token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
+			"address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+			"balance": "59998900000000000",
+			"previous": "bd348dc1c2567060ce596bc5c7fd41ed1ded27752f0e088c8c0b54d1abd6d7c4",
+			"link": "0000000000000000000000000000000000000000000000000000000000000000",
+			"message": "0000000000000000000000000000000000000000000000000000000000000000",
+			"quota": 0,
+			"timestamp": 1552469321,
+			"extra": "0000000000000000000000000000000000000000000000000000000000000000",
+			"representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+			"work": "000000000055a435",
+			"signature": "2f3555e4a6d4e91e736cdc8074f3e070017a95ee42a049034cf596e6384522b4c0e4b608b35a8c4f408c1f4ffc9221c05c1b3f59ae828b5cd3ca87b0f1539a04"
+		}
+	]
+}
+
+
+```
+:::
+
+
+
+
+## ledger_representatives
+Return pairs of representative and its voting weight
+- **Parameters**: 
+  - `bool` , `optional`, if not set or set false, will return representatives randomly, if set true,  will sorting represetntative balance in descending order
+  
+- **Returns**: 
+  - each representative and its voting weight
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":2,
+  "method":"ledger_representatives",
+  "params": [true]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": [
+    {
+      "address": "qlc_3nihnp4a5zf5iq9pz54twp1dmksxnouc4i5k4y6f8gbnkc41p1b5ewm3inpw",
+      "balance": "10000"
+    },
+    {
+      "address": "qlc_3pu4ggyg36nienoa9s9x95a615m1natqcqe7bcrn3t3ckq1srnnkh8q5xst5",
+      "balance": "20001"
+    },
+    {
+      "address": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+      "balance": "1020"
+    }
+  ]
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":2,
+  "method":"ledger_representatives",
+  "params": [true]
+}
+
+
+```
+:::
+
+
+
+
+## ledger_tokens
+Return tokens of the chain
+
+- **Parameters**: `null`
+  
+- **Returns**: 
+  - `[]token`: the tokens info
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"ledger_tokens"
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "tokenId": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
+      "tokenName": "QLC",
+      "tokenSymbol": "QLC",
+      "totalSupply": 60000000000000000,
+      "decimals": 8,
+      "owner": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+      "pledgeAmount": 0,
+      "withdrawTime": 0
+    },
+    {
+      "tokenId": "fa696094adbf9683e4283c3cdabdf9768042d35c1b6e6609ec06e005137e9dbc",
+      "tokenName": "QN",
+      "tokenSymbol": "QN",
+      "totalSupply": 10000000000000,
+      "decimals": 8,
+      "owner": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+      "pledgeAmount": 1000000000000,
+      "withdrawTime": 1552464838
+    }
+  ]
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"ledger_tokens"
+}
+
+
+```
+:::
+
+
+
+
+## ledger_tokenInfoById
+Return token info by token id
+- **Parameters**: 
+  - `string`:  token id
+  
+- **Returns**: 
+  - `token`:  token info
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_tokenInfoById",
+	"params": [
+		"45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "tokenId": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
+    "tokenName": "QLC",
+    "tokenSymbol": "QLC",
+    "totalSupply": 60000000000000000,
+    "decimals": 8,
+    "owner": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+    "pledgeAmount": 0,
+    "withdrawTime": 0
+  }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_tokenInfoById",
+	"params": [
+		"45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad"
+	]
+}
+
+
+```
+:::
+
+
+
+
+
+
+## ledger_tokenInfoByName
+Return token info by token id
+- **Parameters**: 
+  - `string`:  token name
+  
+- **Returns**: 
+  - `token`:  token info
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_tokenInfoByName",
+	"params": [
+		"QLC"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "tokenId": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
+    "tokenName": "QLC",
+    "tokenSymbol": "QLC",
+    "totalSupply": 60000000000000000,
+    "decimals": 8,
+    "owner": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+    "pledgeAmount": 0,
+    "withdrawTime": 0
+  }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_tokenInfoByName",
+	"params": [
+		"QLC"
+	]
+}
+
+
+```
+:::
+
+
+
+## ledger_transactionsCount
+Return the number of blocks (not include smartcontrant block)  and unchecked blocks of chain
+
+- **Parameters**: `null`
+  
+- **Returns**: 
+    - number of blocks, means:
+        - `count`: `int`, number of blocks , not include smartcontrant block
+        - `unchecked`: `int`, number of unchecked blocks
+
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"ledger_transactionsCount",
+}
+
+
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+        "count": 9000,
+        "unchecked": 100
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"ledger_transactionsCount",
 }
 
 

@@ -10,9 +10,9 @@ sidebarDepth: 4
 
 **Supported protocols:**
 
-|  JSON-RPC 2.0  | HTTP | IPC |Publish–subscribe |Websocket |
-|:------------:|:-----------:|:-----:|:-----:|:-----:|
-| &#x2713;|  `false` |  &#x2713; |future version|`false`|
+| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
+|:------------:|:-----------:|:-----:|:-----:|
+| &#x2713; | &#x2713; |  &#x2713;|TBD |
 
 
 ## wallet_listEntropyFilesInStandardDir
