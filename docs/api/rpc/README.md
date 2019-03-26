@@ -2,17 +2,24 @@
 
 ##  Update Instruction
 
+2019-3-25 update :
+
+- add timestamp to `ledger_accountsPending` return
+
+- modify `sms_messageBlocks` return
+
+
 2019-3-15 update :
 
 - modify block struct
 
-- add offset for `Accounts`, `Blocks`, `AccountHistoryTopn` interface
+- add offset for `ledger_accounts`, `ledger_blocks`, `ledger_accountHistoryTopn` interface
 
 - add `SMS` and `Mintage` modules
 
-- modify `BlocksCountByType`, `Delegators` return
+- modify `ledger_blocksCountByType`, `ledger_delegators` return
 
-- modify  `AccountsBalances` interface name to `AccountsBalance` 
+- modify  `ledger_accountsBalances` interface name to `ledger_accountsBalance` 
 
   
 

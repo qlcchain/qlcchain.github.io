@@ -1,12 +1,5 @@
----
-sidebarDepth: 4
----
 
 # Wallet
-
-:::tip Maintainer
-[TiantaoZhu](https://github.com/TiantaoZhu)
-:::
 
 **Supported protocols:**
 
@@ -15,52 +8,15 @@ sidebarDepth: 4
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
 
-## wallet_listEntropyFilesInStandardDir
-Return all `EntropyStore` in the standard directory
 
-- **Parameters**: `none`
-
-- **Returns**: 
-	- `Array[string]` An array of `EntropyStore` paths
-
-- **Example**:
-
-
-::: demo
-
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 4,
-	"method": "wallet_listEntropyFilesInStandardDir",
-	"params": []
-}
-```
-
-```json tab:Response
-{
-    "jsonrpc": "2.0",
-    "id": 4,
-    "result": [
-        "/Users/xxx/Library/GVite/testdata/wallet/vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e",
-        "/Users/xxx/Library/GVite/testdata/wallet/vite_5b013ec4f3c235da12e47b525713e2f5edd0b04df965fafc22",
-        "/Users/xxx/Library/GVite/testdata/wallet/vite_67de981eff372d4a757541b05f0e8a269eee11c2f6c9fbdae6",
-        "/Users/xxx/Library/GVite/testdata/wallet/vite_f24bb4eceadc65020de5de6a4aeb22c52edd6cb72ee2279a97"
-    ]
-}
-
-```
-:::
-
-## wallet_listAllEntropyFiles 
-Return all `EntropyStore` managed by the wallet
-
-- **Parameters**: `none`
+## wallet_getBalances
+Return balance for each token of the wallet  
+- **Parameters**: 
+    - `string`: master address of the wallet
+    - `string`: passphrase  
 
 - **Returns**: 
-	- `Array[string]` An array of `EntropyStore` paths
-
+  - balance of each token in the wallet
 
 - **Example**:
 
@@ -69,511 +25,234 @@ Return all `EntropyStore` managed by the wallet
 {
     "jsonrpc": "2.0",
     "id": 2,
-    "method": "wallet_listAllEntropyFiles",
-    "params": []
+    "method": "wallet_getBalances",
 }
+
+
 ```
 
 ```json tab:Response
 {
     "jsonrpc": "2.0",
-    "id": 4,
-    "result": [
-        "/Users/xxx/Library/GVite/testdata/wallet/vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e",
-        "/Users/xxx/Library/GVite/testdata/wallet/vite_5b013ec4f3c235da12e47b525713e2f5edd0b04df965fafc22",
-        "/Users/xxx/Library/GVite/testdata/wallet/vite_67de981eff372d4a757541b05f0e8a269eee11c2f6c9fbdae6"
-    ]
-}
-```
-:::
-
-## wallet_unlock
-Unlock the specified `EntropyStore`
-
-- **Parameters**: 
-	- `string` : The absolute file path of the `EntropyStore`, or `EntropyStore` name if the file is in standard directory. The standard `EntropyStore` name is Address 0.
-	- `string` : Wallet password
-
-- **Returns**: 
-	- `null`
-
-- **Example**: 
-
-::: demo
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 4,
-	"method": "wallet_unlock",
-	"params": [
-		"vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e",
-		"123456"]
-}
-```
-
-```json tab:Response
-{
-    "jsonrpc": "2.0",
-    "id": 4,
-    "result": null
-}
-```
-:::
-
-## wallet_lock
-Lock the specified `EntropyStore`
-
-- **Parameters**: 
-	- `string` : The absolute file path of the `EntropyStore`, or `EntropyStore` name if the file is in standard directory. The standard `EntropyStore` name is Address 0.
-
-
-- **Returns**:
-	- `null`
-
-- **Example**:
-
-::: demo
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 4,
-	"method": "wallet_lock",
-	"params": [
-		"vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e"]
-}
-```
-
-```json tab:Response Success
-{
-    "jsonrpc": "2.0",
-    "id": 4,
-    "result": null
-}
-```
-
-:::
-
-## wallet_listEntropyStoreAddresses
-Return a specified range of addresses in the `EntropyStore`
-
-- **Parameters**: 
-	- `string` : The absolute file path of the `EntropyStore`, or `EntropyStore` name if the file is in standard directory. The standard `EntropyStore` name is Address 0.
-	- `uint32`: Starting index, included
-	- `uint32`: Ending index, excluded
-
-- **Returns**: 
-	- `Array[string]`: An array of account addresses
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 4,
-	"method": "wallet_listEntropyStoreAddresses",
-	"params": [
-		"/Users/xxx/Library/GVite/testdata/wallet/vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e",
-		0,
-		10
-	]
-}
-```
-```json tab:Response
-{
-    "jsonrpc": "2.0",
-    "id": 4,
-    "result": [
-        "vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e",
-        "vite_659fbce2a908bdab3b7c46348f249c90c812e36b9ceac67aa0",
-        "vite_cc373442a471a8dd4b2240d5a74f8e4037177a8795d30bdfd7",
-        "vite_1beb02f13af1b16a317c927d470ca3118ba738e22da3f8bf6e",
-        "vite_d1c10321319de24bcbd865e7f4127f5873bf9c251f0a4abb00",
-        "vite_acf35393ba47b8216ebbc5252e8884d518971a57c11b5866e1",
-        "vite_87df61f0feddb6121fecf7d5ba8d7e56443d53ead06da90a06",
-        "vite_8de52abce25c65116b08d84966d67e3dd7860848b52f388d23",
-        "vite_ed346025dc7196ed000caa429306bbed1bda42010597d63676",
-        "vite_783baa0caccff4d365f09873660208ee727bfc5d9710b267e5"]
-}
-```
-:::
-
-## wallet_newMnemonicAndEntropyStore
-Create new mnemonics and `EntropyStore`
-
-- **Parameters**: 
-	- `string`: Wallet password
-
-- **Returns**: 
-	- `Object`:
-		- `mnemonic : string` : The newly created mnemonics
-		- `primaryAddr : string` : The primary account address
-		- `filename : string`: The `EntropyStore` path
-
-- **Example**:
-
-::: demo
-```json tab:Request
-{
-    "jsonrpc": "2.0",
-    "id": 2,
-    "method": "wallet_newMnemonicAndEntropyStore",
-    "params": [
-        "123456"
-    ]
-}
-```
-
-```json tab:Response
-{
-    "jsonrpc": "2.0",
-    "id": 2,
+    "id": 1,
     "result": {
-        "mnemonic": "pear lonely piece base local lift material damp animal siege error throw ride flag version dumb parent clever upper toe lumber great wild vivid",
-        "primaryAddr": "vite_f646dc1f32b0ea88289bbfe4e4138d26edc9f9eac33a9e5292",
-        "filename": "/Users/xxx/Library/GVite/testdata/wallet/vite_f646dc1f32b0ea88289bbfe4e4138d26edc9f9eac33a9e5292"
-    }
-}
-```
-:::
-
-## wallet_deriveByIndex
-Derive sub account address by index
-
-- **Parameters**: 
-	- `string` : The `EntropyStore` path or primary account address
-	- `uint32`: The sub address index
-
-- **Returns**: 
-	- `Object`:
-		-  `bip44Path : string` : The address bip44 path
-		-  `address : string` : Derived sub address
-		-  `privateKey : []byte`: The private key in Base64 encoding
-
-- **Example**:
-
-::: demo
-```json tab:Request
-{
-    "jsonrpc": "2.0",
-    "id": 2,
-    "method": "wallet_deriveForIndexPath",
-    "params": [
-    	"vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e",
-        0
-    ]
-}
-```
-
-```json tab:Response
-{
-    "jsonrpc": "2.0",
-    "id": 2,
-    "result": {
-        "bip44Path": "m/44'/666666'/1'",
-        "address": "vite_8431a5acb599da19529c3e8bd099087a9d550fb29039dada28",
-        "privateKey": "SKxAWibv4u85xMdRByCaveOwjw0bhempG9/zi59TjJUESNFMNvoE+wP/X/Zz+Tc3ObdZVO53UQT5BS8xATefbg=="
-    }
-}
-```
-
-:::
-
-## wallet_deriveByFullPath
-Derive sub account address by bip44 path. This method supports deriving sub address at more flexible hierarchy.
-
-- **Parameters**: 
-	- `string` : The `EntropyStore` path or primary account address
-	- `string`: The address bip44 path
-
-- **Returns**: 
-	- `Object`:
-		-  `bip44Path : string` : The address bip44 path
-		-  `address : string` : Derived sub address
-		-  `privateKey : []byte`: The private key in Base64 encoding
-
-- **Example**:
-
-::: demo
-```json tab:Request
-{
-    "jsonrpc": "2.0",
-    "id": 2,
-    "method": "wallet_deriveByFullPath",
-    "params": [
-    	"vite_b1c00ae7dfd5b935550a6e2507da38886abad2351ae78d4d9a",
-        "m/44'/666666'/2'/4'"
-    ]
-}
-```
-
-```json tab:Response
-{
-    "jsonrpc": "2.0",
-    "id": 2,
-    "result": {
-        "bip44Path": "m/44'/666666'/2'/4'",
-        "address": "vite_a5efba49303b46c42c7e89b6cf5facd897d3a444fdb37af64e",
-        "privateKey": "HSe4vB20dKTHYz+xzlAJ+wDhQQTJnJfemLTjbkPBb6ql/LS+lob/77NOdRfky3VWjai4g81mGR8L+goQDgEKoA=="
-    }
-}
-```
-
-:::
-
-## wallet_recoverEntropyStoreFromMnemonic
-Recover `EntropyStore` from the mnemonics
-
-- **Parameters**: 
-	- `string` : Mnemonics
-	- `string`: New wallet password
-
-- **Returns**: 
-- `Object`:
-	- `mnemonic : string` : Mnemonics
-	- `primaryAddr : string` : The primary account address
-	- `filename : string`: The `EntropyStore` path 
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 4,
-	"method": "wallet_recoverEntropyStoreFromMnemonic",
-	"params": [
-	"utility client point estate auction region jump hat sick blast tomorrow pottery detect mixture clog able person matrix blast volume decide april congress resource",
-		"123456"
-	]
-}
-
-```
-
-```json tab:Response
-{
-    "jsonrpc": "2.0",
-    "id": 4,
-    "result": {
-        "mnemonic": "utility client point estate auction region jump hat sick blast tomorrow pottery detect mixture clog able person matrix blast volume decide april congress resource",
-        "primaryAddr": "vite_981bca7a348de85bd431b842d4b6c17044335f71e5f3da59c0",
-        "filename": "/Users/xxx/Library/GVite/testdata/wallet/vite_981bca7a348de85bd431b842d4b6c17044335f71e5f3da59c0"
+        "QLC": "234000000000000000000",
+        "QN1": "234991200",
+        "QN2": "23499001200"
     }
 }
 
+
 ```
 
-:::
-
-## wallet_globalCheckAddrUnlocked
-Check if the specified address is unlocked globally.
-
-- **Parameters**: `string` : `address` The account address to check
-
-- **Returns**: `bool` True if the address is unlocked
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 4,
-	"method": "wallet_globalCheckAddrUnlocked",
-	"params": [
-	"vite_3fd41bb6ba4f15d5e74214a16153ff2f5abce67f73dc0dc07b"
-	]
-}
-```
-
-```json tab:Response
+```json test
 {
     "jsonrpc": "2.0",
-    "id": 4,
-    "result": false
+    "id": 2,
+    "method": "wallet_getBalances",
 }
+
+
 ```
-
-
 :::
 
-## wallet_isAddrUnlocked
-Check if the specified address in the `EntropyStore` is unlocked. The `EntropyStore` should be unlocked in advance.
 
+
+
+## wallet_getRawKey
+Returns raw key (public key and private key) for a account
 - **Parameters**: 
-	- `string` : The primary account address or the absolute file path of the `EntropyStore`.
-	- `string`:`address`： The account address to check
+  - `string`:  account address
+  - `string`:  passphrase 
 
-- **Returns**: `bool` True if the address is unlocked
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 4,
-	"method": "wallet_isAddrUnlocked",
-	"params": [
-		"vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e",
-		"vite_3fd41bb6ba4f15d5e74214a16153ff2f5abce67f73dc0dc07b"
-	]
-}
-```
-
-```json tab:Response
-{
-    "jsonrpc": "2.0",
-    "id": 4,
-    "result": true
-}
-```
-
-
-:::
-
-## wallet_isUnlocked
-Check if the specified `EntropyStore` is unlocked.
-
-- **Parameters**:  `string`: The primary account address or the absolute file path of the `EntropyStore`.
-
-- **Returns**: `bool` True if the `EntropyStore` is unlocked
+  
+- **Returns**: 
+  - private key and public key for the address
 
 - **Example**:
 
 ::: demo
-
 ```json tab:Request
 {
-	"jsonrpc": "2.0",
-	"id": 4,
-	"method": "wallet_isUnlocked",
-	"params": [
-		"vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e"
-	]
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "wallet_getRawKey",
+    "params": ["qlc_3s1agkbw6osftnodbcu9otawgdhz6q74xzpgsu641qzjgs8qdqfujim3z7ii","ge#QWDdsf123"]
 }
+
+
 ```
 
 ```json tab:Response
 {
     "jsonrpc": "2.0",
-    "id": 4,
-    "result": true
-}
-```
-
-:::
-
-## wallet_findAddr
-Return the index of the specified address in the `EntropyStore`. The `EntropyStore` should be unlocked in advance.
-
-- **Parameters**:  
-	- `string`: The primary account address or the absolute file path of the `EntropyStore`.
-	- `string`:`address`： The account address to look for
-
-- **Returns**:
-	- `Object` 
-		- `entropyStoreFile : string` : The absolute file path of the `EntropyStore`
-		- `index : uint32 `: The address index in the `EntropyStore`
-- **Example**: 
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 4,
-	"method": "wallet_findAddr",
-	"params": [
-		"vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e",
-		"vite_3fd41bb6ba4f15d5e74214a16153ff2f5abce67f73dc0dc07b"
-	]
-}
-```
-
-```json tab:Response
-{
-    "jsonrpc": "2.0",
-    "id": 4,
+    "id": 3,
     "result": {
-        "entropyStoreFile": "/Users/xxx/Library/GVite/testdata/wallet/vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e",
-        "index": 84
+        "pubKey": "c39010e6c0a9d53a3e83f3a36970b660257f000ee940648d6cdfbc1d7a932b71",
+        "privKey": "f59e77456e068c5e4384776c9a6bbfd774abb7bdd99aa072a3304e40599fd658c39010e6c0a9d53a3e83f3a36970b660257f000ee940648d6cdfbc1d7a932b71"
     }
 }
+
+
 ```
 
+```json test
+{
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "wallet_getRawKey",
+    "params": ["qlc_3s1agkbw6osftnodbcu9otawgdhz6q74xzpgsu641qzjgs8qdqfujim3z7ii","ge#QWDdsf123"]
+}
 
+
+```
 :::
 
-## wallet_globalFindAddr
-Return the index of the specified address in the `EntropyStore` globally.
 
-- **Parameters**:  
-	 * `string`:`address`： The account address to look for
 
-- **Returns**:
-	- `Object` 
-		- `entropyStoreFile : string` : The absolute file path of the `EntropyStore`
-		- `index : uint32 `: The address index in the `EntropyStore`
-- **Example**: 
+
+## wallet_newSeed
+Generate new seed
+- **Parameters**: `null`
+  
+- **Returns**: 
+  - `string`: hex string for seed 
+
+- **Example**:
 
 ::: demo
-
 ```json tab:Request
 {
-	"jsonrpc": "2.0",
-	"id": 4,
-	"method": "wallet_globalFindAddr",
-	"params": [
-	"vite_3fd41bb6ba4f15d5e74214a16153ff2f5abce67f73dc0dc07b"
-	]
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "wallet_newSeed",
 }
+
+
 ```
 
 ```json tab:Response
 {
     "jsonrpc": "2.0",
-    "id": 4,
-    "result": {
-        "entropyStoreFile": "/Users/xxx/Library/GVite/testdata/wallet/vite_15391ac8b09d4e8ad78bfe5f9f9ab9682fe689572f6f53655e",
-        "index": 84
-    }
+    "id": 2,
+    "result": "1234567890123456789012345678901234567890123456789012345678901234"
 }
+
+
 ```
 
+```json test
+{
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "wallet_newSeed",
+}
+
+
+```
 :::
 
-## wallet_createTxWithPassphrase
-Send a transaction
-
-- **Parameters**:  
-	-  `Object`:
-		- `entropystoreFile : string` :  The primary account address or the absolute file path of the `EntropyStore`, optional
-		- `selfAddr : string address` : Transaction sender address, required
-		- `toAddr : string address` : Transaction receiver address, required
-		- `tokenTypeId : string tokentypeid` : The token ID, required
-		- `passphrase : string` : Wallet password, required
-		- `amount : string bigint` : The transfer amount, required
-		- `data : string base64` : Transaction annotation, optional
-		- `difficulty : string bigint` : PoW difficulty, optional
-
-- **Returns**: `none`
 
 
+## wallet_newWallet
+Create new wallet and Return the master address 
+- **Parameters**: 
+    - `string`:  passphrase
+    - `string`: `optional`, hex string for seed,  if not set, will create seed randomly
+
+  
+- **Returns**: 
+  - `string` : master address of the wallet
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "wallet_newWallet",
+    "params": ["fgeQW#1234","1234567890123456789012345678901234567890123456789012345678901234"]
+}
+
+
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": "qlc_3s1agkbw6osftnodbcu9otawgdhz6q74xzpgsu641qzjgs8qdqfujim3z7ii"
+}
+
+
+```
+
+```json test
+{
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "wallet_newWallet",
+    "params": ["fgeQW#1234","1234567890123456789012345678901234567890123456789012345678901234"]
+}
+
+
+```
 :::
 
-## wallet_addEntropyStore
-Add a new `EntropyStore`. This method is used to manage `EntropyStore` in non-standard directory.
 
-- **Parameters**:  
-	- `string`: The primary account address or the absolute file path of the `EntropyStore`
-	- `string`:`address`： The account address to add
 
-- **Returns**:
-	- `Object` 
-		- `entropyStoreFile : string` : The absolute file path of the `EntropyStore`
-		- `index : uint32 `: The address index in the `EntropyStore`
+
+## wallet_changePassword
+Change wallet password 
+- **Parameters**: 
+    - `string`:  master address of the wallet
+    - `string`:  old passphrase 
+    - `string`:  new passphrase 
+
+- **Returns**: `null`
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "wallet_changePassword",
+	"params": [
+		"qlc_3p1mnf5w3opm6sf4f9m7faeamks6cdeemx7p63tp4c9z456emzhhb1n9srco",
+		"qlc",
+		"qlcqlc"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "wallet_changePassword",
+	"params": [
+		"qlc_3p1mnf5w3opm6sf4f9m7faeamks6cdeemx7p63tp4c9z456emzhhb1n9srco",
+		"qlc",
+		"qlcqlc"
+	]
+}
+
+
+```
+:::
+
