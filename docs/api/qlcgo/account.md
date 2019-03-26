@@ -1,9 +1,6 @@
 # Account
 
 ```go
-type AccountApi struct {
-	client *rpc.Client
-}
 ```
 NewAccountApi creates account module for client
 ```go
