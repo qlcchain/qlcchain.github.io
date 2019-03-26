@@ -6,15 +6,15 @@ QLC Chain is a next generation public blockchain designed for the NaaS. It deplo
 
 ## Config Details
 
-For detailed instructions on configuration，please click here [Config](<https://qlcchain.github.io/tutorial/node/config.html>)
+For detailed instructions on configuration，please click here [Config](../node/config/)
 
 ## Node Install
 
-go-qlc node install and start documentation can be found [here](https://qlcchain.github.io/tutorial/node/install.html)
+go-qlc node install and start documentation can be found [here](../node/install/)
 
 ## RPC Interface
 
-RPC API documentation can be found [here](<https://qlcchain.github.io/api/rpc/>)
+RPC API documentation can be found [here](../../api/rpc/)
 
 ## Javascript SDK
 
@@ -22,8 +22,8 @@ you can build your own application on qlcchain with javascript sdk.
 
 for use go-qlc javascript sdk ，you need to run a local or remote go-qlc node.
 
-please read the [documentation](<https://qlcchain.github.io/api/qlcjs/>) for more
+please read the [documentation](../../api/qlcjs/) for more
 
 ## Golang SDK
 
-please read the [documentation](<https://qlcchain.github.io/api/qlcgo/>) for more
+please read the [documentation](../../api/qlcgo/) for more
