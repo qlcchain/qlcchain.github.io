@@ -17,12 +17,6 @@ MessageHash returns hash of message
 func (s *SMSApi) MessageHash(message string) (types.Hash, error)
 ```
 
-## MessageInfo
-MessageInfo returns message for message hash
-```go
-func (s *SMSApi) MessageInfo(mHash types.Hash) (string, error)
-```
-
 ## MessageStore
 MessageStore stores message and returns message hash
 ```go
@@ -34,5 +28,3 @@ PhoneBlocks accepts a phone number, and returns send blocks and receiver blocks 
 ```go
 func (s *SMSApi) PhoneBlocks(phone string) (map[string][]*api.APIBlock, error)
 ```
-
-

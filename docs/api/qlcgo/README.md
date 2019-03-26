@@ -4,7 +4,6 @@ Golang SDK can create a client to get data from chain, include module:
 
 ```go
 type QLCClient struct {
-	client   *rpc.Client
 	Account  *module.AccountApi
 	Contract *module.ContractApi
 	Ledger   *module.LedgerApi
@@ -30,3 +29,5 @@ func main(){
 	fmt.Println(r)
 }
 ```
+
+Golang SDK also can create and manage wallet, see [wallet](https://qlcchain.github.io/api/qlcgo/wallet.html)

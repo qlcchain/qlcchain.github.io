@@ -1,7 +1,7 @@
 # P2P
 
 NewNetApi creates net module for client
-```
+```go
 func NewNetApi(c *rpc.Client) *NetApi
 ```
 

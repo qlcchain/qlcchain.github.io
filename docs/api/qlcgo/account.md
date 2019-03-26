@@ -1,7 +1,5 @@
 # Account
 
-```go
-```
 NewAccountApi creates account module for client
 ```go
 func NewAccountApi(c *rpc.Client) *AccountApi
