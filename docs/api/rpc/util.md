@@ -23,10 +23,13 @@ Decrypt the cryptograph string by passphrase
 ::: demo
 ```json tab:Request
 {
-  "jsonrpc": "2.0",
-  "id":2,
-  "method":"util_decrypt",
-  "params":  ["p7zCeF6TImaZYYCHUoxPvImQ/CR/EnQ+KpyuqFkHVqA=","98qUb5Ud"]
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "util_decrypt",
+	"params": [
+		"eyJjcnlwdG8iOnsiY2lwaGVydGV4dCI6ImI3OTkwNmRlOGE0NzYzOTZjZmE2OTM4ZjFmZjMxMTdjMjVlZWVhNDMzNTJiNmM1MTA2MDA2ZGJiODFkN2FhNGY5NWIxMjEzYmE3ZDIzM2MyNTU0NGIyYzg1MDYwNGRjMyIsIm5vbmNlIjoiYzNkMzk1NDdhZGFhMWZlZWZmODBmMWI4Iiwic2NyeXB0cGFyYW1zIjp7Im4iOjI2MjE0NCwiciI6OCwicCI6MSwia2V5bGVuIjozMiwic2FsdCI6ImE0NGJiMmU0MTMxMDYyNTc1NWEyOWVkYzg3NGFmMzFkNTk1M2QzNzQyODMwNDk2YTUyZjdkMjY2ZWYxMzMzMTAifX0sInRpbWVzdGFtcCI6MTU1MzU4ODc5N30=",
+		"98qUb5Ud"
+	]
 }
 
 
@@ -35,8 +38,8 @@ Decrypt the cryptograph string by passphrase
 ```json tab:Response
 {
   "jsonrpc": "2.0",
-  "id":2,
-  "result":"a7bcc2785e93226699618087528c4fbc8990fc247f12743e2a9caea8590756a0"
+  "id": 1,
+  "result": "a7bcc2785e93226699618087528c4fbc8990fc247f12743e2a9caea8590756a0"
 }
 
 
@@ -44,10 +47,13 @@ Decrypt the cryptograph string by passphrase
 
 ```json test
 {
-  "jsonrpc": "2.0",
-  "id":2,
-  "method":"util_decrypt",
-  "params":  ["p7zCeF6TImaZYYCHUoxPvImQ/CR/EnQ+KpyuqFkHVqA=","98qUb5Ud"]
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "util_decrypt",
+	"params": [
+		"eyJjcnlwdG8iOnsiY2lwaGVydGV4dCI6ImI3OTkwNmRlOGE0NzYzOTZjZmE2OTM4ZjFmZjMxMTdjMjVlZWVhNDMzNTJiNmM1MTA2MDA2ZGJiODFkN2FhNGY5NWIxMjEzYmE3ZDIzM2MyNTU0NGIyYzg1MDYwNGRjMyIsIm5vbmNlIjoiYzNkMzk1NDdhZGFhMWZlZWZmODBmMWI4Iiwic2NyeXB0cGFyYW1zIjp7Im4iOjI2MjE0NCwiciI6OCwicCI6MSwia2V5bGVuIjozMiwic2FsdCI6ImE0NGJiMmU0MTMxMDYyNTc1NWEyOWVkYzg3NGFmMzFkNTk1M2QzNzQyODMwNDk2YTUyZjdkMjY2ZWYxMzMzMTAifX0sInRpbWVzdGFtcCI6MTU1MzU4ODc5N30=",
+		"98qUb5Ud"
+	]
 }
 
 
@@ -59,7 +65,7 @@ Decrypt the cryptograph string by passphrase
 ## util_encrypt
 Encrypt encrypt raw data by passphrase
 - **Parameters**: 
-    - `string` : raw data
+    - `string` : raw data, need a hex string
     - `string` : passphrase
 
   
@@ -83,8 +89,8 @@ Encrypt encrypt raw data by passphrase
 ```json tab:Response
 {
   "jsonrpc": "2.0",
-  "id":2,
-  "result":"p7zCeF6TImaZYYCHUoxPvImQ/CR/EnQ+KpyuqFkHVqA="
+  "id": 2,
+  "result": "eyJjcnlwdG8iOnsiY2lwaGVydGV4dCI6ImI3OTkwNmRlOGE0NzYzOTZjZmE2OTM4ZjFmZjMxMTdjMjVlZWVhNDMzNTJiNmM1MTA2MDA2ZGJiODFkN2FhNGY5NWIxMjEzYmE3ZDIzM2MyNTU0NGIyYzg1MDYwNGRjMyIsIm5vbmNlIjoiYzNkMzk1NDdhZGFhMWZlZWZmODBmMWI4Iiwic2NyeXB0cGFyYW1zIjp7Im4iOjI2MjE0NCwiciI6OCwicCI6MSwia2V5bGVuIjozMiwic2FsdCI6ImE0NGJiMmU0MTMxMDYyNTc1NWEyOWVkYzg3NGFmMzFkNTk1M2QzNzQyODMwNDk2YTUyZjdkMjY2ZWYxMzMzMTAifX0sInRpbWVzdGFtcCI6MTU1MzU4ODc5N30="
 }
 
 

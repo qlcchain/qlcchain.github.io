@@ -25,7 +25,7 @@ Return balance for each token of the wallet
 {
     "jsonrpc": "2.0",
     "id": 2,
-    "method": "wallet_getBalances",
+    "method": "wallet_getBalances"
 }
 
 
@@ -49,7 +49,7 @@ Return balance for each token of the wallet
 {
     "jsonrpc": "2.0",
     "id": 2,
-    "method": "wallet_getBalances",
+    "method": "wallet_getBalances"
 }
 
 
@@ -125,7 +125,7 @@ Generate new seed
 {
     "jsonrpc": "2.0",
     "id": 2,
-    "method": "wallet_newSeed",
+    "method": "wallet_newSeed"
 }
 
 
@@ -145,7 +145,7 @@ Generate new seed
 {
     "jsonrpc": "2.0",
     "id": 2,
-    "method": "wallet_newSeed",
+    "method": "wallet_newSeed"
 }
 
 

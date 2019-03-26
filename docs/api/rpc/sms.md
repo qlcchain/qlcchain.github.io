@@ -95,6 +95,7 @@ Return blocks which the sender or receiver of block is the phone number
 	]
 }
 
+
 ```
 :::
 
@@ -114,10 +115,12 @@ Return blocks which message field is the hash
 ::: demo
 ```json tab:Request
 {
-  "jsonrpc": "2.0",
-  "id":1,
-  "method":"account_validate",
-  "params":  ["qlc_3nihnp4a5zf5iq9pz54twp1dmksxnouc4i5k4y6f8gbnkc41p1b5ewm3inpw"]
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "sms_messageBlocks",
+	"params": [
+		"086802b5b3def1802882740cb91bac8929edd80901e5db4c95786389bfcf7ae4"
+	]
 }
 
 
@@ -175,10 +178,12 @@ Return blocks which message field is the hash
 
 ```json test
 {
-  "jsonrpc": "2.0",
-  "id":1,
-  "method":"account_validate",
-  "params": ["qlc_3nihnp4a5zf5iq9pz54twp1dmksxnouc4i5k4y6f8gbnkc41p1b5ewm3inpw"]
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "sms_messageBlocks",
+	"params": [
+		"086802b5b3def1802882740cb91bac8929edd80901e5db4c95786389bfcf7ae4"
+	]
 }
 
 
