@@ -64,7 +64,7 @@ Return blocks for the account, include each token of the account and order of bl
 
   
 - **Returns**: 
-  -  `[]Block`: blocks for the account
+  -  `[]block`: blocks for the account
 
 - **Example**:
 
@@ -140,6 +140,253 @@ Return blocks for the account, include each token of the account and order of bl
 		"qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
 		5,
         5
+	]
+}
+
+
+```
+:::
+
+## ledger_accountInfo
+Return account detail info, include each token in the account
+
+- **Parameters**: 
+    - `string` : the account address
+  
+- **Returns**: 
+    - `account` :  the account address
+    - `coinBalance` : balance of main token of the account (default is QLC)
+    - `representative` : representative address of the account
+    - `[]token`: each token info for the account, 
+
+|     field      |  type  |                 describe                  |
+| :------------: | :----: | :---------------------------------------: |
+|      type      | string |                token hash                 |
+|     header     | string | the latest block hash for the token chain |
+| representative | string |          representative address           |
+|      open      | string |  the open block hash for the token chain  |
+|    balance     | string |           balance for the token           |
+|    account     | string |        account that token belong to        |
+|    modified    | int64  |                 timestamp                 |
+|   blockCount   |  int   |    total block number for the token chain    |
+|   tokenName    | string |                token name                 |
+|    pending     | string |              pending amount               |
+
+
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_accountInfo",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "account": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+    "coinBalance": "40000000000000",
+    "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+    "tokens": [
+      {
+        "type": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
+        "header": "758f79b656340c329cb5b11302865c5ff0b0c99fd8a268d6b8760170e33e8cd1",
+        "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+        "open": "758f79b656340c329cb5b11302865c5ff0b0c99fd8a268d6b8760170e33e8cd1",
+        "balance": "40000000000000",
+        "account": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+        "modified": 1552455585,
+        "blockCount": 1,
+        "tokenName": "QLC",
+        "pending": "0"
+      }
+    ]
+  }
+}
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_accountInfo",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+:::
+
+
+## ledger_accountRepresentative
+Return the representative address for account
+
+- **Parameters**: 
+  - `string` : the account address
+  
+- **Returns**: 
+  - `string`: representative address for the account (if account not found, return error)
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_accountRepresentative",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_accountRepresentative",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+:::
+
+
+## ledger_accountVotingWeight
+Return the vote weight for account
+
+- **Parameters**: 
+  - `string` : the account address
+  
+- **Returns**: 
+  - `string`: the vote weight for the account  (if account not found, return error)
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_accountVotingWeight",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "600000000000"
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_accountVotingWeight",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+:::
+
+
+## ledger_accounts
+Return account list of chain
+
+- **Parameters**: 
+    - `int`: number of accounts to return 
+    - `int`: `optional` , offset, index of account where to start, default is 0
+
+  
+- **Returns**: 
+  - `[]address`: addresses list of accounts
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "ledger_accounts",
+	"params": [
+		5,
+		5
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": [
+    "qlc_1cnripmqjj3f8ag3fdgaxku1wdw5ik6d9rsyze8umst7kjghdd1cqrxxm5zh",
+    "qlc_1q1jog6eywemc6am4etjx68yegbjy6d1o594j11xs7jsc7rwdh3kej8yzbrg",
+    "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+    "qlc_3c6ezoskbkgajq8f89ntcu75fdpcsokscgp9q5cdadndg1ju85fief7rrt11",
+    "qlc_3nihnp4a5zf5iq9pz54twp1dmksxnouc4i5k4y6f8gbnkc41p1b5ewm3inpw"
+  ]
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "ledger_accounts",
+	"params": [
+		5,
+		5
 	]
 }
 
