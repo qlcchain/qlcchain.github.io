@@ -21,131 +21,131 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "c2f51d5d8e77797cdd4801166cac6499"
+    "revision": "305c8c20cd3ad824098d8ecf77cc4f14"
   },
   {
     "url": "api/index.html",
-    "revision": "1e54afe4faa2fd233bc98a4385d3e6d7"
+    "revision": "665511efaa384ea006d02976fa2dc6c6"
   },
   {
     "url": "api/qlcgo/account.html",
-    "revision": "aef227a680be7ece17cb295c70e1412c"
+    "revision": "0a5d7d1b79f55fd5b2df42e436b56ce1"
   },
   {
     "url": "api/qlcgo/client.html",
-    "revision": "d122884236ea0e9280628752f4a7ae0e"
+    "revision": "3210fed6af64177e4d9fb0c8a8cc507b"
   },
   {
     "url": "api/qlcgo/contract.html",
-    "revision": "bf3866735476ca5c5f01d640c08fcfb5"
+    "revision": "58abcdfb004b75308aed680a1a03d788"
   },
   {
     "url": "api/qlcgo/index.html",
-    "revision": "15784d6096c57458ab91c7b122d570e1"
+    "revision": "7b0bc7478152a3fd90df3d57daaa1264"
   },
   {
     "url": "api/qlcgo/ledger.html",
-    "revision": "ab97492a7a3b7c6a42ac63fee898c320"
+    "revision": "e78fd5e0841fedec5aada21f52e36d90"
   },
   {
     "url": "api/qlcgo/mintage.html",
-    "revision": "2834d98e5bc69d43272ab95bb3f1aa74"
+    "revision": "361e655547131f38a8a968c69a66cdc3"
   },
   {
     "url": "api/qlcgo/net.html",
-    "revision": "baee465d1603153d3c88eb3a4a527f5b"
+    "revision": "94e6641308fe477f2617c0fbf4a6121a"
   },
   {
     "url": "api/qlcgo/sms.html",
-    "revision": "d518410e2de154b09492f2654199a789"
+    "revision": "e48dc788a29d87bd07d603af9f5aae8c"
   },
   {
     "url": "api/qlcgo/util.html",
-    "revision": "a0bad9a84a10ccd39f5d423193228951"
+    "revision": "edb388797c6cfacd5378aed004deb0b3"
   },
   {
     "url": "api/qlcgo/wallet.html",
-    "revision": "37f7d7ff3d4b14d8fc8a44197ff16228"
+    "revision": "f2e0ae291b7d41e8f3234db7db9d9e9c"
   },
   {
     "url": "api/qlcjs/client.html",
-    "revision": "add83e116f8976c9ffeb975b9bd470d2"
+    "revision": "5fe0e6cb3c6ee7384c2ef03c75aafefa"
   },
   {
     "url": "api/qlcjs/common.html",
-    "revision": "a1fab7e6891fefe6d1505f2d435d6357"
+    "revision": "2f30764eeb7f9d7f3bc47e3a775c53c2"
   },
   {
     "url": "api/qlcjs/common/index.html",
-    "revision": "57ac28291332e5a7fe24b27d815477ef"
+    "revision": "2ea1699119dab7646cba848bfc15e2a2"
   },
   {
     "url": "api/qlcjs/index.html",
-    "revision": "b950c3169f4fcd507eb79aea7f9f70be"
+    "revision": "9529de768db3d8834d817bc7e7d91dbf"
   },
   {
     "url": "api/qlcjs/provider.html",
-    "revision": "f808ec5612bc9c7a0f3a81bebaf6f530"
+    "revision": "27e171ffec893dc0793408c1b09f2c36"
   },
   {
     "url": "api/qlcjs/provider/http.html",
-    "revision": "ec49a32ac992455b6bc94bd34f43d4b6"
+    "revision": "da2df30158a2ab7261eea7174bc58aa4"
   },
   {
     "url": "api/qlcjs/provider/index.html",
-    "revision": "7af01d27e0541d137890fbffeb0cc4fa"
+    "revision": "32a6cba930bc619cb2773362ff788a86"
   },
   {
     "url": "api/qlcjs/provider/ipc.html",
-    "revision": "350728ea876b78092ea3bbb4b9cb65cd"
+    "revision": "f6a5996abd94a1528ea14b58a099918b"
   },
   {
     "url": "api/qlcjs/provider/ws.html",
-    "revision": "628f943887315a68221c4895b2683bb8"
+    "revision": "495065141bc8dd4bd0dc9c99d776e901"
   },
   {
     "url": "api/qlcjs/wallet/account.html",
-    "revision": "776e78b0d5c8f3e481b7d0ebc455e9cb"
+    "revision": "61ca1c79e0f296598b3493d1fc9213ce"
   },
   {
     "url": "api/qlcjs/wallet/wallet.html",
-    "revision": "afe17b1cb5a4dc0c9179daf3068b7d5a"
+    "revision": "9914f1eb960a4118f76b003962844c10"
   },
   {
     "url": "api/rpc/account.html",
-    "revision": "2b4ccc49af0eb20656318234bf4eff6f"
+    "revision": "71734424401c8653c139c44fd6fd9e18"
   },
   {
     "url": "api/rpc/contract.html",
-    "revision": "c4dde7b51af1bf60d253a5b3e941a8db"
+    "revision": "4b21e4bedef76f946e08d136304dd4c2"
   },
   {
     "url": "api/rpc/index.html",
-    "revision": "54c7d57c91c0662191b944bacf971d4b"
+    "revision": "f2d673a6e93f8b60923d8226142d2882"
   },
   {
     "url": "api/rpc/ledger.html",
-    "revision": "942f57a710882619b48abdddf4ddd418"
+    "revision": "75c1ad487d011eac3e96d5d929f06901"
   },
   {
     "url": "api/rpc/mintage.html",
-    "revision": "99942a556f4c0a4b5b1e696e03679741"
+    "revision": "654714fbffc6914f33449b4cbb0fed2e"
   },
   {
     "url": "api/rpc/net.html",
-    "revision": "8371b424d2facb785266c799e1f8956a"
+    "revision": "d33c3221c0f1767d2f5ce3fa3d6a4c55"
   },
   {
     "url": "api/rpc/sms.html",
-    "revision": "62e98f29773f684546a29994fa1d44cb"
+    "revision": "3bd3237bedda702262ee4c0e7a82f898"
   },
   {
     "url": "api/rpc/util.html",
-    "revision": "e93ef53a08686b1376d5ca1ab9e22277"
+    "revision": "820120bccd21483abaacb527b71245f0"
   },
   {
     "url": "api/rpc/wallet.html",
-    "revision": "89e52aa0d2480ba1f055d031eb16e513"
+    "revision": "d56abe14af641821c2fa2a7f3ba2153f"
   },
   {
     "url": "assets/css/0.styles.e5af1ba7.css",
@@ -272,8 +272,8 @@ self.__precacheManifest = [
     "revision": "3bc30990bcbc43d5e6d10c76d93c137a"
   },
   {
-    "url": "assets/js/38.a1c96616.js",
-    "revision": "6320fdf86622e94aabae1089a2c54e6d"
+    "url": "assets/js/38.eb86dad6.js",
+    "revision": "47321c2e8187cc3487df7a3ad058cd93"
   },
   {
     "url": "assets/js/39.e63f009f.js",
@@ -344,132 +344,132 @@ self.__precacheManifest = [
     "revision": "4fef1432d22937ff36e477dff89c4415"
   },
   {
-    "url": "assets/js/54.1e0321fb.js",
-    "revision": "168cc4af862a4b2bc0cb4cc5c2d9bce1"
+    "url": "assets/js/54.89c736d1.js",
+    "revision": "5c90603505f2f8b574d248ea9e153cb6"
   },
   {
-    "url": "assets/js/55.f881b3f6.js",
-    "revision": "dc50e28725767e772f540b1b043170c4"
+    "url": "assets/js/55.02db4244.js",
+    "revision": "92bb32e7b9b73af6d3d32495081aeef8"
   },
   {
-    "url": "assets/js/56.7cefeb98.js",
-    "revision": "48fae65c2e8e640ec2f12b67cb4b7f34"
+    "url": "assets/js/56.84ca0441.js",
+    "revision": "95a187804cb2e39b61f8d44296ca3e76"
   },
   {
-    "url": "assets/js/57.acc6c603.js",
-    "revision": "a2744b39812cdb5dd4421fb9e2ebc140"
+    "url": "assets/js/57.72fa15e8.js",
+    "revision": "e4038aebfd8c223383bd78f51f0b9cc1"
   },
   {
-    "url": "assets/js/58.a14ff9db.js",
-    "revision": "66aa7c86c66ce1546a9762d61cd5a5ec"
+    "url": "assets/js/58.3452a4ce.js",
+    "revision": "cbf81570f1b554ee147488e219e609a5"
   },
   {
-    "url": "assets/js/59.326e0fe2.js",
-    "revision": "e6850a4d3077119f64b0df1ed4d67765"
+    "url": "assets/js/59.ea239ff4.js",
+    "revision": "8aee1f217fc46fcda1df6ac9b42823a5"
   },
   {
     "url": "assets/js/6.96b445c1.js",
     "revision": "ce429ee67d1646697a5f2857802be7d6"
   },
   {
-    "url": "assets/js/60.58e608b5.js",
-    "revision": "3d344e157065fb51439293c0272c1165"
+    "url": "assets/js/60.50945e1f.js",
+    "revision": "ef1bdcf3694a6d6484a89afb8e600c10"
   },
   {
-    "url": "assets/js/61.2d8ccf86.js",
-    "revision": "fa68815eb7458c356deca07527506e4a"
+    "url": "assets/js/61.af56ac4e.js",
+    "revision": "4a673aeb060cc4f17ced079067b7a1dd"
   },
   {
-    "url": "assets/js/62.951543fd.js",
-    "revision": "d6d28a463af4ae6222ad48b29318e294"
+    "url": "assets/js/62.8bac8c52.js",
+    "revision": "95263ee5fe6a773e71f447cee376942d"
   },
   {
-    "url": "assets/js/63.5387a515.js",
-    "revision": "4d0bd1e4bcedd421eb6c31bdc8be8b91"
+    "url": "assets/js/63.03f7777f.js",
+    "revision": "64c0f341d2fc83f4a6cb5e1e2b734f21"
   },
   {
-    "url": "assets/js/64.db85350d.js",
-    "revision": "e7b654d7064a782bf28a1193f44a4853"
+    "url": "assets/js/64.4f2e9168.js",
+    "revision": "4b42013fa868d271982d5946d2af144e"
   },
   {
-    "url": "assets/js/65.6964a561.js",
-    "revision": "6383761b9e6a6163c3db96659f8feabc"
+    "url": "assets/js/65.71fd0cc9.js",
+    "revision": "37a38807aee8aab383d469d6527e7f2f"
   },
   {
-    "url": "assets/js/66.b0185207.js",
-    "revision": "b7276cea7df56c8733a29d6db0b30d41"
+    "url": "assets/js/66.3a0d434a.js",
+    "revision": "d499fb4b6b60aaf28b4a8390327183d3"
   },
   {
-    "url": "assets/js/67.3311c539.js",
-    "revision": "82a368fbe23a5a05533947a325c7fa98"
+    "url": "assets/js/67.0b467d54.js",
+    "revision": "ddf6c337fa971398563c0552437f4cbb"
   },
   {
-    "url": "assets/js/68.d92b6154.js",
-    "revision": "6d980d8c482599d71d4245186f5f6276"
+    "url": "assets/js/68.4abe8c87.js",
+    "revision": "7e41840f99c554a0776585b2d37f37fd"
   },
   {
-    "url": "assets/js/69.a3cadfe5.js",
-    "revision": "781698bb876c3acd353e8242163963c2"
+    "url": "assets/js/69.4ddbe8da.js",
+    "revision": "541a5565cd6afbdc3a8e79199706e1a7"
   },
   {
     "url": "assets/js/7.88dee8b7.js",
     "revision": "b5dfb183fb00865c4aafdaa250aab6d6"
   },
   {
-    "url": "assets/js/70.b934554e.js",
-    "revision": "ae70740f98a608b7afea8764f9c51b28"
+    "url": "assets/js/70.a45e19da.js",
+    "revision": "efca2ca8a48a38cf5c3443d4ba6193aa"
   },
   {
-    "url": "assets/js/71.b8e1ed3f.js",
-    "revision": "ca113129911c71486b31eafb97dbafd2"
+    "url": "assets/js/71.de4fb09b.js",
+    "revision": "bf692f87af865791a4d2fb8c2bda6f77"
   },
   {
-    "url": "assets/js/72.ce3b7db8.js",
-    "revision": "29fd4f7937f635e9ac406b000b62cefc"
+    "url": "assets/js/72.16fa5ff4.js",
+    "revision": "fae02dc57a7d0d5d315056a6de1a9cc8"
   },
   {
-    "url": "assets/js/73.b6cbb6ef.js",
-    "revision": "05c4ba32af4531b9a7e36cd407f8ca50"
+    "url": "assets/js/73.c34db155.js",
+    "revision": "8a953e72242fe82b263822f2d9b0a419"
   },
   {
-    "url": "assets/js/74.692b86ef.js",
-    "revision": "d1dd5fed81720266227f502c89207414"
+    "url": "assets/js/74.3ac6ce98.js",
+    "revision": "8425c5a592ca56f724c62b184d141282"
   },
   {
-    "url": "assets/js/75.a93ee42e.js",
-    "revision": "419aba1aacd7b0145beca6cfc27aaca6"
+    "url": "assets/js/75.7da569a4.js",
+    "revision": "ee0eeb74245b71a4142b04b3d9af85b3"
   },
   {
-    "url": "assets/js/76.5c86050c.js",
-    "revision": "9b995ed6f3f49f0d816c9f6205f55c31"
+    "url": "assets/js/76.1a035f94.js",
+    "revision": "db4b81b8c586bff8c8783fd2448cf16c"
   },
   {
-    "url": "assets/js/77.00b146f1.js",
-    "revision": "3bec0349625dab4327e79fa36ed05103"
+    "url": "assets/js/77.b0e55c41.js",
+    "revision": "eded7be1413298758f89ad54d7437b63"
   },
   {
-    "url": "assets/js/78.f7545f2c.js",
-    "revision": "a681c8eb56dce470df83019e5181d942"
+    "url": "assets/js/78.ac0f1303.js",
+    "revision": "e0fdcfce6fbc67e2f835d44afb9e8991"
   },
   {
-    "url": "assets/js/79.052ec436.js",
-    "revision": "17c9dafdc1ce32e544544fcab3c68b5c"
+    "url": "assets/js/79.de0a38d8.js",
+    "revision": "c9a59b7f693ad0fabcd8784dbafb9662"
   },
   {
     "url": "assets/js/8.f989c4a4.js",
     "revision": "6a73ea674abae01a48073b7a94e93435"
   },
   {
-    "url": "assets/js/80.1df0011d.js",
-    "revision": "03f3b9442b922f3936683dd0eba78645"
+    "url": "assets/js/80.5d3787f7.js",
+    "revision": "31fba64c1f23007eaa1d02da367c17ab"
   },
   {
-    "url": "assets/js/81.ecdd06a8.js",
-    "revision": "260ff7e0f2b24310b006ce13881f6fce"
+    "url": "assets/js/81.140b2920.js",
+    "revision": "77269ffb9aa940848afbcf03e202f45d"
   },
   {
-    "url": "assets/js/82.516bf3aa.js",
-    "revision": "a47eea7ddce7a8713bd15f793c523ce0"
+    "url": "assets/js/82.069d43ab.js",
+    "revision": "b69e468473b34aafb332a91ed6fb98a8"
   },
   {
     "url": "assets/js/83.67c23d2c.js",
@@ -480,8 +480,8 @@ self.__precacheManifest = [
     "revision": "4a554da833d52e0f7f7f353c7a7fd478"
   },
   {
-    "url": "assets/js/app.29100e99.js",
-    "revision": "b6b24337bd3e6651b3cf01274c6f2071"
+    "url": "assets/js/app.c2b90a03.js",
+    "revision": "0e4ef26ea7b28dbc3ad851ab5d282897"
   },
   {
     "url": "assets/js/vendors~notification.6cd8b6c7.js",
@@ -489,7 +489,7 @@ self.__precacheManifest = [
   },
   {
     "url": "i18n/index.html",
-    "revision": "c82893fe49e5901c6ac491bd112d98ad"
+    "revision": "525d3b669ceda4fabfe5b95d8d63d056"
   },
   {
     "url": "icon.png",
@@ -497,183 +497,183 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "7399b935e67813aa792b41d80c540d6b"
+    "revision": "c6c60231bf33e13027932fe866328381"
   },
   {
     "url": "tutorial/getstarted/index.html",
-    "revision": "08484dda89b162c3072375600e734d57"
+    "revision": "2658363c636efdf57e7a13d8f203e0cf"
   },
   {
     "url": "tutorial/index.html",
-    "revision": "f85f3513d505b02818873a0d61c27b5d"
+    "revision": "52d479b9385805e79865335a0de2d44f"
   },
   {
     "url": "tutorial/node/config.html",
-    "revision": "2d5a310ae10b6a43ebe12149c4b7a418"
+    "revision": "afe8a96b5b2e053acc7eda2819f83e49"
   },
   {
     "url": "tutorial/node/install.html",
-    "revision": "6307382c93a4b0da760ef09f17c32460"
+    "revision": "cef1fec58d6bc0f7fefe3db871d2310a"
   },
   {
     "url": "tutorial/wallet/install.html",
-    "revision": "6195e7bbe9d7d410acd936d492d1d8cd"
+    "revision": "e04f759582907768ed55613f463c88a2"
   },
   {
     "url": "tutorial/wallet/manage.html",
-    "revision": "728b2b35f3b86e974aec6ed2044924b8"
+    "revision": "f2ca18beff8706b0841429591c12e86e"
   },
   {
     "url": "zh/api/index.html",
-    "revision": "2f1a813bc6dc6eac5515817a7d86905d"
+    "revision": "b1e6cf63ddfa80ebc4c8ae74510a3f66"
   },
   {
     "url": "zh/api/qlcgo/account.html",
-    "revision": "232024a5bb12e228a283d0d49a77b6ea"
+    "revision": "bb03528551b54b75fbc5c01876eb95f9"
   },
   {
     "url": "zh/api/qlcgo/client.html",
-    "revision": "1f437993e731cc60a45bbb594c059b73"
+    "revision": "4e91ced838d0a7c2c4c197cc83d1b3f9"
   },
   {
     "url": "zh/api/qlcgo/contract.html",
-    "revision": "ba915ac892e233021a21bb6ccf71fd5b"
+    "revision": "e6ccbaa350d46816c6379ad3b99525fe"
   },
   {
     "url": "zh/api/qlcgo/index.html",
-    "revision": "6d95a146e51794346bf1e46c8b00453e"
+    "revision": "884998e3db49141c50ec06197a03d088"
   },
   {
     "url": "zh/api/qlcgo/ledger.html",
-    "revision": "73aaac72501d8fab878b5a6ed5ab463c"
+    "revision": "8a0d497d74e88b10e2fdeb9ce59895f7"
   },
   {
     "url": "zh/api/qlcgo/mintage.html",
-    "revision": "7e83f815bad40b5122d9a2a5a26a2901"
+    "revision": "c5e6aed94f64b01cad85a48e4e3a1f60"
   },
   {
     "url": "zh/api/qlcgo/net.html",
-    "revision": "a28314ca8b53d9d46acefae31f352749"
+    "revision": "2e624176fbbd21308e5b3704a1f1de42"
   },
   {
     "url": "zh/api/qlcgo/sms.html",
-    "revision": "0e618141345201a36a98b5fcbb87f9bc"
+    "revision": "ae9929da693b9cd00c13e2da3f355503"
   },
   {
     "url": "zh/api/qlcgo/util.html",
-    "revision": "20b89bdc17b71da0cecb14065ada386c"
+    "revision": "71359303e3bc878df81f89ae967cd745"
   },
   {
     "url": "zh/api/qlcgo/wallet.html",
-    "revision": "40ae7d3a0914de443d518d10d9a35f7f"
+    "revision": "200c62ecd23ee8eb667cca5d62f983c9"
   },
   {
     "url": "zh/api/qlcjs/client.html",
-    "revision": "e72e227a7b6cc98158492badb4ccde32"
+    "revision": "d6f9c0c8a29237b5a429c4c75f8dcfb9"
   },
   {
     "url": "zh/api/qlcjs/common.html",
-    "revision": "d99fceeb716a95c327698b2ac5186a9b"
+    "revision": "369463510d9c0561d2c5ba9bfac4074e"
   },
   {
     "url": "zh/api/qlcjs/common/index.html",
-    "revision": "2fc0ccf1384fb6f2a1e87e23a665c93b"
+    "revision": "f6ac4e29af035dd984f84c880f931121"
   },
   {
     "url": "zh/api/qlcjs/index.html",
-    "revision": "f039f3d48c96fd337020727072cee391"
+    "revision": "b4424b9757b7a771dc5a788f82c49ef8"
   },
   {
     "url": "zh/api/qlcjs/provider.html",
-    "revision": "abc617b14843b354092cab1fb49df895"
+    "revision": "089190fb12c2dcc1d9aa97d7ced9afd9"
   },
   {
     "url": "zh/api/qlcjs/provider/http.html",
-    "revision": "9c615435636cd27419b7cefea8f8c3e4"
+    "revision": "a9974b666b25cfbbbf34045628ff5aa0"
   },
   {
     "url": "zh/api/qlcjs/provider/index.html",
-    "revision": "16731c479f161ea5b68616cf4573bfe9"
+    "revision": "df3ea9f72e885a54f2ed98f4b0eb10ec"
   },
   {
     "url": "zh/api/qlcjs/provider/ipc.html",
-    "revision": "e02d446ac4721e77c3751d7050a82182"
+    "revision": "fbbb7e79b090f42465dde48df65d1e4a"
   },
   {
     "url": "zh/api/qlcjs/provider/ws.html",
-    "revision": "4274b2385da7feb3952e1c2256514ecd"
+    "revision": "9054b978bed336bd931e8a304521e0c3"
   },
   {
     "url": "zh/api/qlcjs/wallet/account.html",
-    "revision": "18c9f3d09c980b3e94afcd095e248fe1"
+    "revision": "99e311c679cd3fe6e76d99b9e2eb8cb4"
   },
   {
     "url": "zh/api/qlcjs/wallet/wallet.html",
-    "revision": "aca9b5617bca92f1ced9ba9a84e3e40d"
+    "revision": "3cf411e7daaf54b25b33d7936999583b"
   },
   {
     "url": "zh/api/rpc/account.html",
-    "revision": "d3287ac8dfed9aa31c7a019ed2995ec9"
+    "revision": "d7606f991e42f28c85a16baf6c801c77"
   },
   {
     "url": "zh/api/rpc/contract.html",
-    "revision": "208a8c8e884ea577ca867746008686b1"
+    "revision": "ffcc12c717c6a9b4812c97d5d8129672"
   },
   {
     "url": "zh/api/rpc/index.html",
-    "revision": "1d59687c8db69c27fb1115a89c569352"
+    "revision": "eb751eccdac4c1ea9b76c7d6d4961d04"
   },
   {
     "url": "zh/api/rpc/ledger.html",
-    "revision": "cfe573c6f30ef3cde9753a9b1771c006"
+    "revision": "eff7f8eb9c92d1687a7a9d960890ed7d"
   },
   {
     "url": "zh/api/rpc/mintage.html",
-    "revision": "ce6e133d713a28e491ba773dd4aeb94c"
+    "revision": "ca9d88469c535e6e2b57f58f1e20efb1"
   },
   {
     "url": "zh/api/rpc/net.html",
-    "revision": "c6d5ff99905d9403eede4d339d17617d"
+    "revision": "f77360918f07915bce7ee9f195cb44b1"
   },
   {
     "url": "zh/api/rpc/sms.html",
-    "revision": "78ccc860fddb01e7c00081c90560aa7d"
+    "revision": "211a951e17dfc0e671f75212845f1271"
   },
   {
     "url": "zh/api/rpc/util.html",
-    "revision": "0441848c04c5eab6f2ff0e6be7b4fb80"
+    "revision": "a0b2a8e5e85cc844fa7348bfafd7be58"
   },
   {
     "url": "zh/api/rpc/wallet.html",
-    "revision": "8de96fbbb8cf705b658caf7990cc0159"
+    "revision": "47b4a12df84e86c39aa7ce3be33a02ad"
   },
   {
     "url": "zh/index.html",
-    "revision": "7222df5a9e38fa61bfbdfb6d1f1f350e"
+    "revision": "ba5cfc22cc75d435c6ee55511a0fd192"
   },
   {
     "url": "zh/tutorial/getstarted/index.html",
-    "revision": "eaf6c603282ab1a92f787a69690c4a29"
+    "revision": "d629a35715b04db081fc10bc4590bb1a"
   },
   {
     "url": "zh/tutorial/index.html",
-    "revision": "f6f6a119e833815d39b1eb414323ec0e"
+    "revision": "8c14049fb61c9cabd35a986c13e3bdfc"
   },
   {
     "url": "zh/tutorial/node/config.html",
-    "revision": "995a7b36986ac224594e49cf27436ab9"
+    "revision": "6256e93e05e1308b27cb788e148930fa"
   },
   {
     "url": "zh/tutorial/node/install.html",
-    "revision": "66aba1399c0f1d105dfea96356552974"
+    "revision": "149132cc07a49c5b9c8464e4eff698f9"
   },
   {
     "url": "zh/tutorial/wallet/install.html",
-    "revision": "f4a9a3259b7d92ac991f13bd8aabe79a"
+    "revision": "5223be752ef3e43a831526c79288a3d0"
   },
   {
     "url": "zh/tutorial/wallet/manage.html",
-    "revision": "a8778cfc55dd43c3318726f4baccd2fc"
+    "revision": "ec783ff921ebe96e1380d734c49bf68d"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
