@@ -30,4 +30,4 @@ func main(){
 }
 ```
 
-Golang SDK also can create and manage wallet, see [wallet](https://qlcchain.github.io/api/qlcgo/wallet.html)
+Golang SDK also can create and manage wallet
