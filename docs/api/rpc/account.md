@@ -17,7 +17,7 @@ Create a new account by seed and index
   - `int` : `optional`, index for account, if not set, default value is 0
   
 - **Returns**: 
- `Account`  the private and public key for account
+ `account`  the private and public key for account
   -  `privKey`: private key for the new account
   -  `pubKey`: public key for the new account
 

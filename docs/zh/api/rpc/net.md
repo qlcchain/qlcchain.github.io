@@ -1,37 +1,32 @@
 # P2P
 
-**Supported protocols:**
 
-| JSON-RPC 2.0  | IPC | Publish–subscribe | Websocket |
-|:------------:|:-----:|:-----:|:-----:|
-| &#x2713; | &#x2713; | TBD |&#x2713;|
+**支持的调用方式:**
 
-## net_syncInfo
-Return the sync status of the node
-
-- **Parameters**: `none`
-
-- **Returns**: `SyncInfo`
-
-| Name | JSON type | Actual type | Desc |
+| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
 |:------------:|:-----------:|:-----:|:-----:|
-| from | string | uint64 | The starting sync height |
-| to | string | uint64| The target sync height |
-| received | string | uint64 | The number of received snapshot blocks |
-| current | string | uint64 | The current height of snapshot chain |
-| state | uint | uint | Sync state: 0 Sync not started, 1 Sync in process, 2 Sync complete, 3 Sync error, 4 Sync cancelled, 5 Data download complete |
-| status | string | string | The description of sync status |
+| &#x2713; | &#x2713; |  &#x2713;|TBD |
+
+
+
+## net_onlineRepresentatives
+返回在线代表账户地址列表
+- **Parameters**: `null`
+  
+- **Returns**: 
+  - `[]address`:  地址列表
 
 - **Example**:
 
 ::: demo
-
 ```json tab:Request
 {
   "jsonrpc": "2.0",
   "id":2,
   "method":"net_onlineRepresentatives"
 }
+
+
 ```
 
 ```json tab:Response
@@ -43,12 +38,18 @@ Return the sync status of the node
 		"qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic"
 	]
 }
+
+
 ```
+
 ```json test
 {
   "jsonrpc": "2.0",
   "id":2,
   "method":"net_onlineRepresentatives"
 }
+
+
 ```
 :::
+

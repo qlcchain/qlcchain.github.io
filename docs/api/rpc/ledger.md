@@ -469,6 +469,69 @@ Returns balance and pending (amount that has not yet been received) for each acc
 :::
 
 
+## ledger_accountsFrontiers
+Return pairs of token name and block hash (representing the head block ) of each token for each account
+- **Parameters**: 
+  - `[]string`:  address list
+  
+- **Returns**: 
+  - token name and block hash for each account
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "ledger_accountsFrontiers",
+	"params": [
+		[
+			"qlc_13u8auukg1tjbmny1b6bxh91ysx6m3ikce9tuztw8tc3wzd58dyoy7x9oa7c",
+			"qlc_1fx7t3nppodq5tf16mdkzah8b5u1z34u3g44scmqf3a1hozfmqq915m4srqj"
+		]
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": {
+    "qlc_13u8auukg1tjbmny1b6bxh91ysx6m3ikce9tuztw8tc3wzd58dyoy7x9oa7c": {
+      "QLC": "738a5ac75507b0ebf294ffa4c1e490265a5d16a8bcaad21c19cb432df2e1d21a"
+    },
+    "qlc_1fx7t3nppodq5tf16mdkzah8b5u1z34u3g44scmqf3a1hozfmqq915m4srqj": {
+      "QLC": "69255624061c642673e2b4849add6eff5e5cf521c8f3ec9c5c559be25e160769"
+    }
+  }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "ledger_accountsFrontiers",
+	"params": [
+		[
+			"qlc_13u8auukg1tjbmny1b6bxh91ysx6m3ikce9tuztw8tc3wzd58dyoy7x9oa7c",
+			"qlc_1fx7t3nppodq5tf16mdkzah8b5u1z34u3g44scmqf3a1hozfmqq915m4srqj"
+		]
+	]
+}
+
+
+```
+:::
+
+
+
 
 ## ledger_accountsPending
 Return pending info for accounts
@@ -1171,7 +1234,7 @@ Return number of delegators for a specific representative account
 ## ledger_generateSendBlock
 Return send block by send parameter and private key 
 - **Parameters**: 
-    - `sendinfo` : send parameter for the block
+    - send parameter for the block
         - `from`: send address for the transaction 
         - `to`: receive address for the transaction 
         - `tokenName`: token name
@@ -1768,9 +1831,8 @@ Return the number of blocks (not include smartcontrant block)  and unchecked blo
 - **Parameters**: `null`
   
 - **Returns**: 
-    - number of blocks, means:
-        - `count`: `int`, number of blocks , not include smartcontrant block
-        - `unchecked`: `int`, number of unchecked blocks
+    - `count`: `int`, number of blocks , not include smartcontrant block
+    - `unchecked`: `int`, number of unchecked blocks
 
 
 - **Example**:

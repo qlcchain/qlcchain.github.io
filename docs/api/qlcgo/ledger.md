@@ -192,6 +192,12 @@ Representatives returns pairs of representative and its voting weight of chain i
 func (l *LedgerApi) Representatives(sorting bool) (*api.APIAccountBalances, error)
 ```
 
+## TokenMeta
+TokenMeta return tokenmeta info by account and token hash
+```go
+func (l *LedgerApi) TokenMeta(hash types.Hash, address types.Address) (*api.APITokenMeta, error)
+```
+
 
 ## TokenInfoById
 TokenInfoById returns token info by token id
@@ -203,12 +209,6 @@ func (l *LedgerApi) TokenInfoById(tokenId types.Hash) (*api.ApiTokenInfo, error)
 TokenInfoById returns token info by token name
 ```go
 func (l *LedgerApi) TokenInfoByName(tokenName string) (*api.ApiTokenInfo, error)
-```
-
-## TokenMeta
-TokenMeta return tokenmeta info by account and token hash
-```go
-func (l *LedgerApi) TokenMeta(hash types.Hash, address types.Address) (*api.APITokenMeta, error)
 ```
 
 ## Tokens
