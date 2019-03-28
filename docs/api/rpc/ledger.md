@@ -919,7 +919,7 @@ Return the number of blocks (include smartcontrant block)  and unchecked blocks 
 {
   "jsonrpc": "2.0",
   "id":3,
-  "method":"ledger_blocksCount",
+  "method":"ledger_blocksCount"
 }
 
 
@@ -1842,7 +1842,7 @@ Return the number of blocks (not include smartcontrant block)  and unchecked blo
 {
   "jsonrpc": "2.0",
   "id":3,
-  "method":"ledger_transactionsCount",
+  "method":"ledger_transactionsCount"
 }
 
 

@@ -39,7 +39,7 @@ Return blocks which the sender or receiver of block is the phone number
   "result": {
     "receive": [
       {
-        "type": "Receive",
+        "type": "Send",
         "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
         "address": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
         "balance": "59999999999000000",

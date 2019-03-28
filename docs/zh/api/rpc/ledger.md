@@ -927,7 +927,7 @@
 {
   "jsonrpc": "2.0",
   "id":3,
-  "method":"ledger_blocksCount",
+  "method":"ledger_blocksCount"
 }
 
 
@@ -1869,7 +1869,7 @@
 {
   "jsonrpc": "2.0",
   "id":3,
-  "method":"ledger_transactionsCount",
+  "method":"ledger_transactionsCount"
 }
 
 
