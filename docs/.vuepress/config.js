@@ -57,6 +57,13 @@ const sidebarConfigs = {
         'mintage',
       ]
     },
+    // chain contract--pledge
+    {
+      collapsable: false,
+      children: [
+        'pledge',
+      ]
+    },
     // net
     {
       collapsable: false,
@@ -232,7 +239,7 @@ module.exports = {
         nav: require('./nav/en'),
         sidebar: {
           '/tutorial/': genSidebarConfig('tutorial', 'Start', 'Node', 'Wallet'),
-          '/api/rpc/': genSidebarConfig('api/rpc', 'RPC interface', 'Account', 'Contract', 'Ledger', 'Mintage', 'P2P', 'SMS', 'Util', 'Wallet'),
+          '/api/rpc/': genSidebarConfig('api/rpc', 'RPC interface', 'Account', 'Contract', 'Ledger', 'Mintage', 'pledge','P2P', 'SMS', 'Util', 'Wallet'),
           '/api/qlcgo/': genSidebarConfig('api/qlcgo', 'Golang SDK', 'Account', 'Contract', 'Ledger', 'Mintage', 'P2P', 'SMS', 'Util', 'Wallet'),
           '/api/qlcjs/': genSidebarConfig('api/qlcjs', 'Javascript SDK', 'Client', 'Provider'),
         }
@@ -245,7 +252,7 @@ module.exports = {
         nav: require('./nav/zh'),
         sidebar: {
           '/zh/tutorial/': genSidebarConfig('tutorial', '开始', '节点', '钱包'),
-          '/zh/api/rpc/': genSidebarConfig('api/rpc', 'RPC 接口', '账户', '智能合约', '账本', '铸币合约', 'P2P', '短信业务', '工具集合', '钱包'),
+          '/zh/api/rpc/': genSidebarConfig('api/rpc', 'RPC 接口', '账户', '智能合约', '账本', '铸币合约', '抵押合约','P2P', '短信业务', '工具集合', '钱包'),
           '/zh/api/qlcgo/': genSidebarConfig('api/qlcgo', 'Golang SDK', '账户', '合约', '账本', '铸币合约', 'P2P', '短信业务', '工具集合', '钱包'),
           '/zh/api/qlcjs/': genSidebarConfig('api/qlcjs', 'Javascript SDK', 'RPC 客户端', '网络连接层'),
         },
