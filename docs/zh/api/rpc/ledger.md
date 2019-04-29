@@ -399,7 +399,7 @@
 
 
 
-## ledger_accountsBalances
+## ledger_accountsBalance
 
 返回每个账户的余额和待接收数量
 
@@ -416,7 +416,7 @@
 {
 	"jsonrpc": "2.0",
 	"id": 18,
-	"method": "ledger_accountsBalances",
+	"method": "ledger_accountsBalance",
 	"params": [
 		[
 			"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
@@ -459,7 +459,7 @@
 {
 	"jsonrpc": "2.0",
 	"id": 18,
-	"method": "ledger_accountsBalances",
+	"method": "ledger_accountsBalance",
 	"params": [
 		[
 			"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",

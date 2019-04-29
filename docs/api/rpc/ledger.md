@@ -397,7 +397,7 @@ Return account list of chain
 
 
 
-## ledger_accountsBalances
+## ledger_accountsBalance
 Returns balance and pending (amount that has not yet been received) for each account 
 - **Parameters**: 
   - `[]string`:  addresses list
@@ -412,7 +412,7 @@ Returns balance and pending (amount that has not yet been received) for each acc
 {
 	"jsonrpc": "2.0",
 	"id": 18,
-	"method": "ledger_accountsBalances",
+	"method": "ledger_accountsBalance",
 	"params": [
 		[
 			"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
@@ -455,7 +455,7 @@ Returns balance and pending (amount that has not yet been received) for each acc
 {
 	"jsonrpc": "2.0",
 	"id": 18,
-	"method": "ledger_accountsBalances",
+	"method": "ledger_accountsBalance",
 	"params": [
 		[
 			"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
