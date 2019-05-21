@@ -156,6 +156,7 @@ Return account detail info, include each token in the account
 - **Returns**: 
     - `account` :  the account address
     - `coinBalance` : balance of main token of the account (default is QLC)
+    - `vote`,`network`,`storage`,`oracle`: benefit for the account, if account don't have token QLC, these are omit
     - `representative` : representative address of the account
     - `[]token`: each token info for the account, 
 
@@ -196,8 +197,12 @@ Return account detail info, include each token in the account
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "account": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-    "coinBalance": "40000000000000",
+    "account": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+    "coinBalance": "0",
+    "vote": "4400000000",
+    "network": "0",
+    "storage": "0",
+    "oracle": "0",
     "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
     "tokens": [
       {
@@ -1603,19 +1608,25 @@ Return pairs of representative and its voting weight
 ```json tab:Response
 {
   "jsonrpc": "2.0",
-  "id": 18,
+  "id": 2,
   "result": [
     {
-      "address": "qlc_3nihnp4a5zf5iq9pz54twp1dmksxnouc4i5k4y6f8gbnkc41p1b5ewm3inpw",
-      "balance": "10000"
+      "address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+      "balance": "60000000000000000",
+      "vote": "5000000000",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "total": "60000005000000000"
     },
     {
-      "address": "qlc_3pu4ggyg36nienoa9s9x95a615m1natqcqe7bcrn3t3ckq1srnnkh8q5xst5",
-      "balance": "20001"
-    },
-    {
-      "address": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-      "balance": "1020"
+      "address": "qlc_1717brdo1cu6tosia7i46bdxekai3gu9knuu1bsayd5z9exhjq9aqfsfpeah",
+      "balance": "40000000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "total": "40000000000"
     }
   ]
 }

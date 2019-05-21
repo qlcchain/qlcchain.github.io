@@ -157,6 +157,7 @@
 - **Returns**: 
     - `account` :  账户地址
     - `coinBalance` : 该账户下的主token（默认为QLC）
+    - `vote`,`network`,`storage`,`oracle`: 账户获得的权益，如果该账户没有QLC，这些字段为空
     - `representative` : 该账户的代表账户的地址
     - `[]token`: 账户下每个token的信息
 
@@ -197,8 +198,12 @@
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "account": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-    "coinBalance": "40000000000000",
+    "account": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+    "coinBalance": "0",
+    "vote": "4400000000",
+    "network": "0",
+    "storage": "0",
+    "oracle": "0",
     "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
     "tokens": [
       {
@@ -1628,19 +1633,25 @@
 ```json tab:Response
 {
   "jsonrpc": "2.0",
-  "id": 18,
+  "id": 2,
   "result": [
     {
-      "address": "qlc_3nihnp4a5zf5iq9pz54twp1dmksxnouc4i5k4y6f8gbnkc41p1b5ewm3inpw",
-      "balance": "10000"
+      "address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+      "balance": "60000000000000000",
+      "vote": "5000000000",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "total": "60000005000000000"
     },
     {
-      "address": "qlc_3pu4ggyg36nienoa9s9x95a615m1natqcqe7bcrn3t3ckq1srnnkh8q5xst5",
-      "balance": "20001"
-    },
-    {
-      "address": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-      "balance": "1020"
+      "address": "qlc_1717brdo1cu6tosia7i46bdxekai3gu9knuu1bsayd5z9exhjq9aqfsfpeah",
+      "balance": "40000000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "total": "40000000000"
     }
   ]
 }
