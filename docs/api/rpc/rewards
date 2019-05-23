@@ -60,12 +60,14 @@ returns total airdrop qgas amount for a specific pledge
 
 
 ## rewards_getConfidantRewords
-returns total rewards for a specific confidant address 
+returns airdrop amount for a specific confidant address 
 - **Parameters**: 
   - `string`: confidant address 
 - **Returns**: 
-  - `uint64`: total rewards
-
+  - `map[string]uint64`: airdrop amount of each confidant 
+    - `key`: hash of confidant id
+    - `value`: airdrop amount
+    
 - **Example**:
 
 ::: demo
@@ -84,10 +86,14 @@ returns total rewards for a specific confidant address
 
 ```json tab:Response
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": 14000000000
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+		"657b75d793dbb31d8db4716e53590e54712ac235afd33b9cd1711333e094c101": 10000000,
+		"31774e65e074922542fa76f0980e6a55437ea44dfa573812d2d247e380f575ee": 20000000
+	}
 }
+
 
 
 ```

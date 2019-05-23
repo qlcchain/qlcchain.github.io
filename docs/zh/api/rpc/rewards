@@ -67,7 +67,10 @@
 - **Parameters**: 
   - `string`: confidant地址 
 - **Returns**: 
-  - `uint64`: 获得的空投总量
+  - `map[string]uint64`: 各个设备获得的空投总量
+    - `key`: 设备ID的hash
+    - `value`: 获得的空投量
+    
 
 - **Example**:
 
@@ -87,9 +90,12 @@
 
 ```json tab:Response
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": 14000000000
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+		"657b75d793dbb31d8db4716e53590e54712ac235afd33b9cd1711333e094c101": 10000000,
+		"31774e65e074922542fa76f0980e6a55437ea44dfa573812d2d247e380f575ee": 20000000
+	}
 }
 
 
