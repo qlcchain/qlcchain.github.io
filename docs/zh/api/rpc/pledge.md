@@ -7,7 +7,7 @@
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
 
-## pledge_searchPledgeInfo
+## pledge_getPledgeInfo
 根据抵押参数返回抵押合约的数据 ，如果有多笔相同的抵押，则按时间先手顺序返回
 - **Parameters**: 
   - `pledgeParams`:  抵押参数
@@ -16,7 +16,7 @@
     - pType：抵押类型
   
 - **Returns**: 
-  - `string`:  抵押数据
+  - `pledgeInfo`:  抵押数据
 
 - **Example**:
 
@@ -25,7 +25,7 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "pledge_searchPledgeInfo",
+	"method": "pledge_getPledgeInfo",
 	"params": [
 		{
 			"beneficial": "qlc_3t18f6ruhp4n3jkqo7fnhzmcdunpwk9niqu5z9sg1otkhthnm6n1hdz5i4ho",
@@ -34,6 +34,7 @@
 		}
 	]
 }
+
 
 ```
 
@@ -68,7 +69,7 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "pledge_searchPledgeInfo",
+	"method": "pledge_getPledgeInfo",
 	"params": [
 		{
 			"beneficial": "qlc_3t18f6ruhp4n3jkqo7fnhzmcdunpwk9niqu5z9sg1otkhthnm6n1hdz5i4ho",
@@ -77,6 +78,8 @@
 		}
 	]
 }
+
+
 ```
 
 :::
@@ -84,12 +87,12 @@
 
 
 
-## pledge_searchAllPledgeInfo
+## pledge_getAllPledgeInfo
 返回所有的抵押合约数据
 - **Parameters**: 
     - `pledgeParams`:  无
 - **Returns**: 
-  - `string`: 所有的抵押合约数据
+  - `[]pledgeInfo`: 所有的抵押合约数据
 
 - **Example**:
 
@@ -98,10 +101,12 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "pledge_searchAllPledgeInfo",
+	"method": "pledge_getAllPledgeInfo",
 	"params": [
 	]
 }
+
+
 ```
 
 ```json tab:Response
@@ -135,16 +140,72 @@
     }
   ]
 }
+
+
 ```
 
 ```json test
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "pledge_searchAllPledgeInfo",
+	"method": "pledge_getAllPledgeInfo",
 	"params": [
 	]
 }
+
+
 ```
 
 :::
+
+
+
+## pledge_getTotalPledgeAmount
+返回所有的抵押合约数据
+- **Parameters**: 
+    - `pledgeParams`:  无
+- **Returns**: 
+  - `uint64`: 链上抵押总量
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getTotalPledgeAmount",
+	"params": [
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 14000000000
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getTotalPledgeAmount",
+	"params": [
+	]
+}
+
+
+```
+
+:::
+
+
+
+

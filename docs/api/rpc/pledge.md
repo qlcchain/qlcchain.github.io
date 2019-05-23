@@ -7,7 +7,7 @@
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
 
-## pledge_searchPledgeInfo
+## pledge_getPledgeInfo
 Return pledge data by pledge parameters ，if there are multiple identical pledge in the query result, it will be returned in time order
 - **Parameters**: 
   - `pledgeParams`:  pledge parameters
@@ -16,7 +16,7 @@ Return pledge data by pledge parameters ，if there are multiple identical pledg
     - pType：type of pledge
   
 - **Returns**: 
-  - `string`:  data for pledge
+  - `pledgeInfo`:  data for pledge
 
 - **Example**:
 
@@ -25,7 +25,7 @@ Return pledge data by pledge parameters ，if there are multiple identical pledg
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "pledge_searchPledgeInfo",
+	"method": "pledge_getPledgeInfo",
 	"params": [
 		{
 			"beneficial": "qlc_3t18f6ruhp4n3jkqo7fnhzmcdunpwk9niqu5z9sg1otkhthnm6n1hdz5i4ho",
@@ -34,6 +34,7 @@ Return pledge data by pledge parameters ，if there are multiple identical pledg
 		}
 	]
 }
+
 
 ```
 
@@ -68,7 +69,7 @@ Return pledge data by pledge parameters ，if there are multiple identical pledg
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "pledge_searchPledgeInfo",
+	"method": "pledge_getPledgeInfo",
 	"params": [
 		{
 			"beneficial": "qlc_3t18f6ruhp4n3jkqo7fnhzmcdunpwk9niqu5z9sg1otkhthnm6n1hdz5i4ho",
@@ -77,6 +78,8 @@ Return pledge data by pledge parameters ，if there are multiple identical pledg
 		}
 	]
 }
+
+
 ```
 
 :::
@@ -84,12 +87,12 @@ Return pledge data by pledge parameters ，if there are multiple identical pledg
 
 
 
-## pledge_searchAllPledgeInfo
+## pledge_getAllPledgeInfo
 Return all pledge info
 - **Parameters**: 
-    - `pledgeParams`:  no
+    - `pledgeParams`:  `null`
 - **Returns**: 
-  - `string`: all pledge data
+  - `[]pledgeInfo`: all pledge data
 
 - **Example**:
 
@@ -98,10 +101,12 @@ Return all pledge info
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "pledge_searchAllPledgeInfo",
+	"method": "pledge_getAllPledgeInfo",
 	"params": [
 	]
 }
+
+
 ```
 
 ```json tab:Response
@@ -135,16 +140,72 @@ Return all pledge info
     }
   ]
 }
+
+
 ```
 
 ```json test
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "pledge_searchAllPledgeInfo",
+	"method": "pledge_getAllPledgeInfo",
 	"params": [
 	]
 }
+
+
 ```
 
 :::
+
+
+
+## pledge_getTotalPledgeAmount
+returns total pledge amount on chain
+- **Parameters**: 
+  - `pledgeParams`:  `null`
+- **Returns**: 
+  - `uint64`:total pledge amount on chain 
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getTotalPledgeAmount",
+	"params": [
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 14000000000
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getTotalPledgeAmount",
+	"params": [
+	]
+}
+
+
+```
+
+:::
+
+
+
+
