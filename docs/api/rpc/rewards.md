@@ -59,7 +59,7 @@ returns total airdrop qgas amount for a specific pledge
 
 
 
-## rewards_getConfidantRewords
+## rewards_getConfidantRewards
 returns airdrop amount for a specific confidant address 
 - **Parameters**: 
   - `string`: confidant address 
@@ -75,7 +75,7 @@ returns airdrop amount for a specific confidant address
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "rewards_getConfidantRewords",
+	"method": "rewards_getConfidantRewards",
 	"params": [
         "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4"
 	]
@@ -102,7 +102,7 @@ returns airdrop amount for a specific confidant address
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "rewards_getConfidantRewords",
+	"method": "rewards_getConfidantRewards",
 	"params": [
 	]
 }
