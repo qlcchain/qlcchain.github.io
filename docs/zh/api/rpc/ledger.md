@@ -1265,7 +1265,7 @@
         - `sender`: 可空, 短信发送者
         - `receiver`: 可空, 短信接收者
         - `message`: 可空, 短信消息的hash
-    - `string`: 私钥
+    - `string`: 可空，私钥，如果为空，则返回不包含签名和work的区块
 - **Returns**: 
     - `block`: 发送区块
 
@@ -1351,7 +1351,7 @@
 
 - **Parameters**: 
    - `block`:  发送区块
-   - `string`: 私钥
+   - `string`: 可空，私钥，如果为空，则返回不包含签名和work的区块钥
  
 - **Returns**: 
   - `block`:  接收区块
@@ -1458,7 +1458,7 @@
 - **Parameters**: 
     - `string`: 账户地址
     - `string`: 新代表地址
-    - `string`: 私钥 
+    - `string`: 可空，私钥，如果为空，则返回不包含签名和work的区块 
 
   
 - **Returns**: 

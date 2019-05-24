@@ -1247,7 +1247,7 @@ Return send block by send parameter and private key
         - `sender`: `optional`, sms sender
         - `receiver`: `optional`, sms receiver
         - `message`: `optional`, sms message hash
-    - `string`: private key 
+    - `string`: `optonal`, private key ,if not set ,will return block without signature and work
 - **Returns**: 
     - `block`: send block
 
@@ -1332,7 +1332,7 @@ Return send block by send parameter and private key
 Return receive block by send block and private key
 - **Parameters**: 
    - `block`:  send block
-   - `string`: private key 
+   - `string`: `optonal`, private key ,if not set ,will return block without signature and work
  
 - **Returns**: 
   - `block`:  receive block
@@ -1437,7 +1437,7 @@ Return change block by account and private key
 - **Parameters**: 
     - `string`: account address
     - `string`: new representative account  
-    - `string`: private key  
+    - `string`: `optonal`, private key ,if not set ,will return block without signature and work 
 
   
 - **Returns**: 
