@@ -7,6 +7,570 @@
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
 
+## pledge_getPledgeData
+Return pledge data by pledge parameters
+
+- **Parameters**: 
+  - `pledgeParams`:  pledge parameters
+    - beneficial：beneficial address
+    - pledgeAddress: pledge address
+    - amount：amount of pledge
+    - pType：type of pledge
+    - nEP5TxId: lock transaction id of nep5
+  
+- **Returns**: 
+  - `string`: data for pledge, encode by base64
+
+
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeData",
+	"params": [
+		{
+			"beneficial": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"pledgeAddress":"qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"amount": "1100000000",
+			"pType": "vote",
+			"nEP5TxId":"30c292be09680ea79b6c0c3fb509591e190ed40f8c8932fac88b4a3ea648446b"
+		}
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "uuDnSGwLLN1TPuOiFmjxmeER9shhQEDmDnCnOrbI2gNvKnrXbAss3VM+46IWaPGZ4RH2yGFAQOYOcKc6tsjaA28qetcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAzMGMyOTJiZTA5NjgwZWE3OWI2YzBjM2ZiNTA5NTkxZTE5MGVkNDBmOGM4OTMyZmFjODhiNGEzZWE2NDg0NDZi"
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeData",
+	"params": [
+		{
+			"beneficial": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"pledgeAddress":"qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"amount": "1100000000",
+			"pType": "vote",
+			"nEP5TxId":"30c292be09680ea79b6c0c3fb509591e190ed40f8c8932fac88b4a3ea648446b"
+		}
+	]
+}
+
+
+```
+
+:::
+
+
+
+
+
+## pledge_getPledgeBlock
+Return pledge block by pledge parameters
+
+- **Parameters**: 
+  - `pledgeParams`:  pledge parameters
+    - beneficial：beneficial address
+    - pledgeAddress: pledge address
+    - amount：amount of pledge
+    - pType：type of pledge
+    - nEP5TxId: lock transaction id of nep5
+  
+- **Returns**: 
+  - `block`: contractsend block
+
+
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeBlock",
+	"params": [
+		{
+			"beneficial": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"pledgeAddress":"qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"amount": "1100000000",
+			"pType": "vote",
+			"nEP5TxId":"30c292be09680ea79b6c0c3fb509591e190ed40f8c8932fac88b4a3ea648446b"
+		}
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": [
+    {
+      "type": "ContractSend",
+      "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+      "address": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+      "balance": "19979771680000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "6a8460b892377e044178ef6f97e9b6c085016234f8e387424fc85ef412c65021",
+      "link": "b7902600dfc79387b2601edc347b854d55d6b31142e324a4e54ff00a4c519c91",
+      "message": "0000000000000000000000000000000000000000000000000000000000000000",
+      "data": "uuDnSGwLLN1TPuOiFmjxmeER9shhQEDmDnCnOrbI2gNvKnrXv4bIP7S/ufSbm4+lk8jPQSjJ4hcgxIdWW1L8ZkCp6PMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA4NDYwMTRmN2Q2MzA5OTQ5YzZjZWEwN2M0ZGNmY2QzZmE1ZDUxYmI2ZmIxZjNhMDY3MmRkY2M3ZWQ5MjIyMmQy",
+      "povHeight": 0,
+      "timestamp": 1558676751,
+      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "0000000001148773",
+      "signature": "e37826bcb6edea522ec3e9c351d02856f251c18675ad43213140e8608502ab819878cf9087a5e872f1256baed3c097771e53a7bce8d65348b498496ace0f2d03"
+    }
+  ]
+}
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeBlock",
+	"params": [
+		{
+			"beneficial": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"pledgeAddress":"qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"amount": "1100000000",
+			"pType": "vote",
+			"nEP5TxId":"30c292be09680ea79b6c0c3fb509591e190ed40f8c8932fac88b4a3ea648446b"
+		}
+	]
+}
+
+
+```
+
+:::
+
+
+## pledge_getPledgeRewardBlock
+Return pledge ContractReward block by ContractSendblock
+
+- **Parameters**: 
+  - `block`:  ContractSend block
+  
+- **Returns**: 
+  - `block`: ContractReward block
+
+
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeRewardBlock",
+	"params": [
+		{
+      "type": "ContractSend",
+      "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+      "address": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+      "balance": "19979771680000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "6a8460b892377e044178ef6f97e9b6c085016234f8e387424fc85ef412c65021",
+      "link": "b7902600dfc79387b2601edc347b854d55d6b31142e324a4e54ff00a4c519c91",
+      "message": "0000000000000000000000000000000000000000000000000000000000000000",
+      "data": "uuDnSGwLLN1TPuOiFmjxmeER9shhQEDmDnCnOrbI2gNvKnrXv4bIP7S/ufSbm4+lk8jPQSjJ4hcgxIdWW1L8ZkCp6PMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA4NDYwMTRmN2Q2MzA5OTQ5YzZjZWEwN2M0ZGNmY2QzZmE1ZDUxYmI2ZmIxZjNhMDY3MmRkY2M3ZWQ5MjIyMmQy",
+      "povHeight": 0,
+      "timestamp": 1558676751,
+      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "0000000001148773",
+      "signature": "e37826bcb6edea522ec3e9c351d02856f251c18675ad43213140e8608502ab819878cf9087a5e872f1256baed3c097771e53a7bce8d65348b498496ace0f2d03"
+    }
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": [
+    {
+      "type": "ContractReward",
+      "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+      "address": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+      "balance": "19979771680000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "6a8460b892377e044178ef6f97e9b6c085016234f8e387424fc85ef412c65021",
+      "link": "b7902600dfc79387b2601edc347b854d55d6b31142e324a4e54ff00a4c519c91",
+      "message": "0000000000000000000000000000000000000000000000000000000000000000",
+      "data": "uuDnSGwLLN1TPuOiFmjxmeER9shhQEDmDnCnOrbI2gNvKnrXv4bIP7S/ufSbm4+lk8jPQSjJ4hcgxIdWW1L8ZkCp6PMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA4NDYwMTRmN2Q2MzA5OTQ5YzZjZWEwN2M0ZGNmY2QzZmE1ZDUxYmI2ZmIxZjNhMDY3MmRkY2M3ZWQ5MjIyMmQy",
+      "povHeight": 0,
+      "timestamp": 1558676751,
+      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "0000000001148773",
+      "signature": "e37826bcb6edea522ec3e9c351d02856f251c18675ad43213140e8608502ab819878cf9087a5e872f1256baed3c097771e53a7bce8d65348b498496ace0f2d03"
+    }
+  ]
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeRewardBlock",
+	"params": [
+		{
+      "type": "ContractSend",
+      "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+      "address": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+      "balance": "19979771680000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "6a8460b892377e044178ef6f97e9b6c085016234f8e387424fc85ef412c65021",
+      "link": "b7902600dfc79387b2601edc347b854d55d6b31142e324a4e54ff00a4c519c91",
+      "message": "0000000000000000000000000000000000000000000000000000000000000000",
+      "data": "uuDnSGwLLN1TPuOiFmjxmeER9shhQEDmDnCnOrbI2gNvKnrXv4bIP7S/ufSbm4+lk8jPQSjJ4hcgxIdWW1L8ZkCp6PMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA4NDYwMTRmN2Q2MzA5OTQ5YzZjZWEwN2M0ZGNmY2QzZmE1ZDUxYmI2ZmIxZjNhMDY3MmRkY2M3ZWQ5MjIyMmQy",
+      "povHeight": 0,
+      "timestamp": 1558676751,
+      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "0000000001148773",
+      "signature": "e37826bcb6edea522ec3e9c351d02856f251c18675ad43213140e8608502ab819878cf9087a5e872f1256baed3c097771e53a7bce8d65348b498496ace0f2d03"
+    }
+	]
+}
+
+
+```
+
+:::
+
+
+
+
+## GetWithdrawPledgeData
+Return withdraw data by pledge parameters
+
+- **Parameters**: 
+  - `withdrawPledgeParams`: 
+    - beneficial：beneficial address
+    - amount：amount of pledge
+    - pType：type of pledge
+    - nEP5TxId: lock transaction id of nep5
+  
+- **Returns**: 
+  - `string`: withdraw data ,encode by base64
+
+
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getWithdrawPledgeData",
+	"params": [
+		{
+			"beneficial": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"amount": "1100000000",
+			"pType": "vote",
+			"nEP5TxId":"30c292be09680ea79b6c0c3fb509591e190ed40f8c8932fac88b4a3ea648446b"
+		}
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "I9Wy12wLLN1TPuOiFmjxmeER9shhQEDmDnCnOrbI2gNvKnrXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEGQqwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAzMGMyOTJiZTA5NjgwZWE3OWI2YzBjM2ZiNTA5NTkxZTE5MGVkNDBmOGM4OTMyZmFjODhiNGEzZWE2NDg0NDZi"
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getWithdrawPledgeData",
+	"params": [
+		{
+			"beneficial": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"amount": "1100000000",
+			"pType": "vote",
+			"nEP5TxId":"30c292be09680ea79b6c0c3fb509591e190ed40f8c8932fac88b4a3ea648446b"
+		}
+	]
+}
+
+
+```
+
+:::
+
+
+
+
+
+
+## pledge_getWithdrawPledgeBlock
+Return withdraw ContractSend block by withdraw params
+
+- **Parameters**: 
+  - `withdrawPledgeParams`: 
+    - beneficial：beneficial address
+    - amount：amount of pledge
+    - pType：type of pledge
+    - nEP5TxId: lock transaction id of nep5
+   
+- **Returns**: 
+  - `block`: ContractSend block
+
+
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getWithdrawPledgeBlock",
+	"params": [
+		{
+			"beneficial": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"amount": "1100000000",
+			"pType": "vote",
+			"nEP5TxId":"30c292be09680ea79b6c0c3fb509591e190ed40f8c8932fac88b4a3ea648446b"
+		}
+	]
+}
+
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "type": "ContractSend",
+      "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+      "address": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+      "balance": "19979771680000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "6a8460b892377e044178ef6f97e9b6c085016234f8e387424fc85ef412c65021",
+      "link": "b7902600dfc79387b2601edc347b854d55d6b31142e324a4e54ff00a4c519c91",
+      "message": "0000000000000000000000000000000000000000000000000000000000000000",
+      "data": "uuDnSGwLLN1TPuOiFmjxmeER9shhQEDmDnCnOrbI2gNvKnrXv4bIP7S/ufSbm4+lk8jPQSjJ4hcgxIdWW1L8ZkCp6PMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA4NDYwMTRmN2Q2MzA5OTQ5YzZjZWEwN2M0ZGNmY2QzZmE1ZDUxYmI2ZmIxZjNhMDY3MmRkY2M3ZWQ5MjIyMmQy",
+      "povHeight": 0,
+      "timestamp": 1558676751,
+      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "0000000001148773",
+      "signature": "e37826bcb6edea522ec3e9c351d02856f251c18675ad43213140e8608502ab819878cf9087a5e872f1256baed3c097771e53a7bce8d65348b498496ace0f2d03"
+    }
+  ]
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getWithdrawPledgeBlock",
+	"params": [
+		{
+			"beneficial": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+			"amount": "1100000000",
+			"pType": "vote",
+			"nEP5TxId":"30c292be09680ea79b6c0c3fb509591e190ed40f8c8932fac88b4a3ea648446b"
+		}
+	]
+}
+
+
+
+```
+
+:::
+
+
+
+
+
+## pledge_getWithdrawRewardBlock
+Return withdraw ContractReward block by withdraw ContractSend block
+
+- **Parameters**: 
+  - `block`:  ContractSend block
+  
+- **Returns**: 
+  - `block`: ContractReward block
+
+
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getWithdrawRewardBlock",
+	"params": [
+		{
+      "type": "ContractSend",
+      "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+      "address": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "balance": "19979771680000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "6a8460b892377e044178ef6f97e9b6c085016234f8e387424fc85ef412c65021",
+      "link": "b7902600dfc79387b2601edc347b854d55d6b31142e324a4e54ff00a4c519c91",
+      "message": "0000000000000000000000000000000000000000000000000000000000000000",
+      "data": "uuDnSGwLLN1TPuOiFmjxmeER9shhQEDmDnCnOrbI2gNvKnrXv4bIP7S/ufSbm4+lk8jPQSjJ4hcgxIdWW1L8ZkCp6PMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA4NDYwMTRmN2Q2MzA5OTQ5YzZjZWEwN2M0ZGNmY2QzZmE1ZDUxYmI2ZmIxZjNhMDY3MmRkY2M3ZWQ5MjIyMmQy",
+      "povHeight": 0,
+      "timestamp": 1558676751,
+      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "0000000001148773",
+      "signature": "e37826bcb6edea522ec3e9c351d02856f251c18675ad43213140e8608502ab819878cf9087a5e872f1256baed3c097771e53a7bce8d65348b498496ace0f2d03",
+    }
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": [
+    {
+      "type": "ContractReward",
+      "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+      "address": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+      "balance": "19979771680000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "6a8460b892377e044178ef6f97e9b6c085016234f8e387424fc85ef412c65021",
+      "link": "b7902600dfc79387b2601edc347b854d55d6b31142e324a4e54ff00a4c519c91",
+      "message": "0000000000000000000000000000000000000000000000000000000000000000",
+      "data": "uuDnSGwLLN1TPuOiFmjxmeER9shhQEDmDnCnOrbI2gNvKnrXv4bIP7S/ufSbm4+lk8jPQSjJ4hcgxIdWW1L8ZkCp6PMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA4NDYwMTRmN2Q2MzA5OTQ5YzZjZWEwN2M0ZGNmY2QzZmE1ZDUxYmI2ZmIxZjNhMDY3MmRkY2M3ZWQ5MjIyMmQy",
+      "povHeight": 0,
+      "timestamp": 1558676751,
+      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "0000000001148773",
+      "signature": "e37826bcb6edea522ec3e9c351d02856f251c18675ad43213140e8608502ab819878cf9087a5e872f1256baed3c097771e53a7bce8d65348b498496ace0f2d03"
+    }
+  ]
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getWithdrawRewardBlock",
+	"params": [
+		{
+      "type": "ContractSend",
+      "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+      "address": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "balance": "19979771680000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "6a8460b892377e044178ef6f97e9b6c085016234f8e387424fc85ef412c65021",
+      "link": "b7902600dfc79387b2601edc347b854d55d6b31142e324a4e54ff00a4c519c91",
+      "message": "0000000000000000000000000000000000000000000000000000000000000000",
+      "data": "uuDnSGwLLN1TPuOiFmjxmeER9shhQEDmDnCnOrbI2gNvKnrXv4bIP7S/ufSbm4+lk8jPQSjJ4hcgxIdWW1L8ZkCp6PMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA4NDYwMTRmN2Q2MzA5OTQ5YzZjZWEwN2M0ZGNmY2QzZmE1ZDUxYmI2ZmIxZjNhMDY3MmRkY2M3ZWQ5MjIyMmQy",
+      "povHeight": 0,
+      "timestamp": 1558676751,
+      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "0000000001148773",
+      "signature": "e37826bcb6edea522ec3e9c351d02856f251c18675ad43213140e8608502ab819878cf9087a5e872f1256baed3c097771e53a7bce8d65348b498496ace0f2d03",
+    }
+	]
+}
+
+
+```
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## pledge_getPledgeInfo
 Return pledge data by pledge parameters ，if there are multiple identical pledge in the query result, it will be returned in time order
 - **Parameters**: 
