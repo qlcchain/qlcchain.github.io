@@ -1,4 +1,4 @@
-# P2P
+# Net
 
 **Supported protocols:**
 
