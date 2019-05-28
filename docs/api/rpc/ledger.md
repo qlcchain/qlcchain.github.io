@@ -403,12 +403,13 @@ Return account list of chain
 
 
 ## ledger_accountsBalance
-Returns balance and pending (amount that has not yet been received) for each account 
+Returns balance and pending (amount that has not yet been received) for each account,  if token is QLC, alse have benefit amount as vote, network, oracle, storage
+
 - **Parameters**: 
   - `[]string`:  addresses list
   
 - **Returns**: 
-  - balance and pending amount of each token for  each account
+  - amount of each token for each account
 
 - **Example**:
 
@@ -416,12 +417,13 @@ Returns balance and pending (amount that has not yet been received) for each acc
 ```json tab:Request
 {
 	"jsonrpc": "2.0",
-	"id": 18,
+	"id": 1,
 	"method": "ledger_accountsBalance",
 	"params": [
 		[
-			"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-			"qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic"
+			"qlc_1kk5xst583y8hpn9c48ruizs5cxprdeptw6s5wm6ezz6i1h5srpz3mnjgxao",
+			"qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p",
+			"qlc_3agkmeufj9z7ntkm8nf7o8e9w3b3tuqyyud5uc5iywajrgxz9re4w7m3pgdx"
 		]
 	]
 }
@@ -432,21 +434,35 @@ Returns balance and pending (amount that has not yet been received) for each acc
 ```json tab:Response
 {
   "jsonrpc": "2.0",
-  "id": 18,
+  "id": 1,
   "result": {
-    "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44": {
-      "QLC": {
-        "balance": "10000000000",
-        "pending": "100"
-      },
-      "QN": {
-        "balance": "1010000000",
+    "qlc_1kk5xst583y8hpn9c48ruizs5cxprdeptw6s5wm6ezz6i1h5srpz3mnjgxao": {
+      "QGAS": {
+        "balance": "474263800000132",
         "pending": "0"
       }
     },
-    "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic": {
+    "qlc_3agkmeufj9z7ntkm8nf7o8e9w3b3tuqyyud5uc5iywajrgxz9re4w7m3pgdx": {
       "QLC": {
-        "balance": "100000000000",
+        "balance": "0",
+        "vote": "4000000000000",
+        "network": "0",
+        "storage": "0",
+        "oracle": "0",
+        "pending": "0"
+      }
+    },
+    "qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p": {
+      "QGAS": {
+        "balance": "500932805778976",
+        "pending": "0"
+      },
+      "QLC": {
+        "balance": "0",
+        "vote": "10001000000000",
+        "network": "0",
+        "storage": "0",
+        "oracle": "0",
         "pending": "0"
       }
     }
@@ -459,12 +475,13 @@ Returns balance and pending (amount that has not yet been received) for each acc
 ```json test
 {
 	"jsonrpc": "2.0",
-	"id": 18,
+	"id": 1,
 	"method": "ledger_accountsBalance",
 	"params": [
 		[
-			"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-			"qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic"
+			"qlc_1kk5xst583y8hpn9c48ruizs5cxprdeptw6s5wm6ezz6i1h5srpz3mnjgxao",
+			"qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p",
+			"qlc_3agkmeufj9z7ntkm8nf7o8e9w3b3tuqyyud5uc5iywajrgxz9re4w7m3pgdx"
 		]
 	]
 }
