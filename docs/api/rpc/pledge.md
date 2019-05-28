@@ -12,11 +12,11 @@ Return pledge data by pledge parameters
 
 - **Parameters**: 
   - `pledgeParams`:  pledge parameters
-    - beneficial：beneficial address
-    - pledgeAddress: pledge address
-    - amount：amount of pledge
-    - pType：type of pledge
-    - nEP5TxId: lock transaction id of nep5
+    - `beneficial`：beneficial address
+    - `pledgeAddress`: pledge address
+    - `amount`：amount of pledge
+    - `pType`：type of pledge
+    - `nEP5TxId`: lock transaction id of nep5
   
 - **Returns**: 
   - `string`: data for pledge, encode by base64
@@ -85,11 +85,11 @@ Return pledge block by pledge parameters
 
 - **Parameters**: 
   - `pledgeParams`:  pledge parameters
-    - beneficial：beneficial address
-    - pledgeAddress: pledge address
-    - amount：amount of pledge
-    - pType：type of pledge
-    - nEP5TxId: lock transaction id of nep5
+    - `beneficial`：beneficial address
+    - `pledgeAddress`: pledge address
+    - `amount`：amount of pledge
+    - `pType`：type of pledge
+    - `nEP5TxId`: lock transaction id of nep5
   
 - **Returns**: 
   - `block`: contractsend block
@@ -284,15 +284,15 @@ Return pledge ContractReward block by ContractSendblock
 
 
 
-## GetWithdrawPledgeData
+## pledge_getWithdrawPledgeData
 Return withdraw data by pledge parameters
 
 - **Parameters**: 
   - `withdrawPledgeParams`: 
-    - beneficial：beneficial address
-    - amount：amount of pledge
-    - pType：type of pledge
-    - nEP5TxId: lock transaction id of nep5
+    - `beneficial`：beneficial address
+    - `amount`：amount of pledge
+    - `pType`：type of pledge
+    - `nEP5TxId`: lock transaction id of nep5
   
 - **Returns**: 
   - `string`: withdraw data ,encode by base64
@@ -360,10 +360,10 @@ Return withdraw ContractSend block by withdraw params
 
 - **Parameters**: 
   - `withdrawPledgeParams`: 
-    - beneficial：beneficial address
-    - amount：amount of pledge
-    - pType：type of pledge
-    - nEP5TxId: lock transaction id of nep5
+    - `beneficial`：beneficial address
+    - `amount`：amount of pledge
+    - `pType`：type of pledge
+    - `nEP5TxId`: lock transaction id of nep5
    
 - **Returns**: 
   - `block`: ContractSend block
@@ -560,10 +560,410 @@ Return withdraw ContractReward block by withdraw ContractSend block
 :::
 
 
+## pledge_GetPledgeInfosByPledgeAddress
+
+Return pledge infos by pledge address
+
+- **Parameters**: 
+  - `string` : pledge address
+  
+- **Returns**: 
+  - `PledgeInfo` pledges info
+  - `TotalAmounts`  total pledge amount
+
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeInfosByPledgeAddress",
+	"params": [
+	"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "PledgeInfo": [
+      {
+        "PType": "Vote",
+        "Amount": 10000000000000,
+        "WithdrawTime": "2019-05-27T12:34:22Z",
+        "Beneficial": "qlc_18mbwzt7kjks1ydzk53hw6xropyz3mb4dgwq75tyzy4pcuc4mso1635mfdfz",
+        "PledgeAddress": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+        "NEP5TxId": "8ecc71a3eec8a38def07858f7c1734a51346a8375deaa1f8e36295a2d23dc00e"
+      },
+      {
+        "PType": "Vote",
+        "Amount": 1000000000000,
+        "WithdrawTime": "2019-05-27T13:14:05Z",
+        "Beneficial": "qlc_3agkmeufj9z7ntkm8nf7o8e9w3b3tuqyyud5uc5iywajrgxz9re4w7m3pgdx",
+        "PledgeAddress": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+        "NEP5TxId": "008b7121fce9ff13817c09518841f07835730d05446b842211d086cf97f4284a"
+      }
+    ],
+    "TotalAmounts": 20000000000000
+  }
+}
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeInfosByPledgeAddress",
+	"params": [
+	"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4"
+	]
+}
+
+
+```
+:::
 
 
 
 
+## pledge_getPledgeBeneficialTotalAmount
+Return total reward amount  of a beneficial address
+
+- **Parameters**: 
+  - `string` : beneficial address
+  
+- **Returns**: 
+  - `int`:  total reward amount
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeBeneficialTotalAmount",
+	"params": [
+	"qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 1000100000000000
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeBeneficialTotalAmount",
+	"params": [
+	"qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p"
+	]
+}
+
+
+```
+:::
+
+
+
+## pledge_getBeneficialPledgeInfosByAddress
+Return pledge infos of a beneficial address
+
+- **Parameters**: 
+  - `string` : beneficial address
+  
+- **Returns**: 
+  - `PledgeInfo` pledges info
+  - `TotalAmounts`  total pledge amount
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getBeneficialPledgeInfosByAddress",
+	"params": [
+	"qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "PledgeInfo": [
+      {
+        "PType": "Vote",
+        "Amount": 10000000000000,
+        "WithdrawTime": "2019-05-27T11:05:27Z",
+        "Beneficial": "qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p",
+        "PledgeAddress": "qlc_1mnw9gbzdaxz7sz18pyjcffiqaocxnunfdtu1u3fc4wjkib97rp1wcdw6ato",
+        "NEP5TxId": "7f3603fab53c3917e272090892937e15c954bc470ca4a5dcdfe5b58962f2b809"
+      },
+      {
+        "PType": "Vote",
+        "Amount": 1000000000,
+        "WithdrawTime": "2019-05-27T13:07:30Z",
+        "Beneficial": "qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p",
+        "PledgeAddress": "qlc_1mnw9gbzdaxz7sz18pyjcffiqaocxnunfdtu1u3fc4wjkib97rp1wcdw6ato",
+        "NEP5TxId": "15dbe9e00ed116d4870a9f8c0dd768ba84a2b658619ba9aaf180d6c8b63b6ab6"
+      }
+    ],
+    "TotalAmounts": 10001000000000
+  }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getBeneficialPledgeInfosByAddress",
+	"params": [
+	"qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p"
+	]
+}
+
+
+```
+:::
+
+
+
+
+
+## pledge_getBeneficialPledgeInfos
+Return pledge infos by benefitical address and pledge type
+
+- **Parameters**: 
+  - `string` : benefitical address
+  - `string` : pledge type
+  
+- **Returns**: 
+  - `PledgeInfo` pledges info
+  - `TotalAmounts`  total pledge amount
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getBeneficialPledgeInfos",
+	"params": [
+		"qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p",
+		"vote"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "PledgeInfo": [
+      {
+        "PType": "Vote",
+        "Amount": 1000000000,
+        "WithdrawTime": "2019-05-27T13:07:30Z",
+        "Beneficial": "qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p",
+        "PledgeAddress": "qlc_1mnw9gbzdaxz7sz18pyjcffiqaocxnunfdtu1u3fc4wjkib97rp1wcdw6ato",
+        "NEP5TxId": "15dbe9e00ed116d4870a9f8c0dd768ba84a2b658619ba9aaf180d6c8b63b6ab6"
+      },
+      {
+        "PType": "Vote",
+        "Amount": 10000000000000,
+        "WithdrawTime": "2019-05-27T11:05:27Z",
+        "Beneficial": "qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p",
+        "PledgeAddress": "qlc_1mnw9gbzdaxz7sz18pyjcffiqaocxnunfdtu1u3fc4wjkib97rp1wcdw6ato",
+        "NEP5TxId": "7f3603fab53c3917e272090892937e15c954bc470ca4a5dcdfe5b58962f2b809"
+      }
+    ],
+    "TotalAmounts": 10001000000000
+  }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getBeneficialPledgeInfos",
+	"params": [
+		"qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p",
+		"vote"
+	]
+}
+
+
+```
+:::
+
+
+
+## pledge_getPledgeBeneficialAmount
+Return total pledge amount by beneficial address and pledge type
+
+- **Parameters**: 
+  - `string` : benefitical address
+  - `string` : pledge type
+  
+- **Returns**: 
+  - `int`  total pledge amount
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeBeneficialAmount",
+	"params": [
+		"qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p",
+		"vote"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 10001000000000
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeBeneficialAmount",
+	"params": [
+		"qlc_3pj83yuemoegkn6ejskd8bustgunmfqpbhu3pnpa6jsdjf9isybzffwq7s4p",
+		"vote"
+	]
+}
+
+
+```
+:::
+
+
+
+
+## pledge_getPledgeInfoWithNEP5TxId
+Return pledge data by pledge parameters
+- **Parameters**: 
+  - `pledgeParams`:  pledge parameters
+    - `beneficial`：beneficial account
+    - `amount`：amount of pledge
+    - `pType`：type of pledge
+    - `nep5TxId`: nep5 transaction id
+  
+- **Returns**: 
+  - `pledgeInfo`:  data for pledge
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeInfoWithNEP5TxId",
+	"params": [
+		{
+			"beneficial": "qlc_3t18f6ruhp4n3jkqo7fnhzmcdunpwk9niqu5z9sg1otkhthnm6n1hdz5i4ho",
+			"amount": "2000000000000000",
+			"pType": "vote",
+      "nep5TxId":"fgkhlfkv903ffe11a256fd8e7bbda9dff5021fbc261f2d93971028fcfhgk67"
+		}
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 
+    {
+      "PType": "vote",
+      "Amount": 2000000000000000,
+      "WithdrawTime": "2019-04-28 19:02:34 +0800 CST",
+      "Beneficial": "qlc_3t18f6ruhp4n3jkqo7fnhzmcdunpwk9niqu5z9sg1otkhthnm6n1hdz5i4ho",
+      "PledgeAddress": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "NEP5TxId": "fgkhlfkv903ffe11a256fd8e7bbda9dff5021fbc261f2d93971028fcfhgk67"
+    }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "pledge_getPledgeInfo",
+	"params": [
+		{
+			"beneficial": "qlc_3t18f6ruhp4n3jkqo7fnhzmcdunpwk9niqu5z9sg1otkhthnm6n1hdz5i4ho",
+			"amount": "2000000000000000",
+			"pType": "vote",
+      "nep5TxId":"d1d1779b8126882297b4e3a83b29353192b263560678c19bd5adae82bd271d20"
+		}
+	]
+}
+
+
+```
+
+:::
 
 
 

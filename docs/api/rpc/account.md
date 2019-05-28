@@ -61,6 +61,121 @@ Create a new account by seed and index
 ```
 :::
 
+
+
+
+
+## account_newSeed
+Create a new seed randomly
+
+- **Parameters**: `none`
+  
+- **Returns**: 
+  - `string`  seed
+
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "account_newSeed"
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": "9be88e0cbe786ab2c7528837d457b5ad53df55da8d5f6d71a59417d461c3b189"
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "account_newSeed"
+}
+
+
+```
+:::
+
+
+
+
+## account_newAccounts
+Create new accounts randomly
+
+- **Parameters**: 
+  - `int` : number of accounts, default is 10
+  
+- **Returns**: 
+ - `accountInfo`  account info 
+
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "account_newAccounts",
+	"params": [2]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": [
+    {
+      "seed": "0010af679d0fea318ca5da72fe253fc3f7a62439774cbf0cff82a8606f29d1bf",
+      "privateKey": "3f44cd06efc658da99e02539774082fa02030b56d56ea6dda130bd68e6dcacf3affc56cf731aafb9bc724058c63a18242011b57afbd9486ffa9ae3e8b1060efd",
+      "publicKey": "affc56cf731aafb9bc724058c63a18242011b57afbd9486ffa9ae3e8b1060efd",
+      "address": "qlc_3dzwcu9q88ohq8y96i4rrrx3ib3148tqoyysb3qzo8q5x4rie5qxmmzftykm"
+    },
+    {
+      "seed": "908e30716f445624dd6a80f650fcea2f634956ddcea80196f01418d1eac284eb",
+      "privateKey": "f11ad396042a6f8cc4875343275cd079f6fb9247bea55904ab27a5a77dd7d2d978901d92c333484d7781a7f4fbf26e169fad88365444639faa345faeef1f3ebb",
+      "publicKey": "78901d92c333484d7781a7f4fbf26e169fad88365444639faa345faeef1f3ebb",
+      "address": "qlc_1y6i5pbe8etabour5bznzhs8w7nzop65eo46eghtnf4zouqjyhouk68uzd76"
+    }
+  ]
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "account_newAccounts",
+	"params": [2]
+}
+
+
+```
+:::
+
+
+
+
+
 ## account_forPublicKey
 Return account address by public key
 
