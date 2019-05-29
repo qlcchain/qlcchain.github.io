@@ -2,7 +2,7 @@
 
 **Supported protocols:**
 
-| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
+| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe |
 |:------------:|:-----------:|:-----:|:-----:|
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
@@ -106,4 +106,53 @@ Return online representative accounts that have voted recently
 
 ```
 :::
+
+
+
+## net_syncing
+
+Return sync status
+
+- **Parameters**: `null`
+- **Returns**: 
+  - `sync status`:   
+    - `true`：`syncing now`
+    - `false`：`not syncing`
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"net_syncing"
+}
+
+
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": false
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"net_syncing"
+}
+
+
+```
+
+:::
+
+
 
