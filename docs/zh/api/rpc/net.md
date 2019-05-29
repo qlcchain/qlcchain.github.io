@@ -3,7 +3,7 @@
 
 **支持的调用方式:**
 
-| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
+| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe |
 |:------------:|:-----------:|:-----:|:-----:|
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
@@ -24,7 +24,7 @@
 
 ```json tab:Request
 {
-	"jsonrpc": "2.0",
+  "jsonrpc": "2.0",
   "id":1,
   "method":"net_connectPeersInfo"
 }
@@ -106,5 +106,50 @@
 
 
 ```
+:::
+
+
+
+## net_syncing
+
+返回节点同步状态
+
+- **Parameters**: `null`
+- **Returns**: 
+  - 连接同步状态：true代表正在同步，false代表没在同步
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"net_syncing"
+}
+
+
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": false
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"net_syncing"
+}
+
+
+```
+
 :::
 
