@@ -115,7 +115,7 @@ Encrypt encrypt raw data by passphrase
 Return balance by specific unit for raw value
 - **Parameters**: 
   - `string`: raw value
-  - `string`: unit
+  - `string`: unit, if token is QLC ,need set `qlc`,`Kqlc`,`QLC` or `MQLC`, others should set empty string `""`
   - `string`: `optional`, token name , if not set , default is QLC
 
   
@@ -163,7 +163,7 @@ Return balance by specific unit for raw value
 Return raw value for the balance by specific unit 
 - **Parameters**: 
   - `string` : balance
-  - `string` : unit
+  - `string` : unit, if token is QLC ,need set `qlc`,`Kqlc`,`QLC` or `MQLC`, others should set empty string `""`
   - `string` : `optional`, token name, if not set , default is QLC
 
   

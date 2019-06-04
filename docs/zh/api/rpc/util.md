@@ -117,7 +117,7 @@
 
 - **Parameters**: 
   - `string`: 最小单位的余额
-  - `string`: 单位
+  - `string`: 单位, 如果token是QLC，可设置为`qlc`,`Kqlc`,`QLC` 或者`MQLC`, 其他token设置为空字符串
   - `string`: token名称，可空，如果不设置，默认为QLC
 
   
@@ -165,7 +165,7 @@
 返回指定单位余额对应的最小单位的余额
 - **Parameters**: 
   - `string` : 指定单位的余额
-  - `string` : 单位
+  - `string` : 单位, 如果token是QLC，可设置为`qlc`,`Kqlc`,`QLC` 或者`MQLC`, 其他token设置为空字符串
   - `string` : token名称，可空，如果不设置，默认为QLC
 
   

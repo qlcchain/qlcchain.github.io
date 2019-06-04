@@ -315,6 +315,7 @@ returns airdrop qgas rewards detail info for a specific confidant address
 	]
 }
 
+
 ```
 
 :::
