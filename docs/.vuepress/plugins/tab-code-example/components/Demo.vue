@@ -280,12 +280,6 @@
 
   // codemirror bugfix
 
-  .content pre.CodeMirror-line {
-    padding 0
-    margin auto
-  }
-
-
   .tabs-component {
     margin: 1.5rem 0;
   }
@@ -446,13 +440,22 @@
       padding: 1rem 0;
     }
   }
-  .CodeMirror {
-    height: auto;
-    box-shadow: 0 6px 36px 0 rgba(0,62,100,0.04);
-    padding: 1.25rem 1.5rem 1.25rem 2rem;
-    margin: 0.85rem 0;
-    border-radius: 6px;
+
+  .CodeMirror-code pre.CodeMirror-line {
+      padding: 0;
+      margin: auto;
   }
+
+  .CodeMirror {
+      height: auto;
+      box-shadow: 0 6px 36px 0 rgba(0, 62, 100, 0.04);
+      padding: 1.25rem 0rem 0rem 2rem;
+      margin: 0.85rem 0;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+  }
+
   .cm-s-solarized.cm-s-dark {
     background-color: #282c34;
   }
