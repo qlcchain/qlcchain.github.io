@@ -18,13 +18,13 @@ Go 1.11.1 or above version is required. See Go installation guild: [go installat
 
 - Use `go get`：
 
-  ```shell
+  ```bash
   go get https://github.com/qlcchain/go-qlc.git
   ```
 
   source code is downloaded at：
 
-  ```shell
+  ```bash
   $GOPATH/src/github.com/qlcchain/go-qlc/
   ```
 
@@ -32,7 +32,7 @@ Go 1.11.1 or above version is required. See Go installation guild: [go installat
 
 - Use `git clone`：
 
-  ```shell
+  ```bash
   git clone https://github.com/qlcchain/go-qlc.git
   ```
 
@@ -40,13 +40,13 @@ Go 1.11.1 or above version is required. See Go installation guild: [go installat
 
 #### Compile
 
-```shellthen you can get the executable file for all platforms，like this：
+```bashthen you can get the executable file for all platforms，like this：
 make clean all
 ```
 
 then you can get the executable file for all platforms，like this：
 
-```shell
+```bash
 gqlc-darwin-amd64-v1.0.1-9406ee2			    // go-qlc mainnet server for mac OS
 gqlc-linux-amd64-v1.0.1-9406ee2                  // go-qlc mainnet server for linux OS
 gqlc-windows-386-v1.0.1-9406ee2.exe              // go-qlc mainnet server for Windows 386 OS
@@ -59,7 +59,7 @@ Select the files you need based on your own operating system.
 
 Link is：
 
-```shell
+```bash
 https://github.com/qlcchain/go-qlc/releases
 ```
 
@@ -69,7 +69,7 @@ You can access [go-qlc dockerhub](<https://hub.docker.com/r/qlcchain/go-qlc/tags
 
 for example，now our latest release version is v1.0.1，use command
 
-```shell
+```bash
 docker pull qlcchain/go-qlc:v1.0.1
 ```
 
@@ -83,7 +83,7 @@ docker pull qlcchain/go-qlc:v1.0.1
 
 example：
 
-```shell
+```bash
 gqlc-windows-amd64-v1.0.1-9406ee2.exe
 ```
 
@@ -93,7 +93,7 @@ gqlc-windows-amd64-v1.0.1-9406ee2.exe
 
   example：
 
-  ```shell
+  ```bash
   gqlc-windows-amd64-v1.0.1-9406ee2.exe \
   --seed ff62d09ca04c6941a6d09ad0e83b8fb57914b5f76f79a62e18f84eccc3440e50
   ```
@@ -102,7 +102,7 @@ gqlc-windows-amd64-v1.0.1-9406ee2.exe
 
   example：
 
-  ```shell
+  ```bash
   gqlc-windows-amd64-v1.0.1-9406ee2.exe \
   --privateKey 9ca95e184d99769a3e324bbcf57906d04a9c221db72c5af491fc8e7c958f1c6526691fd4b19f28cf279f188769c672cdde577c8360498083da653e02b53f5a8a
   ```
@@ -115,7 +115,7 @@ gqlc-windows-amd64-v1.0.1-9406ee2.exe
 
      example：
 
-    ```shell
+    ```bash
     gqlc-windows-amd64-v1.0.1-9406ee2.exe walletimport \
     --seed ff62d09ca04c6941a6d09ad0e83b8fb57914b5f76f79a62e18f84eccc3440e50 \
     --password 123456
@@ -123,7 +123,7 @@ gqlc-windows-amd64-v1.0.1-9406ee2.exe
 
     if you cat
 
-    ```shell
+    ```bash
     import seed[ff62d09ca04c6941a6d09ad0e83b8fb57914b5f76f79a62e18f84eccc3440e50] \
     password[123456] => qlc_1h14ymitgs6x5895b57wdi7gedop7jmnihxwryhgnr8ry1ecmpg9io6kkbha \
     success
@@ -135,7 +135,7 @@ gqlc-windows-amd64-v1.0.1-9406ee2.exe
 
     example：
 
-    ```shell
+    ```bash
     gqlc-windows-amd64-v1.0.1-9406ee2.exe \
     --account qlc_1h14ymitgs6x5895b57wdi7gedop7jmnihxwryhgnr8ry1ecmpg9io6kkbha \
     --password 123456
@@ -153,7 +153,7 @@ You can choose to start a normal node without an account or start an account nod
 
 example：
 
-```shell
+```bash
 docker container run -d --name go-qlc \
 --restart always \
 -p 19734:19734 \
@@ -172,7 +172,7 @@ You only need to assign a value to the environment variable `seed` to start an a
 
 example：
 
-```shell
+```bash
 docker container run -d --name go-qlc \
 --restart always \
 -e seed="ff62d09ca04c6941a6d09ad0e83b8fb57914b5f76f79a62e18f84eccc3440e50" \
