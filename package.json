@@ -47,8 +47,7 @@
     "vuepress-plugin-seo": "^0.1.2",
     "vuepress-plugin-server-push": "^0.2.1",
     "vuepress-plugin-sitemap": "^2.1.2",
-    "vuepress-plugin-tabs": "^0.2.2",
-    "whatwg-fetch": "^3.0.0"
+    "vuepress-plugin-tabs": "^0.2.2"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
