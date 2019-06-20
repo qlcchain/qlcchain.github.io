@@ -67,6 +67,16 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["wallet"],
     },
+    // PoV
+    {
+      collapsable: false,
+      children: ["pov"],
+    },
+    // miner
+    {
+      collapsable: false,
+      children: ["miner"],
+    },
   ],
   "api/qlcjs": [
     {
@@ -231,7 +241,9 @@ module.exports = {
             "Net",
             "SMS",
             "Util",
-            "Wallet"
+            "Wallet",
+            "PoV",
+            "Miner"
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
@@ -268,7 +280,9 @@ module.exports = {
             "P2P",
             "短信业务",
             "工具集合",
-            "钱包"
+            "钱包",
+            "PoV",
+            "矿工"
           ),
           "/zh/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",

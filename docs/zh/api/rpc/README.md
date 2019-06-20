@@ -2,6 +2,15 @@
 
 ##  更新纪录
 
+2019-6-20 更新 :
+
+- 增加 `PoV` and `Miner` 模块 
+
+- 增加 PoV 块结构
+
+- 账户块结构增加PoV高度和确认字段
+
+
 2019-3-25 更新 :
 
 -  `ledger_accountsPending` 返回值增加时间戳
@@ -23,7 +32,7 @@
 
   
 
-##  Block结构
+##  Account Block结构
 
 |     字段      |  类型  |                           描述                           |
 | :------------: | :----: | :----------------------------------------------------------: |
@@ -46,3 +55,23 @@
 |   tokenName    | string |                          token名称                          |
 |     amount     | string |              交易数目                    |
 |      hash      | string |                    区块hash                 |
+|   povHeight    | uint64 |                  PoV块引用高度                  |
+|povConfirmHeight| uint64 |                   PoV块确认高度                 |
+|povConfirmCount | uint64 |                   PoV块确认次数                        |
+
+##  PoV Block结构
+
+|     field      |  type  |                           description                        |
+| :------------: | :----: | :----------------------------------------------------------: |
+|      hash      | string |                          区块哈希                             |
+|     height     | uint64 |                          区块高度                             |
+|    previous    | string |                        前一个区块哈希                          |
+|   merkleRoot   | string |                   所有被打包交易的默克尔根哈希                    |
+|     nonce      | uint64 |                           随机数                              |
+| voteSignature  | string |                          投票签名                             |
+|    target      | string |                          难度目标                             |
+|   timestamp    | int64  |                       时间戳(UNIX时间)                        |
+|     txNum      | uint32 |                          交易数量                             |
+|   stateHash    | int64  |                          状态哈希                             |
+|   signature    | string |                          区块头签名                            |
+|  transactions  | array  |                           交易列表                             |

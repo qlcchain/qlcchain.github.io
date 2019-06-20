@@ -2,6 +2,15 @@
 
 ##  Update Instruction
 
+2019-6-20 update :
+
+- add `PoV` and `Miner` modules 
+
+- add PoV Block Struct
+
+- add PoV confirm fields to Account Block Struct
+
+
 2019-3-25 update :
 
 - add timestamp to `ledger_accountsPending` return
@@ -23,7 +32,7 @@
 
   
 
-##  Block  Struct
+##  Account Block Struct
 
 |     field      |  type  |                           describe                           |
 | :------------: | :----: | :----------------------------------------------------------: |
@@ -46,3 +55,23 @@
 |   tokenName    | string |                          token name                          |
 |     amount     | string |                  amount for the transaction                  |
 |      hash      | string |                          block hash                          |
+|   povHeight    | uint64 |                  PoV reference block height                  |
+|povConfirmHeight| uint64 |                   PoV confirm block height                 |
+|povConfirmCount | uint64 |                   PoV confirm count                        |
+
+##  PoV Block Struct
+
+|     field      |  type  |                           description                        |
+| :------------: | :----: | :----------------------------------------------------------: |
+|      hash      | string |                          block hash                          |
+|     height     | uint64 |                          block height                        |
+|    previous    | string |                     previous block hash                      |
+|   merkleRoot   | string |               merkle root of all transactions                |
+|     nonce      | uint64 |            nonce number used for vote signature              |
+| voteSignature  | string |               signature of vote related fields               |
+|    target      | string |                      difficulty target                       |
+|   timestamp    | int64  |                 timestamp, now is unix time                  |
+|     txNum      | uint32 |                       transaction number                     |
+|   stateHash    | int64  |                           state hash                         |
+|   signature    | string |                   signature of whole block header            |
+|  transactions  | array  |                   transaction hash list                      |
