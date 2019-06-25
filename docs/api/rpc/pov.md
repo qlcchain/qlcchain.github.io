@@ -363,7 +363,9 @@ Return lots of block headers by height
 ## pov_getLatestBlock
 Return latest full block of PoV main chain
 
-- **Parameters**: `null`
+- **Parameters**:
+  - `txOffset`: return transcations from offset in block, default is 0
+  - `txLimit`: return transcations not excced limit, default is 100
   
 - **Returns**: 
   -  `block`: block struct
@@ -437,6 +439,8 @@ Return full block by heigth
 
 - **Parameters**:
   - `height`: block heigth
+  - `txOffset`: return transcations from offset in block, default is 0
+  - `txLimit`: return transcations not excced limit, default is 100
   
 - **Returns**:
   - `block`: block struct
@@ -515,6 +519,8 @@ Return full block by hash
 
 - **Parameters**:
   - `hash`: block hash
+  - `txOffset`: return transcations from offset in block, default is 0
+  - `txLimit`: return transcations not excced limit, default is 100
   
 - **Returns**:
   - `block`: block struct

@@ -363,7 +363,9 @@
 ## pov_getLatestBlock
 返回最长主链的最新区块结构（包含区块头部和区块体）
 
-- **Parameters**: `null`
+- **Parameters**:
+  - `txOffset`: 从offset开始返回一批交易，默认为0
+  - `txLimit`: 返回交易的最大限制，默认为100
   
 - **Returns**: 
   -  `block`: 区块结构
@@ -437,6 +439,8 @@
 
 - **Parameters**:
   - `height`: 区块高度
+  - `txOffset`: 从offset开始返回一批交易，默认为0
+  - `txLimit`: 返回交易的最大限制，默认为100
   
 - **Returns**:
   - `block`: 区块结构
@@ -515,6 +519,8 @@
 
 - **Parameters**:
   - `hash`: 区块哈希
+  - `txOffset`: 从offset开始返回一批交易，默认为0
+  - `txLimit`: 返回交易的最大限制，默认为100
   
 - **Returns**:
   - `block`: 区块结构
