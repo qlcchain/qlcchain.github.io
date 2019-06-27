@@ -19,7 +19,7 @@ Go 1.11.1 or above version is required. See Go installation guild: [go installat
 - Use `go get`：
 
   ```bash
-  go get https://github.com/qlcchain/go-qlc.git
+  go get github.com/qlcchain/go-qlc
   ```
 
   source code is downloaded at：
