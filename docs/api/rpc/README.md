@@ -46,7 +46,10 @@
 |    receiver    | string |         sms receiver, encoded by base64  `omitempty`         |
 |    message     | string |                       sms message hash                       |
 |      data      | string |       vm instructions created by contract `omitempty`        |
-|     quota      |  int   |             quota acquired from mortgaged assets             |
+|      vote      | string |             benefit weight for vote                          |
+|      network   | string |             benefit weight for network                       |
+|      storage    | string |             benefit weight for storage                      |
+|      oracle    | string |             benefit weight for oracle                        |
 |   timestamp    | int64  |                 timestamp ,now is unix time                  |
 |     extra      | string |                   extra data for contract                    |
 | representative | string |                    representative address                    |
