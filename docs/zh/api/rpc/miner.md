@@ -6,6 +6,72 @@
 |:------------:|:-----------:|:-----:|:-----:|
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
+## miner_getRewardInfo
+根据矿工地址返回奖励信息
+- **Parameters**: 
+    - `coinbase`:  矿工地址  
+- **Returns**: 
+  - `lastRewardHeight`: 已提取的奖励区块高度
+  - `lastRewardBlocks`: 已提取的奖励区块总数
+  - `lastBeneficial`: 上一次提取的收益账户
+  - `nodeRewardHeight`: 当前节点上可以提取的奖励区块高度
+  - `availRewardHeight`: 当前矿工在当前节点上可以提取的奖励区块高度
+  - `availRewardBlocks`: 当前矿工在当前节点上可以提取的奖励区块总数
+  - `needCallReward`: 当前矿工在当前节点上可以调用奖励合约
+  - `pledgeVoteAmount`: 当前矿工在当前节点上作为代表的抵押总数
+  - `latestBlockHeight`: 当前节点上最新PoV区块高度
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "miner_getRewardInfo",
+	"params": [
+		"qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "availRewardBlocks": 84,
+        "availRewardHeight": 5759,
+        "lastBeneficial": "",
+        "lastRewardBlocks": 0,
+        "lastRewardHeight": 0,
+        "latestBlockHeight": 33785,
+        "needCallReward": true,
+        "nodeRewardHeight": 28799,
+        "pledgeVoteAmount": "100000000000000"
+    }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "miner_getRewardInfo",
+	"params": [
+		"qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b"
+	]
+}
+
+
+```
+:::
+
+
 ## miner_getRewardSendBlock
 根据提取奖励参数返回ContractSend块
 - **输入参数**: 
@@ -23,8 +89,9 @@
 	"method": "miner_getRewardSendBlock",
 	"params": [
 		{
-			"coinbase": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
-			"beneficial": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd"
+			"coinbase": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+			"beneficial": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+            "rewardHeight": 5759
 		}
 	]
 }
@@ -37,23 +104,23 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "address": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
-        "balance": "29755316000000000",
-        "data": "7w5n697+CtDhe3XnLutBYSPPptKf6h9WrPm4LuBLLGv7u/Dr3v4K0OF7decu60FhI8+m0p/qH1as+bgu4Essa/u78Os=",
+        "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+        "balance": "0",
+        "data": "6GGt0zwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWfw==",
         "extra": "0000000000000000000000000000000000000000000000000000000000000000",
         "link": "0000000000000000000000000000000000000000000000000000000000000003",
         "message": "0000000000000000000000000000000000000000000000000000000000000000",
         "network": "0",
         "oracle": "0",
-        "povHeight": 0,
-        "previous": "35625af54401f1abad51081cb308270f94af5aa1e117c9721509343930376fdc",
-        "representative": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
+        "povHeight": 33785,
+        "previous": "6ea6291b6dac0291b5bf35047be0bac8c741d60716cadaefc0d00e071f502095",
+        "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
         "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "storage": "0",
-        "timestamp": 1560925155,
+        "timestamp": 1562234947,
         "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
         "type": "ContractSend",
-        "vote": "0",
+        "vote": "100000000000000",
         "work": "0000000000000000"
     }
 }
@@ -68,8 +135,9 @@
 	"method": "miner_getRewardSendBlock",
 	"params": [
 		{
-			"coinbase": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
-			"beneficial": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd"
+			"coinbase": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+			"beneficial": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+            "rewardHeight": 5759
 		}
 	]
 }
@@ -96,23 +164,23 @@
 	"method": "miner_getRewardRecvBlock",
 	"params": [
 		{
-            "address": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
-            "balance": "29755316000000000",
-            "data": "7w5n697+CtDhe3XnLutBYSPPptKf6h9WrPm4LuBLLGv7u/Dr3v4K0OF7decu60FhI8+m0p/qH1as+bgu4Essa/u78Os=",
+            "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+            "balance": "0",
+            "data": "6GGt0zwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWfw==",
             "extra": "0000000000000000000000000000000000000000000000000000000000000000",
             "link": "0000000000000000000000000000000000000000000000000000000000000003",
             "message": "0000000000000000000000000000000000000000000000000000000000000000",
             "network": "0",
             "oracle": "0",
-            "povHeight": 0,
-            "previous": "35625af54401f1abad51081cb308270f94af5aa1e117c9721509343930376fdc",
-            "representative": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
+            "povHeight": 33785,
+            "previous": "6ea6291b6dac0291b5bf35047be0bac8c741d60716cadaefc0d00e071f502095",
+            "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
             "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
             "storage": "0",
-            "timestamp": 1560925155,
+            "timestamp": 1562234947,
             "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
             "type": "ContractSend",
-            "vote": "0",
+            "vote": "100000000000000",
             "work": "0000000000000000"
         }
 	]
@@ -123,26 +191,27 @@
 
 ```json tab:Response
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result":     {
-      "type": "ContractSend",
-      "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-      "address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-      "balance": "59999000000000000",
-      "previous": "758f79b656340c329cb5b11302865c5ff0b0c99fd8a268d6b8760170e33e8cd1",
-      "link": "de32f02da71ef2fccd06634bfe29d3a7514a1880873478382704e3edeeaff982",
-      "message": "0000000000000000000000000000000000000000000000000000000000000000",
-      "data": "RtDOi4MEIMBh7Czd6yq1U8Dnt5K8a3VJ+EnOQ0XPAmQQye+lAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7msoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlFOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJRTgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-      "quota": 0,
-      "timestamp": 1552522682,
-      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-      "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-      "work": "000000000091a0a2",
-      "signature": "7fc37cad58b21f52ba29fc194d45a5ab6bb267fe1a84a45f72e86c1aca40691ad0107290085980d39757a21b7f00dde151f25a670f22eb9f7a611703c8fd3908",
-      "tokenName": "QLC",
-      "amount": "1000000000000",
-      "hash": "257ecd944c1534771570525601b922b9453cebe7f9ccebd7f485e9d1875b5667"
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+        "balance": "23972602668",
+        "data": "PBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWfwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABU",
+        "extra": "089f8efb40fffd9c3143fb728f7e1d4f70d981ad3812ff28d1e212091e65ec13",
+        "link": "8d4ec04dc4eecd8dd30a5b419ec10eae0892f4e08872f1af3756125d21dce256",
+        "message": "0000000000000000000000000000000000000000000000000000000000000000",
+        "network": "0",
+        "oracle": "0",
+        "povHeight": 33785,
+        "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+        "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+        "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "storage": "0",
+        "timestamp": 1562235150,
+        "token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
+        "type": "ContractReward",
+        "vote": "0",
+        "work": "0000000000000000"
     }
 }
 
@@ -156,23 +225,23 @@
 	"method": "miner_getRewardRecvBlock",
 	"params": [
 		{
-            "address": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
-            "balance": "29755316000000000",
-            "data": "7w5n697+CtDhe3XnLutBYSPPptKf6h9WrPm4LuBLLGv7u/Dr3v4K0OF7decu60FhI8+m0p/qH1as+bgu4Essa/u78Os=",
+            "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+            "balance": "0",
+            "data": "6GGt0zwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWfw==",
             "extra": "0000000000000000000000000000000000000000000000000000000000000000",
             "link": "0000000000000000000000000000000000000000000000000000000000000003",
             "message": "0000000000000000000000000000000000000000000000000000000000000000",
             "network": "0",
             "oracle": "0",
-            "povHeight": 0,
-            "previous": "35625af54401f1abad51081cb308270f94af5aa1e117c9721509343930376fdc",
-            "representative": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
+            "povHeight": 33785,
+            "previous": "6ea6291b6dac0291b5bf35047be0bac8c741d60716cadaefc0d00e071f502095",
+            "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
             "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
             "storage": "0",
-            "timestamp": 1560925155,
+            "timestamp": 1562234947,
             "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
             "type": "ContractSend",
-            "vote": "0",
+            "vote": "100000000000000",
             "work": "0000000000000000"
         }
 	]
