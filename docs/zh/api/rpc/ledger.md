@@ -76,7 +76,7 @@
 	"id": 1,
 	"method": "ledger_accountHistoryTopn",
 	"params": [
-		"qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
+		"qlc_1jeh4ce4dcmarxm7q5zq1kspdie49y79gbzrar6sdse165jy9rk31dxapy7s",
 		5,
         5
 	]
@@ -91,40 +91,48 @@
   "id": 1,
   "result": [
     {
-      "type": "Receive",
-      "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-      "address": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-      "balance": "3300000000000",
-      "previous": "0231d0aa82df9a2e9cf074e9481f1d38982b56b8c1b4f04904657ede5f22e702",
-      "link": "0e8c6e1c7d30e13d1167660bd76fdb3bb38a951cc6684cf66f720355d89becc9",
+      "type": "Send",
+      "token": "ea842234e4dc5b17c33b35f99b5b86111a3af0bd8e4a8822602b866711de6d81",
+      "address": "qlc_1jeh4ce4dcmarxm7q5zq1kspdie49y79gbzrar6sdse165jy9rk31dxapy7s",
+      "balance": "0",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "2f566b5f369c7f48ea0fc706a033c3b3f771fca07b65e762e57e008a9fdfc78b",
+      "link": "d1c8e3af74497efba134bc59883ff42ef9e838e8ae98337946758dfb3c520a49",
       "message": "0000000000000000000000000000000000000000000000000000000000000000",
-      "quota": 0,
-      "timestamp": 1552454728,
+      "povHeight": 0,
+      "timestamp": 1562228755,
       "extra": "0000000000000000000000000000000000000000000000000000000000000000",
       "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-      "work": "000000000014d619",
-      "signature": "81bf5ad2cf694ed8cc51514c0834c4d2dce0c384b5a2fea24d3919fb5cd587cb8e5c5499f38e14ffd9b367fc95050a2761df8f0df1c1e1bd067f05e881235708",
-      "tokenName": "QLC",
-      "amount": "2200000000000",
-      "hash": "27751229f46e99b88a7503708eceab833b9ad03685591d494b412c4b37d85318"
+      "work": "bb6b8f701cb549ba",
+      "signature": "d5230746bcdcec74879d56a91b2f274a37e421b5d56ec865237243c8a57ef9a10da5986a4c9b45faf18259a140c2cd0bbc15e999c56254d062a35da72a33e200",
+      "tokenName": "QGAS",
+      "amount": "500000000",
+      "hash": "e7adbd91bbf1c5113163d0da8f92a557be4d7e4d759e5419b8139ffcc03546df"
     },
     {
       "type": "Open",
-      "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-      "address": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-      "balance": "1100000000000",
+      "token": "ea842234e4dc5b17c33b35f99b5b86111a3af0bd8e4a8822602b866711de6d81",
+      "address": "qlc_1jeh4ce4dcmarxm7q5zq1kspdie49y79gbzrar6sdse165jy9rk31dxapy7s",
+      "balance": "100000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
       "previous": "0000000000000000000000000000000000000000000000000000000000000000",
-      "link": "d1a60317af550d4836d78e235fd6c729f0516260a9c09e44db30411743c15e6e",
+      "link": "40cd275aaeec3f0d852d25048c47d3c8ee0017ede0932976e8cc6f338a193c24",
       "message": "0000000000000000000000000000000000000000000000000000000000000000",
-      "quota": 0,
-      "timestamp": 1552453874,
+      "povHeight": 0,
+      "timestamp": 1561706700,
       "extra": "0000000000000000000000000000000000000000000000000000000000000000",
       "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-      "work": "000000000000e408",
-      "signature": "719619313b8b0d08fc35a446bc7e41e258fc3c5fe99df3ae7868fc59a70b362aaec10c69b96f44d8082f8f59d12727bed93ed88762f352cb0c0c21ad70350d0e",
-      "tokenName": "QLC",
-      "amount": "1100000000000",
-      "hash": "0231d0aa82df9a2e9cf074e9481f1d38982b56b8c1b4f04904657ede5f22e702"
+      "work": "6bcb16aef36c445c",
+      "signature": "2f24be08472ec2d0206c23354dc622fbc8d4176ac67f412a9348f2042edd9989d80ba04b757fa826443c512985407a02a1db5d9c30ac135759ea82ee79919809",
+      "tokenName": "QGAS",
+      "amount": "100000000",
+      "hash": "33bb1eaa2b6b4d025a94963b99b46294b179f6a6aede8663b658de6adce3f2fd"
     }
   ]
 }
@@ -752,21 +760,24 @@
 	"params": [
 		{
 			"type": "Send",
-			"token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-			"address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-			"balance": "9800000000000000",
-			"previous": "200e172c39ddb3699d7252fd08ee47c3d19ec18351d2a2b23424b8852434e980",
-			"link": "5ddd17a268272f89aaaa061b24441bfb9b46af4036e37fd6fa08c8bdbce44a48",
-			"message": "0000000000000000000000000000000000000000000000000000000000000000",
-			"quota": 0,
-			"timestamp": 1552629044,
+			"token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+			"address": "qlc_3d83qux3mo53cuufi3znh5xkm6kb9fj6usmng8stgq17ppfwoabkbupaoohd",
+			"balance": "9999999500000",
+			"vote": "0",
+			"network": "0",
+			"storage": "0",
+			"oracle": "0",
+			"previous": "6903c0ef8ab5ccf5154a565cf256fa2fbc07a84d5c1bcecf131dc6343a9643df",
+			"link": "4d68f7b943d81a638b950ffe82a89536f978040f8d88c2d3d803001e5d502637",
+			"sender": "MTg4MDAwMDAwMDA=",
+			"receiver": "MTU4MTExMTExMTE=",
+			"message": "f536401418d04eed2e26533ac22245638b9c812488059afb0eabbcadc5dcb38a",
+			"povHeight": 0,
+			"timestamp": 1553859640,
 			"extra": "0000000000000000000000000000000000000000000000000000000000000000",
-			"representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-			"work": "0000000000243a87",
-			"signature": "1b87dd68b282d3fe81b516e31be61f6d6542a1440d2786fa394e35d923d0a1d3ed5a9fc22e16af80f27ca75884182fcf507e1f80880f0ddf4c999a5fa9fd2a03",
-			"tokenName": "QLC",
-			"amount": "10000000000000",
-			"hash": "fc30c65c808eab537ad2bf4c72ed6e3b6635bf1cd65f965c3fabf56ad52c79ba"
+			"representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+			"work": "000000000034234c",
+			"signature": "eb516a10fdd89d763c210c2a2f157fe596711dfec2d64aeeb4e8876ce3e7a64e865a688b73eed180f7fae1dc453b25a3f539afb6652c3e4a8a946b0e061ddd03"
 		}
 	]
 }
@@ -778,7 +789,7 @@
 {
   "jsonrpc": "2.0",
   "id": 3,
-  "result": "fc30c65c808eab537ad2bf4c72ed6e3b6635bf1cd65f965c3fabf56ad52c79ba"
+  "result": "9b1e493a6b754839aa2aece98089863cc6e91fb0a8968f1d381a4b6fdd175a73"
 }
 
 
@@ -792,21 +803,24 @@
 	"params": [
 		{
 			"type": "Send",
-			"token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-			"address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-			"balance": "9800000000000000",
-			"previous": "200e172c39ddb3699d7252fd08ee47c3d19ec18351d2a2b23424b8852434e980",
-			"link": "5ddd17a268272f89aaaa061b24441bfb9b46af4036e37fd6fa08c8bdbce44a48",
-			"message": "0000000000000000000000000000000000000000000000000000000000000000",
-			"quota": 0,
-			"timestamp": 1552629044,
+			"token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+			"address": "qlc_3d83qux3mo53cuufi3znh5xkm6kb9fj6usmng8stgq17ppfwoabkbupaoohd",
+			"balance": "9999999500000",
+			"vote": "0",
+			"network": "0",
+			"storage": "0",
+			"oracle": "0",
+			"previous": "6903c0ef8ab5ccf5154a565cf256fa2fbc07a84d5c1bcecf131dc6343a9643df",
+			"link": "4d68f7b943d81a638b950ffe82a89536f978040f8d88c2d3d803001e5d502637",
+			"sender": "MTg4MDAwMDAwMDA=",
+			"receiver": "MTU4MTExMTExMTE=",
+			"message": "f536401418d04eed2e26533ac22245638b9c812488059afb0eabbcadc5dcb38a",
+			"povHeight": 0,
+			"timestamp": 1553859640,
 			"extra": "0000000000000000000000000000000000000000000000000000000000000000",
-			"representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-			"work": "0000000000243a87",
-			"signature": "1b87dd68b282d3fe81b516e31be61f6d6542a1440d2786fa394e35d923d0a1d3ed5a9fc22e16af80f27ca75884182fcf507e1f80880f0ddf4c999a5fa9fd2a03",
-			"tokenName": "QLC",
-			"amount": "10000000000000",
-			"hash": "fc30c65c808eab537ad2bf4c72ed6e3b6635bf1cd65f965c3fabf56ad52c79ba"
+			"representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+			"work": "000000000034234c",
+			"signature": "eb516a10fdd89d763c210c2a2f157fe596711dfec2d64aeeb4e8876ce3e7a64e865a688b73eed180f7fae1dc453b25a3f539afb6652c3e4a8a946b0e061ddd03"
 		}
 	]
 }
@@ -850,40 +864,50 @@
   "id": 3,
   "result": [
     {
-      "type": "Send",
-      "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-      "address": "qlc_1q1jog6eywemc6am4etjx68yegbjy6d1o594j11xs7jsc7rwdh3kej8yzbrg",
-      "balance": "40000000000",
-      "previous": "af5da09dfc9c23d5c208bb54c2e276dc4b0bee4d3df958d9234728e78a4b1b46",
-      "link": "2a9885a778c42d321c16adc8ecb60e2f838488b3e33efb0db9e745945cf5ac0a",
+      "type": "ContractReward",
+      "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+      "address": "qlc_3agkmeufj9z7ntkm8nf7o8e9w3b3tuqyyud5uc5iywajrgxz9re4w7m3pgdx",
+      "balance": "0",
+      "vote": "1900000000",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+      "link": "f16b74d1c9662c6d266868d9685759585152354e2296609e15aa16517edf2897",
       "message": "0000000000000000000000000000000000000000000000000000000000000000",
-      "quota": 0,
-      "timestamp": 1553990410,
-      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-      "representative": "qlc_1q1jog6eywemc6am4etjx68yegbjy6d1o594j11xs7jsc7rwdh3kej8yzbrg",
-      "work": "00000000007b4d66",
-      "signature": "68d9edd802ab5078fb90993d6ce1c75395ce0b78854a54bcf7f3a9ffcfa5e73bb0d649c1dde796ec957d3ee07e00b6a945eb8964624459c2557b568fa491c20e",
+      "data": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcT+zAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdFJ2rodKbNtif5aalM1GlqZh+BSHW7+9tY9qHD3ERw7vz4YK/hsg/tL+59Jubj6WTyM9BKMniFyDEh1ZbUvxmQKno8wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAwYjg3ZmQ2MjY5ZWE2ZTBlZjM2YzdkMDdkNzk3YTk4Y2Q5ZmMyNjVhNzhkOTZhNTJhZTM2ZWJhZDZiZjNmMmFk",
+      "povHeight": 8,
+      "timestamp": 1561631572,
+      "extra": "ee1f60b6be7566f6609a9f53a5b62b308ff578d8b4bc7b466a9b66b142bc5b75",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "0000000000311685",
+      "signature": "6c413dab0d7aa57c81a53035962dd98d4dd614ddc6c4dd3ecc1922f2d80ebf50b60364bb713b69713c4aba36ab4703d953ca5a77387ef9193d9718555f375604",
       "tokenName": "QLC",
-      "amount": "600000",
-      "hash": "ae114fe97a4bc525d3771e3651cf0a0c0a55ab449dee213c470cecaeec77e7c6"
+      "amount": "1900000000",
+      "hash": "534139d7f31c454aaa540d60acebf7ed984521df6a611b69a56560712287e821"
     },
     {
-      "type": "Open",
-      "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-      "address": "qlc_1q1jog6eywemc6am4etjx68yegbjy6d1o594j11xs7jsc7rwdh3kej8yzbrg",
-      "balance": "100000000000",
-      "previous": "0000000000000000000000000000000000000000000000000000000000000000",
-      "link": "5c11ab88cf71935111313351e90de63931f1160a8ce28801dc96395171c5bc32",
+      "type": "ContractSend",
+      "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+      "address": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "balance": "59799948100000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "dce35ac96ea5638ee54d7fbcc1a2b094db2d0f0d84232a1d0def849e5594fc12",
+      "link": "b7902600dfc79387b2601edc347b854d55d6b31142e324a4e54ff00a4c519c91",
       "message": "0000000000000000000000000000000000000000000000000000000000000000",
-      "quota": 0,
-      "timestamp": 1553990411,
+      "data": "uuDnSKHSmzbYn+WmpTNRpamYfgUh1u/vbWPahw9xEcO78+GCv4bIP7S/ufSbm4+lk8jPQSjJ4hcgxIdWW1L8ZkCp6PMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAwYjg3ZmQ2MjY5ZWE2ZTBlZjM2YzdkMDdkNzk3YTk4Y2Q5ZmMyNjVhNzhkOTZhNTJhZTM2ZWJhZDZiZjNmMmFk",
+      "povHeight": 8,
+      "timestamp": 1561631571,
       "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-      "representative": "qlc_1q1jog6eywemc6am4etjx68yegbjy6d1o594j11xs7jsc7rwdh3kej8yzbrg",
-      "work": "0000000000271561",
-      "signature": "ea76053ee94a73961ece8d9c7cd7a5e8d89ce8ff9b67fbca652c950cab4f96f79e544882644d5bf9f841808f4651ea8598c970996808676b7a028f910eb11e03",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "00000000002db58d",
+      "signature": "c7a9ab9cf2cd6ffc590d3625ee7362ee6212d8339453e90d0b15b82bb427212cca60830504471a68251e14322729e0bbfb83fd76db2799829ba3276292530707",
       "tokenName": "QLC",
-      "amount": "1000000",
-      "hash": "af5da09dfc9c23d5c208bb54c2e276dc4b0bee4d3df958d9234728e78a4b1b46"
+      "amount": "1900000000",
+      "hash": "f16b74d1c9662c6d266868d9685759585152354e2296609e15aa16517edf2897"
     }
   ]
 }
@@ -1029,8 +1053,8 @@
 	"method": "ledger_blocksInfo",
 	"params": [
 		[
-			"1792bad5a68be9c4d13e010f43a119c4d37be20142061d63f2f866a13cdb72c2",
-			"5f03854f8b14c7d6a2be18ea6d271c59830b85a3cb33a7e175644e2be5cc3854"
+			"81cf7f588aab1d756d3048f5236003e15860e9add9a6900664652ca28ad0af38",
+			"e7adbd91bbf1c5113163d0da8f92a557be4d7e4d759e5419b8139ffcc03546df"
 		]
 	]
 }
@@ -1044,42 +1068,48 @@
   "id": 18,
   "result": [
     {
-      "type": "Open",
-      "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-      "address": "qlc_13u8auukg1tjbmny1b6bxh91ysx6m3ikce9tuztw8tc3wzd58dyoy7x9oa7c",
-      "balance": "100000000000",
-      "previous": "0000000000000000000000000000000000000000000000000000000000000000",
-      "link": "0000000000000000000000000000000000000000000000000000000000000000",
+      "type": "ContractReward",
+      "token": "ea842234e4dc5b17c33b35f99b5b86111a3af0bd8e4a8822602b866711de6d81",
+      "address": "qlc_1ks4fphbeyy1ps9yxakcst4p77ttq7xrcj8fdukzztabb1y9mkor3ombaten",
+      "balance": "10775904970",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "7dfa6e1ad61cd12e987cf6627fa9cbcea85c809cfd68a85554bc41c0831143e4",
+      "link": "6b6e28ab103c92d00a1d5cdb5170a04c1a31635487bb439c51d85c216ed3e1e5",
       "message": "0000000000000000000000000000000000000000000000000000000000000000",
-      "quota": 0,
-      "timestamp": 1553493453,
-      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-      "representative": "qlc_13u8auukg1tjbmny1b6bxh91ysx6m3ikce9tuztw8tc3wzd58dyoy7x9oa7c",
-      "work": "0000000000250b0f",
-      "signature": "cda41b88a4c04dbca572922a8a324e4bb247ec6002ef2f5fcd8cdb53c4781cf80d153a62938842caf182ea8f4fb91a719f62f0d71138f0e80e8f38a18daa0809",
-      "tokenName": "QLC",
-      "amount": "100000000000",
-      "hash": "1792bad5a68be9c4d13e010f43a119c4d37be20142061d63f2f866a13cdb72c2"
-    },
-    {
-      "type": "Open",
-      "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-      "address": "qlc_1izo13skbqk1acazyug1cm9qazsczin5un66akmz8gd3ikmzbso1rt51cyjn",
-      "balance": "6495",
-      "previous": "34ddaa0140995e6a04850aa71a12ff46024e25a66bf01f28243efe202c515127",
-      "link": "0000000000000000000000000000000000000000000000000000000000000000",
-      "sender": "MTYw",
-      "receiver": "MTgw",
-      "message": "15c656f49d59e1dd02107700d3f349a946ee80d4bd7dce25cbc558841f67e72e",
-      "quota": 0,
-      "timestamp": 0,
-      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-      "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+      "povHeight": 0,
+      "timestamp": 1562228107,
+      "extra": "79da0a65b3cbb18a051310b72165cf2bee3226267580090534dec27c7cf974f2",
+      "representative": "qlc_1111111111111111111111111111111111111111111111111111hifc8npp",
       "work": "0000000000000000",
       "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tokenName": "QLC",
-      "amount": "6495",
-      "hash": "5f03854f8b14c7d6a2be18ea6d271c59830b85a3cb33a7e175644e2be5cc3854"
+      "tokenName": "QGAS",
+      "amount": "10055666",
+      "hash": "81cf7f588aab1d756d3048f5236003e15860e9add9a6900664652ca28ad0af38"
+    },
+    {
+      "type": "Send",
+      "token": "ea842234e4dc5b17c33b35f99b5b86111a3af0bd8e4a8822602b866711de6d81",
+      "address": "qlc_1jeh4ce4dcmarxm7q5zq1kspdie49y79gbzrar6sdse165jy9rk31dxapy7s",
+      "balance": "0",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "2f566b5f369c7f48ea0fc706a033c3b3f771fca07b65e762e57e008a9fdfc78b",
+      "link": "d1c8e3af74497efba134bc59883ff42ef9e838e8ae98337946758dfb3c520a49",
+      "message": "0000000000000000000000000000000000000000000000000000000000000000",
+      "povHeight": 0,
+      "timestamp": 1562228755,
+      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+      "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+      "work": "bb6b8f701cb549ba",
+      "signature": "d5230746bcdcec74879d56a91b2f274a37e421b5d56ec865237243c8a57ef9a10da5986a4c9b45faf18259a140c2cd0bbc15e999c56254d062a35da72a33e200",
+      "tokenName": "QGAS",
+      "amount": "500000000",
+      "hash": "e7adbd91bbf1c5113163d0da8f92a557be4d7e4d759e5419b8139ffcc03546df"
     }
   ]
 }
@@ -1094,8 +1124,8 @@
 	"method": "ledger_blocksInfo",
 	"params": [
 		[
-			"1792bad5a68be9c4d13e010f43a119c4d37be20142061d63f2f866a13cdb72c2",
-			"5f03854f8b14c7d6a2be18ea6d271c59830b85a3cb33a7e175644e2be5cc3854"
+			"81cf7f588aab1d756d3048f5236003e15860e9add9a6900664652ca28ad0af38",
+			"e7adbd91bbf1c5113163d0da8f92a557be4d7e4d759e5419b8139ffcc03546df"
 		]
 	]
 }
@@ -1295,15 +1325,12 @@
 	"method": "ledger_generateSendBlock",
 	"params": [
 		{
-			"from": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+			"from": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
 			"tokenName": "QLC",
-			"to": "qlc_371pkh5kkd1dn43cwxnbb1a4yg363rh9un9a13kkezbcppuicejxgixyyrrw",
-			"amount": "1000000",
-			"sender": "158111100000",
-			"receiver": "18500001111",
-			"message": "086802b5b3def1802882740cb91bac8929edd80901e5db4c95786389bfcf7ae4"
+			"to": "qlc_1mnw9gbzdaxz7sz18pyjcffiqaocxnunfdtu1u3fc4wjkib97rp1wcdw6ato",
+			"amount": "50000000000"
 		},
-		"8911d87b2cfed6872be509a0e5b95ff068c4dd5e439538444424aa139f9612b0681bf5253c64672fc54c93d3b5b9a20d28965cb8f80ba70460ed3f99cb547231"
+	"1c4abdd687fe3f2e2a947d1a29566a868e46431767402ef9a073ffd17f6bd2aabf86c83fb4bfb9f49b9b8fa593c8cf4128c9e21720c487565b52fc6640a9e801"
 	]
 }
 
@@ -1316,20 +1343,22 @@
   "id": 2,
   "result": {
     "type": "Send",
-    "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-    "address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-    "balance": "59998899999000000",
-    "previous": "bd348dc1c2567060ce596bc5c7fd41ed1ded27752f0e088c8c0b54d1abd6d7c4",
-    "link": "941693c7292c0ba082ae768948102f38240e1e7dd0e80065267d2ab5b705323d",
-    "sender": "IjE1ODExMTEwMDAwMCI=",
-    "receiver": "IjE4NTAwMDAxMTExIg==",
-    "message": "086802b5b3def1802882740cb91bac8929edd80901e5db4c95786389bfcf7ae4",
-    "quota": 0,
-    "timestamp": 1552469200,
+    "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+    "address": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+    "balance": "59799950000000000",
+    "vote": "0",
+    "network": "0",
+    "storage": "0",
+    "oracle": "0",
+    "previous": "522c50fec4662a1fe57132fc0a89adfa682f8dddc0d3ab78951521f7d179611c",
+    "link": "4e9c3b93f5a3bf2e7e035bd1535b0ba2aaed3746af5b06c2d50b91941272e2c0",
+    "message": "0000000000000000000000000000000000000000000000000000000000000000",
+    "povHeight": 7,
+    "timestamp": 1561631298,
     "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-    "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-    "work": "000000000055a435",
-    "signature": "02ba735276f3e7d4b43aa16255df141765739e4df10b585cf43d69653df6b30c994a727867b74d19978872c66850d1fce79436940d9f96044ad35367b06fe809"
+    "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+    "work": "0000000002d81cc0",
+    "signature": "7d2464330086efc989a53bd66955ab86477d40e83f0404ae642a0d51592aafad09f1490e38ca3341d1c87aa742e1c64a7fa58ff39823ff2ffd462f109a8f6601"
   }
 }
 
@@ -1343,15 +1372,12 @@
 	"method": "ledger_generateSendBlock",
 	"params": [
 		{
-			"from": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+			"from": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
 			"tokenName": "QLC",
-			"to": "qlc_371pkh5kkd1dn43cwxnbb1a4yg363rh9un9a13kkezbcppuicejxgixyyrrw",
-			"amount": "1000000",
-			"sender": "158111100000",
-			"receiver": "18500001111",
-			"message": "086802b5b3def1802882740cb91bac8929edd80901e5db4c95786389bfcf7ae4"
+			"to": "qlc_1mnw9gbzdaxz7sz18pyjcffiqaocxnunfdtu1u3fc4wjkib97rp1wcdw6ato",
+			"amount": "50000000000"
 		},
-		"8911d87b2cfed6872be509a0e5b95ff068c4dd5e439538444424aa139f9612b0681bf5253c64672fc54c93d3b5b9a20d28965cb8f80ba70460ed3f99cb547231"
+	"1c4abdd687fe3f2e2a947d1a29566a868e46431767402ef9a073ffd17f6bd2aabf86c83fb4bfb9f49b9b8fa593c8cf4128c9e21720c487565b52fc6640a9e801"
 	]
 }
 
@@ -1383,23 +1409,24 @@
 	"params": [
 		{
 			"type": "Send",
-			"token": "cfb64601dee031fc045a2880ea0b8b4823c4f0ce9241d245a012d40910137536",
-			"address": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-			"balance": "59999999999999990",
-			"previous": "0a5f919673c3a95b66c520b74a7b2416abf6fe6cc8606d04303819f81e6db1a1",
-			"link": "941693c7292c0ba082ae768948102f38240e1e7dd0e80065267d2ab5b705323d",
-			"sender": "",
-			"receiver": "",
+			"token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+			"address": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+			"balance": "59799950000000000",
+			"vote": "0",
+			"network": "0",
+			"storage": "0",
+			"oracle": "0",
+			"previous": "522c50fec4662a1fe57132fc0a89adfa682f8dddc0d3ab78951521f7d179611c",
+			"link": "4e9c3b93f5a3bf2e7e035bd1535b0ba2aaed3746af5b06c2d50b91941272e2c0",
 			"message": "0000000000000000000000000000000000000000000000000000000000000000",
-			"data": null,
-			"quota": 0,
-			"timestamp": 0,
+			"povHeight": 7,
+			"timestamp": 1561631298,
 			"extra": "0000000000000000000000000000000000000000000000000000000000000000",
-			"representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-			"work": "0000000001063d8a",
-			"signature": "edfb07a3575853fe833efc9f5288de89df69d243239b8d92723452cd456fcd2170e239eedc16c9650b626f26b305dcaf6a03ad8c4cb99302e6284df019c6790d"
+			"representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+			"work": "0000000002d81cc0",
+			"signature": "7d2464330086efc989a53bd66955ab86477d40e83f0404ae642a0d51592aafad09f1490e38ca3341d1c87aa742e1c64a7fa58ff39823ff2ffd462f109a8f6601"
 		},
-		"5f760341a57b35a09b6ea61b16d3309651ed349cbda964c976f3d54acb801d20941693c7292c0ba082ae768948102f38240e1e7dd0e80065267d2ab5b705323d"
+		"12492ec58fb840bcdaf400731c60616ea7f3275b3781cf8bb69b2a7eb74185264e9c3b93f5a3bf2e7e035bd1535b0ba2aaed3746af5b06c2d50b91941272e2c0"
 	]
 }
 
@@ -1412,21 +1439,22 @@
   "id": 2,
   "result": {
     "type": "Open",
-    "token": "cfb64601dee031fc045a2880ea0b8b4823c4f0ce9241d245a012d40910137536",
-    "address": "qlc_371pkh5kkd1dn43cwxnbb1a4yg363rh9un9a13kkezbcppuicejxgixyyrrw",
-    "balance": "10",
+    "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+    "address": "qlc_1mnw9gbzdaxz7sz18pyjcffiqaocxnunfdtu1u3fc4wjkib97rp1wcdw6ato",
+    "balance": "50000000000",
+    "vote": "0",
+    "network": "0",
+    "storage": "0",
+    "oracle": "0",
     "previous": "0000000000000000000000000000000000000000000000000000000000000000",
-    "link": "4438eb09b1469b72a436fe42df3af0f6acb28b085042917210301500c0cea576",
-    "sender": "",
-    "receiver": "",
+    "link": "dce35ac96ea5638ee54d7fbcc1a2b094db2d0f0d84232a1d0def849e5594fc12",
     "message": "0000000000000000000000000000000000000000000000000000000000000000",
-    "data": null,
-    "quota": 0,
-    "timestamp": 0,
+    "povHeight": 7,
+    "timestamp": 1561631359,
     "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-    "representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-    "work": "000000000007faf2",
-    "signature": "c80bdeeebf4263337316965afc9cf6835a04c59e6af1dd7abbe51df7683cfb8704e9f7d802e330fcd31eedb6ff390c4af520215732d7ea1cb3c3ca2f63537a07"
+    "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+    "work": "0000000000991443",
+    "signature": "16a1188460194a0d535d3ed6db92652935edba1ae25edc8905cc5383efb63de6804f6bdd25e7aba2aac26a7be50439e65cd89d2310b5dcc830dbae4e71f7e107"
   }
 }
 
@@ -1441,23 +1469,24 @@
 	"params": [
 		{
 			"type": "Send",
-			"token": "cfb64601dee031fc045a2880ea0b8b4823c4f0ce9241d245a012d40910137536",
-			"address": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-			"balance": "59999999999999990",
-			"previous": "0a5f919673c3a95b66c520b74a7b2416abf6fe6cc8606d04303819f81e6db1a1",
-			"link": "941693c7292c0ba082ae768948102f38240e1e7dd0e80065267d2ab5b705323d",
-			"sender": "",
-			"receiver": "",
+			"token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+			"address": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+			"balance": "59799950000000000",
+			"vote": "0",
+			"network": "0",
+			"storage": "0",
+			"oracle": "0",
+			"previous": "522c50fec4662a1fe57132fc0a89adfa682f8dddc0d3ab78951521f7d179611c",
+			"link": "4e9c3b93f5a3bf2e7e035bd1535b0ba2aaed3746af5b06c2d50b91941272e2c0",
 			"message": "0000000000000000000000000000000000000000000000000000000000000000",
-			"data": null,
-			"quota": 0,
-			"timestamp": 0,
+			"povHeight": 7,
+			"timestamp": 1561631298,
 			"extra": "0000000000000000000000000000000000000000000000000000000000000000",
-			"representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-			"work": "0000000001063d8a",
-			"signature": "edfb07a3575853fe833efc9f5288de89df69d243239b8d92723452cd456fcd2170e239eedc16c9650b626f26b305dcaf6a03ad8c4cb99302e6284df019c6790d"
+			"representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+			"work": "0000000002d81cc0",
+			"signature": "7d2464330086efc989a53bd66955ab86477d40e83f0404ae642a0d51592aafad09f1490e38ca3341d1c87aa742e1c64a7fa58ff39823ff2ffd462f109a8f6601"
 		},
-		"5f760341a57b35a09b6ea61b16d3309651ed349cbda964c976f3d54acb801d20941693c7292c0ba082ae768948102f38240e1e7dd0e80065267d2ab5b705323d"
+		"12492ec58fb840bcdaf400731c60616ea7f3275b3781cf8bb69b2a7eb74185264e9c3b93f5a3bf2e7e035bd1535b0ba2aaed3746af5b06c2d50b91941272e2c0"
 	]
 }
 
@@ -1504,18 +1533,22 @@
   "id": 2,
   "result": {
     "type": "Change",
-    "token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-    "address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-    "balance": "59998900000000000",
-    "previous": "bd348dc1c2567060ce596bc5c7fd41ed1ded27752f0e088c8c0b54d1abd6d7c4",
+    "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+    "address": "qlc_37ig6u5fsxhq3r38gu5qs6cpsyy5bmun45zp3hxbhjqzdczhur54u8ztehtp",
+    "balance": "0",
+    "vote": "100000000000000",
+    "network": "0",
+    "storage": "0",
+    "oracle": "0",
+    "previous": "9af624b278329c65b47523302f6f3f1ba524845aed9f5f8d1908b1b1328df88a",
     "link": "0000000000000000000000000000000000000000000000000000000000000000",
     "message": "0000000000000000000000000000000000000000000000000000000000000000",
-    "quota": 0,
-    "timestamp": 1552469321,
+    "povHeight": 0,
+    "timestamp": 1561736192,
     "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-    "representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-    "work": "000000000055a435",
-    "signature": "2f3555e4a6d4e91e736cdc8074f3e070017a95ee42a049034cf596e6384522b4c0e4b608b35a8c4f408c1f4ffc9221c05c1b3f59ae828b5cd3ca87b0f1539a04"
+    "representative": "qlc_37ig6u5fsxhq3r38gu5qs6cpsyy5bmun45zp3hxbhjqzdczhur54u8ztehtp",
+    "work": "0000000000a97f04",
+    "signature": "5274add4c25faddd7a30dceef344e59a042fc200481c11c3bafa9367cd404e06751ef8b9bc9adba2389ce17bb11dca779238e93124e73103235193c4d145da07"
   }
 }
 
@@ -1560,21 +1593,25 @@
 	"id": 18,
 	"method": "ledger_process",
 	"params": [
-		{
-			"type": "Change",
-			"token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-			"address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-			"balance": "59998900000000000",
-			"previous": "bd348dc1c2567060ce596bc5c7fd41ed1ded27752f0e088c8c0b54d1abd6d7c4",
-			"link": "0000000000000000000000000000000000000000000000000000000000000000",
-			"message": "0000000000000000000000000000000000000000000000000000000000000000",
-			"quota": 0,
-			"timestamp": 1552469321,
-			"extra": "0000000000000000000000000000000000000000000000000000000000000000",
-			"representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-			"work": "000000000055a435",
-			"signature": "2f3555e4a6d4e91e736cdc8074f3e070017a95ee42a049034cf596e6384522b4c0e4b608b35a8c4f408c1f4ffc9221c05c1b3f59ae828b5cd3ca87b0f1539a04"
-		}
+  {
+    "type": "Open",
+    "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+    "address": "qlc_1mnw9gbzdaxz7sz18pyjcffiqaocxnunfdtu1u3fc4wjkib97rp1wcdw6ato",
+    "balance": "50000000000",
+    "vote": "0",
+    "network": "0",
+    "storage": "0",
+    "oracle": "0",
+    "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+    "link": "dce35ac96ea5638ee54d7fbcc1a2b094db2d0f0d84232a1d0def849e5594fc12",
+    "message": "0000000000000000000000000000000000000000000000000000000000000000",
+    "povHeight": 7,
+    "timestamp": 1561631359,
+    "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+    "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+    "work": "0000000000991443",
+    "signature": "16a1188460194a0d535d3ed6db92652935edba1ae25edc8905cc5383efb63de6804f6bdd25e7aba2aac26a7be50439e65cd89d2310b5dcc830dbae4e71f7e107"
+   }
 	]
 }
 
@@ -1597,23 +1634,28 @@
 	"id": 18,
 	"method": "ledger_process",
 	"params": [
-		{
-			"type": "Change",
-			"token": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
-			"address": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
-			"balance": "59998900000000000",
-			"previous": "bd348dc1c2567060ce596bc5c7fd41ed1ded27752f0e088c8c0b54d1abd6d7c4",
-			"link": "0000000000000000000000000000000000000000000000000000000000000000",
-			"message": "0000000000000000000000000000000000000000000000000000000000000000",
-			"quota": 0,
-			"timestamp": 1552469321,
-			"extra": "0000000000000000000000000000000000000000000000000000000000000000",
-			"representative": "qlc_3oftfjxu9x9pcjh1je3xfpikd441w1wo313qjc6ie1es5aobwed5x4pjojic",
-			"work": "000000000055a435",
-			"signature": "2f3555e4a6d4e91e736cdc8074f3e070017a95ee42a049034cf596e6384522b4c0e4b608b35a8c4f408c1f4ffc9221c05c1b3f59ae828b5cd3ca87b0f1539a04"
-		}
+  {
+    "type": "Open",
+    "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+    "address": "qlc_1mnw9gbzdaxz7sz18pyjcffiqaocxnunfdtu1u3fc4wjkib97rp1wcdw6ato",
+    "balance": "50000000000",
+    "vote": "0",
+    "network": "0",
+    "storage": "0",
+    "oracle": "0",
+    "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+    "link": "dce35ac96ea5638ee54d7fbcc1a2b094db2d0f0d84232a1d0def849e5594fc12",
+    "message": "0000000000000000000000000000000000000000000000000000000000000000",
+    "povHeight": 7,
+    "timestamp": 1561631359,
+    "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+    "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+    "work": "0000000000991443",
+    "signature": "16a1188460194a0d535d3ed6db92652935edba1ae25edc8905cc5383efb63de6804f6bdd25e7aba2aac26a7be50439e65cd89d2310b5dcc830dbae4e71f7e107"
+   }
 	]
 }
+
 
 
 ```
