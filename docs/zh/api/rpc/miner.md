@@ -106,18 +106,18 @@
     "result": {
         "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
         "balance": "0",
-        "data": "6GGt0zwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWfw==",
+        "data": "Vf2rnjwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABZ/",
         "extra": "0000000000000000000000000000000000000000000000000000000000000000",
         "link": "0000000000000000000000000000000000000000000000000000000000000003",
         "message": "0000000000000000000000000000000000000000000000000000000000000000",
         "network": "0",
         "oracle": "0",
-        "povHeight": 33785,
+        "povHeight": 46229,
         "previous": "6ea6291b6dac0291b5bf35047be0bac8c741d60716cadaefc0d00e071f502095",
         "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
         "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "storage": "0",
-        "timestamp": 1562234947,
+        "timestamp": 1562660407,
         "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
         "type": "ContractSend",
         "vote": "100000000000000",
@@ -137,8 +137,76 @@
 		{
 			"coinbase": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
 			"beneficial": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+            "rewardBlocks": 84,
             "rewardHeight": 5759
 		}
+	]
+}
+
+
+```
+:::
+
+
+## miner_getRewardRecvBlockBySendHash
+根据提取奖励发送区块获取奖励接收区块
+- **Parameters**: 
+  - `sendHash`: 提取奖励发送区块哈希
+- **Returns**: 
+  - `block`: 提取奖励接收区块
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "miner_getRewardRecvBlock",
+	"params": [
+		"b592c669e4a223be858209041ec7d84dd59c46c2ce6844464a2e0fd3b5e78035"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+        "balance": "23972602668",
+        "data": "PBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWfwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABU",
+        "extra": "089f8efb40fffd9c3143fb728f7e1d4f70d981ad3812ff28d1e212091e65ec13",
+        "link": "b592c669e4a223be858209041ec7d84dd59c46c2ce6844464a2e0fd3b5e78035",
+        "message": "0000000000000000000000000000000000000000000000000000000000000000",
+        "network": "0",
+        "oracle": "0",
+        "povHeight": 46229,
+        "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+        "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+        "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "storage": "0",
+        "timestamp": 1562660519,
+        "token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
+        "type": "ContractReward",
+        "vote": "0",
+        "work": "0000000000000000"
+    }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "miner_getRewardRecvBlock",
+	"params": [
+		"3252733cdfacdd3143b846d419aab0902b8f6414b2f29bab367445dd562403d7"
 	]
 }
 
@@ -166,18 +234,18 @@
 		{
             "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
             "balance": "0",
-            "data": "6GGt0zwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWfw==",
+            "data": "Vf2rnjwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABZ/",
             "extra": "0000000000000000000000000000000000000000000000000000000000000000",
             "link": "0000000000000000000000000000000000000000000000000000000000000003",
             "message": "0000000000000000000000000000000000000000000000000000000000000000",
             "network": "0",
             "oracle": "0",
-            "povHeight": 33785,
+            "povHeight": 46229,
             "previous": "6ea6291b6dac0291b5bf35047be0bac8c741d60716cadaefc0d00e071f502095",
             "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
             "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
             "storage": "0",
-            "timestamp": 1562234947,
+            "timestamp": 1562660407,
             "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
             "type": "ContractSend",
             "vote": "100000000000000",
@@ -198,16 +266,16 @@
         "balance": "23972602668",
         "data": "PBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWfwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABU",
         "extra": "089f8efb40fffd9c3143fb728f7e1d4f70d981ad3812ff28d1e212091e65ec13",
-        "link": "8d4ec04dc4eecd8dd30a5b419ec10eae0892f4e08872f1af3756125d21dce256",
+        "link": "b592c669e4a223be858209041ec7d84dd59c46c2ce6844464a2e0fd3b5e78035",
         "message": "0000000000000000000000000000000000000000000000000000000000000000",
         "network": "0",
         "oracle": "0",
-        "povHeight": 33785,
+        "povHeight": 46229,
         "previous": "0000000000000000000000000000000000000000000000000000000000000000",
         "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
         "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "storage": "0",
-        "timestamp": 1562235150,
+        "timestamp": 1562660519,
         "token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
         "type": "ContractReward",
         "vote": "0",
@@ -227,18 +295,18 @@
 		{
             "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
             "balance": "0",
-            "data": "6GGt0zwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWfw==",
+            "data": "Vf2rnjwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABZ/",
             "extra": "0000000000000000000000000000000000000000000000000000000000000000",
             "link": "0000000000000000000000000000000000000000000000000000000000000003",
             "message": "0000000000000000000000000000000000000000000000000000000000000000",
             "network": "0",
             "oracle": "0",
-            "povHeight": 33785,
+            "povHeight": 46229,
             "previous": "6ea6291b6dac0291b5bf35047be0bac8c741d60716cadaefc0d00e071f502095",
             "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
             "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
             "storage": "0",
-            "timestamp": 1562234947,
+            "timestamp": 1562660407,
             "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
             "type": "ContractSend",
             "vote": "100000000000000",
