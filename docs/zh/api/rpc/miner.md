@@ -6,20 +6,16 @@
 |:------------:|:-----------:|:-----:|:-----:|
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
-## miner_getRewardInfo
-根据矿工地址返回奖励信息
+## miner_getHistoryRewardInfos
+根据矿工地址获取奖励提取历史信息
 - **Parameters**: 
-    - `coinbase`:  矿工地址  
+    - `coinbase`:  miner address  
 - **Returns**: 
-  - `lastRewardHeight`: 已提取的奖励区块高度
-  - `lastRewardBlocks`: 已提取的奖励区块总数
-  - `lastBeneficial`: 上一次提取的收益账户
-  - `nodeRewardHeight`: 当前节点上可以提取的奖励区块高度
-  - `availRewardHeight`: 当前矿工在当前节点上可以提取的奖励区块高度
-  - `availRewardBlocks`: 当前矿工在当前节点上可以提取的奖励区块总数
-  - `needCallReward`: 当前矿工在当前节点上可以调用奖励合约
-  - `pledgeVoteAmount`: 当前矿工在当前节点上作为代表的抵押总数
-  - `latestBlockHeight`: 当前节点上最新PoV区块高度
+  - `allRewardAmount`: 已提取的所有奖励总额
+  - `allRewardBlocks`: 已提取的所有区块总数
+  - `firstRewardHeight`: 首次提取的区块高度
+  - `lastRewardHeight`: 最后一次提取的区块高度
+  - `rewardInfos`: 提取奖励历史信息列表
 
 - **Example**:
 
@@ -28,9 +24,9 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardInfo",
+	"method": "miner_getHistoryRewardInfos",
 	"params": [
-		"qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b"
+		"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy"
 	]
 }
 
@@ -42,15 +38,18 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "availRewardBlocks": 84,
-        "availRewardHeight": 5759,
-        "lastBeneficial": "",
-        "lastRewardBlocks": 0,
-        "lastRewardHeight": 0,
-        "latestBlockHeight": 33785,
-        "needCallReward": true,
-        "nodeRewardHeight": 28799,
-        "pledgeVoteAmount": "100000000000000"
+        "allRewardAmount": "11986301334",
+        "allRewardBlocks": 42,
+        "firstRewardHeight": 120,
+        "lastRewardHeight": 239,
+        "rewardInfos": [
+            {
+                "beneficial": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+                "endHeight": 239,
+                "rewardBlocks": 42,
+                "startHeight": 120
+            }
+        ]
     }
 }
 
@@ -61,9 +60,78 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardInfo",
+	"method": "miner_getHistoryRewardInfos",
 	"params": [
-		"qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b"
+		"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy"
+	]
+}
+
+
+```
+:::
+
+
+## miner_getAvailRewardInfo
+根据矿工地址获取可用奖励信息。
+当返回结果里面的`needCallReward`为`true`, 客户端才可以调用合约提取奖励，并根据availXxx填写相关字段。
+- **Parameters**: 
+    - `coinbase`:  miner address  
+- **Returns**: 
+  - `lastStartHeight`: 最近一次提取的区块开始高度
+  - `lastEndHeight`: 最近一次提取的区块结束高度
+  - `lastRewardBlocks`: 最近一次提取的区块总数
+  - `lastBeneficial`: 最近一次提取的收益地址
+  - `latestBlockHeight`: 当前节点上的最新区块高度
+  - `nodeRewardHeight`: 当前节点上的可用提取区块高度
+  - `availStartHeight`: 当前矿工在当前节点上的可用提取区块开始高度
+  - `availEndHeight`: 当前矿工在当前节点上的可用提取区块结束高度
+  - `availRewardBlocks`: 当前矿工在当前节点上的可用提取区块总数
+  - `needCallReward`: 当前矿工在当前节点上需要调用奖励合约
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "miner_getAvailRewardInfo",
+	"params": [
+		"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "availEndHeight": 239,
+        "availRewardBlocks": 42,
+        "availStartHeight": 120,
+        "lastBeneficial": "",
+        "lastEndHeight": 0,
+        "lastRewardBlocks": 0,
+        "lastStartHeight": 0,
+        "latestBlockHeight": 1599,
+        "needCallReward": true,
+        "nodeRewardHeight": 1439
+    }
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "miner_getAvailRewardInfo",
+	"params": [
+		"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy"
 	]
 }
 
@@ -89,9 +157,11 @@
 	"method": "miner_getRewardSendBlock",
 	"params": [
 		{
-			"coinbase": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
-			"beneficial": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
-            "rewardHeight": 5759
+			"coinbase": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+			"beneficial": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+            "startHeight": 120,
+            "endHeight": 239,
+            "rewardBlocks": 42
 		}
 	]
 }
@@ -104,20 +174,20 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
-        "balance": "0",
-        "data": "Vf2rnjwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABZ/",
+        "address": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+        "balance": "19800000000000000",
+        "data": "aXMKz2f7ZF1T06vDAb5bPaQE1xbGl0s4KTlerUU+agqbIXNAZ/tkXVPTq8MBvls9pATXFsaXSzgpOV6tRT5qCpshc0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo=",
         "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-        "link": "0000000000000000000000000000000000000000000000000000000000000003",
+        "link": "0000000000000000000000000000000000000000000000000000000000000015",
         "message": "0000000000000000000000000000000000000000000000000000000000000000",
         "network": "0",
         "oracle": "0",
-        "povHeight": 46229,
-        "previous": "6ea6291b6dac0291b5bf35047be0bac8c741d60716cadaefc0d00e071f502095",
-        "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+        "povHeight": 1596,
+        "previous": "e6363d535378796fdcdf635b58b9b2a54a579364fd8e5a814b0a5c9969854884",
+        "representative": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
         "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "storage": "0",
-        "timestamp": 1562660407,
+        "timestamp": 1563434320,
         "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
         "type": "ContractSend",
         "vote": "100000000000000",
@@ -135,10 +205,11 @@
 	"method": "miner_getRewardSendBlock",
 	"params": [
 		{
-			"coinbase": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
-			"beneficial": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
-            "rewardBlocks": 84,
-            "rewardHeight": 5759
+			"coinbase": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+			"beneficial": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+            "startHeight": 120,
+            "endHeight": 239,
+            "rewardBlocks": 42
 		}
 	]
 }
@@ -162,7 +233,7 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardRecvBlock",
+	"method": "miner_getRewardRecvBlockBySendHash",
 	"params": [
 		"b592c669e4a223be858209041ec7d84dd59c46c2ce6844464a2e0fd3b5e78035"
 	]
@@ -204,7 +275,7 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardRecvBlock",
+	"method": "miner_getRewardRecvBlockBySendHash",
 	"params": [
 		"3252733cdfacdd3143b846d419aab0902b8f6414b2f29bab367445dd562403d7"
 	]
@@ -232,24 +303,24 @@
 	"method": "miner_getRewardRecvBlock",
 	"params": [
 		{
-            "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
-            "balance": "0",
-            "data": "Vf2rnjwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABZ/",
-            "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-            "link": "0000000000000000000000000000000000000000000000000000000000000003",
-            "message": "0000000000000000000000000000000000000000000000000000000000000000",
-            "network": "0",
-            "oracle": "0",
-            "povHeight": 46229,
-            "previous": "6ea6291b6dac0291b5bf35047be0bac8c741d60716cadaefc0d00e071f502095",
-            "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
-            "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-            "storage": "0",
-            "timestamp": 1562660407,
-            "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
-            "type": "ContractSend",
-            "vote": "100000000000000",
-            "work": "0000000000000000"
+            "address":"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+            "balance":"19800000000000000",
+            "data":"aXMKz2f7ZF1T06vDAb5bPaQE1xbGl0s4KTlerUU+agqbIXNAZ/tkXVPTq8MBvls9pATXFsaXSzgpOV6tRT5qCpshc0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo=",
+            "extra":"0000000000000000000000000000000000000000000000000000000000000000",
+            "link":"0000000000000000000000000000000000000000000000000000000000000015",
+            "message":"0000000000000000000000000000000000000000000000000000000000000000",
+            "network":"0",
+            "oracle":"0",
+            "povHeight":1596,
+            "previous":"e6363d535378796fdcdf635b58b9b2a54a579364fd8e5a814b0a5c9969854884",
+            "representative":"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+            "signature":"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "storage":"0",
+            "timestamp":1563434320,
+            "token":"a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+            "type":"ContractSend",
+            "vote":"100000000000000",
+            "work":"0000000000000000"
         }
 	]
 }
@@ -262,20 +333,19 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
-        "balance": "23972602668",
-        "data": "PBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWfwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABU",
-        "extra": "089f8efb40fffd9c3143fb728f7e1d4f70d981ad3812ff28d1e212091e65ec13",
-        "link": "b592c669e4a223be858209041ec7d84dd59c46c2ce6844464a2e0fd3b5e78035",
+        "address": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+        "balance": "11986301334",
+        "extra": "24dbf281b17fbf43bdebb14472503fdd17d169ff40d40d33c6176d39ff81f8c6",
+        "link": "072435e4d8ea1df4609abce5ff7b7c06050df5b588c7fa07c3d773ee31958b3a",
         "message": "0000000000000000000000000000000000000000000000000000000000000000",
         "network": "0",
         "oracle": "0",
-        "povHeight": 46229,
+        "povHeight": 1596,
         "previous": "0000000000000000000000000000000000000000000000000000000000000000",
-        "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
+        "representative": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
         "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "storage": "0",
-        "timestamp": 1562660519,
+        "timestamp": 1563435597,
         "token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
         "type": "ContractReward",
         "vote": "0",
@@ -293,24 +363,24 @@
 	"method": "miner_getRewardRecvBlock",
 	"params": [
 		{
-            "address": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
-            "balance": "0",
-            "data": "Vf2rnjwV8sDzmVB3WH2DsmlecoVIxrOmiEuNujExBYfYVL3DPBXywPOZUHdYfYOyaV5yhUjGs6aIS426MTEFh9hUvcMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABZ/",
-            "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-            "link": "0000000000000000000000000000000000000000000000000000000000000003",
-            "message": "0000000000000000000000000000000000000000000000000000000000000000",
-            "network": "0",
-            "oracle": "0",
-            "povHeight": 46229,
-            "previous": "6ea6291b6dac0291b5bf35047be0bac8c741d60716cadaefc0d00e071f502095",
-            "representative": "qlc_1h1oyd1h98cigxe9u1xkf7h973cartstf44djpx54ea7ize7bhg5caz6cm7b",
-            "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-            "storage": "0",
-            "timestamp": 1562660407,
-            "token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
-            "type": "ContractSend",
-            "vote": "100000000000000",
-            "work": "0000000000000000"
+            "address":"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+            "balance":"19800000000000000",
+            "data":"aXMKz2f7ZF1T06vDAb5bPaQE1xbGl0s4KTlerUU+agqbIXNAZ/tkXVPTq8MBvls9pATXFsaXSzgpOV6tRT5qCpshc0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo=",
+            "extra":"0000000000000000000000000000000000000000000000000000000000000000",
+            "link":"0000000000000000000000000000000000000000000000000000000000000015",
+            "message":"0000000000000000000000000000000000000000000000000000000000000000",
+            "network":"0",
+            "oracle":"0",
+            "povHeight":1596,
+            "previous":"e6363d535378796fdcdf635b58b9b2a54a579364fd8e5a814b0a5c9969854884",
+            "representative":"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+            "signature":"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "storage":"0",
+            "timestamp":1563434320,
+            "token":"a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+            "type":"ContractSend",
+            "vote":"100000000000000",
+            "work":"0000000000000000"
         }
 	]
 }
