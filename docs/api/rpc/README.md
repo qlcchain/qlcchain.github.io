@@ -73,8 +73,9 @@
 |     nonce      | uint64 |            nonce number used for vote signature              |
 | voteSignature  | string |               signature of vote related fields               |
 |    target      | string |                      difficulty target                       |
+|    coinbase    | string |                        miner address                         |
 |   timestamp    | int64  |                 timestamp, now is unix time                  |
 |     txNum      | uint32 |                       transaction number                     |
-|   stateHash    | int64  |                           state hash                         |
+|   stateHash    | string |                           state hash                         |
 |   signature    | string |                   signature of whole block header            |
 |  transactions  | array  |                   transaction hash list                      |

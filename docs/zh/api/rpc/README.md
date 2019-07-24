@@ -70,8 +70,9 @@
 |     nonce      | uint64 |                           随机数                              |
 | voteSignature  | string |                          投票签名                             |
 |    target      | string |                          难度目标                             |
+|    coinbase    | string |                          矿工地址                             |
 |   timestamp    | int64  |                       时间戳(UNIX时间)                        |
 |     txNum      | uint32 |                          交易数量                             |
-|   stateHash    | int64  |                          状态哈希                             |
+|   stateHash    | string |                          状态哈希                             |
 |   signature    | string |                          区块头签名                            |
 |  transactions  | array  |                           交易列表                             |

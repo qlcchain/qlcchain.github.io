@@ -453,7 +453,7 @@
 {
   "jsonrpc": "2.0",
   "id":3,
-  "method":"pov_getHeaderByHeight",
+  "method":"pov_getBlockByHeight",
   "params":[
       1
   ]
