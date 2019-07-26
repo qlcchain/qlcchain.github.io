@@ -3,7 +3,7 @@
 
 **支持调用方式:**
 
-| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
+| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe |
 |:------------:|:-----------:|:-----:|:-----:|
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
@@ -157,7 +157,7 @@
 :::
 
 ## ledger_accountInfo
-返回账户的详细信息，包含该账户下的每个token
+返回账户的最新的详细信息，包含该账户下的每个token
 
 - **Parameters**: 
     - `string` : 账户地址
@@ -244,6 +244,97 @@
 
 
 ```
+:::
+
+## ledger_confirmedAccountInfo
+
+返回已确认的账户的详细信息，包含该账户下的每个token
+
+- **Parameters**: 
+  - `string` : 账户地址
+- **Returns**: 
+  - `account` :  账户地址
+  - `coinBalance` : 该账户下的主token（默认为QLC）
+  - `vote`,`network`,`storage`,`oracle`: 账户获得的权益，如果该账户没有QLC，这些字段为空
+  - `representative` : 该账户的代表账户的地址
+  - `[]token`: 账户下每个token的信息
+
+|      字段      |  类型  |            描述             |
+| :------------: | :----: | :-------------------------: |
+|      type      | string |         token hash          |
+|     header     | string | 该token所在链的最后一个区块 |
+| representative | string |       代表账户的地址        |
+|      open      | string |  该token所在链的第一个区块  |
+|    balance     | string |            余额             |
+|    account     | string |      该token所在的地址      |
+|    modified    | int64  |           时间戳            |
+|   blockCount   |  int   |   该token所在链的区块总量   |
+|   tokenName    | string |          token名称          |
+|    pending     | string |         待接收数量          |
+
+
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_accountInfo",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "account": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+    "coinBalance": "0",
+    "vote": "4400000000",
+    "network": "0",
+    "storage": "0",
+    "oracle": "0",
+    "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+    "tokens": [
+      {
+        "type": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
+        "header": "758f79b656340c329cb5b11302865c5ff0b0c99fd8a268d6b8760170e33e8cd1",
+        "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+        "open": "758f79b656340c329cb5b11302865c5ff0b0c99fd8a268d6b8760170e33e8cd1",
+        "balance": "40000000000000",
+        "account": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+        "modified": 1552455585,
+        "blockCount": 1,
+        "tokenName": "QLC",
+        "pending": "0"
+      }
+    ]
+  }
+}
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_accountInfo",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+
 :::
 
 
@@ -357,7 +448,7 @@
     - `int`: 返回的账户数量
     - `int`:  偏移量，表示从第几个账户开始返回。可空，如果不设置，则返回0
 
-  
+
 - **Returns**: 
   - `[]address`: 账户地址列表
 
@@ -1134,6 +1225,55 @@
 ```
 :::
 
+## ledger_blockConfirmedStatus
+
+根据区块hash返回区块的确认状态
+
+- **Parameters**: 
+  - `string`:  区块hash
+- **Returns**: 
+  - `bool`:  如果已确认，返回`true`，否则，返回`false`
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "ledger_blockConfirmedStatus",
+	"params": [
+		"5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d"
+	]
+}
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": true
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "ledger_blockConfirmedStatus",
+	"params": [
+		"5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d"
+	]
+}
+
+
+```
+
+:::
+
 
 ## ledger_chain
 
@@ -1394,7 +1534,7 @@
 - **Parameters**: 
    - `block`:  发送区块
    - `string`: 可空，私钥，如果为空，则返回不包含签名和work的区块钥
- 
+
 - **Returns**: 
   - `block`:  接收区块
 
@@ -1505,7 +1645,7 @@
     - `string`: 新代表地址
     - `string`: 可空，私钥，如果为空，则返回不包含签名和work的区块 
 
-  
+
 - **Returns**: 
   - `block`:  修改代表的区块
 

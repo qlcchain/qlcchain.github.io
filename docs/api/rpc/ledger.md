@@ -3,7 +3,7 @@
 
 **Supported protocols:**
 
-| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
+| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe |
 |:------------:|:-----------:|:-----:|:-----:|
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
@@ -62,7 +62,7 @@ Return blocks for the account, include each token of the account and order of bl
     - `int`:  number of blocks to return 
     - `int`:  `optional` , offset, index of block where to start, default is 0
 
-  
+
 - **Returns**: 
   -  `[]block`: blocks for the account
 
@@ -156,7 +156,7 @@ Return blocks for the account, include each token of the account and order of bl
 :::
 
 ## ledger_accountInfo
-Return account detail info, include each token in the account
+Return newest account detail info, include each token in the account
 
 - **Parameters**: 
     - `string` : the account address
@@ -243,6 +243,97 @@ Return account detail info, include each token in the account
 
 
 ```
+:::
+
+## ledger_confirmedAccountInfo
+
+Return confirmed account detail info , include each token in the account
+
+- **Parameters**: 
+  - `string` : the account address
+- **Returns**: 
+  - `account` :  the account address
+  - `coinBalance` : balance of main token of the account (default is QLC)
+  - `vote`,`network`,`storage`,`oracle`: benefit for the account, if account don't have token QLC, these are omit
+  - `representative` : representative address of the account
+  - `[]token`: each token info for the account, 
+
+|     field      |  type  |                 describe                  |
+| :------------: | :----: | :---------------------------------------: |
+|      type      | string |                token hash                 |
+|     header     | string | the latest block hash for the token chain |
+| representative | string |          representative address           |
+|      open      | string |  the open block hash for the token chain  |
+|    balance     | string |           balance for the token           |
+|    account     | string |       account that token belong to        |
+|    modified    | int64  |                 timestamp                 |
+|   blockCount   |  int   |  total block number for the token chain   |
+|   tokenName    | string |                token name                 |
+|    pending     | string |              pending amount               |
+
+
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_accountInfo",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "account": "qlc_1u1d7mgo8hq5nad8jwesw6azfk53a31ge5minwxdfk8t1fqknypqgk8mi3z7",
+    "coinBalance": "0",
+    "vote": "4400000000",
+    "network": "0",
+    "storage": "0",
+    "oracle": "0",
+    "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+    "tokens": [
+      {
+        "type": "45dd217cd9ff89f7b64ceda4886cc68dde9dfa47a8a422d165e2ce6f9a834fad",
+        "header": "758f79b656340c329cb5b11302865c5ff0b0c99fd8a268d6b8760170e33e8cd1",
+        "representative": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+        "open": "758f79b656340c329cb5b11302865c5ff0b0c99fd8a268d6b8760170e33e8cd1",
+        "balance": "40000000000000",
+        "account": "qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44",
+        "modified": 1552455585,
+        "blockCount": 1,
+        "tokenName": "QLC",
+        "pending": "0"
+      }
+    ]
+  }
+}
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ledger_accountInfo",
+	"params": [
+		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
+	]
+}
+
+
+```
+
 :::
 
 
@@ -355,7 +446,7 @@ Return account list of chain
     - `int`: number of accounts to return 
     - `int`: `optional` , offset, index of account where to start, default is 0
 
-  
+
 - **Returns**: 
   - `[]address`: addresses list of accounts
 
@@ -1124,6 +1215,55 @@ Return blocks info for blocks hash
 ```
 :::
 
+## ledger_blockConfirmedStatus
+
+Return block confirmed status
+
+- **Parameters**: 
+  - `string`:  blocks hash
+- **Returns**: 
+  - `bool`:   if confirmed，return `true`，otherwise return `false`
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "ledger_blockConfirmedStatus",
+	"params": [
+		"5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d"
+	]
+}
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": true
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 18,
+	"method": "ledger_blockConfirmedStatus",
+	"params": [
+		"5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d"
+	]
+}
+
+
+```
+
+:::
+
 
 ## ledger_chain
 Accept a specific block hash and return a consecutive blocks hash list， starting with this block, and traverse forward to the maximum number 
@@ -1172,8 +1312,6 @@ Accept a specific block hash and return a consecutive blocks hash list， starti
 
 ```
 :::
-
-
 
 ## ledger_delegators
 Return a list of pairs of delegator and it's balance for a specific representative account
@@ -1376,7 +1514,7 @@ Return receive block by send block and private key
 - **Parameters**: 
    - `block`:  send block
    - `string`: `optonal`, private key ,if not set ,will return block without signature and work
- 
+
 - **Returns**: 
   - `block`:  receive block
 
@@ -1485,7 +1623,7 @@ Return change block by account and private key
     - `string`: new representative account  
     - `string`: `optonal`, private key ,if not set ,will return block without signature and work 
 
-  
+
 - **Returns**: 
   - `block`:  change block
 
