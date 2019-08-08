@@ -16,6 +16,10 @@ go-qlc node install and start documentation can be found [here](../node/install/
 
 RPC API documentation can be found [here](../../api/rpc/)
 
+## CLI Introduction
+
+CLI Introduction documentation can be found [here](../node/cli/)
+
 ## Javascript SDK
 
 you can build your own application on qlcchain with javascript sdk.
