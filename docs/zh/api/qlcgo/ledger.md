@@ -93,6 +93,11 @@ func (l *LedgerApi) BlockHash(block types.StateBlock) types.Hash
 func (l *LedgerApi) BlockInfo(hash types.Hash) (*api.APIBlock, error)
 ```
 
+## BlockConfirmedStatus
+返回区块的链上确认状态，如果已经被确认，返回true，否则返回false
+```
+func (l *LedgerApi) BlockConfirmedStatus(hash types.Hash) (bool, error)
+```
 
 ## Blocks
 返回链上的区块列表，count表示要返回的区块数量，offset表示偏移量，从第几个区块开始查询
@@ -119,6 +124,12 @@ func (l *LedgerApi) BlocksCountByType() (map[string]uint64, error)
 根据区块hash的列表返回区块信息列表
 ```go
 func (l *LedgerApi) BlocksInfo(hash []types.Hash) ([]*api.APIBlock, error)
+```
+
+## ConfirmedAccountInfo
+返回账户的确认信息
+```go
+func (l *LedgerApi) ConfirmedAccountInfo(address types.Address) (*APIAccount, error) 
 ```
 
 

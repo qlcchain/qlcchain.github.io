@@ -115,6 +115,11 @@ BlocksCountByType returns number of blocks by type of chain
 func (l *LedgerApi) BlocksCountByType() (map[string]uint64, error)
 ```
 
+## BlockConfirmedStatus
+Return block confirmed status, if block confirmed，return true，otherwise return false
+```
+func (l *LedgerApi) BlockConfirmedStatus(hash types.Hash) (bool, error)
+```
 
 ## BlocksInfo
 BlocksInfo accepts blocks hash list, and returns block info for each hash
@@ -122,6 +127,11 @@ BlocksInfo accepts blocks hash list, and returns block info for each hash
 func (l *LedgerApi) BlocksInfo(hash []types.Hash) ([]*api.APIBlock, error)
 ```
 
+## ConfirmedAccountInfo
+Return confirmed account detail info , include each token in the account
+```go
+func (l *LedgerApi) ConfirmedAccountInfo(address types.Address) (*APIAccount, error) 
+```
 
 ## Chain
 Chain returns a consecutive block hash list for a specific hash maximum number of blocks hash to return is n, and if n set to -1, will return blocks hash to the open block
