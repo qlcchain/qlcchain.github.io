@@ -281,7 +281,7 @@ Return confirmed account detail info , include each token in the account
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "ledger_accountInfo",
+	"method": "ledger_confirmedAccountInfo",
 	"params": [
 		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
 	]
@@ -325,7 +325,7 @@ Return confirmed account detail info , include each token in the account
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "ledger_accountInfo",
+	"method": "ledger_confirmedAccountInfo",
 	"params": [
 		"qlc_1t1uynkmrs597z4ns6ymppwt65baksgdjy1dnw483ubzm97oayyo38ertg44"
 	]
