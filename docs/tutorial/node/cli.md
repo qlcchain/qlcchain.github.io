@@ -1,6 +1,8 @@
-# Server
+# Cli
 
-## walletimport
+## Server
+
+### walletimport
 
 - feature：import a wallet
 - parameters:
@@ -13,7 +15,7 @@
 $ gqlc walletimport --seed 1234567890123456789012345678901234567890123456789012345678901234  --password 123456
 ```
 
-## run
+### run
 
 - feature：start server
 - parameters：
@@ -26,9 +28,9 @@ $ gqlc run --seed 363CA1A23BA71D078D03A2A52CE390D5CC5AD29CF15453E0A44C6554DA1471
 
 
 
-# Client
+## Client
 
-## account
+### account
 
 - create account randomly
 
@@ -44,7 +46,7 @@ $ gqlcc account
 
 
 
-## balance
+### balance
 
 - feature：returns balance for accounts
 - parameters：
@@ -57,7 +59,7 @@ $ gqlcc balance --address qlc_3p1mnf5w3opm6sf4f9m7faeamks6cdeemx7p63tp4c9z456emz
 
 
 
-## batchsend
+### batchsend
 
 - feature：send transactions from one account to batch  accounts
 - parameters：
@@ -73,7 +75,7 @@ $ gqlcc batchsend --from 07543e863bca1e5de656b220c39435b4f6ffe2728bdcb98a22cc959
 
 
 
-## blockcount
+### blockcount
 
 - feature：returns the total number of blocks in the database
 - example：
@@ -84,7 +86,7 @@ $ gqlcc blockcount
 
 
 
-## mine
+### mine
 
 - feature: mine token
 - parameters:
@@ -100,7 +102,7 @@ $ gqlcc blockcount
  mine --account a231d87b2cfed6872be509a0e5b95ff068c4dd5e439538444424aa139f9612b0681bf5253c64672fc54c93d3b5b9a20d28965cb8f80ba70460ed3f99cb547234 --preHash 758f79b656340c329cb5b11302865c5ff0b0c99fd8a268d6b8760170e33e8cd1 --tokenName QN --tokenSymbol QN --decimals 8 --totalSupply 1000000000
 ```
 
-## withdrawMine
+### withdrawMine
 
 - feature: withdraw the token of mintage pledge
 - parameters:
@@ -112,7 +114,7 @@ $ gqlcc blockcount
  withdrawMine --account a231d87b2cfed6872be509a0e5b95ff068c4dd5e439538444424aa139f9612b0681bf5253c64672fc54c93d3b5b9a20d28965cb8f80ba70460ed3f99cb547234 --tokenId 1dd129a664b31c02b68ded67e6ba1574a04d49c6428be5b659d63d3859ba507d
 ```
 
-## pledge
+### pledge
 
 - feature: pledge token
 - parameters:
@@ -126,7 +128,7 @@ $ gqlcc blockcount
  pledge --account a231d87b2cfed6872be509a0e5b95ff068c4dd5e439538444424aa139f9612b0681bf5253c64672fc54c93d3b5b9a20d28965cb8f80ba70460ed3f99cb547234 --pledgeAccount a231d87b2cfed6872be509a0e5b95ff068c4dd5e439538444424aa139f9612b0681bf5253c64672fc54c93d3b5b9a20d28965cb8f80ba70460ed3f99cb547234 --amount 10000000000000000 --pType vote
 ```
 
-## withdrawPledge
+### withdrawPledge
 
 - feature: withdraw pledge token
 - parameters:
@@ -140,7 +142,7 @@ $ gqlcc blockcount
  withdrawPledge --account a231d87b2cfed6872be509a0e5b95ff068c4dd5e439538444424aa139f9612b0681bf5253c64672fc54c93d3b5b9a20d28965cb8f80ba70460ed3f99cb547234 --pledgeAccount a231d87b2cfed6872be509a0e5b95ff068c4dd5e439538444424aa139f9612b0681bf5253c64672fc54c93d3b5b9a20d28965cb8f80ba70460ed3f99cb547234 --amount 10000000000000000 --pType vote
 ```
 
-## send
+### send
 
 - feature：send transaction
 
@@ -161,7 +163,7 @@ $ gqlcc send --from 07543e863bca1e5de656b220c39435b4f6ffe2728bdcb98a22cc959a195b
 
 
 
-## tokens
+### tokens
 
 - feature: returns token list of chain
 - example:
@@ -172,7 +174,7 @@ $ gqlcc tokens
 
 
 
-## performance
+### performance
 
 - feature：get performance time
 
@@ -184,7 +186,7 @@ $ gqlcc  performance
 
 
 
-## version
+### version
 
 - feature：returns the version info
 - example：
@@ -196,7 +198,7 @@ $ gqlcc version
 
 
 
-## walletcreate
+### walletcreate
 
 - feature：create a wallet 
 - parameters：
@@ -210,7 +212,7 @@ $ gqlcc changepassword --password 123456
 
 
 
-## wallet changepassword
+### wallet changepassword
 
 - feature：change wallet password
 - parameters:
@@ -226,7 +228,7 @@ $ gqlcc changepassword --account qlc_3dmpk64gnxq5nnmnwwbns6mismtjs86epunh6ihremz
 
 
 
-## walletlist
+### walletlist
 
 - feature：address list in the wallet
 - example：
@@ -238,7 +240,7 @@ $ gqlcc walletlist
 
 
 
-## walletremove
+### walletremove
 
 - feature：remove wallet
 - parameters:
