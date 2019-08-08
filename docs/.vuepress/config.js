@@ -6,7 +6,7 @@ const sidebarConfigs = {
     },
     {
       collapsable: false,
-      children: ["node/install", "node/config"],
+      children: ["node/install", "node/config", "node/cli"],
     },
     {
       collapsable: false,
