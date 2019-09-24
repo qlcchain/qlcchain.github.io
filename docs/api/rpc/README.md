@@ -2,6 +2,12 @@
 
 ##  Update Instruction
 
+2019-9-24 update :
+
+- modify PoV Block Struct
+
+- modify `PoV` modules 
+
 2019-6-20 update :
 
 - add `PoV` and `Miner` modules 
@@ -63,19 +69,58 @@
 |povConfirmCount | uint64 |                   PoV confirm count                        |
 
 ##  PoV Block Struct
-
 |     field      |  type  |                           description                        |
 | :------------: | :----: | :----------------------------------------------------------: |
-|      hash      | string |                          block hash                          |
-|     height     | uint64 |                          block height                        |
-|    previous    | string |                     previous block hash                      |
-|   merkleRoot   | string |               merkle root of all transactions                |
-|     nonce      | uint64 |            nonce number used for vote signature              |
-| voteSignature  | string |               signature of vote related fields               |
-|    target      | string |                      difficulty target                       |
-|    coinbase    | string |                        miner address                         |
-|   timestamp    | int64  |                 timestamp, now is unix time                  |
-|     txNum      | uint32 |                       transaction number                     |
-|   stateHash    | string |                           state hash                         |
-|   signature    | string |                   signature of whole block header            |
-|  transactions  | array  |                   transaction hash list                      |
+| basHdr         | object | block basic header                                           |
+| auxHdr         | object | block aux pow header                                         |
+| cbtx           | object | block coinbase tx                                            |
+| normBits       | uint32 | normalized target bits                                       |
+| algoName       | string | pow algorithm name                                           |
+| algoEfficiency | uint32 | pow algorithm efficiency                                     |
+
+### PoV Basic Header
+|     field      |  type  |                           description                        |
+| :------------: | :----: | :----------------------------------------------------------: |
+| hash           | string | block hash                                                   |
+| height         | uint64 | block height                                                 |
+| version        | uint32 | version                                                      |
+| previous       | string | previous block hash                                          |
+| merkleRoot     | string | merkle root of all transactions                              |
+| timestamp      | uint32 | timestamp, now is unix time                                  |
+| bits           | uint32 | target bits                                                  |
+| nonce          | uint64 | nonce number                                                 |
+
+### PoV AuxPow Header
+|     field      |  type  |                           description                        |
+| :------------: | :----: | :----------------------------------------------------------: |
+| auxMerkleBranch| array  | auxiliary chain merkle branch hashes                         |
+| auxMerkleIndex | uint32 | auxiliary chain merkle index/mask                            |
+| parCoinBaseTx  | object | parent chain coinbase transaction                            |
+|parCoinBaseMerkle| array | parent chain coinbase merkle branch hashes                   |
+| parMerkleIndex | uint32 | parent chain merkle index/mask                               |
+| parBlockHeader | object | parent chain block header                                    |
+| parentHash     | string | parent chain block hash                                      |
+
+### PoV CoinBase Transaction
+|     field      |  type  |                           description                        |
+| :------------: | :----: | :----------------------------------------------------------: |
+| version        | uint32 | transaction version                                          |
+| txIns          | array  | transaction input list                                       |
+| txOuts         | array  | transaction output list                                      |
+| stateHash      | string | state hash of transactions in pov block body                 |
+| txNum          | uint32 | number of transactions in pov block body                     |
+| hash           | object | transaction hash                                             |
+
+### PoV CoinBase Input
+|     field      |  type  |                           description                        |
+| :------------: | :----: | :----------------------------------------------------------: |
+| prevTxHash     | string | transaction version                                          |
+| prevTxIdx      | uint32 | transaction input list                                       |
+| extra          | string | coinbase extra data (hex bytes)                              |
+| sequence       | uint32 | sequence number                                              |
+
+### PoV CoinBase Output
+|     field      |  type  |                           description                        |
+| :------------: | :----: | :----------------------------------------------------------: |
+| value          | string | coinbase reward value                                        |
+| address        | string | coinbase reward address                                      |

@@ -1,20 +1,20 @@
 
 # PoV
 
-**支持调用方式:**
+**Supported protocols:**
 
 | JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
 |:------------:|:-----------:|:-----:|:-----:|
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
 ## pov_getFittestHeader
-返回最合适的区块头，如果节点处于同步中，会返回错误。在发送交易之前调用该接口。
+Return fittest block header of PoV main chain, used by send TXs
 
 - **Parameters**:
-  -  `gap`: 相对最新区块的间隔，默认是0
+  -  `gap`: gap before latest block header, default is 0
   
 - **Returns**: 
-  -  `header`: 区块头结构
+  -  `header`: block header struct
 
 - **Example**:
 
@@ -38,18 +38,78 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "coinbase": "qlc_3fkqoenh9k33ca6tqcwyhxxjedhz564kh37rutkqh17uzjbeyzwqa7ucx4mp",
-        "hash": "7ce8ce0ea257e4cb23007bd136aa7958097d2d677f2f69027d3b27e9a05d2de6",
-        "height": 1956,
-        "merkleRoot": "0000000000000000000000000000000000000000000000000000000000000000",
-        "nonce": 2319911,
-        "previous": "fa015d81a210ccc9d87f834c1915b419e402d6461de698da5214613da7be2f64",
-        "signature": "39d858ec0a96b5345d1ff5455c43549e87346ff87345a3fa4a32ff5891f19484a5aa6e694789299d6eb77b0c1499595f92e9445ed6a7647eeebb477d7c10cf04",
-        "stateHash": "143b9602525e654f090b716300f736cf291398359f2ace08abe64c0102db2c16",
-        "target": "88370140955faf327a8eda56c244ee63674a0e7c87c75e78007500d827736bd286bf58fe722e84e6718dc8eff0fc176ece28708c756a0a7e655f9ee3c4000000",
-        "timestamp": 1560925637,
-        "txNum": 0,
-        "voteSignature": "c80e6f7c85f1303728ceb1f087e7e551e0bce151675be8c4f744faa3d92643c364375e77b326c2b156ee88450516c8696180f6fb6f9f84530947149948000000"
+        "algoEfficiency": 513,
+        "algoName": "X11",
+        "auxHdr": {
+            "auxMerkleBranch": null,
+            "auxMerkleIndex": 0,
+            "parBlockHeader": {
+                "bits": 0,
+                "merkleRoot": "ef57beac069ac836188d5f05fa4239e1ed542802acee3dc2eaf04f8061044c10",
+                "nonce": 1121457,
+                "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+                "timestamp": 1569293765,
+                "version": 2147483647
+            },
+            "parCoinBaseMerkle": null,
+            "parCoinBaseTx": {
+                "lockTime": 0,
+                "txIn": [
+                    {
+                        "previousOutPoint": {
+                            "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                            "index": 4294967295
+                        },
+                        "sequence": 4294967295,
+                        "signatureScript": "fabe6d6deee80b8c7c71b856a4d4601097a9960b0e10589b5133f980ecdbf3599aa56f480100000000000000"
+                    }
+                ],
+                "txOut": [
+                    {
+                        "pkScript": "51",
+                        "value": 1
+                    }
+                ],
+                "version": 1
+            },
+            "parMerkleIndex": 0,
+            "parentHash": "ce6525b39dfcea582594abfc6348e9d5192169cb6948c643f5ab71e53d43cf2d"
+        },
+        "basHdr": {
+            "bits": 504020350,
+            "hash": "eee80b8c7c71b856a4d4601097a9960b0e10589b5133f980ecdbf3599aa56f48",
+            "height": 1113,
+            "merkleRoot": "e07a621ec6e678d789cccf092d6e23ae0a9ff5788b5c814e011c9f83e1858f7f",
+            "nonce": 0,
+            "previous": "0ed1d9ef3a52ee4fcc54a0c0c3c8ce8d16b3a6de4047fe03154be50ffed344de",
+            "timestamp": 1569293765,
+            "version": 536871936
+        },
+        "cbtx": {
+            "hash": "e07a621ec6e678d789cccf092d6e23ae0a9ff5788b5c814e011c9f83e1858f7f",
+            "stateHash": "db32fb5e2f4a5e123aea266bdc5a51dee997dfa27c7bcb2b54d7347c1d323407",
+            "txIns": [
+                {
+                    "extra": "59040000000000002f514c432043505520417578504f572f",
+                    "prevTxHash": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "prevTxIdx": 4294967295,
+                    "sequence": 4294967295
+                }
+            ],
+            "txNum": 1,
+            "txOuts": [
+                {
+                    "address": "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+                    "value": "456621004"
+                },
+                {
+                    "address": "qlc_111111111111111111111111111111111111111111111111111ommygmckp",
+                    "value": "114155251"
+                }
+            ],
+            "version": 1
+        },
+        "normBits": 486890512
     }
 }
 
@@ -60,7 +120,7 @@
 {
   "jsonrpc": "2.0",
   "id":3,
-  "method":"pov_getLatestHeader",
+  "method":"pov_getFittestHeader",
   "params":[
       0
   ]
@@ -72,12 +132,12 @@
 
 
 ## pov_getLatestHeader
-返回最长主链的最新区块头
+Return latest block header of PoV main chain
 
 - **Parameters**: `null`
   
 - **Returns**: 
-  -  `header`: 区块头结构
+  -  `header`: block header struct
 
 - **Example**:
 
@@ -99,18 +159,78 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "coinbase": "qlc_3fkqoenh9k33ca6tqcwyhxxjedhz564kh37rutkqh17uzjbeyzwqa7ucx4mp",
-        "hash": "7ce8ce0ea257e4cb23007bd136aa7958097d2d677f2f69027d3b27e9a05d2de6",
-        "height": 1956,
-        "merkleRoot": "0000000000000000000000000000000000000000000000000000000000000000",
-        "nonce": 2319911,
-        "previous": "fa015d81a210ccc9d87f834c1915b419e402d6461de698da5214613da7be2f64",
-        "signature": "39d858ec0a96b5345d1ff5455c43549e87346ff87345a3fa4a32ff5891f19484a5aa6e694789299d6eb77b0c1499595f92e9445ed6a7647eeebb477d7c10cf04",
-        "stateHash": "143b9602525e654f090b716300f736cf291398359f2ace08abe64c0102db2c16",
-        "target": "88370140955faf327a8eda56c244ee63674a0e7c87c75e78007500d827736bd286bf58fe722e84e6718dc8eff0fc176ece28708c756a0a7e655f9ee3c4000000",
-        "timestamp": 1560925637,
-        "txNum": 0,
-        "voteSignature": "c80e6f7c85f1303728ceb1f087e7e551e0bce151675be8c4f744faa3d92643c364375e77b326c2b156ee88450516c8696180f6fb6f9f84530947149948000000"
+        "algoEfficiency": 513,
+        "algoName": "X11",
+        "auxHdr": {
+            "auxMerkleBranch": null,
+            "auxMerkleIndex": 0,
+            "parBlockHeader": {
+                "bits": 0,
+                "merkleRoot": "ef57beac069ac836188d5f05fa4239e1ed542802acee3dc2eaf04f8061044c10",
+                "nonce": 1121457,
+                "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+                "timestamp": 1569293765,
+                "version": 2147483647
+            },
+            "parCoinBaseMerkle": null,
+            "parCoinBaseTx": {
+                "lockTime": 0,
+                "txIn": [
+                    {
+                        "previousOutPoint": {
+                            "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                            "index": 4294967295
+                        },
+                        "sequence": 4294967295,
+                        "signatureScript": "fabe6d6deee80b8c7c71b856a4d4601097a9960b0e10589b5133f980ecdbf3599aa56f480100000000000000"
+                    }
+                ],
+                "txOut": [
+                    {
+                        "pkScript": "51",
+                        "value": 1
+                    }
+                ],
+                "version": 1
+            },
+            "parMerkleIndex": 0,
+            "parentHash": "ce6525b39dfcea582594abfc6348e9d5192169cb6948c643f5ab71e53d43cf2d"
+        },
+        "basHdr": {
+            "bits": 504020350,
+            "hash": "eee80b8c7c71b856a4d4601097a9960b0e10589b5133f980ecdbf3599aa56f48",
+            "height": 1113,
+            "merkleRoot": "e07a621ec6e678d789cccf092d6e23ae0a9ff5788b5c814e011c9f83e1858f7f",
+            "nonce": 0,
+            "previous": "0ed1d9ef3a52ee4fcc54a0c0c3c8ce8d16b3a6de4047fe03154be50ffed344de",
+            "timestamp": 1569293765,
+            "version": 536871936
+        },
+        "cbtx": {
+            "hash": "e07a621ec6e678d789cccf092d6e23ae0a9ff5788b5c814e011c9f83e1858f7f",
+            "stateHash": "db32fb5e2f4a5e123aea266bdc5a51dee997dfa27c7bcb2b54d7347c1d323407",
+            "txIns": [
+                {
+                    "extra": "59040000000000002f514c432043505520417578504f572f",
+                    "prevTxHash": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "prevTxIdx": 4294967295,
+                    "sequence": 4294967295
+                }
+            ],
+            "txNum": 1,
+            "txOuts": [
+                {
+                    "address": "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+                    "value": "456621004"
+                },
+                {
+                    "address": "qlc_111111111111111111111111111111111111111111111111111ommygmckp",
+                    "value": "114155251"
+                }
+            ],
+            "version": 1
+        },
+        "normBits": 486890512
     }
 }
 
@@ -130,13 +250,13 @@
 :::
 
 ## pov_getHeaderByHeight
-通过区块高度查询区块头
+Return block header by heigth
 
 - **Parameters**:
-  - `height`: 区块高度
+  - `height`: block heigth
   
 - **Returns**:
-  - `header`: 区块头结构
+  - `header`: block header struct
 
 - **Example**:
 
@@ -148,7 +268,7 @@
   "id":3,
   "method":"pov_getHeaderByHeight",
   "params":[
-      1956
+      1113
   ]
 }
 
@@ -160,18 +280,78 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "coinbase": "qlc_3fkqoenh9k33ca6tqcwyhxxjedhz564kh37rutkqh17uzjbeyzwqa7ucx4mp",
-        "hash": "7ce8ce0ea257e4cb23007bd136aa7958097d2d677f2f69027d3b27e9a05d2de6",
-        "height": 1956,
-        "merkleRoot": "0000000000000000000000000000000000000000000000000000000000000000",
-        "nonce": 2319911,
-        "previous": "fa015d81a210ccc9d87f834c1915b419e402d6461de698da5214613da7be2f64",
-        "signature": "39d858ec0a96b5345d1ff5455c43549e87346ff87345a3fa4a32ff5891f19484a5aa6e694789299d6eb77b0c1499595f92e9445ed6a7647eeebb477d7c10cf04",
-        "stateHash": "143b9602525e654f090b716300f736cf291398359f2ace08abe64c0102db2c16",
-        "target": "88370140955faf327a8eda56c244ee63674a0e7c87c75e78007500d827736bd286bf58fe722e84e6718dc8eff0fc176ece28708c756a0a7e655f9ee3c4000000",
-        "timestamp": 1560925637,
-        "txNum": 0,
-        "voteSignature": "c80e6f7c85f1303728ceb1f087e7e551e0bce151675be8c4f744faa3d92643c364375e77b326c2b156ee88450516c8696180f6fb6f9f84530947149948000000"
+        "algoEfficiency": 513,
+        "algoName": "X11",
+        "auxHdr": {
+            "auxMerkleBranch": null,
+            "auxMerkleIndex": 0,
+            "parBlockHeader": {
+                "bits": 0,
+                "merkleRoot": "ef57beac069ac836188d5f05fa4239e1ed542802acee3dc2eaf04f8061044c10",
+                "nonce": 1121457,
+                "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+                "timestamp": 1569293765,
+                "version": 2147483647
+            },
+            "parCoinBaseMerkle": null,
+            "parCoinBaseTx": {
+                "lockTime": 0,
+                "txIn": [
+                    {
+                        "previousOutPoint": {
+                            "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                            "index": 4294967295
+                        },
+                        "sequence": 4294967295,
+                        "signatureScript": "fabe6d6deee80b8c7c71b856a4d4601097a9960b0e10589b5133f980ecdbf3599aa56f480100000000000000"
+                    }
+                ],
+                "txOut": [
+                    {
+                        "pkScript": "51",
+                        "value": 1
+                    }
+                ],
+                "version": 1
+            },
+            "parMerkleIndex": 0,
+            "parentHash": "ce6525b39dfcea582594abfc6348e9d5192169cb6948c643f5ab71e53d43cf2d"
+        },
+        "basHdr": {
+            "bits": 504020350,
+            "hash": "eee80b8c7c71b856a4d4601097a9960b0e10589b5133f980ecdbf3599aa56f48",
+            "height": 1113,
+            "merkleRoot": "e07a621ec6e678d789cccf092d6e23ae0a9ff5788b5c814e011c9f83e1858f7f",
+            "nonce": 0,
+            "previous": "0ed1d9ef3a52ee4fcc54a0c0c3c8ce8d16b3a6de4047fe03154be50ffed344de",
+            "timestamp": 1569293765,
+            "version": 536871936
+        },
+        "cbtx": {
+            "hash": "e07a621ec6e678d789cccf092d6e23ae0a9ff5788b5c814e011c9f83e1858f7f",
+            "stateHash": "db32fb5e2f4a5e123aea266bdc5a51dee997dfa27c7bcb2b54d7347c1d323407",
+            "txIns": [
+                {
+                    "extra": "59040000000000002f514c432043505520417578504f572f",
+                    "prevTxHash": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "prevTxIdx": 4294967295,
+                    "sequence": 4294967295
+                }
+            ],
+            "txNum": 1,
+            "txOuts": [
+                {
+                    "address": "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+                    "value": "456621004"
+                },
+                {
+                    "address": "qlc_111111111111111111111111111111111111111111111111111ommygmckp",
+                    "value": "114155251"
+                }
+            ],
+            "version": 1
+        },
+        "normBits": 486890512
     }
 }
 
@@ -184,7 +364,7 @@
   "id":3,
   "method":"pov_getHeaderByHeight",
   "params":[
-      1956
+      1113
   ]
 }
 
@@ -193,13 +373,13 @@
 :::
 
 ## pov_getHeaderByHash
-通过区块哈希查询区块头
+Return block header by hash
 
 - **Parameters**:
-  - `hash`: 区块哈希
+  - `hash`: block hash
   
 - **Returns**:
-  - `header`: 区块头结构
+  - `header`: block header struct
 
 - **Example**:
 
@@ -211,7 +391,7 @@
   "id":3,
   "method":"pov_getHeaderByHash",
   "params":[
-      "7ce8ce0ea257e4cb23007bd136aa7958097d2d677f2f69027d3b27e9a05d2de6"
+      "eee80b8c7c71b856a4d4601097a9960b0e10589b5133f980ecdbf3599aa56f48"
   ]
 }
 
@@ -223,18 +403,78 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "coinbase": "qlc_3fkqoenh9k33ca6tqcwyhxxjedhz564kh37rutkqh17uzjbeyzwqa7ucx4mp",
-        "hash": "7ce8ce0ea257e4cb23007bd136aa7958097d2d677f2f69027d3b27e9a05d2de6",
-        "height": 1956,
-        "merkleRoot": "0000000000000000000000000000000000000000000000000000000000000000",
-        "nonce": 2319911,
-        "previous": "fa015d81a210ccc9d87f834c1915b419e402d6461de698da5214613da7be2f64",
-        "signature": "39d858ec0a96b5345d1ff5455c43549e87346ff87345a3fa4a32ff5891f19484a5aa6e694789299d6eb77b0c1499595f92e9445ed6a7647eeebb477d7c10cf04",
-        "stateHash": "143b9602525e654f090b716300f736cf291398359f2ace08abe64c0102db2c16",
-        "target": "88370140955faf327a8eda56c244ee63674a0e7c87c75e78007500d827736bd286bf58fe722e84e6718dc8eff0fc176ece28708c756a0a7e655f9ee3c4000000",
-        "timestamp": 1560925637,
-        "txNum": 0,
-        "voteSignature": "c80e6f7c85f1303728ceb1f087e7e551e0bce151675be8c4f744faa3d92643c364375e77b326c2b156ee88450516c8696180f6fb6f9f84530947149948000000"
+        "algoEfficiency": 513,
+        "algoName": "X11",
+        "auxHdr": {
+            "auxMerkleBranch": null,
+            "auxMerkleIndex": 0,
+            "parBlockHeader": {
+                "bits": 0,
+                "merkleRoot": "ef57beac069ac836188d5f05fa4239e1ed542802acee3dc2eaf04f8061044c10",
+                "nonce": 1121457,
+                "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+                "timestamp": 1569293765,
+                "version": 2147483647
+            },
+            "parCoinBaseMerkle": null,
+            "parCoinBaseTx": {
+                "lockTime": 0,
+                "txIn": [
+                    {
+                        "previousOutPoint": {
+                            "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                            "index": 4294967295
+                        },
+                        "sequence": 4294967295,
+                        "signatureScript": "fabe6d6deee80b8c7c71b856a4d4601097a9960b0e10589b5133f980ecdbf3599aa56f480100000000000000"
+                    }
+                ],
+                "txOut": [
+                    {
+                        "pkScript": "51",
+                        "value": 1
+                    }
+                ],
+                "version": 1
+            },
+            "parMerkleIndex": 0,
+            "parentHash": "ce6525b39dfcea582594abfc6348e9d5192169cb6948c643f5ab71e53d43cf2d"
+        },
+        "basHdr": {
+            "bits": 504020350,
+            "hash": "eee80b8c7c71b856a4d4601097a9960b0e10589b5133f980ecdbf3599aa56f48",
+            "height": 1113,
+            "merkleRoot": "e07a621ec6e678d789cccf092d6e23ae0a9ff5788b5c814e011c9f83e1858f7f",
+            "nonce": 0,
+            "previous": "0ed1d9ef3a52ee4fcc54a0c0c3c8ce8d16b3a6de4047fe03154be50ffed344de",
+            "timestamp": 1569293765,
+            "version": 536871936
+        },
+        "cbtx": {
+            "hash": "e07a621ec6e678d789cccf092d6e23ae0a9ff5788b5c814e011c9f83e1858f7f",
+            "stateHash": "db32fb5e2f4a5e123aea266bdc5a51dee997dfa27c7bcb2b54d7347c1d323407",
+            "txIns": [
+                {
+                    "extra": "59040000000000002f514c432043505520417578504f572f",
+                    "prevTxHash": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "prevTxIdx": 4294967295,
+                    "sequence": 4294967295
+                }
+            ],
+            "txNum": 1,
+            "txOuts": [
+                {
+                    "address": "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+                    "value": "456621004"
+                },
+                {
+                    "address": "qlc_111111111111111111111111111111111111111111111111111ommygmckp",
+                    "value": "114155251"
+                }
+            ],
+            "version": 1
+        },
+        "normBits": 486890512
     }
 }
 
@@ -247,7 +487,7 @@
   "id":3,
   "method":"pov_getHeaderByHash",
   "params":[
-      "7ce8ce0ea257e4cb23007bd136aa7958097d2d677f2f69027d3b27e9a05d2de6"
+      "eee80b8c7c71b856a4d4601097a9960b0e10589b5133f980ecdbf3599aa56f48"
   ]
 }
 
@@ -257,16 +497,16 @@
 
 
 ## pov_batchGetHeadersByHeight
-根据区块高度批量查询区块头列表
+Return lots of block headers by height
 
 - **Parameters**:
-  - `height`: 区块高度
-  - `count`: 区块个数
-  - `direction`: true - 升序（前向）, false - 降序（后向）
+  - `height`: block height
+  - `count`: block count
+  - `direction`: true - ascend(forward), false - descend(backward)
 
 - **Returns**:
-  - `count`: 区块个数
-  - `headers`: 区块头结构列表
+  - `count`: block count
+  - `headers`: block header list
 
 - **Example**:
 
@@ -295,46 +535,226 @@
         "count": 3,
         "headers": [
             {
-                "coinbase": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
-                "hash": "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0",
-                "height": 1,
-                "merkleRoot": "cf8f3365a861c1b715ac6d431cd8463049100b900143112599032a00605209c8",
-                "nonce": 1064317,
-                "previous": "e25685cec8eba35fa42fbe62f607858d40f1dd4fc76db1679c8c8d9a10ab5a41",
-                "signature": "cab61a7e298f66664ab355277991284a78d2b3f730c0b86e9c9a960359c16bcdddd9b0017f077d3aa0ad607bcd139772a70b36988845c9083592c6dd2b75a100",
-                "stateHash": "a91fc0e6e48edd5f0447b246d759e59d3537de0b3873c748ee8677649ae722c8",
-                "target": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f000000",
-                "timestamp": 1560858521,
-                "txNum": 4,
-                "voteSignature": "746a773b31decf1f7b16afeb460a4232bdeb4b96184869de405e583547e9bf7a5448b315348536c104bddf7126cf1dabd989014eccad19b97aa479f80a000000"
+                "algoEfficiency": 513,
+                "algoName": "X11",
+                "auxHdr": {
+                    "auxMerkleBranch": null,
+                    "auxMerkleIndex": 0,
+                    "parBlockHeader": {
+                        "bits": 0,
+                        "merkleRoot": "8d7de26740218b87932f6c9e2b80f3540dc3d08e649dc1298a08bf950ba6638b",
+                        "nonce": 2793,
+                        "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+                        "timestamp": 1569225086,
+                        "version": 2147483647
+                    },
+                    "parCoinBaseMerkle": null,
+                    "parCoinBaseTx": {
+                        "lockTime": 0,
+                        "txIn": [
+                            {
+                                "previousOutPoint": {
+                                    "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                                    "index": 4294967295
+                                },
+                                "sequence": 4294967295,
+                                "signatureScript": "fabe6d6df03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f0100000000000000"
+                            }
+                        ],
+                        "txOut": [
+                            {
+                                "pkScript": "51",
+                                "value": 1
+                            }
+                        ],
+                        "version": 1
+                    },
+                    "parMerkleIndex": 0,
+                    "parentHash": "3aaf05ef01918183f02c96fb4ea7105e6b5c8466ef5b35c3e26d188c5251ef7b"
+                },
+                "basHdr": {
+                    "bits": 522194911,
+                    "hash": "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
+                    "height": 1,
+                    "merkleRoot": "f89b866902702efc89c0e368a0a8248323dd02486cb38f15d1988a8b03c2fe86",
+                    "nonce": 0,
+                    "previous": "ceefd0a85f48ded0304781438e1c6cda700798a19659d94caad22f206e0a0000",
+                    "timestamp": 1569225086,
+                    "version": 536871936
+                },
+                "cbtx": {
+                    "hash": "a8f464e23be86b1dbb2f7e35916843a59e3b232f57229923783ae2387269dace",
+                    "stateHash": "ab62d9acce180943e1cab1bd0ee1e0fcbf5d064a2955c9cfc49f863dab892a75",
+                    "txIns": [
+                        {
+                            "extra": "01000000000000002f514c432043505520417578504f572f",
+                            "prevTxHash": "0000000000000000000000000000000000000000000000000000000000000000",
+                            "prevTxIdx": 4294967295,
+                            "sequence": 4294967295
+                        }
+                    ],
+                    "txNum": 5,
+                    "txOuts": [
+                        {
+                            "address": "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+                            "value": "456621004"
+                        },
+                        {
+                            "address": "qlc_111111111111111111111111111111111111111111111111111ommygmckp",
+                            "value": "114155251"
+                        }
+                    ],
+                    "version": 1
+                },
+                "normBits": 504365039
             },
             {
-                "coinbase": "qlc_3fkqoenh9k33ca6tqcwyhxxjedhz564kh37rutkqh17uzjbeyzwqa7ucx4mp",
-                "hash": "4096e3087eb1023764555547ca2ee4396362370557ca4465051baeda2aabbb35",
-                "height": 2,
-                "merkleRoot": "ac43d7f44116068cf085b4a1c45de37c3d641c6f538206ff4616bc2d81f3f5e3",
-                "nonce": 254176,
-                "previous": "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0",
-                "signature": "aa347a7e58e69caf5a44a1e0be4cca4cf95d4b85b91a36b289afb141d394c8790203379a9935a2e166e9afca52f5e54290fa46cad2350eed3c1e4ba45ea0f706",
-                "stateHash": "3fdbbbada69d75e22019361d15de1be87db9b8129c29d7b06e29032352c2e32d",
-                "target": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f000000",
-                "timestamp": 1560858733,
-                "txNum": 3,
-                "voteSignature": "6041ac87fee73b6a12015984aa5729fab9c66103f37f854705e38eda8f717db7f835e8cb148ad90e8b6b4803c841fdda3e314ba929a8f0dd5ed57c1f2c000000"
+                "algoEfficiency": 513,
+                "algoName": "X11",
+                "auxHdr": {
+                    "auxMerkleBranch": null,
+                    "auxMerkleIndex": 0,
+                    "parBlockHeader": {
+                        "bits": 0,
+                        "merkleRoot": "a534370b8b33b0931ca6577bc58261bda31588ec2500577fe1fd633fc10f9665",
+                        "nonce": 4376,
+                        "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+                        "timestamp": 1569225086,
+                        "version": 2147483647
+                    },
+                    "parCoinBaseMerkle": null,
+                    "parCoinBaseTx": {
+                        "lockTime": 0,
+                        "txIn": [
+                            {
+                                "previousOutPoint": {
+                                    "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                                    "index": 4294967295
+                                },
+                                "sequence": 4294967295,
+                                "signatureScript": "fabe6d6da6fcbaf2754f09ce2a3df29bc120b5e29901b705ff8016353114ae7d0fc2feed0100000000000000"
+                            }
+                        ],
+                        "txOut": [
+                            {
+                                "pkScript": "51",
+                                "value": 1
+                            }
+                        ],
+                        "version": 1
+                    },
+                    "parMerkleIndex": 0,
+                    "parentHash": "3dff588c0f3e5146a89a791329a172e3c5df30b5ee8dc9b338ec9fa75e72f097"
+                },
+                "basHdr": {
+                    "bits": 522194910,
+                    "hash": "a6fcbaf2754f09ce2a3df29bc120b5e29901b705ff8016353114ae7d0fc2feed",
+                    "height": 2,
+                    "merkleRoot": "33209fd97c66a428a492c75a9652be46210d6deb50b7d76f3917674f1d6b56ff",
+                    "nonce": 0,
+                    "previous": "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
+                    "timestamp": 1569225086,
+                    "version": 536871936
+                },
+                "cbtx": {
+                    "hash": "33209fd97c66a428a492c75a9652be46210d6deb50b7d76f3917674f1d6b56ff",
+                    "stateHash": "ab62d9acce180943e1cab1bd0ee1e0fcbf5d064a2955c9cfc49f863dab892a75",
+                    "txIns": [
+                        {
+                            "extra": "02000000000000002f514c432043505520417578504f572f",
+                            "prevTxHash": "0000000000000000000000000000000000000000000000000000000000000000",
+                            "prevTxIdx": 4294967295,
+                            "sequence": 4294967295
+                        }
+                    ],
+                    "txNum": 1,
+                    "txOuts": [
+                        {
+                            "address": "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+                            "value": "456621004"
+                        },
+                        {
+                            "address": "qlc_111111111111111111111111111111111111111111111111111ommygmckp",
+                            "value": "114155251"
+                        }
+                    ],
+                    "version": 1
+                },
+                "normBits": 504365039
             },
             {
-                "coinbase": "qlc_1gnqid9up5y998uwig44x1yfrppsdo8f9jfszgqin7pr7ixsyyae1y81w9xp",
-                "hash": "b420cc80a7115b008d8154212fe234f1c4ea3550f814062a55e0257ce0982a74",
-                "height": 3,
-                "merkleRoot": "1b02679a683dc3b19b20120c6db699797b8ec696b3d2b4300917db4e103d8344",
-                "nonce": 349051,
-                "previous": "4096e3087eb1023764555547ca2ee4396362370557ca4465051baeda2aabbb35",
-                "signature": "c51290cb9f7b2408ac1e8941534b5552f1cf7aa1be3377f2e2a8b67a75c79eaf1afee6901739ba2d520b9e102c4a8a5dd7ef63da2c4a6828239388c991eb1206",
-                "stateHash": "c63397f5c43bc886fb970f738cc122eea66eec8ddb4475855f4e24f982c58494",
-                "target": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f000000",
-                "timestamp": 1560859794,
-                "txNum": 3,
-                "voteSignature": "bc704fcc2b635a6860ffbaa0a45ae6dd5201c1640eec361f83b01a0d25af4b1fb8b50e69710549b52dbd15ee1a227bb32e0ce77cc4364dc9e30d8a4b50000000"
+                "algoEfficiency": 513,
+                "algoName": "X11",
+                "auxHdr": {
+                    "auxMerkleBranch": null,
+                    "auxMerkleIndex": 0,
+                    "parBlockHeader": {
+                        "bits": 0,
+                        "merkleRoot": "1666bf7c8afd9b70dae544486b6d1a146720b0719dfd420b5922ec9ae3c91c74",
+                        "nonce": 44,
+                        "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+                        "timestamp": 1569225086,
+                        "version": 2147483647
+                    },
+                    "parCoinBaseMerkle": null,
+                    "parCoinBaseTx": {
+                        "lockTime": 0,
+                        "txIn": [
+                            {
+                                "previousOutPoint": {
+                                    "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                                    "index": 4294967295
+                                },
+                                "sequence": 4294967295,
+                                "signatureScript": "fabe6d6dcc8a190172d6f55fb207fd68a676cc082e1f8d7067f41e39a4788014c7e1d1600100000000000000"
+                            }
+                        ],
+                        "txOut": [
+                            {
+                                "pkScript": "51",
+                                "value": 1
+                            }
+                        ],
+                        "version": 1
+                    },
+                    "parMerkleIndex": 0,
+                    "parentHash": "6b576fd1584a2517061150934e36007f1bd91bea74921a7713233d416bd928e0"
+                },
+                "basHdr": {
+                    "bits": 522194909,
+                    "hash": "cc8a190172d6f55fb207fd68a676cc082e1f8d7067f41e39a4788014c7e1d160",
+                    "height": 3,
+                    "merkleRoot": "f54013f1bdd83ac190339d6fbc28beb4c935ea3919eb9a1ce7b640e20d9774e3",
+                    "nonce": 0,
+                    "previous": "a6fcbaf2754f09ce2a3df29bc120b5e29901b705ff8016353114ae7d0fc2feed",
+                    "timestamp": 1569225086,
+                    "version": 536871936
+                },
+                "cbtx": {
+                    "hash": "f54013f1bdd83ac190339d6fbc28beb4c935ea3919eb9a1ce7b640e20d9774e3",
+                    "stateHash": "ab62d9acce180943e1cab1bd0ee1e0fcbf5d064a2955c9cfc49f863dab892a75",
+                    "txIns": [
+                        {
+                            "extra": "03000000000000002f514c432043505520417578504f572f",
+                            "prevTxHash": "0000000000000000000000000000000000000000000000000000000000000000",
+                            "prevTxIdx": 4294967295,
+                            "sequence": 4294967295
+                        }
+                    ],
+                    "txNum": 1,
+                    "txOuts": [
+                        {
+                            "address": "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+                            "value": "456621004"
+                        },
+                        {
+                            "address": "qlc_111111111111111111111111111111111111111111111111111ommygmckp",
+                            "value": "114155251"
+                        }
+                    ],
+                    "version": 1
+                },
+                "normBits": 504365038
             }
         ]
     }
@@ -361,14 +781,14 @@
 
 
 ## pov_getLatestBlock
-返回最长主链的最新区块结构（包含区块头部和区块体）
+Return latest full block of PoV main chain
 
 - **Parameters**:
-  - `txOffset`: 从offset开始返回一批交易，默认为0
-  - `txLimit`: 返回交易的最大限制，默认为100
+  - `txOffset`: return transcations from offset in block, default is 0
+  - `txLimit`: return transcations not excced limit, default is 100
   
 - **Returns**: 
-  -  `block`: 区块结构
+  -  `block`: block struct
 
 - **Example**:
 
@@ -379,7 +799,10 @@
   "jsonrpc": "2.0",
   "id":3,
   "method":"pov_getLatestBlock",
-  "params":[]
+  "params":[
+      0,
+      10
+    ]
 }
 
 
@@ -390,32 +813,99 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "coinbase": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
-        "hash": "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0",
-        "height": 1,
-        "merkleRoot": "cf8f3365a861c1b715ac6d431cd8463049100b900143112599032a00605209c8",
-        "nonce": 1064317,
-        "previous": "e25685cec8eba35fa42fbe62f607858d40f1dd4fc76db1679c8c8d9a10ab5a41",
-        "signature": "cab61a7e298f66664ab355277991284a78d2b3f730c0b86e9c9a960359c16bcdddd9b0017f077d3aa0ad607bcd139772a70b36988845c9083592c6dd2b75a100",
-        "stateHash": "a91fc0e6e48edd5f0447b246d759e59d3537de0b3873c748ee8677649ae722c8",
-        "target": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f000000",
-        "timestamp": 1560858521,
-        "transactions": [
-            {
-                "hash": "f798089896ffdf45ccce2e039666014b8c666ea0f47f0df4ee7e73b49dac0945"
+        "algoEfficiency": 513,
+        "algoName": "X11",
+        "body": {
+            "txs": [
+                {
+                    "hash": "a8f464e23be86b1dbb2f7e35916843a59e3b232f57229923783ae2387269dace"
+                },
+                {
+                    "hash": "f798089896ffdf45ccce2e039666014b8c666ea0f47f0df4ee7e73b49dac0945"
+                },
+                {
+                    "hash": "5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d"
+                },
+                {
+                    "hash": "424b367da2e0ff991d3086f599ce26547b80ae948b209f1cb7d63e19231ab213"
+                },
+                {
+                    "hash": "8b54787c668dddd4f22ad64a8b0d241810871b9a52a989eb97670f345ad5dc90"
+                }
+            ]
+        },
+        "header": {
+            "auxHdr": {
+                "auxMerkleBranch": null,
+                "auxMerkleIndex": 0,
+                "parBlockHeader": {
+                    "bits": 0,
+                    "merkleRoot": "8d7de26740218b87932f6c9e2b80f3540dc3d08e649dc1298a08bf950ba6638b",
+                    "nonce": 2793,
+                    "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "timestamp": 1569225086,
+                    "version": 2147483647
+                },
+                "parCoinBaseMerkle": null,
+                "parCoinBaseTx": {
+                    "lockTime": 0,
+                    "txIn": [
+                        {
+                            "previousOutPoint": {
+                                "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                                "index": 4294967295
+                            },
+                            "sequence": 4294967295,
+                            "signatureScript": "fabe6d6df03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f0100000000000000"
+                        }
+                    ],
+                    "txOut": [
+                        {
+                            "pkScript": "51",
+                            "value": 1
+                        }
+                    ],
+                    "version": 1
+                },
+                "parMerkleIndex": 0,
+                "parentHash": "3aaf05ef01918183f02c96fb4ea7105e6b5c8466ef5b35c3e26d188c5251ef7b"
             },
-            {
-                "hash": "424b367da2e0ff991d3086f599ce26547b80ae948b209f1cb7d63e19231ab213"
+            "basHdr": {
+                "bits": 522194911,
+                "hash": "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
+                "height": 1,
+                "merkleRoot": "f89b866902702efc89c0e368a0a8248323dd02486cb38f15d1988a8b03c2fe86",
+                "nonce": 0,
+                "previous": "ceefd0a85f48ded0304781438e1c6cda700798a19659d94caad22f206e0a0000",
+                "timestamp": 1569225086,
+                "version": 536871936
             },
-            {
-                "hash": "5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d"
-            },
-            {
-                "hash": "8b54787c668dddd4f22ad64a8b0d241810871b9a52a989eb97670f345ad5dc90"
+            "cbtx": {
+                "hash": "a8f464e23be86b1dbb2f7e35916843a59e3b232f57229923783ae2387269dace",
+                "stateHash": "ab62d9acce180943e1cab1bd0ee1e0fcbf5d064a2955c9cfc49f863dab892a75",
+                "txIns": [
+                    {
+                        "extra": "01000000000000002f514c432043505520417578504f572f",
+                        "prevTxHash": "0000000000000000000000000000000000000000000000000000000000000000",
+                        "prevTxIdx": 4294967295,
+                        "sequence": 4294967295
+                    }
+                ],
+                "txNum": 5,
+                "txOuts": [
+                    {
+                        "address": "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+                        "value": "456621004"
+                    },
+                    {
+                        "address": "qlc_111111111111111111111111111111111111111111111111111ommygmckp",
+                        "value": "114155251"
+                    }
+                ],
+                "version": 1
             }
-        ],
-        "txNum": 4,
-        "voteSignature": "746a773b31decf1f7b16afeb460a4232bdeb4b96184869de405e583547e9bf7a5448b315348536c104bddf7126cf1dabd989014eccad19b97aa479f80a000000"
+        },
+        "normBits": 504365039
     }
 }
 
@@ -427,7 +917,10 @@
   "jsonrpc": "2.0",
   "id":3,
   "method":"pov_getLatestBlock",
-  "params":[]
+  "params":[
+      0,
+      10
+  ]
 }
 
 
@@ -435,15 +928,15 @@
 :::
 
 ## pov_getBlockByHeight
-根据区块高度查询区块结构（包含区块头部和区块体）
+Return full block by heigth
 
 - **Parameters**:
-  - `height`: 区块高度
-  - `txOffset`: 从offset开始返回一批交易，默认为0
-  - `txLimit`: 返回交易的最大限制，默认为100
+  - `height`: block heigth
+  - `txOffset`: return transcations from offset in block, default is 0
+  - `txLimit`: return transcations not excced limit, default is 100
   
 - **Returns**:
-  - `block`: 区块结构
+  - `block`: block struct
 
 - **Example**:
 
@@ -455,7 +948,9 @@
   "id":3,
   "method":"pov_getBlockByHeight",
   "params":[
-      1
+      1,
+      1,
+      10
   ]
 }
 
@@ -467,32 +962,99 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "coinbase": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
-        "hash": "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0",
-        "height": 1,
-        "merkleRoot": "cf8f3365a861c1b715ac6d431cd8463049100b900143112599032a00605209c8",
-        "nonce": 1064317,
-        "previous": "e25685cec8eba35fa42fbe62f607858d40f1dd4fc76db1679c8c8d9a10ab5a41",
-        "signature": "cab61a7e298f66664ab355277991284a78d2b3f730c0b86e9c9a960359c16bcdddd9b0017f077d3aa0ad607bcd139772a70b36988845c9083592c6dd2b75a100",
-        "stateHash": "a91fc0e6e48edd5f0447b246d759e59d3537de0b3873c748ee8677649ae722c8",
-        "target": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f000000",
-        "timestamp": 1560858521,
-        "transactions": [
-            {
-                "hash": "f798089896ffdf45ccce2e039666014b8c666ea0f47f0df4ee7e73b49dac0945"
+        "algoEfficiency": 513,
+        "algoName": "X11",
+        "body": {
+            "txs": [
+                {
+                    "hash": "a8f464e23be86b1dbb2f7e35916843a59e3b232f57229923783ae2387269dace"
+                },
+                {
+                    "hash": "f798089896ffdf45ccce2e039666014b8c666ea0f47f0df4ee7e73b49dac0945"
+                },
+                {
+                    "hash": "5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d"
+                },
+                {
+                    "hash": "424b367da2e0ff991d3086f599ce26547b80ae948b209f1cb7d63e19231ab213"
+                },
+                {
+                    "hash": "8b54787c668dddd4f22ad64a8b0d241810871b9a52a989eb97670f345ad5dc90"
+                }
+            ]
+        },
+        "header": {
+            "auxHdr": {
+                "auxMerkleBranch": null,
+                "auxMerkleIndex": 0,
+                "parBlockHeader": {
+                    "bits": 0,
+                    "merkleRoot": "8d7de26740218b87932f6c9e2b80f3540dc3d08e649dc1298a08bf950ba6638b",
+                    "nonce": 2793,
+                    "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "timestamp": 1569225086,
+                    "version": 2147483647
+                },
+                "parCoinBaseMerkle": null,
+                "parCoinBaseTx": {
+                    "lockTime": 0,
+                    "txIn": [
+                        {
+                            "previousOutPoint": {
+                                "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                                "index": 4294967295
+                            },
+                            "sequence": 4294967295,
+                            "signatureScript": "fabe6d6df03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f0100000000000000"
+                        }
+                    ],
+                    "txOut": [
+                        {
+                            "pkScript": "51",
+                            "value": 1
+                        }
+                    ],
+                    "version": 1
+                },
+                "parMerkleIndex": 0,
+                "parentHash": "3aaf05ef01918183f02c96fb4ea7105e6b5c8466ef5b35c3e26d188c5251ef7b"
             },
-            {
-                "hash": "424b367da2e0ff991d3086f599ce26547b80ae948b209f1cb7d63e19231ab213"
+            "basHdr": {
+                "bits": 522194911,
+                "hash": "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
+                "height": 1,
+                "merkleRoot": "f89b866902702efc89c0e368a0a8248323dd02486cb38f15d1988a8b03c2fe86",
+                "nonce": 0,
+                "previous": "ceefd0a85f48ded0304781438e1c6cda700798a19659d94caad22f206e0a0000",
+                "timestamp": 1569225086,
+                "version": 536871936
             },
-            {
-                "hash": "5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d"
-            },
-            {
-                "hash": "8b54787c668dddd4f22ad64a8b0d241810871b9a52a989eb97670f345ad5dc90"
+            "cbtx": {
+                "hash": "a8f464e23be86b1dbb2f7e35916843a59e3b232f57229923783ae2387269dace",
+                "stateHash": "ab62d9acce180943e1cab1bd0ee1e0fcbf5d064a2955c9cfc49f863dab892a75",
+                "txIns": [
+                    {
+                        "extra": "01000000000000002f514c432043505520417578504f572f",
+                        "prevTxHash": "0000000000000000000000000000000000000000000000000000000000000000",
+                        "prevTxIdx": 4294967295,
+                        "sequence": 4294967295
+                    }
+                ],
+                "txNum": 5,
+                "txOuts": [
+                    {
+                        "address": "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+                        "value": "456621004"
+                    },
+                    {
+                        "address": "qlc_111111111111111111111111111111111111111111111111111ommygmckp",
+                        "value": "114155251"
+                    }
+                ],
+                "version": 1
             }
-        ],
-        "txNum": 4,
-        "voteSignature": "746a773b31decf1f7b16afeb460a4232bdeb4b96184869de405e583547e9bf7a5448b315348536c104bddf7126cf1dabd989014eccad19b97aa479f80a000000"
+        },
+        "normBits": 504365039
     }
 }
 
@@ -505,7 +1067,9 @@
   "id":3,
   "method":"pov_getBlockByHeight",
   "params":[
-      1
+      1,
+      0,
+      10
   ]
 }
 
@@ -515,15 +1079,15 @@
 
 
 ## pov_getBlockByHash
-根据哈希查询区块结构（包含区块头部和区块体）
+Return full block by hash
 
 - **Parameters**:
-  - `hash`: 区块哈希
-  - `txOffset`: 从offset开始返回一批交易，默认为0
-  - `txLimit`: 返回交易的最大限制，默认为100
+  - `hash`: block hash
+  - `txOffset`: return transcations from offset in block, default is 0
+  - `txLimit`: return transcations not excced limit, default is 100
   
 - **Returns**:
-  - `block`: 区块结构
+  - `block`: block struct
 
 - **Example**:
 
@@ -535,7 +1099,9 @@
   "id":3,
   "method":"pov_getBlockByHash",
   "params":[
-      "7ce8ce0ea257e4cb23007bd136aa7958097d2d677f2f69027d3b27e9a05d2de6"
+      "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
+      0,
+      10
   ]
 }
 
@@ -547,32 +1113,99 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "coinbase": "qlc_3qqy3dag4yuowwqgpid36h9tfnnzxahofd9sq1qg1ksefhxuqw9dou93wwsd",
-        "hash": "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0",
-        "height": 1,
-        "merkleRoot": "cf8f3365a861c1b715ac6d431cd8463049100b900143112599032a00605209c8",
-        "nonce": 1064317,
-        "previous": "e25685cec8eba35fa42fbe62f607858d40f1dd4fc76db1679c8c8d9a10ab5a41",
-        "signature": "cab61a7e298f66664ab355277991284a78d2b3f730c0b86e9c9a960359c16bcdddd9b0017f077d3aa0ad607bcd139772a70b36988845c9083592c6dd2b75a100",
-        "stateHash": "a91fc0e6e48edd5f0447b246d759e59d3537de0b3873c748ee8677649ae722c8",
-        "target": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f000000",
-        "timestamp": 1560858521,
-        "transactions": [
-            {
-                "hash": "f798089896ffdf45ccce2e039666014b8c666ea0f47f0df4ee7e73b49dac0945"
+        "algoEfficiency": 513,
+        "algoName": "X11",
+        "body": {
+            "txs": [
+                {
+                    "hash": "a8f464e23be86b1dbb2f7e35916843a59e3b232f57229923783ae2387269dace"
+                },
+                {
+                    "hash": "f798089896ffdf45ccce2e039666014b8c666ea0f47f0df4ee7e73b49dac0945"
+                },
+                {
+                    "hash": "5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d"
+                },
+                {
+                    "hash": "424b367da2e0ff991d3086f599ce26547b80ae948b209f1cb7d63e19231ab213"
+                },
+                {
+                    "hash": "8b54787c668dddd4f22ad64a8b0d241810871b9a52a989eb97670f345ad5dc90"
+                }
+            ]
+        },
+        "header": {
+            "auxHdr": {
+                "auxMerkleBranch": null,
+                "auxMerkleIndex": 0,
+                "parBlockHeader": {
+                    "bits": 0,
+                    "merkleRoot": "8d7de26740218b87932f6c9e2b80f3540dc3d08e649dc1298a08bf950ba6638b",
+                    "nonce": 2793,
+                    "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "timestamp": 1569225086,
+                    "version": 2147483647
+                },
+                "parCoinBaseMerkle": null,
+                "parCoinBaseTx": {
+                    "lockTime": 0,
+                    "txIn": [
+                        {
+                            "previousOutPoint": {
+                                "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                                "index": 4294967295
+                            },
+                            "sequence": 4294967295,
+                            "signatureScript": "fabe6d6df03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f0100000000000000"
+                        }
+                    ],
+                    "txOut": [
+                        {
+                            "pkScript": "51",
+                            "value": 1
+                        }
+                    ],
+                    "version": 1
+                },
+                "parMerkleIndex": 0,
+                "parentHash": "3aaf05ef01918183f02c96fb4ea7105e6b5c8466ef5b35c3e26d188c5251ef7b"
             },
-            {
-                "hash": "424b367da2e0ff991d3086f599ce26547b80ae948b209f1cb7d63e19231ab213"
+            "basHdr": {
+                "bits": 522194911,
+                "hash": "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
+                "height": 1,
+                "merkleRoot": "f89b866902702efc89c0e368a0a8248323dd02486cb38f15d1988a8b03c2fe86",
+                "nonce": 0,
+                "previous": "ceefd0a85f48ded0304781438e1c6cda700798a19659d94caad22f206e0a0000",
+                "timestamp": 1569225086,
+                "version": 536871936
             },
-            {
-                "hash": "5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d"
-            },
-            {
-                "hash": "8b54787c668dddd4f22ad64a8b0d241810871b9a52a989eb97670f345ad5dc90"
+            "cbtx": {
+                "hash": "a8f464e23be86b1dbb2f7e35916843a59e3b232f57229923783ae2387269dace",
+                "stateHash": "ab62d9acce180943e1cab1bd0ee1e0fcbf5d064a2955c9cfc49f863dab892a75",
+                "txIns": [
+                    {
+                        "extra": "01000000000000002f514c432043505520417578504f572f",
+                        "prevTxHash": "0000000000000000000000000000000000000000000000000000000000000000",
+                        "prevTxIdx": 4294967295,
+                        "sequence": 4294967295
+                    }
+                ],
+                "txNum": 5,
+                "txOuts": [
+                    {
+                        "address": "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+                        "value": "456621004"
+                    },
+                    {
+                        "address": "qlc_111111111111111111111111111111111111111111111111111ommygmckp",
+                        "value": "114155251"
+                    }
+                ],
+                "version": 1
             }
-        ],
-        "txNum": 4,
-        "voteSignature": "746a773b31decf1f7b16afeb460a4232bdeb4b96184869de405e583547e9bf7a5448b315348536c104bddf7126cf1dabd989014eccad19b97aa479f80a000000"
+        },
+        "normBits": 504365039
     }
 }
 
@@ -585,7 +1218,9 @@
   "id":3,
   "method":"pov_getBlockByHash",
   "params":[
-      "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0"
+      "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
+      0,
+      10
   ]
 }
 
@@ -595,13 +1230,13 @@
 
 
 ## pov_getTransaction
-通过交易哈希查询交易信息
+Return transaction by tx hash
 
 - **Parameters**:
-  - `txHash`: 交易哈希
+  - `txHash`: transaction hash
   
 - **Returns**:
-  - `transaction`: 交易结构
+  - `transaction`: transaction struct
 
 - **Example**:
 
@@ -625,31 +1260,11 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "transaction": {
-            "address": "qlc_3qjky1ptg9qkzm8iertdzrnx9btjbaea33snh1w4g395xqqczye4kgcfyfs1",
-            "balance": "0",
-            "data": "6TrdxIkGbXR6PHT/HeyOpqcBG94BDdQErsRUiA8j1Yy/koDkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjhvJvwQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjoE+UabYq+oXii83bVMt+YPMpxtOTPW90teGTuMM+LpQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEUUdBUwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABFFHQVMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-            "link": "e813e51a6d8abea178a2f376d532df983cca71b4e4cf5bdd2d7864ee30cf8ba5",
-            "message": "0000000000000000000000000000000000000000000000000000000000000000",
-            "network": "0",
-            "oracle": "0",
-            "povHeight": 0,
-            "previous": "0000000000000000000000000000000000000000000000000000000000000000",
-            "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
-            "signature": "441b26cf4318cea394fe07a5e30cde18f967406a9c26158417bcd29abd5a4c79d05746f838bc42f0a7d681cf4a3b4e6b29992fcd7fa7cafe72a4e00e133d310f",
-            "storage": "0",
-            "timestamp": 1553990401,
-            "token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
-            "type": "ContractSend",
-            "vote": "0",
-            "work": "000000000048f5b9"
-        },
         "txHash": "f798089896ffdf45ccce2e039666014b8c666ea0f47f0df4ee7e73b49dac0945",
         "txLookup": {
-            "blockHash": "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0",
+            "blockHash": "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
             "blockHeight": 1,
-            "txIndex": 0
+            "txIndex": 1
         }
     }
 }
@@ -673,14 +1288,14 @@
 
 
 ## pov_getTransactionByBlockHashAndIndex
-通过区块哈希和交易索引查询交易信息
+Return transaction by block hash and tx index
 
 - **Parameters**:
-  - `blockHash`: 区块哈希
-  - `txIndex`: 交易索引
+  - `blockHash`: block hash
+  - `txIndex`: tx index
   
 - **Returns**:
-  - `transaction`: 交易结构
+  - `transaction`: transaction struct
 
 - **Example**:
 
@@ -692,8 +1307,8 @@
   "id":3,
   "method":"pov_getTransactionByBlockHashAndIndex",
   "params":[
-      "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0",
-      0
+      "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
+      1
   ]
 }
 
@@ -705,31 +1320,11 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "transaction": {
-            "address": "qlc_3qjky1ptg9qkzm8iertdzrnx9btjbaea33snh1w4g395xqqczye4kgcfyfs1",
-            "balance": "0",
-            "data": "6TrdxIkGbXR6PHT/HeyOpqcBG94BDdQErsRUiA8j1Yy/koDkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjhvJvwQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjoE+UabYq+oXii83bVMt+YPMpxtOTPW90teGTuMM+LpQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEUUdBUwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABFFHQVMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-            "link": "e813e51a6d8abea178a2f376d532df983cca71b4e4cf5bdd2d7864ee30cf8ba5",
-            "message": "0000000000000000000000000000000000000000000000000000000000000000",
-            "network": "0",
-            "oracle": "0",
-            "povHeight": 0,
-            "previous": "0000000000000000000000000000000000000000000000000000000000000000",
-            "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
-            "signature": "441b26cf4318cea394fe07a5e30cde18f967406a9c26158417bcd29abd5a4c79d05746f838bc42f0a7d681cf4a3b4e6b29992fcd7fa7cafe72a4e00e133d310f",
-            "storage": "0",
-            "timestamp": 1553990401,
-            "token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
-            "type": "ContractSend",
-            "vote": "0",
-            "work": "000000000048f5b9"
-        },
         "txHash": "f798089896ffdf45ccce2e039666014b8c666ea0f47f0df4ee7e73b49dac0945",
         "txLookup": {
-            "blockHash": "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0",
+            "blockHash": "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
             "blockHeight": 1,
-            "txIndex": 0
+            "txIndex": 1
         }
     }
 }
@@ -743,8 +1338,8 @@
   "id":3,
   "method":"pov_getTransactionByBlockHashAndIndex",
   "params":[
-      "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0",
-      0
+      "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
+      1
   ]
 }
 
@@ -754,14 +1349,14 @@
 
 
 ## pov_getTransactionByBlockHeightAndIndex
-通过区块高度和交易索引查询交易信息
+Return transaction by block height and tx index
 
 - **Parameters**:
-  - `blockHeight`: 区块高度
-  - `txIndex`: 交易索引
+  - `blockHeight`: block height
+  - `txIndex`: tx index
   
 - **Returns**:
-  - `transaction`: 交易结构
+  - `transaction`: transaction struct
 
 - **Example**:
 
@@ -774,7 +1369,7 @@
   "method":"pov_getTransactionByBlockHeightAndIndex",
   "params":[
       1,
-      0
+      1
   ]
 }
 
@@ -786,31 +1381,11 @@
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "transaction": {
-            "address": "qlc_3qjky1ptg9qkzm8iertdzrnx9btjbaea33snh1w4g395xqqczye4kgcfyfs1",
-            "balance": "0",
-            "data": "6TrdxIkGbXR6PHT/HeyOpqcBG94BDdQErsRUiA8j1Yy/koDkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjhvJvwQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjoE+UabYq+oXii83bVMt+YPMpxtOTPW90teGTuMM+LpQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEUUdBUwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABFFHQVMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-            "link": "e813e51a6d8abea178a2f376d532df983cca71b4e4cf5bdd2d7864ee30cf8ba5",
-            "message": "0000000000000000000000000000000000000000000000000000000000000000",
-            "network": "0",
-            "oracle": "0",
-            "povHeight": 0,
-            "previous": "0000000000000000000000000000000000000000000000000000000000000000",
-            "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
-            "signature": "441b26cf4318cea394fe07a5e30cde18f967406a9c26158417bcd29abd5a4c79d05746f838bc42f0a7d681cf4a3b4e6b29992fcd7fa7cafe72a4e00e133d310f",
-            "storage": "0",
-            "timestamp": 1553990401,
-            "token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
-            "type": "ContractSend",
-            "vote": "0",
-            "work": "000000000048f5b9"
-        },
         "txHash": "f798089896ffdf45ccce2e039666014b8c666ea0f47f0df4ee7e73b49dac0945",
         "txLookup": {
-            "blockHash": "44ee8dd2e0b380a9da2e3b49822adf0530d6bf3c87746c34062f1c18c01c52b0",
+            "blockHash": "f03f08424180fe5a88c02ed8a58679254e71a43c7dbf5058d5664ee66b2e718f",
             "blockHeight": 1,
-            "txIndex": 0
+            "txIndex": 1
         }
     }
 }
@@ -833,3 +1408,675 @@
 ```
 :::
 
+
+## pov_getLatestAccountState
+Return latest account state
+
+- **Parameters**:
+  - `address`: account address
+  
+- **Returns**:
+  - `accountState`: account state
+  - `repState`: representative state
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getLatestAccountState",
+  "params":[
+      "qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp"
+  ]
+}
+
+
+```
+
+```json tab:Response
+{
+    "jsonrpc":"2.0",
+    "id":3,
+    "result":{
+        "accountState":{
+            "balance":"20000000000000000",
+            "vote":"100000000000000",
+            "network":"0",
+            "storage":"0",
+            "oracle":"0",
+            "tokenStates":[
+                {
+                    "type":"a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+                    "hash":"6ed03413f010575d9c87de96313bb564c14737e7a77627da6294464947d80c87",
+                    "representative":"qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp",
+                    "balance":"20000000000000000"
+                }
+            ]
+        },
+        "repState":{
+            "balance":"20000000000000000",
+            "vote":"100000000000000",
+            "network":"0",
+            "storage":"0",
+            "oracle":"0",
+            "total":"20100000000000000",
+            "status":1,
+            "height":1234
+        }
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getLatestAccountState",
+  "params":[
+      "qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp"
+  ]
+}
+
+
+```
+:::
+
+
+## pov_getAccountStateByBlockHeight
+Return account state by block height
+
+- **Parameters**:
+  - `address`: account address
+  - `height`: block height
+  
+- **Returns**:
+  - `accountState`: account state
+  - `repState`: representative state
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getLatestAccountState",
+  "params":[
+      "qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp",
+      1320
+  ]
+}
+
+
+```
+
+```json tab:Response
+{
+    "jsonrpc":"2.0",
+    "id":3,
+    "result":{
+        "accountState":{
+            "balance":"20000000000000000",
+            "vote":"100000000000000",
+            "network":"0",
+            "storage":"0",
+            "oracle":"0",
+            "tokenStates":[
+                {
+                    "type":"a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+                    "hash":"6ed03413f010575d9c87de96313bb564c14737e7a77627da6294464947d80c87",
+                    "representative":"qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp",
+                    "balance":"20000000000000000"
+                }
+            ]
+        },
+        "repState":{
+            "balance":"20000000000000000",
+            "vote":"100000000000000",
+            "network":"0",
+            "storage":"0",
+            "oracle":"0",
+            "total":"20100000000000000",
+            "status":1,
+            "height":1234
+        }
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getAccountStateByBlockHeight",
+  "params":[
+      "qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp",
+      1320
+  ]
+}
+
+
+```
+:::
+
+
+## pov_getAccountStateByBlockHash
+Return account state by block hash
+
+- **Parameters**:
+  - `address`: account address
+  - `hash`: block hash
+  
+- **Returns**:
+  - `accountState`: account state
+  - `repState`: representative state
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getAccountStateByBlockHash",
+  "params":[
+      "qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp",
+      "4eaad546467098976f3e46f5a1439376b83c6b5b1424776560ceb4283177c639"
+  ]
+}
+
+
+```
+
+```json tab:Response
+{
+    "jsonrpc":"2.0",
+    "id":3,
+    "result":{
+        "accountState":{
+            "balance":"20000000000000000",
+            "vote":"100000000000000",
+            "network":"0",
+            "storage":"0",
+            "oracle":"0",
+            "tokenStates":[
+                {
+                    "type":"a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
+                    "hash":"6ed03413f010575d9c87de96313bb564c14737e7a77627da6294464947d80c87",
+                    "representative":"qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp",
+                    "balance":"20000000000000000"
+                }
+            ]
+        },
+        "repState":{
+            "balance":"20000000000000000",
+            "vote":"100000000000000",
+            "network":"0",
+            "storage":"0",
+            "oracle":"0",
+            "total":"20100000000000000",
+            "status":1,
+            "height":1234
+        }
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getAccountStateByBlockHash",
+  "params":[
+      "qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp",
+      "4eaad546467098976f3e46f5a1439376b83c6b5b1424776560ceb4283177c639"
+  ]
+}
+
+
+```
+:::
+
+
+## pov_getHashInfo
+Return network hash info
+
+- **Parameters**:
+  - `height`: block height, default is 0 for latest block height
+  - `count`: block count, defautl is 120
+  
+- **Returns**:
+  - `chainHashPS`: hash of total chain
+  - `sha256dHashPS`: hash of sha256d chain
+  - `x11HashPS`: hash of x11 chain
+  - `scryptHashPS`: hash of scrypt chain
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getHashInfo",
+  "params":[
+      0,
+      0
+  ]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "chainHashPS": 515524,
+        "scryptHashPS": 0,
+        "sha256dHashPS": 499708,
+        "x11HashPS": 15815
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getHashInfo",
+  "params":[
+      0,
+      0
+  ]
+}
+
+
+```
+:::
+
+
+## pov_getMiningInfo
+Return mining info
+
+- **Parameters**: `null`
+  
+- **Returns**:
+  - `hashInfo`: hash info for latest 120 blocks
+  - `pooledTx`: pending tx count
+  - `syncState`: sync state
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getMiningInfo",
+  "params":[]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "algoEfficiency": 513,
+        "algoName": "",
+        "blockNum": 1124,
+        "cpuMining": false,
+        "currentBlockSize": 920,
+        "currentBlockTx": 1,
+        "difficultyRatio": 513.00146771,
+        "hashInfo": {
+            "chainHashPS": 525078,
+            "scryptHashPS": 0,
+            "sha256dHashPS": 509024,
+            "x11HashPS": 16053
+        },
+        "minerAddr": "",
+        "pooledTx": 0,
+        "syncState": 2
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getMiningInfo",
+  "params":[]
+}
+
+
+```
+:::
+
+
+## pov_getMinerStats
+Return miner statistics
+
+- **Parameters**:
+  - `addresses`: addresses of miners
+  
+- **Returns**:
+  - `minerStats`: statistics of all miners
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getMinerStats",
+  "params":[[]]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "latestBlockHeight": 1131,
+        "minerCount": 4,
+        "minerStats": {
+            "qlc_176f1aj1361y5i4yu8ccyp8xphjcbxmmu4ryh4jecnsncse1eiud7uncz8bj": {
+                "firstBlockHeight": 0,
+                "firstBlockTime": "2019-08-21T08:00:00+08:00",
+                "isOnline": false,
+                "lastBlockHeight": 0,
+                "lastBlockTime": "2019-08-21T08:00:00+08:00",
+                "mainBlockNum": 1,
+                "mainRewardAmount": "456621004"
+            },
+            "qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp": {
+                "firstBlockHeight": 20,
+                "firstBlockTime": "2019-09-23T15:52:19+08:00",
+                "isOnline": true,
+                "lastBlockHeight": 1125,
+                "lastBlockTime": "2019-09-24T11:14:18+08:00",
+                "mainBlockNum": 78,
+                "mainRewardAmount": "35616438312"
+            },
+            "qlc_1qiox3611cuyg7ap597zuwfssehezio3on5nhbtx5xchsm6xgbz49frwacio": {
+                "firstBlockHeight": 123,
+                "firstBlockTime": "2019-09-23T16:17:41+08:00",
+                "isOnline": false,
+                "lastBlockHeight": 135,
+                "lastBlockTime": "2019-09-23T16:22:06+08:00",
+                "mainBlockNum": 9,
+                "mainRewardAmount": "4109589036"
+            },
+            "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz": {
+                "firstBlockHeight": 1,
+                "firstBlockTime": "2019-09-23T15:51:26+08:00",
+                "isOnline": true,
+                "lastBlockHeight": 1131,
+                "lastBlockTime": "2019-09-24T11:20:27+08:00",
+                "mainBlockNum": 1044,
+                "mainRewardAmount": "476712328176"
+            }
+        },
+        "onlineCount": 2,
+        "totalBlockNum": 1132
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getMinerStats",
+  "params":[[]]
+}
+
+
+```
+:::
+
+
+## pov_getWork
+Return miner work of next block template
+
+- **Parameters**:
+  - `miner`: address of miner
+  - `algo`: algorithm name of pow, such as SHA256D/X11/SCRYPT
+  
+- **Returns**:
+  - `workHash`: hash of work, used for sumbitWork to identify block template
+  - `previous`: hash of previous block, hash's byte order is little-endian
+  - `merkleBranch`: merkle branch of txs, hash's byte order is little-endian
+  - `version`: block version
+  - `height`: block height
+  - `bits`: block target bits
+  - `minTime`: block timestamp min time
+  - `coinbaseData1`: data of coinbase1, format is hex string of bytes
+  - `coinbaseData2`: data of coinbase2, format is hex string of bytes
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getWork",
+  "params":[
+      "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+      "X11"
+  ]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "workHash":"295b1dd34a9cd75360cb00a9020d770feda2868c7dc8faa2960bb9162c58f20d",
+        "version":536871936,
+        "previous":"b2a1493d5ddc305168227581b6f9506580a25509b4b68edd9c6e0c95228c2151",
+        "bits":504270679,
+        "height":1141,
+        "minTime":1569295439,
+        "merkleBranch":[],
+        "coinbaseData1":"01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff",
+        "coinbaseData2":"ffffffff02c9add62cbd8ed444fe5166c7c2dd6b7ebd16e284b31700d246960e5c1488ec231b377bcc000000000000000000000000000000000000000000000000000000000000001506cddef361a43727342802093613777518a8781edbfdbb4dcc4f113442667a7ccec7f7b901000000"
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getWork",
+  "params":[
+      "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz",
+      "X11"
+  ]
+}
+
+
+```
+:::
+
+
+## pov_submitWork
+Submit miner work of next generated block
+
+- **Parameters**:
+  - `work`: submit work
+  
+- **Returns**: `null`
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+    "jsonrpc":"2.0",
+    "id":3,
+    "method":"pov_submitWork",
+    "params":[
+        {
+            "workHash":"295b1dd34a9cd75360cb00a9020d770feda2868c7dc8faa2960bb9162c58f20d",
+            "blockHash":"7d9b503254d94b34b81e4fa9fbf578d30c3dcb7e5248aee0674a55567a687d07",
+            "merkleRoot":"9e542106174cd1c9d7db714d981d4d2b16a554f543dad25ceca87bb1db695050",
+            "timestamp":1569295729,
+            "nonce":0,
+            "coinbaseExtra":"75040000000000002f514c432043505520417578504f572f",
+            "coinbaseHash":"9e542106174cd1c9d7db714d981d4d2b16a554f543dad25ceca87bb1db695050",
+            "auxPow":{
+                "auxMerkleBranch":[
+
+                ],
+                "auxMerkleIndex":0,
+                "parCoinBaseTx":{
+                    "version":1,
+                    "txIn":[
+                        {
+                            "previousOutPoint":{
+                                "hash":"0000000000000000000000000000000000000000000000000000000000000000",
+                                "index":4294967295
+                            },
+                            "signatureScript":"fabe6d6d7d9b503254d94b34b81e4fa9fbf578d30c3dcb7e5248aee0674a55567a687d070100000000000000",
+                            "sequence":4294967295
+                        }
+                    ],
+                    "txOut":[
+                        {
+                            "value":1,
+                            "pkScript":"51"
+                        }
+                    ],
+                    "lockTime":0
+                },
+                "parCoinBaseMerkle":[
+
+                ],
+                "parMerkleIndex":0,
+                "parBlockHeader":{
+                    "version":2147483647,
+                    "previous":"0000000000000000000000000000000000000000000000000000000000000000",
+                    "merkleRoot":"c319b561c69abe632581d66ad56fd4da50129efda047f284fe93f6f983d2dbf5",
+                    "timestamp":1569295729,
+                    "bits":0,
+                    "nonce":140464
+                },
+                "parentHash":"4ecf98d84e21262a56df40707268f180d4dd1e9b58604e4ddd561b52036ce95b"
+            }
+        }
+    ]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": null
+}
+
+
+```
+
+```json test
+{
+    "jsonrpc":"2.0",
+    "id":3,
+    "method":"pov_submitWork",
+    "params":[
+        {
+            "workHash":"295b1dd34a9cd75360cb00a9020d770feda2868c7dc8faa2960bb9162c58f20d",
+            "blockHash":"7d9b503254d94b34b81e4fa9fbf578d30c3dcb7e5248aee0674a55567a687d07",
+            "merkleRoot":"9e542106174cd1c9d7db714d981d4d2b16a554f543dad25ceca87bb1db695050",
+            "timestamp":1569295729,
+            "nonce":0,
+            "coinbaseExtra":"75040000000000002f514c432043505520417578504f572f",
+            "coinbaseHash":"9e542106174cd1c9d7db714d981d4d2b16a554f543dad25ceca87bb1db695050",
+            "auxPow":{
+                "auxMerkleBranch":[
+
+                ],
+                "auxMerkleIndex":0,
+                "parCoinBaseTx":{
+                    "version":1,
+                    "txIn":[
+                        {
+                            "previousOutPoint":{
+                                "hash":"0000000000000000000000000000000000000000000000000000000000000000",
+                                "index":4294967295
+                            },
+                            "signatureScript":"fabe6d6d7d9b503254d94b34b81e4fa9fbf578d30c3dcb7e5248aee0674a55567a687d070100000000000000",
+                            "sequence":4294967295
+                        }
+                    ],
+                    "txOut":[
+                        {
+                            "value":1,
+                            "pkScript":"51"
+                        }
+                    ],
+                    "lockTime":0
+                },
+                "parCoinBaseMerkle":[
+
+                ],
+                "parMerkleIndex":0,
+                "parBlockHeader":{
+                    "version":2147483647,
+                    "previous":"0000000000000000000000000000000000000000000000000000000000000000",
+                    "merkleRoot":"c319b561c69abe632581d66ad56fd4da50129efda047f284fe93f6f983d2dbf5",
+                    "timestamp":1569295729,
+                    "bits":0,
+                    "nonce":140464
+                },
+                "parentHash":"4ecf98d84e21262a56df40707268f180d4dd1e9b58604e4ddd561b52036ce95b"
+            }
+        }
+    ]
+}
+
+
+```
+:::
