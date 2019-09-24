@@ -1650,17 +1650,17 @@ Return account state by block hash
 
 
 ## pov_getHashInfo
-Return network hash info
+Return the estimated network hashes per second based on the last n blocks
 
 - **Parameters**:
-  - `height`: block height, default is 0 for latest block height
+  - `height`: block height, default is 0 for latest block
   - `count`: block count, defautl is 120
   
 - **Returns**:
-  - `chainHashPS`: hash of total chain
-  - `sha256dHashPS`: hash of sha256d chain
-  - `x11HashPS`: hash of x11 chain
-  - `scryptHashPS`: hash of scrypt chain
+  - `chainHashPS`: hashes per second of total chain
+  - `sha256dHashPS`: hashes per second of sha256d chain
+  - `x11HashPS`: hashes per second of x11 chain
+  - `scryptHashPS`: hashes per second of scrypt chain
 
 - **Example**:
 
@@ -2074,6 +2074,315 @@ Submit miner work of next generated block
                 "parentHash":"4ecf98d84e21262a56df40707268f180d4dd1e9b58604e4ddd561b52036ce95b"
             }
         }
+    ]
+}
+
+
+```
+:::
+
+
+## pov_getLastNHourInfo
+Return block statistics of last n hours.
+Statistics cycle must be between 4 and 24 hours and multiper of 2 hours
+
+- **Parameters**:
+  - `beginTime`: start time of statistics cycle, unix time in seconds.
+  - `endTime`: end time of statistics cycle, unix time in seconds.
+  
+- **Returns**:
+  - `HourItemList`: statistics of n hours
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getLastNHourInfo",
+  "params":[
+      0,
+      0
+    ]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "AllBlockNum": 1287,
+        "AllTxNum": 1313,
+        "AvgBlockPerHour": 53,
+        "AvgTxPerBlock": 1,
+        "AvgTxPerHour": 54,
+        "HourItemList": [
+            {
+                "AllBlockNum": 59,
+                "AllMinerReward": "26940639236",
+                "AllRepReward": "6735159809",
+                "AllTxNum": 59,
+                "AvgTxPerBlock": 1,
+                "Hour": 0,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 47,
+                "AllMinerReward": "21461187188",
+                "AllRepReward": "5365296797",
+                "AllTxNum": 47,
+                "AvgTxPerBlock": 1,
+                "Hour": 1,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 53,
+                "AllMinerReward": "24200913212",
+                "AllRepReward": "6050228303",
+                "AllTxNum": 55,
+                "AvgTxPerBlock": 1,
+                "Hour": 2,
+                "MaxTxPerBlock": 2,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 46,
+                "AllMinerReward": "21004566184",
+                "AllRepReward": "5251141546",
+                "AllTxNum": 46,
+                "AvgTxPerBlock": 1,
+                "Hour": 3,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 64,
+                "AllMinerReward": "29223744256",
+                "AllRepReward": "7305936064",
+                "AllTxNum": 66,
+                "AvgTxPerBlock": 1,
+                "Hour": 4,
+                "MaxTxPerBlock": 2,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 56,
+                "AllMinerReward": "25570776224",
+                "AllRepReward": "6392694056",
+                "AllTxNum": 56,
+                "AvgTxPerBlock": 1,
+                "Hour": 5,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 44,
+                "AllMinerReward": "20091324176",
+                "AllRepReward": "5022831044",
+                "AllTxNum": 46,
+                "AvgTxPerBlock": 1,
+                "Hour": 6,
+                "MaxTxPerBlock": 2,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 56,
+                "AllMinerReward": "25570776224",
+                "AllRepReward": "6392694056",
+                "AllTxNum": 56,
+                "AvgTxPerBlock": 1,
+                "Hour": 7,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 51,
+                "AllMinerReward": "23287671204",
+                "AllRepReward": "5821917801",
+                "AllTxNum": 52,
+                "AvgTxPerBlock": 1,
+                "Hour": 8,
+                "MaxTxPerBlock": 2,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 56,
+                "AllMinerReward": "25570776224",
+                "AllRepReward": "6392694056",
+                "AllTxNum": 57,
+                "AvgTxPerBlock": 1,
+                "Hour": 9,
+                "MaxTxPerBlock": 2,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 58,
+                "AllMinerReward": "26484018232",
+                "AllRepReward": "6621004558",
+                "AllTxNum": 58,
+                "AvgTxPerBlock": 1,
+                "Hour": 10,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 51,
+                "AllMinerReward": "23287671204",
+                "AllRepReward": "5821917801",
+                "AllTxNum": 53,
+                "AvgTxPerBlock": 1,
+                "Hour": 11,
+                "MaxTxPerBlock": 2,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 61,
+                "AllMinerReward": "27853881244",
+                "AllRepReward": "6963470311",
+                "AllTxNum": 61,
+                "AvgTxPerBlock": 1,
+                "Hour": 12,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 52,
+                "AllMinerReward": "23744292208",
+                "AllRepReward": "5936073052",
+                "AllTxNum": 54,
+                "AvgTxPerBlock": 1,
+                "Hour": 13,
+                "MaxTxPerBlock": 2,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 55,
+                "AllMinerReward": "25114155220",
+                "AllRepReward": "6278538805",
+                "AllTxNum": 55,
+                "AvgTxPerBlock": 1,
+                "Hour": 14,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 45,
+                "AllMinerReward": "20547945180",
+                "AllRepReward": "5136986295",
+                "AllTxNum": 47,
+                "AvgTxPerBlock": 1,
+                "Hour": 15,
+                "MaxTxPerBlock": 2,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 52,
+                "AllMinerReward": "23744292208",
+                "AllRepReward": "5936073052",
+                "AllTxNum": 52,
+                "AvgTxPerBlock": 1,
+                "Hour": 16,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 58,
+                "AllMinerReward": "26484018232",
+                "AllRepReward": "6621004558",
+                "AllTxNum": 60,
+                "AvgTxPerBlock": 1,
+                "Hour": 17,
+                "MaxTxPerBlock": 2,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 51,
+                "AllMinerReward": "23287671204",
+                "AllRepReward": "5821917801",
+                "AllTxNum": 51,
+                "AvgTxPerBlock": 1,
+                "Hour": 18,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 53,
+                "AllMinerReward": "24200913212",
+                "AllRepReward": "6050228303",
+                "AllTxNum": 53,
+                "AvgTxPerBlock": 1,
+                "Hour": 19,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 58,
+                "AllMinerReward": "26484018232",
+                "AllRepReward": "6621004558",
+                "AllTxNum": 60,
+                "AvgTxPerBlock": 1,
+                "Hour": 20,
+                "MaxTxPerBlock": 2,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 63,
+                "AllMinerReward": "28767123252",
+                "AllRepReward": "7191780813",
+                "AllTxNum": 71,
+                "AvgTxPerBlock": 1,
+                "Hour": 21,
+                "MaxTxPerBlock": 3,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 45,
+                "AllMinerReward": "20547945180",
+                "AllRepReward": "5136986295",
+                "AllTxNum": 45,
+                "AvgTxPerBlock": 1,
+                "Hour": 22,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            },
+            {
+                "AllBlockNum": 53,
+                "AllMinerReward": "24200913212",
+                "AllRepReward": "6050228303",
+                "AllTxNum": 53,
+                "AvgTxPerBlock": 1,
+                "Hour": 23,
+                "MaxTxPerBlock": 1,
+                "MinTxPerBlock": 1
+            }
+        ],
+        "MaxBlockPerHour": 64,
+        "MaxTxPerBlock": 3,
+        "MaxTxPerHour": 71,
+        "MinBlockPerHour": 44,
+        "MinTxPerBlock": 1,
+        "MinTxPerHour": 45
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getLastNHourInfo",
+  "params":[
+      0,
+      0
     ]
 }
 
