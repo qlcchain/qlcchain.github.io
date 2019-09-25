@@ -9,9 +9,9 @@
 
 ## miner_getAvailRewardInfo
 根据矿工地址获取可用奖励信息。当返回结果里面的`needCallReward`为`true`, 客户端才可以调用合约提取奖励，并根据availXxx填写相关字段。
-- **Parameters**: 
+- **输入参数**: 
     - `coinbase`:  miner address  
-- **Returns**: 
+- **返回值**: 
   - `lastEndHeight`: 最近一次提取的区块结束高度
   - `latestBlockHeight`: 当前节点上的最新区块高度
   - `nodeRewardHeight`: 当前节点上的最大可提取区块高度
@@ -20,7 +20,7 @@
   - `availRewardBlocks`: 当前矿工在当前节点上的可用提取区块总数
   - `needCallReward`: 当前矿工在当前节点上需要调用奖励合约
   
-- **Example**:
+- **举例**:
 
 ::: demo
 ```json tab:Request
@@ -150,12 +150,12 @@
 
 ## miner_getRewardRecvBlockBySendHash
 根据提取奖励发送区块获取奖励接收区块
-- **Parameters**: 
+- **输入参数**: 
   - `sendHash`: 提取奖励发送区块哈希
-- **Returns**: 
+- **返回值**: 
   - `block`: 提取奖励接收区块
 
-- **Example**:
+- **举例**:
 
 ::: demo
 ```json tab:Request

@@ -2,6 +2,10 @@
 
 ##  Update Instruction
 
+2019-9-25 update :
+
+- add representation reward contract
+
 2019-9-24 update :
 
 - modify PoV Block Struct
