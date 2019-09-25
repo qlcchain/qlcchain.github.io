@@ -2,92 +2,24 @@
 
 **Supported protocols:**
 
-| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
+| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe |
 |:------------:|:-----------:|:-----:|:-----:|
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
-## miner_getHistoryRewardInfos
-Return miner history reward info by coinbase address
-- **Parameters**: 
-    - `coinbase`:  miner address  
-- **Returns**: 
-  - `allRewardAmount`: all reward balance by miner
-  - `allRewardBlocks`: all reward block by miner
-  - `firstRewardHeight`: first reward block height
-  - `lastRewardHeight`: last reward block height
-  - `rewardInfos`: reward info list
-
-- **Example**:
-
-::: demo
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "miner_getHistoryRewardInfos",
-	"params": [
-		"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy"
-	]
-}
-
-
-```
-
-```json tab:Response
-{
-    "id": "1",
-    "jsonrpc": "2.0",
-    "result": {
-        "allRewardAmount": "11986301334",
-        "allRewardBlocks": 42,
-        "firstRewardHeight": 120,
-        "lastRewardHeight": 239,
-        "rewardInfos": [
-            {
-                "beneficial": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
-                "endHeight": 239,
-                "rewardBlocks": 42,
-                "startHeight": 120
-            }
-        ]
-    }
-}
-
-
-```
-
-```json test
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "miner_getHistoryRewardInfos",
-	"params": [
-		"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy"
-	]
-}
-
-
-```
-:::
-
 
 ## miner_getAvailRewardInfo
-Return miner available reward info by coinbase address.
-Client should call miner reward contract when `needCallReward` in returns is `true`.
+Return miner available reward info by coinbase address. Client should call miner reward contract when `needCallReward` in returns is `true`.
 - **Parameters**: 
     - `coinbase`:  miner address  
 - **Returns**: 
-  - `lastStartHeight`: last reward block start height
   - `lastEndHeight`: last reward block end height
-  - `lastRewardBlocks`: last reward block count
-  - `lastBeneficial`: last reward beneficial address
   - `latestBlockHeight`: latest block height on node
   - `nodeRewardHeight`: max reward block height on node
   - `availStartHeight`: available reward block start height for miner
   - `availEndHeight`: available reward block end height for miner
   - `availRewardBlocks`: available reward block count for miner
   - `needCallReward`: need call reward contract for miner
-
+  
 - **Example**:
 
 ::: demo
@@ -112,10 +44,7 @@ Client should call miner reward contract when `needCallReward` in returns is `tr
         "availEndHeight": 239,
         "availRewardBlocks": 42,
         "availStartHeight": 120,
-        "lastBeneficial": "",
         "lastEndHeight": 0,
-        "lastRewardBlocks": 0,
-        "lastStartHeight": 0,
         "latestBlockHeight": 1599,
         "needCallReward": true,
         "nodeRewardHeight": 1439
