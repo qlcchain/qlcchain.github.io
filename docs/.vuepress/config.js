@@ -82,6 +82,11 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["miner"],
     },
+    // representation
+    {
+      collapsable: false,
+      children: ["rep"],
+    },
   ],
   "api/qlcjs": [
     {
@@ -249,7 +254,8 @@ module.exports = {
             "Util",
             "Wallet",
             "PoV",
-            "Miner"
+            "Miner",
+            "Representation"
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
@@ -289,7 +295,8 @@ module.exports = {
             "工具集合",
             "钱包",
             "PoV",
-            "矿工"
+            "矿工",
+            "代表",
           ),
           "/zh/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
