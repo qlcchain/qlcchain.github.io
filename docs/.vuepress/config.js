@@ -47,6 +47,11 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["rewards"],
     },
+    // chain contract--destroy
+    {
+      collapsable: false,
+      children: ["destroy"],
+    },
     // net
     {
       collapsable: false,
@@ -238,6 +243,7 @@ module.exports = {
             "Mintage",
             "pledge",
             "Rewards",
+            "Destroy",
             "Net",
             "SMS",
             "Util",
@@ -277,7 +283,8 @@ module.exports = {
             "铸币合约",
             "抵押合约",
             "空投",
-            "P2P",
+            "销毁合约",
+            "网络",
             "短信业务",
             "工具集合",
             "钱包",
