@@ -10,7 +10,7 @@ Available from go-qlc v1.3 and above
 |:------------:|:-----------:|:-----:|:-----:|
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
-## destroy_getSendBlackHoleBlock
+## destroy_getSendBlock
 Generate desctroy `ContractSend` block by params
 
 - **Parameters**: 
@@ -30,7 +30,7 @@ Generate desctroy `ContractSend` block by params
 {
     "jsonrpc": "2.0",
     "id": 3,
-    "method": "destroy_getSendBlackHoleBlock",
+    "method": "destroy_getSendBlock",
     "params": [{
         	"owner": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
         	"previous": "9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe",
@@ -75,7 +75,7 @@ Generate desctroy `ContractSend` block by params
 {
     "jsonrpc": "2.0",
     "id": 3,
-    "method": "destroy_getSendBlackHoleBlock",
+    "method": "destroy_getSendBlock",
     "params": [{
         	"owner": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
         	"previous": "9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe",
@@ -88,7 +88,7 @@ Generate desctroy `ContractSend` block by params
 ```
 :::
 
-## destroy_getRewardBlackHoleBlock
+## destroy_getRewardsBlock
 Generate destroy `ContractRewards` block by `ContractSend` block hash
 
 - **Parameters**: 
@@ -104,7 +104,7 @@ Generate destroy `ContractRewards` block by `ContractSend` block hash
 {
     "jsonrpc": "2.0",
     "id": 3,
-    "method": "destroy_getReceiveBlackHoleBlock",
+    "method": "destroy_getRewardsBlock",
     "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
 }
 
@@ -141,7 +141,7 @@ Generate destroy `ContractRewards` block by `ContractSend` block hash
 {
     "jsonrpc": "2.0",
     "id": 3,
-    "method": "destroy_getReceiveBlackHoleBlock",
+    "method": "destroy_getRewardsBlock",
     "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
 }
 
