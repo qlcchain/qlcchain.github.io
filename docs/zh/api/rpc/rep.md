@@ -83,7 +83,7 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardSendBlock",
+	"method": "rep_getRewardSendBlock",
 	"params": [
 		{
 			"account": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
