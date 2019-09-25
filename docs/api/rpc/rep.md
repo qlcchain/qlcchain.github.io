@@ -1,4 +1,4 @@
-# Rep 
+# Representation
 
 **Supported protocols:**
 
@@ -8,17 +8,17 @@
 
 
 ## rep_getAvailRewardInfo
-Return representation available reward info by account address. Client should call miner reward contract when `needCallReward` in returns is `true`.
+Return representation available reward info by account address. Client should call representation reward contract when `needCallReward` in returns is `true`.
 - **Parameters**: 
-    - `account`:  miner address  
+    - `account`:  representation address  
 - **Returns**: 
   - `lastEndHeight`: last reward block end height
   - `latestBlockHeight`: latest block height on node
   - `nodeRewardHeight`: max reward block height on node
-  - `availStartHeight`: available reward block start height for miner
-  - `availEndHeight`: available reward block end height for miner
-  - `availRewardBlocks`: available reward block count for miner
-  - `needCallReward`: need call reward contract for miner
+  - `availStartHeight`: available reward block start height for representation
+  - `availEndHeight`: available reward block end height for representation
+  - `availRewardBlocks`: available reward block count for representation
+  - `needCallReward`: need call reward contract for representation
   
 - **Example**:
 
@@ -83,7 +83,7 @@ Return contract send block by reward parameters
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardSendBlock",
+	"method": "rep_getRewardSendBlock",
 	"params": [
 		{
 			"account": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",

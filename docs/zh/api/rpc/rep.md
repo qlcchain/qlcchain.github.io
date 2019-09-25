@@ -1,4 +1,4 @@
-# Miner 
+# Representation
 
 **支持调用方式:**
 
@@ -7,27 +7,27 @@
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
 
-## miner_getAvailRewardInfo
-根据矿工地址获取可用奖励信息。当返回结果里面的`needCallReward`为`true`, 客户端才可以调用合约提取奖励，并根据availXxx填写相关字段。
-- **Parameters**: 
-    - `coinbase`:  miner address  
-- **Returns**: 
+## rep_getAvailRewardInfo
+根据代表地址获取可用奖励信息。当返回结果里面的`needCallReward`为`true`， 客户端才可以调用合约提取奖励，并根据availXxx填写相关字段。
+- **参数**: 
+    - `account`:  代表地址  
+- **返回值**: 
   - `lastEndHeight`: 最近一次提取的区块结束高度
   - `latestBlockHeight`: 当前节点上的最新区块高度
   - `nodeRewardHeight`: 当前节点上的最大可提取区块高度
-  - `availStartHeight`: 当前矿工在当前节点上的可用提取区块开始高度
-  - `availEndHeight`: 当前矿工在当前节点上的可用提取区块结束高度
-  - `availRewardBlocks`: 当前矿工在当前节点上的可用提取区块总数
-  - `needCallReward`: 当前矿工在当前节点上需要调用奖励合约
+  - `availStartHeight`: 代表在当前节点上的可提取区块起始高度
+  - `availEndHeight`: 代表在当前节点上的可提取区块结束高度
+  - `availRewardBlocks`: 代表在当前节点上的可提取区块总数
+  - `needCallReward`: 代表在当前节点上可以调用提取奖励合约
   
-- **Example**:
+- **示例**:
 
 ::: demo
 ```json tab:Request
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getAvailRewardInfo",
+	"method": "rep_getAvailRewardInfo",
 	"params": [
 		"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy"
 	]
@@ -58,7 +58,7 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getAvailRewardInfo",
+	"method": "rep_getAvailRewardInfo",
 	"params": [
 		"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy"
 	]
@@ -69,14 +69,14 @@
 :::
 
 
-## miner_getRewardSendBlock
+## rep_getRewardSendBlock
 根据提取奖励参数返回ContractSend块
-- **输入参数**: 
+- **参数**: 
     - `rewardParams`:  提取奖励参数  
 - **返回值**: 
   - `block`: 提取奖励区块, 类型是ContractSend
 
-- **举例**:
+- **示例**:
 
 ::: demo
 ```json tab:Request
@@ -86,7 +86,7 @@
 	"method": "miner_getRewardSendBlock",
 	"params": [
 		{
-			"coinbase": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+			"account": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
 			"beneficial": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
             "startHeight": 120,
             "endHeight": 239,
@@ -131,10 +131,10 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardSendBlock",
+	"method": "rep_getRewardSendBlock",
 	"params": [
 		{
-			"coinbase": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
+			"account": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
 			"beneficial": "qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
             "startHeight": 120,
             "endHeight": 239,
@@ -148,21 +148,21 @@
 :::
 
 
-## miner_getRewardRecvBlockBySendHash
-根据提取奖励发送区块获取奖励接收区块
-- **Parameters**: 
+## rep_getRewardRecvBlockBySendHash
+根据提取奖励发送区块的HASH获取奖励接收区块
+- **参数**: 
   - `sendHash`: 提取奖励发送区块哈希
-- **Returns**: 
+- **返回值**: 
   - `block`: 提取奖励接收区块
 
-- **Example**:
+- **示例**:
 
 ::: demo
 ```json tab:Request
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardRecvBlockBySendHash",
+	"method": "rep_getRewardRecvBlockBySendHash",
 	"params": [
 		"b592c669e4a223be858209041ec7d84dd59c46c2ce6844464a2e0fd3b5e78035"
 	]
@@ -204,7 +204,7 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardRecvBlockBySendHash",
+	"method": "rep_getRewardRecvBlockBySendHash",
 	"params": [
 		"3252733cdfacdd3143b846d419aab0902b8f6414b2f29bab367445dd562403d7"
 	]
@@ -215,21 +215,21 @@
 :::
 
 
-## miner_getRewardRecvBlock
+## rep_getRewardRecvBlock
 根据提取奖励发送区块获取奖励接收区块
-- **输入参数**: 
+- **参数**: 
   - `block`: 提取奖励发送区块  
 - **返回值**: 
   - `block`: 提取奖励接收区块
 
-- **举例**:
+- **示例**:
 
 ::: demo
 ```json tab:Request
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardRecvBlock",
+	"method": "rep_getRewardRecvBlock",
 	"params": [
 		{
             "address":"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
@@ -289,7 +289,7 @@
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "miner_getRewardRecvBlock",
+	"method": "rep_getRewardRecvBlock",
 	"params": [
 		{
             "address":"qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy",
