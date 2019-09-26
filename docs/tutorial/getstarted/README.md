@@ -12,6 +12,10 @@ For detailed instructions on configuration，please click here [Config](../node/
 
 go-qlc node install and start documentation can be found [here](../node/install/)
 
+## PoV Mining
+
+go-qlc PoV mining documentation can be found [here](../mining/pow/)
+
 ## RPC Interface
 
 RPC API documentation can be found [here](../../api/rpc/)

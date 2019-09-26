@@ -12,6 +12,10 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["wallet/install", "wallet/manage"],
     },
+    {
+      collapsable: false,
+      children: ["mining/pow", "mining/auxpow"],
+    },
   ],
   "api/rpc": [
     {
@@ -238,7 +242,7 @@ module.exports = {
         lastUpdated: "Last Updated",
         nav: require("./nav/en"),
         sidebar: {
-          "/tutorial/": genSidebarConfig("tutorial", "Start", "Node", "Wallet"),
+          "/tutorial/": genSidebarConfig("tutorial", "Start", "Node", "Wallet", "Mining"),
           "/api/rpc/": genSidebarConfig(
             "api/rpc",
             "RPC interface",
@@ -279,7 +283,7 @@ module.exports = {
         lastUpdated: "上次更新",
         nav: require("./nav/zh"),
         sidebar: {
-          "/zh/tutorial/": genSidebarConfig("tutorial", "开始", "节点", "钱包"),
+          "/zh/tutorial/": genSidebarConfig("tutorial", "开始", "节点", "钱包", "挖矿"),
           "/zh/api/rpc/": genSidebarConfig(
             "api/rpc",
             "RPC 接口",
