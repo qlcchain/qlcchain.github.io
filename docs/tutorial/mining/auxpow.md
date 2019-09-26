@@ -6,7 +6,41 @@ How to build AuxPoW proof, please check [Merged mining specification](https://en
 
 In here, QLC is auxiliary blockchain, BTC/LTC/Dash are parent blockchain.
 
-## Get work
+## Miner
+
+### 4.1 Staking
+**Miner MUST have enough pledge vote (staking) to generate new blocks.**
+
+### 4.2 Use gqlc-miner
+gqlc-miner is just for develop testing with very poor performance.
+
+(NOT RECOMMANED)
+
+```bash 
+
+# SHA256D
+gqlc-miner -nodeurl http://127.0.0.1:29735 -auxpow -algo SHA256D -miner qlc_xxx
+
+# or X11
+gqlc-miner -nodeurl http://127.0.0.1:29735 -auxpow -algo X11 -miner qlc_xxx
+
+# or SCRYPT
+gqlc-miner -nodeurl http://127.0.0.1:29735 -auxpow -algo SCRYPT -miner qlc_xxx
+
+```
+
+### 4.3 Use solo stratum pool
+gqlc-stratum is a very simple mining pool between node and miner, which support stratum mining protocol.
+
+gqlc-stratum DOES NOT SUPPORT AuxPoW.
+
+### 4.4 Use stratum mining pool
+Please contact mining pool operator which support QLC merged mining.
+Following their guides, config your GPU/FPGA/ASIC miners to use stratum mining pool, such as "stratum+tcp://IP:Port".
+
+## Developer
+
+### Get work
 
 Calling pov_getWork rpc to get new work from node, at 15/30/60 seconds interval.
 
@@ -40,7 +74,7 @@ func getWork() {
 
 ```
 
-## Search nonce for parent blockchain
+### Search nonce for parent blockchain
 
 Now you can do mining for parent blockchain as usual, like BTC/LTC/Dash.
 
@@ -75,7 +109,7 @@ func doParentWork() {
 }
 ```
 
-## Submit work
+### Submit work
 
 After find nonce, calling pov_submitWork rpc to node as soon as possible.
 

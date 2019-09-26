@@ -10,7 +10,87 @@ Each new block reward is then split up as follows:
 | PoW Miner           | 80%     |
 | DPOS Representative | 20%     |
 
-## Get work
+## Miner
+
+### 4.1 Staking
+**Miner MUST have enough pledge vote (staking) to generate new blocks.**
+
+### 4.2 Use gqlc-miner
+gqlc-miner is just for develop testing with very poor performance.
+
+(NOT RECOMMANED)
+
+```bash 
+
+# SHA256D
+gqlc-miner -nodeurl http://127.0.0.1:29735 -algo SHA256D -miner qlc_xxx
+
+# or X11
+gqlc-miner -nodeurl http://127.0.0.1:29735 -algo X11 -miner qlc_xxx
+
+# or SCRYPT
+gqlc-miner -nodeurl http://127.0.0.1:29735 -algo SCRYPT -miner qlc_xxx
+
+```
+
+### 4.3 Use solo stratum pool
+gqlc-stratum is a very simple mining pool between node and miner, which support stratum mining protocol.
+
+```bash
+
+# SHA256D
+gqlc-stratum -nodeurl http://127.0.0.1:29735 -algo SHA256D -miner qlc_xxx
+
+# or X11
+gqlc-stratum -nodeurl http://127.0.0.1:29735 -algo X11 -miner qlc_xxx
+
+# or SCRYPT
+gqlc-stratum -nodeurl http://127.0.0.1:29735 -algo SCRYPT -miner qlc_xxx
+
+```
+
+#### 4.3.1 Use CPU miner
+crypto cpuminer (linux + windows)
+https://github.com/tpruvot/cpuminer-multi
+
+(NOT RECOMMANED)
+
+```bash
+
+cpuminer -a sha256d -o stratum+tcp://127.0.0.1:3333 -O test.1:test
+
+```
+
+#### 4.3.2 Use GPU miner
+OPENCL:
+https://github.com/luke-jr/bfgminer
+
+support sha256d/scrypt, without x11.
+
+```bash
+
+# SHA256D
+bfgminer -o stratum+tcp://127.0.0.1:3333 -O test.1:test -S opencl:auto
+
+# SCRPYT
+bfgminer --scrypt -o stratum+tcp://127.0.0.1:3333 -O test.1:test -S opencl:auto 
+
+```
+
+CUDA:
+https://github.com/KlausT/ccminer
+
+Pls follow ccminer's guide, support sha256d/x11/scrypt.
+
+#### 4.3.3 Use ASIC miner
+Pls check your miner's guides, and config the miner to use gqlc stratum pool, such as "stratum+tcp://192.168.1.100:3333".
+
+### 4.4 Use stratum mining pool
+Please contact mining pool operator which support QLC merged mining.
+Following their guides, config your GPU/FPGA/ASIC miners to use stratum mining pool, such as "stratum+tcp://IP:Port".
+
+## Developer
+### Get work
 
 Calling pov_getWork rpc to get new work from node, at 15/30/60 seconds interval.
 
@@ -44,7 +124,7 @@ func getWork() {
 
 ```
 
-## Search nonce for QLC blockchain
+### Search nonce for QLC blockchain
 
 Now you can search valid nonce meet the difficulty requirement.
 
@@ -78,7 +158,7 @@ func doWork() {
 }
 ```
 
-## Submit work
+### Submit work
 
 After find nonce, calling pov_submitWork rpc to node as soon as possible.
 
