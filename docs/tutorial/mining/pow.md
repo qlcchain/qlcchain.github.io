@@ -59,6 +59,9 @@ https://github.com/tpruvot/cpuminer-multi
 
 cpuminer -a sha256d -o stratum+tcp://127.0.0.1:3333 -O test.1:test
 
+# add -m 65536 if scrypt is used
+cpuminer -a scrypt -m 65536 -o stratum+tcp://127.0.0.1:3333 -O test.1:test
+
 ```
 
 #### 4.3.2 Use GPU miner
