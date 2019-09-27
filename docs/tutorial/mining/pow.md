@@ -73,10 +73,10 @@ support sha256d/scrypt, without x11.
 ```bash
 
 # SHA256D
-bfgminer -o stratum+tcp://127.0.0.1:3333 -O test.1:test -S opencl:auto
+bfgminer -o stratum+tcp://127.0.0.1:3333#skipcbcheck -O test.1:test -S opencl:auto --no-gbt --no-getwork
 
 # SCRPYT
-bfgminer --scrypt -o stratum+tcp://127.0.0.1:3333 -O test.1:test -S opencl:auto 
+bfgminer --scrypt -o stratum+tcp://127.0.0.1:3333#skipcbcheck -O test.1:test -S opencl:auto --no-gbt --no-getwork
 
 ```
 
