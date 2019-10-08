@@ -12,10 +12,10 @@ Each new block reward is then split up as follows:
 
 ## Miner
 
-### 4.1 Staking
+### Staking
 **Miner MUST have enough pledge vote (staking) to generate new blocks.**
 
-### 4.2 Use gqlc-miner
+### Use gqlc-miner
 gqlc-miner is just for develop testing with very poor performance.
 
 (NOT RECOMMANED)
@@ -33,7 +33,7 @@ gqlc-miner -nodeurl http://127.0.0.1:29735 -algo SCRYPT -miner qlc_xxx
 
 ```
 
-### 4.3 Use solo stratum pool
+### Use solo stratum pool
 gqlc-stratum is a very simple mining pool between node and miner, which support stratum mining protocol.
 
 ```bash
@@ -49,7 +49,7 @@ gqlc-stratum -nodeurl http://127.0.0.1:29735 -algo SCRYPT -miner qlc_xxx
 
 ```
 
-#### 4.3.1 Use CPU miner
+#### Use CPU miner
 crypto cpuminer (linux + windows)
 https://github.com/tpruvot/cpuminer-multi
 
@@ -64,7 +64,7 @@ cpuminer -a scrypt -m 65536 -o stratum+tcp://127.0.0.1:3333 -O test.1:test
 
 ```
 
-#### 4.3.2 Use GPU miner
+#### Use GPU miner
 OPENCL:
 https://github.com/luke-jr/bfgminer
 
@@ -85,10 +85,10 @@ https://github.com/KlausT/ccminer
 
 Pls follow ccminer's guide, support sha256d/x11/scrypt.
 
-#### 4.3.3 Use ASIC miner
+#### Use ASIC miner
 Pls check your miner's guides, and config the miner to use gqlc stratum pool, such as "stratum+tcp://192.168.1.100:3333".
 
-### 4.4 Use stratum mining pool
+### Use stratum mining pool
 Please contact mining pool operator which support QLC merged mining.
 Following their guides, config your GPU/FPGA/ASIC miners to use stratum mining pool, such as "stratum+tcp://IP:Port".
 

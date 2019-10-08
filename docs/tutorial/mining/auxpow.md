@@ -8,10 +8,10 @@ In here, QLC is auxiliary blockchain, BTC/LTC/Dash are parent blockchain.
 
 ## Miner
 
-### 4.1 Staking
+### Staking
 **Miner MUST have enough pledge vote (staking) to generate new blocks.**
 
-### 4.2 Use gqlc-miner
+### Use gqlc-miner
 gqlc-miner is just for develop testing with very poor performance.
 
 (NOT RECOMMANED)
@@ -29,12 +29,12 @@ gqlc-miner -nodeurl http://127.0.0.1:29735 -auxpow -algo SCRYPT -miner qlc_xxx
 
 ```
 
-### 4.3 Use solo stratum pool
+### Use solo stratum pool
 gqlc-stratum is a very simple mining pool between node and miner, which support stratum mining protocol.
 
 gqlc-stratum DOES NOT SUPPORT AuxPoW.
 
-### 4.4 Use stratum mining pool
+### Use stratum mining pool
 Please contact mining pool operator which support QLC merged mining.
 Following their guides, config your GPU/FPGA/ASIC miners to use stratum mining pool, such as "stratum+tcp://IP:Port".
 
