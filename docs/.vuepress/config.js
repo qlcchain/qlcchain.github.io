@@ -91,6 +91,11 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["rep"],
     },
+    // pubsub
+    {
+      collapsable: false,
+      children: ["pubsub"],
+    },
   ],
   "api/qlcjs": [
     {
@@ -259,7 +264,8 @@ module.exports = {
             "Wallet",
             "PoV",
             "Miner",
-            "Representation"
+            "Representation",
+            "Publish–Subscribe"
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
@@ -301,6 +307,7 @@ module.exports = {
             "PoV",
             "矿工",
             "代表",
+            "订阅-通知"
           ),
           "/zh/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
