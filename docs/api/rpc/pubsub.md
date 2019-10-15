@@ -1,8 +1,9 @@
+# Introduction
 :::warning
 Available from go-qlc v1.3 and above
 :::
 
-# Introduction
+
 
 From version 1.3 gqlc has experimental support for pub/sub using subscriptions as defined in the JSON-RPC 2.0 specification. This allows clients to wait for events instead of polling for them
 
@@ -50,7 +51,7 @@ Subscriptions are creates with a regular RPC call with ledger_subscribe as metho
 
 
 ```
-
+:::
 
 - **Returns**: 
 If successful it returns the subscription id immediately。
@@ -65,6 +66,8 @@ If successful it returns the subscription id immediately。
 
 
 ```
+:::
+
 
 then client keep listening to the connection, once server publish information, client can read from the connection, as:
 
@@ -99,6 +102,7 @@ then client keep listening to the connection, once server publish information, c
 
 
 ```
+:::
 
 # Cancel subscription
 
@@ -120,6 +124,8 @@ There are two ways to cancel subscription
 
 
 ```
+:::
+
 - **Returns**: 
 Returns a bool indicating if the subscription was cancelled successful.
 
@@ -133,6 +139,7 @@ Returns a bool indicating if the subscription was cancelled successful.
 
 
 ```
+:::
 
 # Supported subscriptions
 
@@ -199,7 +206,7 @@ if the balance of a account change, server will publish the newest account info
 
 
 ```
-
+:::
 
 ### newBlock
 
@@ -262,7 +269,7 @@ if there new block stored to the chain, server will publish the new block
 
 
 ```
-
+:::
 
 
 
@@ -321,4 +328,4 @@ if there is a pending transaction of a account, server will publish the pending 
 
 
 ```
-
+:::
