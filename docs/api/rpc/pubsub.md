@@ -20,15 +20,15 @@ Example:
 
 ```
 // create subscription
->> {"id": 1, "method": "qlc_subscribe", "params": ["newBlock"]}
+>> {"id": 1, "method": "ledger_subscribe", "params": ["newBlock"]}
 << {"jsonrpc":"2.0","id":1,"result":"0xcd0c3e8af590364c09d0fa6a1210faf5"}
 
 // incoming notifications
-<< {"jsonrpc":"2.0","method":"qlc_subscription","params":{"subscription":"0xcd0c3e8af590364c09d0fa6a1210faf5","result":{"type":"State","token":"a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",<...>}}}
-<< {"jsonrpc":"2.0","method":"qlc_subscription","params":{"subscription":"0xcd0c3e8af590364c09d0fa6a1210faf5","result":{"type":"State","token":"38b13da6e7425ee4f21194504c9c9ceea0b09f65da3f32bed0c36cbced44ce0b",<...>}}}
+<< {"jsonrpc":"2.0","method":"ledger_subscription","params":{"subscription":"0xcd0c3e8af590364c09d0fa6a1210faf5","result":{"type":"State","token":"a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",<...>}}}
+<< {"jsonrpc":"2.0","method":"ledger_subscription","params":{"subscription":"0xcd0c3e8af590364c09d0fa6a1210faf5","result":{"type":"State","token":"38b13da6e7425ee4f21194504c9c9ceea0b09f65da3f32bed0c36cbced44ce0b",<...>}}}
 
 // cancel subscription
->> {"id": 1, "method": "qlc_unsubscribe", "params": ["0xcd0c3e8af590364c09d0fa6a1210faf5"]}
+>> {"id": 1, "method": "ledger_unsubscribe", "params": ["0xcd0c3e8af590364c09d0fa6a1210faf5"]}
 << {"jsonrpc":"2.0","id":1,"result":true}
 ```
 
@@ -64,3 +64,90 @@ Subscriptions are creates with a regular RPC call with ledger_subscribe as metho
 - **Returns**: 
 If successful it returns the subscription id immediately。
 
+::: demo
+```json tab:Request
+{
+    "jsonrpc":"2.0",
+    "id":1,
+    "result":"0xe45c66069086940b9f555ebacc95f37e"
+}
+
+
+```
+
+then client keep listening to the connection, once server publish information, client can read from the connection, as:
+
+- `subscription`: subscription id, it is unique to one subscription 
+- `result`:  actual subscription info
+
+
+::: demo
+```json tab:Request
+{
+    "jsonrpc":"2.0",
+    "method":"ledger_subscription",
+    "params":{
+        "subscription":"0xe45c66069086940b9f555ebacc95f37e",
+        "result":{
+            "account":"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+            "balance":"60000000000000000",
+            "vote":"0",
+            "network":"0",
+            "storage":"0",
+            "oracle":"0",
+            "tokens":[{
+                "type":"a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582","header":"5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d","representative":"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4","open":"5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d",
+                "balance":"60000000000000000",
+                "account":"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+                "modified":1570804479,
+                "blockCount":1
+            }]
+        }
+    }
+}
+
+
+```
+
+## Cancel subscription
+
+There are two ways to cancel subscription 
+
+- if client close the websocket/ipc connection, subscriptions are cancelled immediately 
+- a regular RPC call with xxx_unsubscribe as method and the subscription id as first parameter. It returns a bool indicating if the subscription was cancelled successful, detail as follow:
+
+- **Parameters**: 
+  - `string`, subscription id
+  
+::: demo
+```json tab:Request
+{
+    "id": 1, 
+    "method": "ledger_unsubscribe", 
+    "params": ["0xe45c66069086940b9f555ebacc95f37e"]
+}
+
+
+```
+- **Returns**: 
+Returns a bool indicating if the subscription was cancelled successful.
+
+::: demo
+```json tab:Request
+{
+    "jsonrpc":"2.0",
+    "id":1,
+    "result":true
+}
+
+
+```
+
+## Supported subscriptions
+
+### ledger_subscription
+
+#### balanceChange
+
+#### newBlock
+#### newPending 
