@@ -180,7 +180,7 @@ if the balance of a account change, server will publish the newest account info
     "result":"0xe45c66069086940b9f555ebacc95f37e"
 }
 
-// get response if server publish infomation
+// then get response once server publish infomation
 {
     "jsonrpc":"2.0",
     "method":"ledger_subscription",
@@ -239,7 +239,7 @@ if there new block stored to the chain, server will publish the new block
     "result":"0xe45c66069086940b9f555ebacc95f37e"
 }
 
-// get response if server publish infomation
+// then get response once server publish infomation
 {
     "jsonrpc":"2.0",
     "method":"ledger_subscription",
@@ -309,7 +309,7 @@ if there is a pending transaction of a account, server will publish the pending 
     "result":"0xe45c66069086940b9f555ebacc95f37e"
 }
 
-// get response if server publish infomation
+// then get response once server publish infomation
 {
     "jsonrpc":"2.0",
     "method":"ledger_subscription",

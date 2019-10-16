@@ -265,7 +265,7 @@ module.exports = {
             "PoV",
             "Miner",
             "Representation",
-            "Publish–Subscribe"
+            "Pub–Sub"
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
