@@ -2,6 +2,10 @@
 
 ##  Update Instruction
 
+2019-10-18 update :
+
+- modify `PoV` block fields and rpcs
+
 2019-9-25 update :
 
 - add representation reward contract
@@ -81,6 +85,8 @@
 | normBits       | uint32 | normalized target bits                                       |
 | algoName       | string | pow algorithm name                                           |
 | algoEfficiency | uint32 | pow algorithm efficiency                                     |
+| algoDifficulty | float64| pow algorithm difficulty                                     |
+| normDifficulty | uint32 | pow normalized difficulty                                    |
 
 ### PoV Basic Header
 |     field      |  type  |                           description                        |
