@@ -153,3 +153,114 @@
 
 :::
 
+
+
+## net_getBandwidthStats
+
+返回带宽指标
+
+- **Parameters**: `null`
+- **Returns**:
+  - `带宽状态`:
+    - `TotalIn TotalOut`：`TotalIn和TotalOut字段记录已发送/已接收的累积字节。`
+    - `RateIn RateOut`   ：`RateIn和RateOut字段记录每秒发送/接收的字节数。`
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id":18,
+  	"method":"net_getBandwidthStats"
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": {
+    "TotalIn": 598546022,
+    "TotalOut": 3524381031,
+    "RateIn": 7498.377919815488,
+    "RateOut": 28352.544366668382
+  }
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+  	"id":18,
+  	"method":"net_getBandwidthStats"
+}
+```
+
+:::
+
+
+
+## net_onlineRepsInfo
+
+返回在线代表信息，在线权重总量以及在线权重占全网权重的百分比
+
+- **Parameters**: `null`
+- **Returns**:
+  - ` online representative info`
+  - `validVotes`
+  - `validVotesPercent`
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id":18,
+  	"method":"net_onlineRepsInfo"
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": {
+    "Reps": [
+      {
+        "Account": "qlc_1odgyakfyk6jot381bdzmqubguejtpo8ame8kzymk4ukgh6kurt6rpj7ip4j",
+        "Vote": "100000000000000"
+      },
+      {
+        "Account": "qlc_3du37ycreqgse861rcx8qkkpscdttc99ro834zhwuftrtmhbnidnmrkyz4xr",
+        "Vote": "20100000000000000"
+      },
+      {
+        "Account": "qlc_3yefwog1ojkcsbxfwfdctyydkxsjofh9s7xy3jpt3n33m7mfqxmpchjazgnu",
+        "Vote": "20100000000000000"
+      },
+      {
+        "Account": "qlc_1d5zregxfjgd6cegrbhisajebia85qrfjkk49gtn8u93btdo55kmqg89ba1h",
+        "Vote": "100000000000000"
+      },
+      {
+        "Account": "qlc_3ix9hyt3shurhnp4jmuc6whz4zb37wfq4ifxh1b9j5jgkkawscf7j1df91pz",
+        "Vote": "100000000000000"
+      }
+    ],
+    "ValidVotes": "40200000000000000",
+    "ValidVotesPercent": "67.00%"
+  }
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id":18,
+	"method":"net_onlineRepsInfo"
+}
+```
+
+:::

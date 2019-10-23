@@ -156,3 +156,112 @@ Return sync status
 
 
 
+## net_getBandwidthStats
+
+Return bandwidth metrics
+
+- **Parameters**: `null`
+- **Returns**:
+  - `bandwidth stats`:
+    - `TotalIn TotalOut`：`The TotalIn and TotalOut fields record cumulative bytes sent / received.`
+    - `RateIn RateOut`   ：`The RateIn and RateOut fields record bytes sent / received per second.`
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id":18,
+	"method":"net_getBandwidthStats"
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": {
+    "TotalIn": 598546022,
+    "TotalOut": 3524381031,
+    "RateIn": 7498.377919815488,
+    "RateOut": 28352.544366668382
+  }
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id":18,
+  	"method":"net_getBandwidthStats"
+}
+```
+
+:::
+
+
+
+## net_onlineRepsInfo
+
+Return online representative info ，validVotes and validVotesPercent
+
+- **Parameters**: `null`
+- **Returns**:
+  - ` online representative info`
+  - `validVotes`
+  - `validVotesPercent`
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id":18,
+	"method":"net_onlineRepsInfo"
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": {
+    "Reps": [
+      {
+        "Account": "qlc_1odgyakfyk6jot381bdzmqubguejtpo8ame8kzymk4ukgh6kurt6rpj7ip4j",
+        "Vote": "100000000000000"
+      },
+      {
+        "Account": "qlc_3du37ycreqgse861rcx8qkkpscdttc99ro834zhwuftrtmhbnidnmrkyz4xr",
+        "Vote": "20100000000000000"
+      },
+      {
+        "Account": "qlc_3yefwog1ojkcsbxfwfdctyydkxsjofh9s7xy3jpt3n33m7mfqxmpchjazgnu",
+        "Vote": "20100000000000000"
+      },
+      {
+        "Account": "qlc_1d5zregxfjgd6cegrbhisajebia85qrfjkk49gtn8u93btdo55kmqg89ba1h",
+        "Vote": "100000000000000"
+      },
+      {
+        "Account": "qlc_3ix9hyt3shurhnp4jmuc6whz4zb37wfq4ifxh1b9j5jgkkawscf7j1df91pz",
+        "Vote": "100000000000000"
+      }
+    ],
+    "ValidVotes": "40200000000000000",
+    "ValidVotesPercent": "67.00%"
+  }
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id":18,
+	"method":"net_onlineRepsInfo"
+}
+```
+
+:::
