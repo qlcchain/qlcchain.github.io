@@ -3,7 +3,7 @@
 
 **Supported protocols:**
 
-| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe | 
+| JSON-RPC 2.0 | Websocket | IPC | Publish–subscribe |
 |:------------:|:-----------:|:-----:|:-----:|
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
@@ -1780,11 +1780,17 @@ Return mining info
 Return miner statistics
 
 - **Parameters**:
+  
   - `addresses`: addresses of miners
   
 - **Returns**:
+  
   - `minerStats`: statistics of all miners
-
+  - `mainBlockNum`: the total number of blocks dug up by the miners
+  
+  - `mainRewardAmount`: the total gas dug up by the miners
+  - `stableBlockNum`: the total number of blocks that can be claimed now
+  - `stableRewardAmount`: the total gas that can be claimed now
 - **Example**:
 
 ::: demo
@@ -1815,7 +1821,9 @@ Return miner statistics
                 "lastBlockHeight": 0,
                 "lastBlockTime": "2019-08-21T08:00:00+08:00",
                 "mainBlockNum": 1,
-                "mainRewardAmount": "456621004"
+                "mainRewardAmount": "456621004",
+                "stableBlockNum": 0,
+                "stableRewardAmount": "0"
             },
             "qlc_18yjtai4cwecsn3aasxx7gky6sprxdpkkcyjm9jxhynw5eq4p4ntm16shxmp": {
                 "firstBlockHeight": 20,
@@ -1824,7 +1832,9 @@ Return miner statistics
                 "lastBlockHeight": 1125,
                 "lastBlockTime": "2019-09-24T11:14:18+08:00",
                 "mainBlockNum": 78,
-                "mainRewardAmount": "35616438312"
+                "mainRewardAmount": "35616438312",
+                "stableBlockNum": 58,
+                "stableRewardAmount": "25616438312"
             },
             "qlc_1qiox3611cuyg7ap597zuwfssehezio3on5nhbtx5xchsm6xgbz49frwacio": {
                 "firstBlockHeight": 123,
@@ -1833,7 +1843,9 @@ Return miner statistics
                 "lastBlockHeight": 135,
                 "lastBlockTime": "2019-09-23T16:22:06+08:00",
                 "mainBlockNum": 9,
-                "mainRewardAmount": "4109589036"
+                "mainRewardAmount": "4109589036",
+                "stableBlockNum": 0,
+                "stableRewardAmount": "0"
             },
             "qlc_3kfftrpdu5pnamz74sp9rdgppzox4ujaberq15b6f7igdicaju35qz35s3uz": {
                 "firstBlockHeight": 1,
@@ -1842,7 +1854,9 @@ Return miner statistics
                 "lastBlockHeight": 1131,
                 "lastBlockTime": "2019-09-24T11:20:27+08:00",
                 "mainBlockNum": 1044,
-                "mainRewardAmount": "476712328176"
+                "mainRewardAmount": "476712328176",
+                "stableBlockNum": 512,
+                "stableRewardAmount": "25616438312"
             }
         },
         "onlineCount": 2,
@@ -1863,6 +1877,57 @@ Return miner statistics
 
 
 ```
+:::
+
+## pov_getRepStats
+
+Return representative statistics
+
+- **Parameters**:
+  - `addresses`: addresses of representatives
+- **Returns**:
+  - `repStats`: statistics of all representatives
+  - `mainBlockNum`: the total number of blocks that the reps can get rewards
+  - `mainRewardAmount`: the total gas that the reps can get
+  - `stableBlockNum`: the total number of blocks that can be claimed now
+  - `stableRewardAmount`: the total gas that can be claimed now
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getRepStats",
+  "params":[[]]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+		"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4": {
+			"mainBlockNum": 60,
+			"mainRewardAmount": "6849315060",
+			"stableBlockNum": 40,
+			"stableRewardAmount": "4566210040"
+		}
+	}
+}
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"pov_getRepStats",
+  "params":[[]]
+}
+```
+
 :::
 
 

@@ -317,3 +317,52 @@ Return contract reward block by contract send block
 
 ```
 :::
+
+## miner_getRewardHistory
+
+Return miner's contract reward history
+
+- **Parameters**: 
+  - `coinbase`: miner's address  
+- **Returns**: 
+  - `LastEndHeight`: last reward block end height
+  - `RewardBlocks`: how many blocks have been claimed
+  - `RewardAmount`: how much gas has been claimed
+  - `LastRewardTime`: last reward time
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "miner_getRewardHistory",
+	"params": ["qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy"]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+		"lastEndHeight": 59,
+		"rewardBlocks": 40,
+		"rewardAmount": "4566210040",
+		"lastRewardTime": 1571910958
+	}
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "miner_getRewardHistory",
+	"params": ["qlc_1szuejgo9nxdre1uwpsxni4fg7p8kx7micbsdtpnchmc3cfk4wt1i37uncmy"]
+}
+```
+
+:::
+
