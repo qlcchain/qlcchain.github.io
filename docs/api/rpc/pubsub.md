@@ -329,3 +329,121 @@ if there is a pending transaction of a account, server will publish the pending 
 
 ```
 :::
+
+
+## pov_subscription
+
+### newBlock
+
+if there new pov block stored to the chain, server will publish the new pov block
+
+- **Parameters**: `null`
+
+- **Returns**: 
+  - `block` pov block header info
+
+
+- **Example**:
+
+::: demo
+```json tab:Request
+{
+    "id":1,
+    "method":"pov_subscribe",
+    "params":["newBlock"]
+}
+
+
+```
+
+```json tab:Response
+// get response immediately if connect to server successfully  
+{
+    "jsonrpc":"2.0",
+    "id":1,
+    "result":"0x14fddac2289853ad8af1e1f98a3628e"
+}
+
+// then get response once server publish infomation
+{
+    "jsonrpc":"2.0",
+    "method":"pov_subscription",
+    "params":{
+        "subscription":"0x14fddac2289853ad8af1e1f98a3628e",
+        "result":{
+            "basHdr":{
+                "version":536871936,
+                "previous":"f8d045c01da1b006e8cd75b41f06dc248005d187593dabe5806659cf3256ce0a",
+                "merkleRoot":"6553e616dd738e4ca5524bd1cde99440a296a071d4d52119f9492721839b1f43",
+                "timestamp":1572241896,
+                "bits":504365052,
+                "nonce":0,
+                "hash":"da4fbd8c589c8d2834cb324c9b087a2d6bdf6d50cbd8a6d810122fd557095237",
+                "height":78
+            },
+            "auxHdr":{
+                "auxMerkleBranch":null,
+                "auxMerkleIndex":0,
+                "parCoinBaseTx":{
+                    "version":1,
+                    "txIn":[
+                        {
+                            "previousOutPoint":{
+                                "hash":"0000000000000000000000000000000000000000000000000000000000000000",
+                                "index":4294967295
+                            },
+                            "signatureScript":"e37cb65d183ec09af9bcb908fabe6d6dda4fbd8c589c8d2834cb324c9b087a2d6bdf6d50cbd8a6d810122fd5570952370100000000000000",
+                            "sequence":4294967295
+                        }
+                    ],
+                    "txOut":[
+                        {
+                            "value":1,
+                            "pkScript":"51"
+                        }
+                    ],
+                    "lockTime":0
+                },
+                "parCoinBaseMerkle":null,
+                "parMerkleIndex":0,
+                "parBlockHeader":{
+                    "version":2147483647,
+                    "previous":"0000000000000000000000000000000000000000000000000000000000000000",
+                    "merkleRoot":"a2fb014f50aeaf2e0ae17f08a67759b8ab39f4a18fc5770bbd24bedc8e991521",
+                    "timestamp":1572241896,
+                    "bits":0,
+                    "nonce":1413080
+                },
+                "parentHash":"072b492dfe3fbf27e216a15e703dd55b28167a3e8ccd77d6a655dc519defc033"
+            },
+            "cbtx":{
+                "version":1,
+                "txIns":[
+                    {
+                        "prevTxHash":"0000000000000000000000000000000000000000000000000000000000000000",
+                        "prevTxIdx":4294967295,
+                        "extra":"4e000000000000002f514c432043505520417578504f572f",
+                        "sequence":4294967295
+                    }
+                ],
+                "txOuts":[
+                    {
+                        "value":"456621004",
+                        "address":"qlc_1gnqid9up5y998uwig44x1yfrppsdo8f9jfszgqin7pr7ixsyyae1y81w9xp"
+                    },
+                    {
+                        "value":"114155251",
+                        "address":"qlc_111111111111111111111111111111111111111111111111111ommygmckp"
+                    }
+                ],
+                "stateHash":"b63f07aacd736c292655c42320feb6510ff8bfb70b05c1376c82be3a705ac3c3",
+                "txNum":1,
+                "hash":"6553e616dd738e4ca5524bd1cde99440a296a071d4d52119f9492721839b1f43"
+            }
+        }
+    }
+}
+
+```
+:::
+
