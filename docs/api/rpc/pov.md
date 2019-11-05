@@ -1719,7 +1719,7 @@ Return mining info
 - **Returns**:
   - `hashInfo`: hash info for latest 120 blocks
   - `pooledTx`: pending tx count
-  - `syncState`: sync state
+  - `syncState`: sync state, 0-SyncNotStart,1-Synchronizing,2-SyncDone
 
 - **Example**:
 
