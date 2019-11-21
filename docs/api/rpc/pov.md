@@ -1887,10 +1887,20 @@ Return representative statistics
   - `addresses`: addresses of representatives
 - **Returns**:
   - `repStats`: statistics of all representatives
+  - `repCount`: the count of all representatives that can get rewards
+  - `totalBlockNum`: the number of blocks that have been checked
+  - `totalPeriod`: the number of periods that have been checked
+  - `totalRewardAmount`: the total gas that all reps can share
+  - `latestBlockHeight`: the latest pov height
   - `mainBlockNum`: the total number of blocks that the reps can get rewards
+  - `mainOnlinePeriod`: the total number of periods that the reps is on line
   - `mainRewardAmount`: the total gas that the reps can get
   - `stableBlockNum`: the total number of blocks that can be claimed now
+  - `stableOnlinePeriod`: the total number of periods that the reps can claim the rewards
   - `stableRewardAmount`: the total gas that can be claimed now
+  - `lastOnlineTime`: the last on line time of the reps
+  - `lastOnlineHeight`: the last pov height that the reps were on line
+  - `isOnline`: if the reps is on line now
 - **Example**:
 
 ::: demo
@@ -1909,12 +1919,35 @@ Return representative statistics
 	"jsonrpc": "2.0",
 	"id": 3,
 	"result": {
-		"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4": {
-			"mainBlockNum": 60,
-			"mainRewardAmount": "6849315060",
-			"stableBlockNum": 40,
-			"stableRewardAmount": "4566210040"
-		}
+		"repCount": 2,
+		"repStats": {
+			"qlc_3du37ycreqgse861rcx8qkkpscdttc99ro834zhwuftrtmhbnidnmrkyz4xr": {
+				"mainBlockNum": 9240,
+				"mainRewardAmount": "534246570120",
+				"mainOnlinePeriod": 77,
+				"stableBlockNum": 6840,
+				"stableRewardAmount": "397260270120",
+				"stableOnlinePeriod": 57,
+				"lastOnlineTime": "2019-11-21T05:48:40+08:00",
+				"lastOnlineHeight": 9480,
+				"isOnline": true
+			},
+			"qlc_3yefwog1ojkcsbxfwfdctyydkxsjofh9s7xy3jpt3n33m7mfqxmpchjazgnu": {
+				"mainBlockNum": 9120,
+				"mainRewardAmount": "520547940000",
+				"mainOnlinePeriod": 76,
+				"stableBlockNum": 6720,
+				"stableRewardAmount": "383561640000",
+				"stableOnlinePeriod": 56,
+				"lastOnlineTime": "2019-11-21T05:48:40+08:00",
+				"lastOnlineHeight": 9480,
+				"isOnline": true
+			}
+		},
+		"totalBlockNum": 9600,
+		"totalPeriod": 80,
+		"totalRewardAmount": "1054794510120",
+		"latestBlockHeight": 9691
 	}
 }
 ```
