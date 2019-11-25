@@ -22,6 +22,8 @@ jobs:
           yarn add vuepress -D
           yarn install
           yarn docs:build
+          cd docs/.vuepress/dist
+          echo 'docs.qlcchain.online' > CNAME
       - name: Release Github Pages
         uses: JamesIves/github-pages-deploy-action@3.0.2
         with:
