@@ -40,7 +40,8 @@ Go 1.11.1 or above version is required. See Go installation guild: [go installat
 
 #### Compile
 
-```bashthen you can get the executable file for all platforms，like this：
+then you can get the executable file for all platforms，like this：
+```bash
 make clean all
 ```
 
