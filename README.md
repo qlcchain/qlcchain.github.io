@@ -1,6 +1,6 @@
 ## QLC Chain docs
 
-[![Actions Status](https://github.com/qlcchain/qlcchain/qlcchain.github.io/workflows/Release%20Pages/badge.svg)](https://github.com/qlcchain/qlcchain/qlcchain.github.io/actions)
+[![Actions Status](https://github.com/qlcchain/qlcchain.github.io/workflows/Release%20Pages/badge.svg)](https://github.com/qlcchain/qlcchain.github.io/actions)
 
 
 ### Env
