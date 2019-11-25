@@ -1,9 +1,9 @@
 name: Release Pages
 
 on: 
-  pull_request:
+  push:
     branches:
-    - raw
+      - raw
 jobs:
   build:
     name: Release to GitHub Pages
@@ -23,11 +23,9 @@ jobs:
           yarn install
           yarn docs:build
       - name: Release Github Pages
-        uses: igolopolosov/github-action-release-github-pages@master
-        env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
-          GITHUB_PAGES_REPO_AUTHOR: qlcchain-bot
-          GITHUB_PAGES_REPO_NAME: qlcchain.github.io
-          GITHUB_PAGES_RELEASE_BRANCH: master
-          PROJECT_BUILD_FOLDER: docs/.vuepress/dist
-          GITHUB_PAGES_CLEANUP_SCRIPT: "rm -rf docs/.vuepress/dist"
+        uses: JamesIves/github-pages-deploy-action@3.0.2
+        with:
+          ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
+          BASE_BRANCH: raw
+          BRANCH: master
+          FOLDER: docs/.vuepress/dist
