@@ -1717,6 +1717,7 @@ Return mining info
 - **Parameters**: `null`
   
 - **Returns**:
+  - `difficulty`: difficulty ratio
   - `hashInfo`: hash info for latest 120 blocks
   - `pooledTx`: pending tx count
   - `syncState`: sync state, 0-SyncNotStart,1-Synchronizing,2-SyncDone
@@ -1728,7 +1729,7 @@ Return mining info
 ```json tab:Request
 {
   "jsonrpc": "2.0",
-  "id":3,
+  "id":1,
   "method":"pov_getMiningInfo",
   "params":[]
 }
@@ -1741,22 +1742,21 @@ Return mining info
     "id": "1",
     "jsonrpc": "2.0",
     "result": {
-        "algoEfficiency": 513,
-        "algoName": "",
-        "blockNum": 1124,
-        "cpuMining": false,
-        "currentBlockSize": 920,
-        "currentBlockTx": 1,
-        "difficultyRatio": 513.00146771,
+        "currentBlockAlgo": 256,
+        "currentBlockHash": "843558b420ae654fd39455c3ca58f93b06adadaabbda15f8a0f3578f91d37ada",
+        "currentBlockHeight": 25392,
+        "currentBlockSize": 1183,
+        "currentBlockTx": 16,
+        "difficulty": 27098.735039769075,
         "hashInfo": {
-            "chainHashPS": 525078,
-            "scryptHashPS": 0,
-            "sha256dHashPS": 509024,
-            "x11HashPS": 16053
+            "chainHashPS": 28468557,
+            "scryptHashPS": 8847,
+            "sha256dHashPS": 28377610,
+            "x11HashPS": 82099
         },
-        "minerAddr": "",
-        "pooledTx": 0,
-        "syncState": 2
+        "pooledTx": 8,
+        "syncState": 2,
+        "syncStateStr": "SyncDone"
     }
 }
 
@@ -1766,7 +1766,7 @@ Return mining info
 ```json test
 {
   "jsonrpc": "2.0",
-  "id":3,
+  "id":1,
   "method":"pov_getMiningInfo",
   "params":[]
 }
@@ -1961,6 +1961,316 @@ Return representative statistics
 }
 ```
 
+:::
+
+
+## pov_getDiffDayStat
+Return difficulty daily statistics info by day index
+
+- **Parameters**:
+  - `dayIndex`: day index, default is 0
+  
+- **Returns**:
+  - `avgDiffRatio`: average difficulty ratio
+  - `maxDiffRatio`: maximum difficulty ratio
+  - `minDiffRatio`: minimum difficulty ratio
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"pov_getDiffDayStat",
+  "params":[0]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "avgDiffRatio": 30,
+        "dayIndex": 0,
+        "maxBlockTime": 1573651413,
+        "maxDiffRatio": 2775,
+        "minBlockTime": 1566345600,
+        "minDiffRatio": 1
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"pov_getDiffDayStat",
+  "params":[0]
+}
+
+
+```
+:::
+
+
+## pov_getDiffDayStatByHeight
+Return difficulty daily statistics info by block height
+
+- **Parameters**:
+  - `blockHeight`: height of pov block
+  
+- **Returns**:
+  - `avgDiffRatio`: average difficulty ratio
+  - `maxDiffRatio`: maximum difficulty ratio
+  - `minDiffRatio`: minimum difficulty ratio
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"pov_getDiffDayStatByHeight",
+  "params":[1439]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "avgDiffRatio": 30,
+        "dayIndex": 0,
+        "maxBlockTime": 1573651413,
+        "maxDiffRatio": 2775,
+        "minBlockTime": 1566345600,
+        "minDiffRatio": 1
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"pov_getDiffDayStatByHeight",
+  "params":[1439]
+}
+
+
+```
+:::
+
+
+## pov_getMinerDayStat
+Return miner daily statistics info by day index
+
+- **Parameters**:
+  - `dayIndex`: day index, default is 0
+  
+- **Returns**:
+  - `dayIndex`: day index
+  - `minerNum`: total miner number
+  - `minerStats`: miner statistics item list
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"pov_getMinerDayStat",
+  "params":[0]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "dayIndex": 0,
+        "minerNum": 3,
+        "minerStats": {
+            "qlc_176f1aj1361y5i4yu8ccyp8xphjcbxmmu4ryh4jecnsncse1eiud7uncz8bj": {
+                "blockNum": 1,
+                "firstHeight": 0,
+                "isMiner": true,
+                "lastHeight": 0,
+                "repBlockNum": 0,
+                "repReward": "0",
+                "rewardAmount": "456621004"
+            },
+            "qlc_1d5zregxfjgd6cegrbhisajebia85qrfjkk49gtn8u93btdo55kmqg89ba1h": {
+                "blockNum": 15,
+                "firstHeight": 1,
+                "isMiner": true,
+                "lastHeight": 15,
+                "repBlockNum": 0,
+                "repReward": "0",
+                "rewardAmount": "6849315060"
+            },
+            "qlc_1wyei6waj76k4b38prdubc19sr8dync5pz996cwufiy8ksxz6oshudred7q6": {
+                "blockNum": 1424,
+                "firstHeight": 16,
+                "isMiner": true,
+                "lastHeight": 1439,
+                "repBlockNum": 0,
+                "repReward": "0",
+                "rewardAmount": "650228309696"
+            },
+            "qlc_3du37ycreqgse861rcx8qkkpscdttc99ro834zhwuftrtmhbnidnmrkyz4xr": {
+                "blockNum": 0,
+                "firstHeight": 0,
+                "isMiner": false,
+                "lastHeight": 0,
+                "repBlockNum": 1320,
+                "repReward": "75342465000",
+                "rewardAmount": "0"
+            },
+            "qlc_3yefwog1ojkcsbxfwfdctyydkxsjofh9s7xy3jpt3n33m7mfqxmpchjazgnu": {
+                "blockNum": 0,
+                "firstHeight": 0,
+                "isMiner": false,
+                "lastHeight": 0,
+                "repBlockNum": 1320,
+                "repReward": "75342465000",
+                "rewardAmount": "0"
+            }
+        }
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"pov_getMinerDayStat",
+  "params":[0]
+}
+
+
+```
+:::
+
+
+## pov_getMinerDayStatByHeight
+Return miner daily statistics info by block height
+
+- **Parameters**:
+  - `blockHeight`: height of pov block
+  
+- **Returns**:
+  - `dayIndex`: day index
+  - `minerNum`: total miner number
+  - `minerStats`: miner statistics item list
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"pov_getMinerDayStatByHeight",
+  "params":[1439]
+}
+
+
+```
+
+```json tab:Response
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "dayIndex": 0,
+        "minerNum": 3,
+        "minerStats": {
+            "qlc_176f1aj1361y5i4yu8ccyp8xphjcbxmmu4ryh4jecnsncse1eiud7uncz8bj": {
+                "blockNum": 1,
+                "firstHeight": 0,
+                "isMiner": true,
+                "lastHeight": 0,
+                "repBlockNum": 0,
+                "repReward": "0",
+                "rewardAmount": "456621004"
+            },
+            "qlc_1d5zregxfjgd6cegrbhisajebia85qrfjkk49gtn8u93btdo55kmqg89ba1h": {
+                "blockNum": 15,
+                "firstHeight": 1,
+                "isMiner": true,
+                "lastHeight": 15,
+                "repBlockNum": 0,
+                "repReward": "0",
+                "rewardAmount": "6849315060"
+            },
+            "qlc_1wyei6waj76k4b38prdubc19sr8dync5pz996cwufiy8ksxz6oshudred7q6": {
+                "blockNum": 1424,
+                "firstHeight": 16,
+                "isMiner": true,
+                "lastHeight": 1439,
+                "repBlockNum": 0,
+                "repReward": "0",
+                "rewardAmount": "650228309696"
+            },
+            "qlc_3du37ycreqgse861rcx8qkkpscdttc99ro834zhwuftrtmhbnidnmrkyz4xr": {
+                "blockNum": 0,
+                "firstHeight": 0,
+                "isMiner": false,
+                "lastHeight": 0,
+                "repBlockNum": 1320,
+                "repReward": "75342465000",
+                "rewardAmount": "0"
+            },
+            "qlc_3yefwog1ojkcsbxfwfdctyydkxsjofh9s7xy3jpt3n33m7mfqxmpchjazgnu": {
+                "blockNum": 0,
+                "firstHeight": 0,
+                "isMiner": false,
+                "lastHeight": 0,
+                "repBlockNum": 1320,
+                "repReward": "75342465000",
+                "rewardAmount": "0"
+            }
+        }
+    }
+}
+
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":1,
+  "method":"pov_getMinerDayStatByHeight",
+  "params":[1439]
+}
+
+
+```
 :::
 
 

@@ -7,8 +7,8 @@ Each time a block is created by a miner, which is then accepted by the majority 
 Each new block reward is then split up as follows:
 | Party               |  Reward |
 | :-----------------: | :-----: |
-| PoW Miner           | 80%     |
-| DPOS Representative | 20%     |
+| PoW Miner           | 60%     |
+| DPOS Representative | 40%     |
 
 ## Miner
 
@@ -16,36 +16,46 @@ Each new block reward is then split up as follows:
 **Miner MUST have enough pledge vote (staking) to generate new blocks.**
 
 ### Use gqlc-miner
-gqlc-miner is just for develop testing with very poor performance.
-
 (NOT RECOMMANED)
 
-```bash 
+gqlc-miner is just for develop testing with very poor performance.
+
+https://github.com/qlcchain/qlc-miner/releases
+
+```bash
+
+# mainnet default port is 9735
+# testnet default port is 19735
 
 # SHA256D
-gqlc-miner -nodeurl http://127.0.0.1:29735 -algo SHA256D -miner qlc_xxx
+gqlc-miner -nodeurl http://127.0.0.1:9735 -algo SHA256D -miner qlc_xxx
 
 # or X11
-gqlc-miner -nodeurl http://127.0.0.1:29735 -algo X11 -miner qlc_xxx
+gqlc-miner -nodeurl http://127.0.0.1:9735 -algo X11 -miner qlc_xxx
 
 # or SCRYPT
-gqlc-miner -nodeurl http://127.0.0.1:29735 -algo SCRYPT -miner qlc_xxx
+gqlc-miner -nodeurl http://127.0.0.1:9735 -algo SCRYPT -miner qlc_xxx
 
 ```
 
 ### Use solo stratum pool
-gqlc-stratum is a very simple mining pool between node and miner, which support stratum mining protocol.
+gqlc-pool is a very simple mining pool between node and miner, which support stratum mining protocol.
+
+https://github.com/qlcchain/qlc-pool/releases
 
 ```bash
 
+# mainnet default port is 9735
+# testnet default port is 19735
+
 # SHA256D
-gqlc-stratum -nodeurl http://127.0.0.1:29735 -algo SHA256D -miner qlc_xxx
+gqlc-pool -nodeurl http://127.0.0.1:9735 -algo SHA256D -miner qlc_xxx
 
 # or X11
-gqlc-stratum -nodeurl http://127.0.0.1:29735 -algo X11 -miner qlc_xxx
+gqlc-pool -nodeurl http://127.0.0.1:9735 -algo X11 -miner qlc_xxx
 
 # or SCRYPT
-gqlc-stratum -nodeurl http://127.0.0.1:29735 -algo SCRYPT -miner qlc_xxx
+gqlc-pool -nodeurl http://127.0.0.1:9735 -algo SCRYPT -miner qlc_xxx
 
 ```
 

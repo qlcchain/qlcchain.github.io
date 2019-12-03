@@ -18,21 +18,24 @@ gqlc-miner is just for develop testing with very poor performance.
 
 ```bash 
 
+# mainnet default port is 9735
+# testnet default port is 19735
+
 # SHA256D
-gqlc-miner -nodeurl http://127.0.0.1:29735 -auxpow -algo SHA256D -miner qlc_xxx
+gqlc-miner -nodeurl http://127.0.0.1:9735 -auxpow -algo SHA256D -miner qlc_xxx
 
 # or X11
-gqlc-miner -nodeurl http://127.0.0.1:29735 -auxpow -algo X11 -miner qlc_xxx
+gqlc-miner -nodeurl http://127.0.0.1:9735 -auxpow -algo X11 -miner qlc_xxx
 
 # or SCRYPT
-gqlc-miner -nodeurl http://127.0.0.1:29735 -auxpow -algo SCRYPT -miner qlc_xxx
+gqlc-miner -nodeurl http://127.0.0.1:9735 -auxpow -algo SCRYPT -miner qlc_xxx
 
 ```
 
 ### Use solo stratum pool
-gqlc-stratum is a very simple mining pool between node and miner, which support stratum mining protocol.
+gqlc-pool is a very simple mining pool between node and miner, which support stratum mining protocol.
 
-gqlc-stratum DOES NOT SUPPORT AuxPoW.
+gqlc-pool DOES NOT SUPPORT AuxPoW.
 
 ### Use stratum mining pool
 Please contact mining pool operator which support QLC merged mining.
