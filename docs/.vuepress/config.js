@@ -325,10 +325,7 @@ module.exports = {
             "PoV",
             "矿工",
             "代表",
-            "订阅-通知",
-            "验证公钥",
-            "验证者",
-            "发布公钥"
+            "订阅-通知"
           ),
           "/zh/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
