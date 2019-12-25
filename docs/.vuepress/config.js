@@ -99,17 +99,17 @@ const sidebarConfigs = {
     // oracle
     {
       collapsable: false,
-      children: ["oracle"],
+      children: ["Oracle"],
     },
     // verifier
     {
       collapsable: false,
-      children: ["verifier"],
+      children: ["Verifier"],
     },
     // publisher
     {
       collapsable: false,
-      children: ["publisher"],
+      children: ["Publisher"],
     },
   ],
   "api/qlcjs": [
