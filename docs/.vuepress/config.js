@@ -96,6 +96,21 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["pubsub"],
     },
+    // oracle
+    {
+      collapsable: false,
+      children: ["oracle"],
+    },
+    // verifier
+    {
+      collapsable: false,
+      children: ["verifier"],
+    },
+    // publisher
+    {
+      collapsable: false,
+      children: ["publisher"],
+    },
   ],
   "api/qlcjs": [
     {
@@ -265,7 +280,10 @@ module.exports = {
             "PoV",
             "Miner",
             "Representation",
-            "Pub–Sub"
+            "Pub–Sub",
+            "Oracle",
+            "Verifier",
+            "Publisher"
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
@@ -308,6 +326,9 @@ module.exports = {
             "矿工",
             "代表",
             "订阅-通知"
+            "验证公钥",
+            "验证者",
+            "发布公钥"
           ),
           "/zh/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
