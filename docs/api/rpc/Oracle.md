@@ -181,6 +181,78 @@ Get oracle infos by type
 
 :::
 
+## oracle_getOracleInfosByTypeAndID
+
+Get oracle infos by type and id
+
+- **Parameters**: 
+  - `type` : verify type (email/weChat)
+  - `id` : id address
+
+- **Returns**: 
+  -  `oracleInfo`: oracle info
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 2,
+	"method": "oracle_getOracleInfosByTypeAndID",
+	"params": [
+		"email",
+		"3@qq.com"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 2,
+	"result": [
+		{
+			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+			"type": "email",
+			"id": "da1ff4b765ee04e9a0169326697a013c99655e66c0fc5d0644574a741e361ad6",
+			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a3",
+			"code": "sTCQWjF810K4vrPX",
+			"hash": "51b98440d8d166e39b5f8c341d92fa12c23397cb7f65828f492053173a3da187"
+		},
+		{
+			"account": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+			"type": "email",
+			"id": "da1ff4b765ee04e9a0169326697a013c99655e66c0fc5d0644574a741e361ad6",
+			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a3",
+			"code": "VP2a9oqwI8xTBMPT",
+			"hash": "51b98440d8d166e39b5f8c341d92fa12c23397cb7f65828f492053173a3da187"
+		}
+	]
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 2,
+	"method": "oracle_getOracleInfosByTypeAndID",
+	"params": [
+		"email",
+		"3@qq.com"
+	]
+}
+
+
+```
+
+:::
+
 ## oracle_getOracleInfosByAccountAndType
 
 Get oracle infos by account and type
