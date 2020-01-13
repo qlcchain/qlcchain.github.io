@@ -96,20 +96,10 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["pubsub"],
     },
-    // oracle
+    // dpki
     {
       collapsable: false,
-      children: ["Oracle"],
-    },
-    // verifier
-    {
-      collapsable: false,
-      children: ["Verifier"],
-    },
-    // publisher
-    {
-      collapsable: false,
-      children: ["Publisher"],
+      children: ["dpki"],
     },
   ],
   "api/qlcjs": [
@@ -281,9 +271,7 @@ module.exports = {
             "Miner",
             "Representation",
             "Pub–Sub",
-            "Oracle",
-            "Verifier",
-            "Publisher"
+            "DPKI"
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
