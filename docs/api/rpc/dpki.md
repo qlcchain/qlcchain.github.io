@@ -456,7 +456,9 @@ Get a unpublish block to unpublish a id/publicKey pair
    - `account` : account to publish
    - `type` : verifier type (email/weChat)
    - `id` : id address
-
+   - `pubKey`: public key to unpublish
+   - `hash`: hash returned by dpki_getPublishBlock
+   
 -  **Returns**: 
    -  `block`: unpublish block
 
@@ -473,7 +475,9 @@ Get a unpublish block to unpublish a id/publicKey pair
 		{
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
 			"type": "email",
-			"id": "3@qq.com"
+			"id": "3@qq.com",
+			"pubKey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e4942211",
+			"hash": "a987da2a34d976c320247361be7165462a3e59356fc21cbdb2e11a8708b99ee5"
 		}
 	]
 }
@@ -519,7 +523,9 @@ Get a unpublish block to unpublish a id/publicKey pair
 		{
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
 			"type": "email",
-			"id": "3@qq.com"
+			"id": "3@qq.com",
+			"pubKey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e4942211",
+			"hash": "a987da2a34d976c320247361be7165462a3e59356fc21cbdb2e11a8708b99ee5"
 		}
 	]
 }
@@ -576,7 +582,8 @@ Get publish info by type and id address
 			"codes": [
 				"adb62153d702faf450a9a51d62543cf8ecb7154eefdb8ad5076d3749f5e50ffe",
 				"cdc1007bb6e21fcc7c42ec43ad16be7b628ee1de8cadebb94d7f54a095a1cd7f"
-			]
+			],
+			"hash": "a987da2a34d976c320247361be7165462a3e59356fc21cbdb2e11a8708b99ee5"
 		}
 	]
 }
@@ -645,7 +652,8 @@ Get publish info by type
 			"codes": [
 				"adb62153d702faf450a9a51d62543cf8ecb7154eefdb8ad5076d3749f5e50ffe",
 				"cdc1007bb6e21fcc7c42ec43ad16be7b628ee1de8cadebb94d7f54a095a1cd7f"
-			]
+			],
+			"hash": "a987da2a34d976c320247361be7165462a3e59356fc21cbdb2e11a8708b99ee5"
 		},
 		{
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
@@ -660,7 +668,8 @@ Get publish info by type
 			"codes": [
 				"9a9dfcc079c7bdeaa41de0d80bb5f3acda0026195b784116320c83642696e1e5",
 				"2991b9070b296efc30da2baaa4ea63571c2afb1cf898172c54efc870652a683f"
-			]
+			],
+			"hash": "a987da2a34d976c320247361be7165462a3e59356fc21cbdb2e11a8708b99ee5"
 		}
 	]
 }
@@ -729,7 +738,8 @@ Get publish info by account and type
 			"codes": [
 				"adb62153d702faf450a9a51d62543cf8ecb7154eefdb8ad5076d3749f5e50ffe",
 				"cdc1007bb6e21fcc7c42ec43ad16be7b628ee1de8cadebb94d7f54a095a1cd7f"
-			]
+			],
+			"hash": "a987da2a34d976c320247361be7165462a3e59356fc21cbdb2e11a8708b99ee5"
 		},
 		{
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
@@ -744,7 +754,8 @@ Get publish info by account and type
 			"codes": [
 				"9a9dfcc079c7bdeaa41de0d80bb5f3acda0026195b784116320c83642696e1e5",
 				"2991b9070b296efc30da2baaa4ea63571c2afb1cf898172c54efc870652a683f"
-			]
+			],
+			"hash": "a987da2a34d976c320247361be7165462a3e59356fc21cbdb2e11a8708b99ee5"
 		}
 	]
 }
