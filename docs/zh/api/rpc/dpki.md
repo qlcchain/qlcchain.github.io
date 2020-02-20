@@ -32,7 +32,8 @@ Get a verifier register block
 "id": 3,
 "method": "dpki_getVerifierRegisterBlock",
 "params":[{
-    	"account":"qlc_1zb3tn7ifmcnj9p96u63jio4qyhm6w5yfgyi55pew9dma5qus1hhwmx7989k", 			"type":"email", 
+    	"account":"qlc_1zb3tn7ifmcnj9p96u63jio4qyhm6w5yfgyi55pew9dma5qus1hhwmx7989k",
+    	"type":"email", 
     	"id":"v1@google.com"
 	}]
 }
@@ -75,7 +76,8 @@ Get a verifier register block
 "id": 3,
 "method": "dpki_getVerifierRegisterBlock",
 "params":[{
-    	"account":"qlc_1zb3tn7ifmcnj9p96u63jio4qyhm6w5yfgyi55pew9dma5qus1hhwmx7989k", 			"type":"email", 
+    	"account":"qlc_1zb3tn7ifmcnj9p96u63jio4qyhm6w5yfgyi55pew9dma5qus1hhwmx7989k",
+    	"type":"email", 
     	"id":"v1@google.com"
 	}]
 }
@@ -106,7 +108,8 @@ Get a verifier unregister block
 "id": 3,
 "method": "dpki_getVerifierUnregisterBlock",
 "params":[{
-    	"account":"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe", 			"type":"email"
+    	"account":"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+    	"type":"email"
 	}]
 }
 
@@ -148,7 +151,8 @@ Get a verifier unregister block
 "id": 3,
 "method": "dpki_getVerifierUnregisterBlock",
 "params":[{
-    	"account":"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe", 			"type":"email"
+    	"account":"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+    	"type":"email"
 	}]
 }
 
@@ -269,6 +273,69 @@ Get all the specified type of verifiers
 	"jsonrpc": "2.0",
 	"id": 3,
 	"method": "dpki_getVerifiersByType",
+	"params": [
+		"email"
+	]
+}
+
+
+```
+
+:::
+
+## dpki_getActiveVerifiers
+
+Get up to 5 active verifiers of specified type, active means have sent a oracle block in last 24 hours.
+
+- **Parameters**: 
+  - `type` : verifier type (email/weChat)
+- **Returns**: 
+  - `account` : verifier account
+  - `type` : verifier type
+  - `id` : verifier address to receive verify request
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getActiveVerifiers",
+	"params": [
+		"email"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": [
+		{
+			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+			"type": "email",
+			"id": "1111@qq.com"
+		},
+		{
+			"account": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+			"type": "email",
+			"id": "2222@qq.com"
+		}
+	]
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getActiveVerifiers",
 	"params": [
 		"email"
 	]
@@ -596,6 +663,95 @@ Get publish info by type and id address
 	"jsonrpc": "2.0",
 	"id": 3,
 	"method": "dpki_getPubKeyByTypeAndID",
+	"params": [
+		"email",
+		"4@qq.com"
+	]
+}
+
+
+```
+
+:::
+
+## dpki_getRecommendPubKey
+
+Get the recommend public key by type and id, will only return one record.
+
+-  **Parameters**: 
+   - `type` : id type (email/weChat)
+   - `id` : id address
+
+-  **Returns**: 
+   -  `publishInfo`: published infos
+   -  `publishHeight`: publish time
+   -  `verifiedHeight`: the time of this record's state changed from unverified to verified
+   -  `verifiedStatus`: verified status(0:unverified 1:verified)
+   -  `oracleAccounts`: verifiers that make the proof for this publish
+
+-  **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getRecommendPubKey",
+	"params": [
+		"email",
+		"4@qq.com"
+	]
+}
+
+
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": [
+		{
+			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
+			"type": "email",
+			"id": "7c30a50845d87ae02aa7bdcb82a36a4d454a4e9308d4680db4186449b4746d23",
+			"pubKey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
+			"fee": "500000000",
+			"verifiers": [
+				"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+				"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+			],
+			"codes": [
+				"adb62153d702faf450a9a51d62543cf8ecb7154eefdb8ad5076d3749f5e50ffe",
+				"cdc1007bb6e21fcc7c42ec43ad16be7b628ee1de8cadebb94d7f54a095a1cd7f"
+			],
+			"hash": "a987da2a34d976c320247361be7165462a3e59356fc21cbdb2e11a8708b99ee5",
+      "state": {
+        "oracleAccounts": [
+          "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+          "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+          "qlc_1zb3tn7ifmcnj9p96u63jio4qyhm6w5yfgyi55pew9dma5qus1hhwmx7989k",
+          "qlc_3j3yr5ofohby1d94o3kyursf9tgnotborcrnty48g3wi4ryq6bxjgaeqs1nu",
+          "qlc_1hgntwsa9wmqq6z8onpwzmpofs76ay5drqg45c74tjur5cqhmiye3exiuqtw"
+        ],
+        "publishHeight": 1,
+        "verifiedHeight": 1,
+        "verifiedStatus": 1,
+        "bonusFee": 500000000
+      }
+		}
+	]
+}
+
+
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getRecommendPubKey",
 	"params": [
 		"email",
 		"4@qq.com"
