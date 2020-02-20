@@ -101,6 +101,11 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["dpki"],
     },
+    // settlement
+    {
+      collapsable: false,
+      children: ["settlement"],
+    },
   ],
   "api/qlcjs": [
     {
@@ -271,7 +276,8 @@ module.exports = {
             "Miner",
             "Representation",
             "Pub–Sub",
-            "DPKI"
+            "DPKI",
+            "Settlement"
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
@@ -313,7 +319,9 @@ module.exports = {
             "PoV",
             "矿工",
             "代表",
-            "订阅-通知"
+            "订阅-通知",
+            "DKPI",
+            "结算"
           ),
           "/zh/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
