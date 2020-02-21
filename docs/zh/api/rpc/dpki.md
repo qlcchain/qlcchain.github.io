@@ -37,8 +37,6 @@ Get a verifier register block
     	"id":"v1@google.com"
 	}]
 }
-
-
 ```
 
 ```json tab:Response
@@ -66,8 +64,6 @@ Get a verifier register block
 		"signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 	}
 }
-
-
 ```
 
 ```json test
@@ -81,8 +77,6 @@ Get a verifier register block
     	"id":"v1@google.com"
 	}]
 }
-
-
 ```
 
 :::
@@ -112,8 +106,6 @@ Get a verifier unregister block
     	"type":"email"
 	}]
 }
-
-
 ```
 
 ```json tab:Response
@@ -141,8 +133,6 @@ Get a verifier unregister block
 		"signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 	}
 }
-
-
 ```
 
 ```json test
@@ -182,8 +172,6 @@ Get all the verifiers
     "method": "dpki_getAllVerifiers",
     "params": null
 }
-
-
 ```
 
 ```json tab:Response
@@ -203,8 +191,6 @@ Get all the verifiers
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -214,8 +200,6 @@ Get all the verifiers
     "method": "dpki_getAllVerifiers",
     "params": null
 }
-
-
 ```
 
 :::
@@ -243,8 +227,6 @@ Get all the specified type of verifiers
 		"email"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -264,8 +246,6 @@ Get all the specified type of verifiers
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -277,8 +257,6 @@ Get all the specified type of verifiers
 		"email"
 	]
 }
-
-
 ```
 
 :::
@@ -306,8 +284,6 @@ Get up to 5 active verifiers of specified type, active means have sent a oracle 
 		"email"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -327,8 +303,6 @@ Get up to 5 active verifiers of specified type, active means have sent a oracle 
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -340,8 +314,6 @@ Get up to 5 active verifiers of specified type, active means have sent a oracle 
 		"email"
 	]
 }
-
-
 ```
 
 :::
@@ -369,8 +341,6 @@ Get all the verifiers registered by the specified account
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -385,8 +355,6 @@ Get all the verifiers registered by the specified account
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -398,8 +366,198 @@ Get all the verifiers registered by the specified account
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
 	]
 }
+```
 
+:::
 
+## dpki_getVerifierStateByBlockHeight
+
+Get verifier state by the specified account and pov height
+
+- **Parameters**: 
+  - `height` : pov height
+  - `account` : verifier register account
+- **Returns**: 
+  - `totalVerify` : verified amount
+  - `totalReward` : total reward
+  - `activeHeight` : lastest oracle action in pov height for each verifier type
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getVerifierStateByBlockHeight",
+	"params": [
+		100,
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+		"totalVerify": 1,
+		"totalReward": 100000000,
+		"activeHeight": {
+			"email": 1
+		}
+	}
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getVerifierStateByBlockHeight",
+	"params": [
+		100,
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
+	]
+}
+```
+
+:::
+
+## dpki_getAllVerifierStatesByBlockHeight
+
+Get all verifiers's state by the specified pov height
+
+- **Parameters**: 
+  - `height` : pov height
+- **Returns**: 
+  - `totalVerify` : verified amount
+  - `totalReward` : total reward
+  - `activeHeight` : lastest oracle action in pov height for each verifier type
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getAllVerifierStatesByBlockHeight",
+	"params": [
+		100
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+		"verifierNum": 8,
+		"allVerifiers": {
+			"qlc_176iqjxz1tif1m8xarzhzhwg5b1dtgmmp1g1emb5d1bij18ahwwhsyoaqc8m": {
+				"totalVerify": 1,
+				"totalReward": 200000000,
+				"activeHeight": {
+					"email": 1
+				}
+			},
+			"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe": {
+				"totalVerify": 1,
+				"totalReward": 100000000,
+				"activeHeight": {
+					"email": 1
+				}
+			},
+			"qlc_1hgntwsa9wmqq6z8onpwzmpofs76ay5drqg45c74tjur5cqhmiye3exiuqtw": {
+				"totalVerify": 1,
+				"totalReward": 100000000,
+				"activeHeight": {
+					"email": 1
+				}
+			}
+		}
+	}
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getAllVerifierStatesByBlockHeight",
+	"params": [
+		100
+	]
+}
+```
+
+:::
+
+## dpki_getVerifierHeartBlock
+
+Get verifier heart block
+
+- **Parameters**: 
+  - `account` : verifier account
+  - `types` : verifier types
+- **Returns**: 
+  - `stateBlock` : verifierHeartBlock
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getVerifierHeartBlock",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		["email", "weChat"]
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+		"type": "ContractSend",
+		"token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
+		"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"balance": "9999980000000",
+		"vote": "0",
+		"network": "0",
+		"storage": "0",
+		"oracle": "0",
+		"previous": "2d62ff14f263ad1a7ea814de2262bcf634d5167d0a9046ed0a01daefea5f299d",
+		"link": "0000000000000000000000000000000000000000000000000000000000000018",
+		"message": "0000000000000000000000000000000000000000000000000000000000000000",
+		"data": "YSVblgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+		"povHeight": 1,
+		"timestamp": 1582252085,
+		"extra": "0000000000000000000000000000000000000000000000000000000000000000",
+		"representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+		"work": "0000000000000000",
+		"signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+	}
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getVerifierHeartBlock",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		["email", "weChat"]
+	]
+}
 ```
 
 :::
@@ -443,8 +601,6 @@ Get a publish block to publish a id/publicKey pair
 		}
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -486,8 +642,6 @@ Get a publish block to publish a id/publicKey pair
 		}
 	}
 }
-
-
 ```
 
 ```json test
@@ -509,8 +663,6 @@ Get a publish block to publish a id/publicKey pair
 		}
 	]
 }
-
-
 ```
 
 :::
@@ -548,8 +700,6 @@ Get a unpublish block to unpublish a id/publicKey pair
 		}
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -577,8 +727,6 @@ Get a unpublish block to unpublish a id/publicKey pair
 		"signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 	}
 }
-
-
 ```
 
 ```json test
@@ -596,8 +744,6 @@ Get a unpublish block to unpublish a id/publicKey pair
 		}
 	]
 }
-
-
 ```
 
 :::
@@ -627,8 +773,6 @@ Get publish info by type and id address
 		"4@qq.com"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -654,8 +798,6 @@ Get publish info by type and id address
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -668,8 +810,6 @@ Get publish info by type and id address
 		"4@qq.com"
 	]
 }
-
-
 ```
 
 :::
@@ -703,8 +843,6 @@ Get the recommend public key by type and id, will only return one record.
 		"4@qq.com"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -743,8 +881,6 @@ Get the recommend public key by type and id, will only return one record.
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -757,8 +893,6 @@ Get the recommend public key by type and id, will only return one record.
 		"4@qq.com"
 	]
 }
-
-
 ```
 
 :::
@@ -786,8 +920,6 @@ Get publish info by type
 		"email"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -829,8 +961,6 @@ Get publish info by type
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -842,8 +972,6 @@ Get publish info by type
 		"email"
 	]
 }
-
-
 ```
 
 :::
@@ -872,8 +1000,6 @@ Get publish info by account and type
 		"email"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -915,8 +1041,6 @@ Get publish info by account and type
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -929,8 +1053,6 @@ Get publish info by account and type
 		"email"
 	]
 }
-
-
 ```
 
 :::
@@ -970,8 +1092,6 @@ Get a oracle block
 		}
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -999,8 +1119,6 @@ Get a oracle block
 		"signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 	}
 }
-
-
 ```
 
 ```json test
@@ -1019,8 +1137,6 @@ Get a oracle block
 		}
 	]
 }
-
-
 ```
 
 :::
@@ -1048,8 +1164,6 @@ Get oracle infos by type
 		"email"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -1091,8 +1205,6 @@ Get oracle infos by type
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -1104,8 +1216,6 @@ Get oracle infos by type
 		"email"
 	]
 }
-
-
 ```
 
 :::
@@ -1135,8 +1245,6 @@ Get oracle infos by type and id
 		"3@qq.com"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -1162,8 +1270,6 @@ Get oracle infos by type and id
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -1176,8 +1282,6 @@ Get oracle infos by type and id
 		"3@qq.com"
 	]
 }
-
-
 ```
 
 :::
@@ -1206,8 +1310,6 @@ Get oracle infos by account and type
 		"email"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -1233,8 +1335,6 @@ Get oracle infos by account and type
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -1247,8 +1347,6 @@ Get oracle infos by account and type
 		"email"
 	]
 }
-
-
 ```
 
 :::
@@ -1275,8 +1373,6 @@ Get oracle infos by hash
 		"c4887fd63245fdaa6878e9ccbc7921aa805cb402415cd418645e13a5298047a2"
 	]
 }
-
-
 ```
 
 ```json tab:Response
@@ -1302,8 +1398,6 @@ Get oracle infos by hash
 		}
 	]
 }
-
-
 ```
 
 ```json test
@@ -1315,8 +1409,257 @@ Get oracle infos by hash
 		"c4887fd63245fdaa6878e9ccbc7921aa805cb402415cd418645e13a5298047a2"
 	]
 }
+```
 
+:::
 
+## dpki_getAvailRewardInfo
+
+Get available reward info for specified verifier
+
+- **Parameters**: 
+  - `account` : verifier account
+
+- **Returns**: 
+  -  `lastEndHeight`: last reward height
+  -  `latestBlockHeight`: current pov height
+  -  `nodeRewardHeight`: can reward up to this height on the node
+  -  `availEndHeight`: available reward height
+  -  `availRewardAmount`: available reward amount
+  -  `needCallReward`: if need to claim the reward
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getAvailRewardInfo",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
+  ]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+		"lastEndHeight": 0,
+		"latestBlockHeight": 4,
+		"nodeRewardHeight": 0,
+		"availEndHeight": 0,
+		"availRewardAmount": "0",
+		"needCallReward": false
+	}
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getAvailRewardInfo",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
+  ]
+}
+```
+
+:::
+
+## dpki_getRewardSendBlock
+
+Get reward send block
+
+- **Parameters**: 
+  - `account` : verifier account
+  - `beneficial`: beneficial account
+  - `endHeight`: claim to this height
+  - `rewardAmount`: reward amount
+
+- **Returns**: 
+  -  `stateBlock`: reward send block
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getRewardSendBlock",
+	"params": [
+		{
+			"account:": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+			"beneficial": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+			"endHeight": 2880,
+			"rewardAmount": 100000000
+		}
+  ]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+			"type": "ContractSend",
+			"token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
+			"address": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
+			"balance": "9314997500000000",
+			"vote": "0",
+			"network": "0",
+			"storage": "0",
+			"oracle": "0",
+			"previous": "89292b7f32dac4fd84eff1e8f5b364463309bc62dd22b858b9ef10200e1fc708",
+			"link": "0000000000000000000000000000000000000000000000000000000000000018",
+			"message": "0000000000000000000000000000000000000000000000000000000000000000",
+			"data": "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",
+			"povHeight": 30,
+			"timestamp": 1582256948,
+			"extra": "323ac1c3da127258e4219e2750f705397c22d65b5d5910b3b52414e5b8b08160",
+			"representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+			"work": "0000000000000000",
+			"signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+  }
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getRewardSendBlock",
+	"params": [
+		{
+			"account:": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+			"beneficial": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+			"endHeight": 2880,
+			"rewardAmount": 100000000
+		}
+  ]
+}
+```
+
+:::
+
+## dpki_getRewardRecvBlockBySendHash
+
+Get reward send block
+
+- **Parameters**: 
+  - `hash` : send block hash
+
+- **Returns**: 
+  -  `stateBlock`: reward receive block
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getRewardRecvBlockBySendHash",
+	"params": [
+		"f436d8b49fab5180b343269ce4da7adf5498122eeccec1e3a5600041199c5965"
+  ]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+			"type": "ContractSend",
+			"token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
+			"address": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
+			"balance": "9314997500000000",
+			"vote": "0",
+			"network": "0",
+			"storage": "0",
+			"oracle": "0",
+			"previous": "89292b7f32dac4fd84eff1e8f5b364463309bc62dd22b858b9ef10200e1fc708",
+			"link": "0000000000000000000000000000000000000000000000000000000000000018",
+			"message": "0000000000000000000000000000000000000000000000000000000000000000",
+			"data": "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",
+			"povHeight": 30,
+			"timestamp": 1582256948,
+			"extra": "323ac1c3da127258e4219e2750f705397c22d65b5d5910b3b52414e5b8b08160",
+			"representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+			"work": "0000000000000000",
+			"signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+  }
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getRewardRecvBlockBySendHash",
+	"params": [
+		"f436d8b49fab5180b343269ce4da7adf5498122eeccec1e3a5600041199c5965"
+  ]
+}
+```
+
+:::
+
+## dpki_getRewardHistory
+
+Get reward history
+
+- **Parameters**: 
+  - `account` : verifier account
+
+- **Returns**: 
+  -  `lastEndHeight`: last reward height
+  -  `lastBeneficial`: last beneficial account
+  -  `LastRewardTime`: last claim time
+  -  `RewardAmount`: reward have claimed
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getRewardHistory",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
+  ]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": {
+		"lastEndHeight": 2880,
+		"lastBeneficial": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"LastRewardTime": 1582256948,
+		"RewardAmount": 200000000
+	}
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "dpki_getRewardHistory",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
+  ]
+}
 ```
 
 :::
