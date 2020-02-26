@@ -1980,3 +1980,141 @@ generate user's invoice by start and end time. when `start` or `end` is zero, ti
 }
 ```
 :::
+
+
+## settlement_generateInvoicesByContract
+
+generate invoice by settlement contract address start and end time. when `start` or `end` is zero, time conditions are ignored
+
+- **Parameters**: 
+    - `address`: settlement smart contract address
+    - `start`: start time
+    - `end`:  end time
+- **Returns**: 
+    - `result`: invoice
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByContract",
+	"params": [
+		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": [
+        {
+            "contractAddress": "qlc_3qs4p1n85x8opeseccjhppnpqgztqee1zh9pikhpizb7xsixto5fmd1dw3eo",
+            "startDate": 1581388422,
+            "endDate": 1613356422,
+            "customer": "WeChat",
+            "customerSr": "",
+            "country": "",
+            "operator": "HKTCSL",
+            "serviceId": "cd3b525d208b1de1873dcda2db5ae4e26cbea79a3516582dfaffd4d3ba6377e0",
+            "mcc": 1,
+            "mnc": 91,
+            "currency": "USD",
+            "unitPrice": 0.0426,
+            "sumOfBillableSMSCustomer": 124,
+            "sumOfTOTPrice": 5.2824
+        }
+    ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByContract",
+	"params": [
+		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+		0,
+		0
+	]
+}
+```
+:::
+
+
+## settlement_generateMultiPartyInvoice
+
+generate multi-party invoice by settlement contract address start and end time. when `start` or `end` is zero, time conditions are ignored.
+
+eg. The SMS went through from Montnets to PCCWG, then through CSL to end users, Montnets would like the the settlement go through PCCWG and CSL together. ONLY the states of the CDRs from Montnets, PCCWG and CSL are all successful is success, otherwise is failure. will not count in invoice.
+
+- **Parameters**: 
+    - `address`: settlement smart contract address
+    - `start`: start time
+    - `end`:  end time
+- **Returns**: 
+    - `result`: invoice
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateMultiPartyInvoice",
+	"params": [
+		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": [
+        {
+            "contractAddress": "qlc_3qs4p1n85x8opeseccjhppnpqgztqee1zh9pikhpizb7xsixto5fmd1dw3eo",
+            "startDate": 1581388422,
+            "endDate": 1613356422,
+            "customer": "WeChat",
+            "customerSr": "",
+            "country": "",
+            "operator": "HKTCSL",
+            "serviceId": "cd3b525d208b1de1873dcda2db5ae4e26cbea79a3516582dfaffd4d3ba6377e0",
+            "mcc": 1,
+            "mnc": 91,
+            "currency": "USD",
+            "unitPrice": 0.0426,
+            "sumOfBillableSMSCustomer": 124,
+            "sumOfTOTPrice": 5.2824
+        }
+    ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateMultiPartyInvoice",
+	"params": [
+		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+		0,
+		0
+	]
+}
+```
+:::
