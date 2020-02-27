@@ -1969,7 +1969,6 @@ Generate settlement summary report of the specified settlement contract. when `s
 ```
 :::
 
-
 ## settlement_generateInvoices
 
 generate user's invoice by start and end time. when `start` or `end` is zero, time conditions are ignored
@@ -2104,7 +2103,6 @@ generate invoice by settlement contract address start and end time. when `start`
 }
 ```
 :::
-
 
 ## settlement_generateMultiPartyInvoice
 

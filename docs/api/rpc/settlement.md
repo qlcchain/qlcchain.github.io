@@ -1801,9 +1801,13 @@ Generate settlement summary report of the specified settlement contract. when `s
 - **Returns**: 
     - `result`: summary report
         - `contract`: settlement contract details
-        - `PartyA`: partyA's summary report, success means both PartyA and PartyB reported success, otherwise it is a failure.
-        - `PartyB`: partyB's summary report, same as PartyB
-        - `records`: grouped by sender
+        - `total`:  partyA and partyB's summary report
+          - `partyA`: from party A's view, sending success is a success, otherwise is a failure.
+          - `partyB`: from party B's view, sending success is a success, otherwise is a failure.
+          - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+          - `orphan`: only find Party A or Party B's CDR status
+        - `records`: grouped by sender, same as total
+
 
 - **Example**:
 
@@ -1824,78 +1828,130 @@ Generate settlement summary report of the specified settlement contract. when `s
 
 ```json tab:Response
 {
-    "jsonrpc": "2.0",
-    "id": 3,
-    "result": {
-        "contract": {
-            "partyA": {
-                "address": "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
-                "name": "PCCWG"
-            },
-            "partyB": {
-                "address": "qlc_3exbms47d63ywggnhb9iko9twphsnsx563qf6faufp33167o5dqfoawa8gtj",
-                "name": "HKTCSL"
-            },
-            "previous": "8424d1750aaec508bd566dc7b0c72c29cfc4652c655459aedaacfa46bdcf4b21",
-            "services": [
-                {
-                    "serviceId": "cd3b525d208b1de1873dcda2db5ae4e26cbea79a3516582dfaffd4d3ba6377e0",
-                    "mcc": 1,
-                    "mnc": 91,
-                    "totalAmount": 10,
-                    "unitPrice": 0.0426,
-                    "currency": "USD"
-                },
-                {
-                    "serviceId": "a4ae980b031d5971cde3418beb4427723e726c04b01df8abb8171318dc6ba9fc",
-                    "mcc": 22,
-                    "mnc": 1,
-                    "totalAmount": 30,
-                    "unitPrice": 0.023,
-                    "currency": "USD"
-                }
-            ],
-            "signDate": 1581129222,
-            "startDate": 1581388422,
-            "endDate": 1613356422,
-            "preStops": [
-                "A2P_PCCWG"
-            ],
-            "nextStops": [
-                "CSL Hong Kong @ 3397"
-            ],
-            "confirmDate": 1582172522,
-            "status": "Activated"
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+    "contract": {
+      "partyA": {
+        "address": "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+        "name": "PCCWG"
+      },
+      "partyB": {
+        "address": "qlc_3exbms47d63ywggnhb9iko9twphsnsx563qf6faufp33167o5dqfoawa8gtj",
+        "name": "HKTCSL"
+      },
+      "previous": "8424d1750aaec508bd566dc7b0c72c29cfc4652c655459aedaacfa46bdcf4b21",
+      "services": [
+        {
+          "serviceId": "cd3b525d208b1de1873dcda2db5ae4e26cbea79a3516582dfaffd4d3ba6377e0",
+          "mcc": 1,
+          "mnc": 91,
+          "totalAmount": 10,
+          "unitPrice": 0.0426,
+          "currency": "USD"
         },
-        "records": {
-            "WeChat": {
-                "partyA": {
-                    "total": 149,
-                    "success": 149,
-                    "fail": 0,
-                    "result": 1
-                },
-                "partyB": {
-                    "total": 191,
-                    "success": 191,
-                    "fail": 0,
-                    "result": 1
-                }
-            }
-        },
+        {
+          "serviceId": "a4ae980b031d5971cde3418beb4427723e726c04b01df8abb8171318dc6ba9fc",
+          "mcc": 22,
+          "mnc": 1,
+          "totalAmount": 30,
+          "unitPrice": 0.023,
+          "currency": "USD"
+        }
+      ],
+      "signDate": 1581129222,
+      "startDate": 1581388422,
+      "endDate": 1613356422,
+      "preStops": [
+        "A2P_PCCWG"
+      ],
+      "nextStops": [
+        "CSL Hong Kong @ 3397"
+      ],
+      "confirmDate": 1582172522,
+      "status": "Activated"
+    },
+    "records": {
+      "Slack": {
         "partyA": {
-            "total": 200,
-            "success": 146,
-            "fail": 54,
-            "result": 0.73
+          "total": 20,
+          "success": 10,
+          "fail": 10,
+          "result": 0.5
         },
         "partyB": {
-            "total": 200,
-            "success": 175,
-            "fail": 25,
-            "result": 0.875
+          "total": 20,
+          "success": 7,
+          "fail": 13,
+          "result": 0.35
+        },
+        "orphan": {
+          "total": 5,
+          "success": 3,
+          "fail": 2,
+          "result": 0.6
+        },
+        "matching": {
+          "total": 0,
+          "success": 0,
+          "fail": 0,
+          "result": 0
         }
+      },
+      "WeChat": {
+        "partyA": {
+          "total": 20,
+          "success": 7,
+          "fail": 13,
+          "result": 0.35
+        },
+        "partyB": {
+          "total": 20,
+          "success": 10,
+          "fail": 10,
+          "result": 0.5
+        },
+        "orphan": {
+          "total": 0,
+          "success": 0,
+          "fail": 0,
+          "result": 0
+        },
+        "matching": {
+          "total": 5,
+          "success": 3,
+          "fail": 2,
+          "result": 0.6
+        }
+      }
+    },
+    "total": {
+      "partyA": {
+        "total": 40,
+        "success": 17,
+        "fail": 23,
+        "result": 0.425
+      },
+      "partyB": {
+        "total": 40,
+        "success": 17,
+        "fail": 23,
+        "result": 0.425
+      },
+      "orphan": {
+        "total": 5,
+        "success": 3,
+        "fail": 2,
+        "result": 0.6
+      },
+      "matching": {
+        "total": 5,
+        "success": 3,
+        "fail": 2,
+        "result": 0.6
+      }
     }
+  }
 }
 ```
 
@@ -1912,7 +1968,6 @@ Generate settlement summary report of the specified settlement contract. when `s
 }
 ```
 :::
-
 
 ## settlement_generateInvoices
 
@@ -1972,6 +2027,143 @@ generate user's invoice by start and end time. when `start` or `end` is zero, ti
 	"jsonrpc": "2.0",
 	"id": 3,
 	"method": "settlement_generateInvoices",
+	"params": [
+		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+		0,
+		0
+	]
+}
+```
+:::
+
+
+## settlement_generateInvoicesByContract
+
+generate invoice by settlement contract address start and end time. when `start` or `end` is zero, time conditions are ignored
+
+- **Parameters**: 
+    - `address`: settlement smart contract address
+    - `start`: start time
+    - `end`:  end time
+- **Returns**: 
+    - `result`: invoice
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByContract",
+	"params": [
+		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": [
+        {
+            "contractAddress": "qlc_3qs4p1n85x8opeseccjhppnpqgztqee1zh9pikhpizb7xsixto5fmd1dw3eo",
+            "startDate": 1581388422,
+            "endDate": 1613356422,
+            "customer": "WeChat",
+            "customerSr": "",
+            "country": "",
+            "operator": "HKTCSL",
+            "serviceId": "cd3b525d208b1de1873dcda2db5ae4e26cbea79a3516582dfaffd4d3ba6377e0",
+            "mcc": 1,
+            "mnc": 91,
+            "currency": "USD",
+            "unitPrice": 0.0426,
+            "sumOfBillableSMSCustomer": 124,
+            "sumOfTOTPrice": 5.2824
+        }
+    ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByContract",
+	"params": [
+		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+		0,
+		0
+	]
+}
+```
+:::
+
+## settlement_generateMultiPartyInvoice
+
+generate multi-party invoice by settlement contract address start and end time. when `start` or `end` is zero, time conditions are ignored.
+
+eg. The SMS went through from Montnets to PCCWG, then through CSL to end users, Montnets would like the the settlement go through PCCWG and CSL together. ONLY the states of the CDRs from Montnets, PCCWG and CSL are all successful is success, otherwise is failure. will not count in invoice.
+
+- **Parameters**: 
+    - `address`: settlement smart contract address
+    - `start`: start time
+    - `end`:  end time
+- **Returns**: 
+    - `result`: invoice
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateMultiPartyInvoice",
+	"params": [
+		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": [
+        {
+            "contractAddress": "qlc_3qs4p1n85x8opeseccjhppnpqgztqee1zh9pikhpizb7xsixto5fmd1dw3eo",
+            "startDate": 1581388422,
+            "endDate": 1613356422,
+            "customer": "WeChat",
+            "customerSr": "",
+            "country": "",
+            "operator": "HKTCSL",
+            "serviceId": "cd3b525d208b1de1873dcda2db5ae4e26cbea79a3516582dfaffd4d3ba6377e0",
+            "mcc": 1,
+            "mnc": 91,
+            "currency": "USD",
+            "unitPrice": 0.0426,
+            "sumOfBillableSMSCustomer": 124,
+            "sumOfTOTPrice": 5.2824
+        }
+    ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateMultiPartyInvoice",
 	"params": [
 		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
 		0,
