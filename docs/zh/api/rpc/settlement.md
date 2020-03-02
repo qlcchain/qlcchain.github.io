@@ -11,6 +11,65 @@ Available from go-qlc v1.4 and above
 | &#x2713; | &#x2713; |  &#x2713;|TBD |
 
 
+## settlement_getSettlementRewardsBlock
+Generate settlement contract `ContractRewards` block by `ContractSend` block hash. 
+
+- **Parameters**: 
+    - `send`: `ContractSend` block hash
+- **Returns**: 
+    - `block`: `ContractSend` block, without signature, have to sign the block before process it
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "method": "settlement_getSettlementRewardsBlock",
+    "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
+}
+
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+        "type": "ContractReward",
+        "token": "ea842234e4dc5b17c33b35f99b5b86111a3af0bd8e4a8822602b866711de6d81",
+        "address": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
+        "balance": "40000000000",
+        "vote": "0",
+        "network": "0",
+        "storage": "0",
+        "oracle": "0",
+        "previous": "9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe",
+        "link": "988dc95e2d19c38eef75b7dd4769fe8a7135559d6055aaa635d665756e86eb31",
+        "message": "0000000000000000000000000000000000000000000000000000000000000000",
+        "povHeight": 0,
+        "timestamp": 1569377583,
+        "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+        "representative": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
+        "work": "0000000000000000",
+        "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    }
+}
+```
+
+```json test
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "method": "settlement_getSettlementRewardsBlock",
+    "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
+}
+
+```
+:::
+
 ## settlement_getCreateContractBlock
 Generate create settlement contract `ContractSend` block by params
 
@@ -136,65 +195,6 @@ Generate create settlement contract `ContractSend` block by params
 ```
 :::
 
-## settlement_getContractRewardsBlock
-Generate create contract `ContractRewards` block by `ContractSend` block hash
-
-- **Parameters**: 
-    - `send`: `ContractSend` block hash
-- **Returns**: 
-    - `block`: `ContractSend` block, without signature, have to sign the block before process it
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "settlement_getContractRewardsBlock",
-    "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
-}
-
-```
-
-```json tab:Response
-{
-  "jsonrpc": "2.0",
-  "id": 3,
-  "result": {
-        "type": "ContractReward",
-        "token": "ea842234e4dc5b17c33b35f99b5b86111a3af0bd8e4a8822602b866711de6d81",
-        "address": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
-        "balance": "40000000000",
-        "vote": "0",
-        "network": "0",
-        "storage": "0",
-        "oracle": "0",
-        "previous": "9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe",
-        "link": "988dc95e2d19c38eef75b7dd4769fe8a7135559d6055aaa635d665756e86eb31",
-        "message": "0000000000000000000000000000000000000000000000000000000000000000",
-        "povHeight": 0,
-        "timestamp": 1569377583,
-        "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-        "representative": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
-        "work": "0000000000000000",
-        "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-    }
-}
-```
-
-```json test
-{
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "settlement_getContractRewardsBlock",
-    "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
-}
-
-```
-:::
-
 ## settlement_getSignContractBlock
 Generate sign settlement contract `ContractSend` block by params, 
 
@@ -269,64 +269,6 @@ Generate sign settlement contract `ContractSend` block by params,
 :::
 
 
-## settlement_getSignRewardsBlock
-Generate sign settlement contract `ContractRewards` block by `ContractSend` block hash. 
-
-- **Parameters**: 
-    - `send`: `ContractSend` block hash
-- **Returns**: 
-    - `block`: `ContractSend` block, without signature, have to sign the block before process it
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "settlement_getSignRewardsBlock",
-    "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
-}
-
-```
-
-```json tab:Response
-{
-  "jsonrpc": "2.0",
-  "id": 3,
-  "result": {
-        "type": "ContractReward",
-        "token": "ea842234e4dc5b17c33b35f99b5b86111a3af0bd8e4a8822602b866711de6d81",
-        "address": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
-        "balance": "40000000000",
-        "vote": "0",
-        "network": "0",
-        "storage": "0",
-        "oracle": "0",
-        "previous": "9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe",
-        "link": "988dc95e2d19c38eef75b7dd4769fe8a7135559d6055aaa635d665756e86eb31",
-        "message": "0000000000000000000000000000000000000000000000000000000000000000",
-        "povHeight": 0,
-        "timestamp": 1569377583,
-        "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-        "representative": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
-        "work": "0000000000000000",
-        "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-    }
-}
-```
-
-```json test
-{
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "settlement_getSignRewardsBlock",
-    "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
-}
-
-```
-:::
 
 
 ## settlement_getTerminateContractBlock
@@ -403,66 +345,6 @@ Generate terminate settlement contract call `ContractSend` block
 ```
 :::
 
-
-## settlement_getTerminateRewardsBlock
-
-Generate terminate settlement contract response `ContractRewards` block by `ContractSend` block hash
-
-- **Parameters**: 
-    - `send`: `ContractSend` block hash
-- **Returns**: 
-    - `block`: `ContractSend` block, without signature, have to sign the block before process it
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "settlement_getTerminateRewardsBlock",
-    "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
-}
-
-```
-
-```json tab:Response
-{
-  "jsonrpc": "2.0",
-  "id": 3,
-  "result": {
-        "type": "ContractReward",
-        "token": "ea842234e4dc5b17c33b35f99b5b86111a3af0bd8e4a8822602b866711de6d81",
-        "address": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
-        "balance": "40000000000",
-        "vote": "0",
-        "network": "0",
-        "storage": "0",
-        "oracle": "0",
-        "previous": "9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe",
-        "link": "988dc95e2d19c38eef75b7dd4769fe8a7135559d6055aaa635d665756e86eb31",
-        "message": "0000000000000000000000000000000000000000000000000000000000000000",
-        "povHeight": 0,
-        "timestamp": 1569377583,
-        "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-        "representative": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
-        "work": "0000000000000000",
-        "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-    }
-}
-```
-
-```json test
-{
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "settlement_getTerminateRewardsBlock",
-    "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
-}
-
-```
-:::
 
 ## settlement_getAddPreStopBlock
 
@@ -993,66 +875,6 @@ Generate process CDR `ContractSend` block
     "id": 3,
     "method": "settlement_getProcessCDRBlock",
     "params": ["qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47"]
-}
-
-```
-:::
-
-## settlement_getProcessCDRRewardsBlock
-
-Generate process CDR `ContractRewards` block by `ContractSend` block hash
-
-- **Parameters**: 
-    - `send`: `ContractSend` block hash
-- **Returns**: 
-    - `block`: `ContractSend` block, without signature, have to sign the block before process it
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "settlement_getProcessCDRRewardsBlock",
-    "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
-}
-
-```
-
-```json tab:Response
-{
-  "jsonrpc": "2.0",
-  "id": 3,
-  "result": {
-        "type": "ContractReward",
-        "token": "ea842234e4dc5b17c33b35f99b5b86111a3af0bd8e4a8822602b866711de6d81",
-        "address": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
-        "balance": "40000000000",
-        "vote": "0",
-        "network": "0",
-        "storage": "0",
-        "oracle": "0",
-        "previous": "9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe",
-        "link": "988dc95e2d19c38eef75b7dd4769fe8a7135559d6055aaa635d665756e86eb31",
-        "message": "0000000000000000000000000000000000000000000000000000000000000000",
-        "povHeight": 0,
-        "timestamp": 1569377583,
-        "extra": "0000000000000000000000000000000000000000000000000000000000000000",
-        "representative": "qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47",
-        "work": "0000000000000000",
-        "signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-    }
-}
-```
-
-```json test
-{
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "settlement_getProcessCDRRewardsBlock",
-    "params": ["9a8a816d8ea407030c95295ef05c47c125961804fc748a6060c03327a848dffe"]
 }
 
 ```
