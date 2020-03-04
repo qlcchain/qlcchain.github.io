@@ -1625,9 +1625,11 @@ Generate settlement summary report of the specified settlement contract. when `s
         - `contract`: settlement contract details
         - `total`:  partyA and partyB's summary report
           - `partyA`: from party A's view, sending success is a success, otherwise is a failure.
+            - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+            - `orphan`: only find Party A or Party B's CDR status
           - `partyB`: from party B's view, sending success is a success, otherwise is a failure.
-          - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
-          - `orphan`: only find Party A or Party B's CDR status
+            - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+            - `orphan`: only find Party A or Party B's CDR status
         - `records`: grouped by sender, same as total
 
 
@@ -1650,130 +1652,112 @@ Generate settlement summary report of the specified settlement contract. when `s
 
 ```json tab:Response
 {
-  "jsonrpc": "2.0",
-  "id": 3,
-  "result": {
-    "contract": {
-      "partyA": {
-        "address": "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
-        "name": "PCCWG"
-      },
-      "partyB": {
-        "address": "qlc_3exbms47d63ywggnhb9iko9twphsnsx563qf6faufp33167o5dqfoawa8gtj",
-        "name": "HKTCSL"
-      },
-      "previous": "8424d1750aaec508bd566dc7b0c72c29cfc4652c655459aedaacfa46bdcf4b21",
-      "services": [
-        {
-          "serviceId": "cd3b525d208b1de1873dcda2db5ae4e26cbea79a3516582dfaffd4d3ba6377e0",
-          "mcc": 1,
-          "mnc": 91,
-          "totalAmount": 10,
-          "unitPrice": 0.0426,
-          "currency": "USD"
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+        "contract": {
+            "partyA": {
+                "address": "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+                "name": "PCCWG"
+            },
+            "partyB": {
+                "address": "qlc_3exbms47d63ywggnhb9iko9twphsnsx563qf6faufp33167o5dqfoawa8gtj",
+                "name": "HKTCSL"
+            },
+            "previous": "a77862e3de249df4c95f17df399a902f23e377ae0d05cf2e4becc83247b9591d",
+            "services": [
+                {
+                    "serviceId": "ab3d2c3d0be06e7f6bab089e198c7816a1ae88fb241ca94d7a8df09ad95abfd0",
+                    "mcc": 460,
+                    "mnc": 46,
+                    "totalAmount": 10000,
+                    "unitPrice": 0.0426,
+                    "currency": "USD"
+                },
+                {
+                    "serviceId": "b5983e8ac72f04548fa99789b08014904f71e1f5b48c5d47fff8507efd51d85a",
+                    "mcc": 460,
+                    "mnc": 2,
+                    "totalAmount": 300000,
+                    "unitPrice": 0.023,
+                    "currency": "USD"
+                }
+            ],
+            "signDate": 1582799181,
+            "startDate": 1582799263,
+            "endDate": 1613356422,
+            "preStops": [
+                "A2P_PCCWG"
+            ],
+            "nextStops": [
+                "CSL Hong Kong @ 3397"
+            ],
+            "confirmDate": 1582799183,
+            "status": "Activated"
         },
-        {
-          "serviceId": "a4ae980b031d5971cde3418beb4427723e726c04b01df8abb8171318dc6ba9fc",
-          "mcc": 22,
-          "mnc": 1,
-          "totalAmount": 30,
-          "unitPrice": 0.023,
-          "currency": "USD"
+        "records": {
+            "WeChat": {
+                "partyA": {
+                    "orphan": {
+                        "total": 32,
+                        "success": 27,
+                        "fail": 5,
+                        "result": 0.84375
+                    },
+                    "matching": {
+                        "total": 177,
+                        "success": 177,
+                        "fail": 0,
+                        "result": 1
+                    }
+                },
+                "partyB": {
+                    "orphan": {
+                        "total": 89,
+                        "success": 67,
+                        "fail": 22,
+                        "result": 0.7528089887640449
+                    },
+                    "matching": {
+                        "total": 177,
+                        "success": 177,
+                        "fail": 0,
+                        "result": 1
+                    }
+                }
+            }
+        },
+        "total": {
+            "partyA": {
+                "orphan": {
+                    "total": 32,
+                    "success": 27,
+                    "fail": 5,
+                    "result": 0.84375
+                },
+                "matching": {
+                    "total": 177,
+                    "success": 177,
+                    "fail": 0,
+                    "result": 1
+                }
+            },
+            "partyB": {
+                "orphan": {
+                    "total": 89,
+                    "success": 67,
+                    "fail": 22,
+                    "result": 0.7528089887640449
+                },
+                "matching": {
+                    "total": 177,
+                    "success": 177,
+                    "fail": 0,
+                    "result": 1
+                }
+            }
         }
-      ],
-      "signDate": 1581129222,
-      "startDate": 1581388422,
-      "endDate": 1613356422,
-      "preStops": [
-        "A2P_PCCWG"
-      ],
-      "nextStops": [
-        "CSL Hong Kong @ 3397"
-      ],
-      "confirmDate": 1582172522,
-      "status": "Activated"
-    },
-    "records": {
-      "Slack": {
-        "partyA": {
-          "total": 20,
-          "success": 10,
-          "fail": 10,
-          "result": 0.5
-        },
-        "partyB": {
-          "total": 20,
-          "success": 7,
-          "fail": 13,
-          "result": 0.35
-        },
-        "orphan": {
-          "total": 5,
-          "success": 3,
-          "fail": 2,
-          "result": 0.6
-        },
-        "matching": {
-          "total": 0,
-          "success": 0,
-          "fail": 0,
-          "result": 0
-        }
-      },
-      "WeChat": {
-        "partyA": {
-          "total": 20,
-          "success": 7,
-          "fail": 13,
-          "result": 0.35
-        },
-        "partyB": {
-          "total": 20,
-          "success": 10,
-          "fail": 10,
-          "result": 0.5
-        },
-        "orphan": {
-          "total": 0,
-          "success": 0,
-          "fail": 0,
-          "result": 0
-        },
-        "matching": {
-          "total": 5,
-          "success": 3,
-          "fail": 2,
-          "result": 0.6
-        }
-      }
-    },
-    "total": {
-      "partyA": {
-        "total": 40,
-        "success": 17,
-        "fail": 23,
-        "result": 0.425
-      },
-      "partyB": {
-        "total": 40,
-        "success": 17,
-        "fail": 23,
-        "result": 0.425
-      },
-      "orphan": {
-        "total": 5,
-        "success": 3,
-        "fail": 2,
-        "result": 0.6
-      },
-      "matching": {
-        "total": 5,
-        "success": 3,
-        "fail": 2,
-        "result": 0.6
-      }
     }
-  }
 }
 ```
 
