@@ -805,7 +805,9 @@ Generate process CDR `ContractSend` block
 
 - **Parameters**: 
     - `params`: CDR params
-        - `index`: time sequence
+        - `addr`: user's qlc adress, should be party A or party B
+        - `contractAddress`: any qlc address, RPC will fill it with actual settlement contract address
+        - `index`: time sequence, to normalize SMS send time, SMS datetime (UTC Unix) div timespan to 
         - `smsDt`: cdr date time, UTC Unix
         - `sender`: SMS sender
         - `destination`: SMS destination, eg. `85263***704`
@@ -826,15 +828,17 @@ Generate process CDR `ContractSend` block
   "id": 3,
   "method": "settlement_getProcessCDRBlock",
   "params": [
+    "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
     {
-      "index": 39457828,
-      "smsDt": 1578313122,
+      "contractAddress": "qlc_1111111111111111111111111111111111111111111111111111hifc8npp",
+      "index": 1,
+      "smsDt": 1583472852,
       "sender": "WeChat",
-      "destination": "85263***704",
-      "sendingStatus": 0,
-      "dlrStatus": 0,
+      "destination": "85257***343",
+      "sendingStatus": "Sent",
+      "dlrStatus": "Delivered",
       "preStop": "",
-      "nextStop": "CSL Hong Kong @ 3397"
+      "nextStop": "HKTCSL"
     }
   ]
 }
@@ -877,89 +881,6 @@ Generate process CDR `ContractSend` block
     "params": ["qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47"]
 }
 
-```
-:::
-
-## settlement_getAllContracts
-
-List all settlement contract
-
-- **Parameters**: 
-    - `count`:  max settlement contract records size
-    - `offset`: offset of all settlement contract records
-- **Returns**: 
-    - `result`: all settlement contract, ordered by `startDate`
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-  "jsonrpc": "2.0",
-  "id":3,
-  "method":"settlement_getAllContracts",
-  "params":[10,0]
-}
-```
-
-```json tab:Response
-{
-    "jsonrpc": "2.0",
-    "id": 3,
-    "result": [
-        {
-            "partyA": {
-                "address": "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
-                "name": "PCCWG"
-            },
-            "partyB": {
-                "address": "qlc_3exbms47d63ywggnhb9iko9twphsnsx563qf6faufp33167o5dqfoawa8gtj",
-                "name": "HKTCSL"
-            },
-            "previous": "8424d1750aaec508bd566dc7b0c72c29cfc4652c655459aedaacfa46bdcf4b21",
-            "services": [
-                {
-                    "serviceId": "cd3b525d208b1de1873dcda2db5ae4e26cbea79a3516582dfaffd4d3ba6377e0",
-                    "mcc": 1,
-                    "mnc": 91,
-                    "totalAmount": 10,
-                    "unitPrice": 0.0426,
-                    "currency": "USD"
-                },
-                {
-                    "serviceId": "a4ae980b031d5971cde3418beb4427723e726c04b01df8abb8171318dc6ba9fc",
-                    "mcc": 22,
-                    "mnc": 1,
-                    "totalAmount": 30,
-                    "unitPrice": 0.023,
-                    "currency": "USD"
-                }
-            ],
-            "signDate": 1581129222,
-            "startDate": 1581388422,
-            "endDate": 1613356422,
-            "preStops": [
-                "A2P_PCCWG"
-            ],
-            "nextStops": [
-                "CSL Hong Kong @ 3397"
-            ],
-            "confirmDate": 1582172522,
-            "status": "Activated",
-            "address": "qlc_3qs4p1n85x8opeseccjhppnpqgztqee1zh9pikhpizb7xsixto5fmd1dw3eo"
-        }
-    ]
-}
-```
-
-```json test
-{
-  "jsonrpc": "2.0",
-  "id":3,
-  "method":"settlement_getAllContracts",
-  "params":[10,0]
-}
 ```
 :::
 
@@ -1323,6 +1244,182 @@ Query all settlement contracts as Party B info by address
   "jsonrpc": "2.0",
   "id":3,
   "method":"settlement_getContractsAsPartyB",
+  "params":["qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",10,0]
+}
+```
+:::
+
+## settlement_getContractsByStatus
+
+Query settlement contract by user's qlc address
+
+- **Parameters**: 
+    - `address`: user's qlc address
+    - `status`: settlement contract status, `ActiveStage1,Activated,DestroyStage1,Destroyed,Rejected`
+    - `count`:  max settlement contract records size
+    - `offset`: offset of all settlement contract records
+- **Returns**: 
+    - `result`: all settlement contract, ordered by `startDate`
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "settlement_getContractsByStatus",
+  "params": [
+    "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+    "Activated",
+    10,
+    0
+  ]
+}
+
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": [
+        {
+            "partyA": {
+                "address": "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+                "name": "PCCWG"
+            },
+            "partyB": {
+                "address": "qlc_3exbms47d63ywggnhb9iko9twphsnsx563qf6faufp33167o5dqfoawa8gtj",
+                "name": "HKTCSL"
+            },
+            "previous": "f7aabc57205170c1dbae3358d97296a6166b3ddd241560f596500ee75dcf388e",
+            "services": [
+                {
+                    "serviceId": "63a8359bf038520087b645acff9564152a64facb6d0499f09d579e59c16a68ca",
+                    "mcc": 1,
+                    "mnc": 37,
+                    "totalAmount": 10,
+                    "unitPrice": 0.0426,
+                    "currency": "USD"
+                },
+                {
+                    "serviceId": "996231cdd00e347bf6a8642b529eecdeff6e2a33895cf7774d3fec260f12a1ec",
+                    "mcc": 22,
+                    "mnc": 1,
+                    "totalAmount": 30,
+                    "unitPrice": 0.023,
+                    "currency": "USD"
+                }
+            ],
+            "signDate": 1581129222,
+            "startDate": 1581388422,
+            "endData": 1613356422,
+            "preStops": [
+                "PCCWG"
+            ],
+            "nextStops": [
+                "HKTCSL"
+            ],
+            "confirmDate": 1581565762,
+            "status": "Actived",
+            "address": "qlc_19d8xgcnt4eoaeipz7suzpcnpst91uq79sc87ef6p7iumahq9eis7k8y3dcd"
+        }
+    ]
+}
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getContractsByStatus",
+  "params":["qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",10,0]
+}
+```
+:::
+
+
+## settlement_getExpiredContracts
+
+Query settlement contract by user's qlc address, contract status is `Actived` and current date is bigger than contract end time
+
+- **Parameters**: 
+    - `address`: user's qlc address
+    - `count`:  max settlement contract records size
+    - `offset`: offset of all settlement contract records
+- **Returns**: 
+    - `result`: all settlement contract, ordered by `startDate`
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getExpiredContracts",
+  "params":["qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",10,0]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": [
+        {
+            "partyA": {
+                "address": "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+                "name": "PCCWG"
+            },
+            "partyB": {
+                "address": "qlc_3exbms47d63ywggnhb9iko9twphsnsx563qf6faufp33167o5dqfoawa8gtj",
+                "name": "HKTCSL"
+            },
+            "previous": "f7aabc57205170c1dbae3358d97296a6166b3ddd241560f596500ee75dcf388e",
+            "services": [
+                {
+                    "serviceId": "63a8359bf038520087b645acff9564152a64facb6d0499f09d579e59c16a68ca",
+                    "mcc": 1,
+                    "mnc": 37,
+                    "totalAmount": 10,
+                    "unitPrice": 0.0426,
+                    "currency": "USD"
+                },
+                {
+                    "serviceId": "996231cdd00e347bf6a8642b529eecdeff6e2a33895cf7774d3fec260f12a1ec",
+                    "mcc": 22,
+                    "mnc": 1,
+                    "totalAmount": 30,
+                    "unitPrice": 0.023,
+                    "currency": "USD"
+                }
+            ],
+            "signDate": 1581129222,
+            "startDate": 1581388422,
+            "endData": 1613356422,
+            "preStops": [
+                "PCCWG"
+            ],
+            "nextStops": [
+                "HKTCSL"
+            ],
+            "confirmDate": 1581565762,
+            "status": "Actived",
+            "address": "qlc_19d8xgcnt4eoaeipz7suzpcnpst91uq79sc87ef6p7iumahq9eis7k8y3dcd"
+        }
+    ]
+}
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getExpiredContracts",
   "params":["qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",10,0]
 }
 ```
