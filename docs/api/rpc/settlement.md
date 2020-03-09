@@ -278,6 +278,7 @@ Generate terminate settlement contract call `ContractSend` block
 - **Parameters**: 
     - `contractAddress`: settlement contract address 
     - `address`: QLC address
+    - `request`: boolean, true to confirm, false to reject
 - **Returns**: 
     - `block`: `ContractSend` block, without signature, have to sign the block before process it
 
@@ -293,7 +294,8 @@ Generate terminate settlement contract call `ContractSend` block
   "params": [
     {
       "contractAddress": "qlc_3mzig8k1emdi7whixyu56gcruwe3tsno4fgagf4dzgxj7n4w913fhh8qx8hc",
-      "address": "qlc_1sjhgc7ie38ptmabwudzdip8imrs1muzp7no5w8u76ne9j5cbefdc4rte35w"
+      "address": "qlc_1sjhgc7ie38ptmabwudzdip8imrs1muzp7no5w8u76ne9j5cbefdc4rte35w",
+      "request": true
     }
   ]
 }
@@ -338,7 +340,8 @@ Generate terminate settlement contract call `ContractSend` block
   "params": [
     {
       "contractAddress": "qlc_3mzig8k1emdi7whixyu56gcruwe3tsno4fgagf4dzgxj7n4w913fhh8qx8hc",
-      "address": "qlc_1sjhgc7ie38ptmabwudzdip8imrs1muzp7no5w8u76ne9j5cbefdc4rte35w"
+      "address": "qlc_1sjhgc7ie38ptmabwudzdip8imrs1muzp7no5w8u76ne9j5cbefdc4rte35w",
+      "request": true
     }
   ]
 }
@@ -1001,6 +1004,90 @@ Query settlement contract by user's qlc address
   "id":3,
   "method":"settlement_getContractsByAddress",
   "params":["qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",10,0]
+}
+```
+:::
+
+## settlement_getPreStopNames
+
+Query all previous stop names by user's qlc address
+
+- **Parameters**: 
+    - `address`: user's qlc address
+- **Returns**: 
+    - `result`: all previous stop names of `address` from contract `ActiveStage1` and `Activated`
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getPreStopNames",
+  "params":["qlc_3exbms47d63ywggnhb9iko9twphsnsx563qf6faufp33167o5dqfoawa8gtj"]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": [
+        "A2P_PCCWG"
+    ]
+}
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getPreStopNames",
+  "params":["qlc_3exbms47d63ywggnhb9iko9twphsnsx563qf6faufp33167o5dqfoawa8gtj"]
+}
+```
+:::
+
+## settlement_getNextStopNames
+
+Query next stop names by user's qlc address
+
+- **Parameters**: 
+    - `address`: user's qlc address
+- **Returns**: 
+    - `result`: all next stop names of `address` from contract `ActiveStage1` and `Activated`
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getNextStopNames",
+  "params":["qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z"]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": [
+        "CSL Hong Kong @ 3397"
+    ]
+}
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getNextStopNames",
+  "params":["qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z"]
 }
 ```
 :::
