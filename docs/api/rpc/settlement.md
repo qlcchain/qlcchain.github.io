@@ -268,9 +268,6 @@ Generate sign settlement contract `ContractSend` block by params,
 ```
 :::
 
-
-
-
 ## settlement_getTerminateContractBlock
 
 Generate terminate settlement contract call `ContractSend` block
@@ -2101,7 +2098,8 @@ generate multi-party invoice by settlement contract address start and end time. 
 eg. The SMS went through from Montnets to PCCWG, then through CSL to end users, Montnets would like the the settlement go through PCCWG and CSL together. ONLY the states of the CDRs from Montnets, PCCWG and CSL are all successful is success, otherwise is failure. will not count in invoice.
 
 - **Parameters**: 
-    - `address`: settlement smart contract address
+    - `firstAddr`: settlement smart contract address
+    - `secondAddr`: settlement smart contract address, the PartyB of the 1st settlement contract should be PartyA of the 2nd one
     - `start`: start time
     - `end`:  end time
 - **Returns**: 
@@ -2117,7 +2115,7 @@ eg. The SMS went through from Montnets to PCCWG, then through CSL to end users, 
 	"id": 3,
 	"method": "settlement_generateMultiPartyInvoice",
 	"params": [
-		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+		"qlc_176ap4ygjk8yposnxa5o4doptg8k5c7wh4oo6hb7xyorea7y886opm79939s","qlc_3uegr8u9315dnrskkpe4pdqfnh35pfd311o673cz8xuexa4gf3tuj6bzb6au",
 		0,
 		0
 	]
@@ -2155,9 +2153,715 @@ eg. The SMS went through from Montnets to PCCWG, then through CSL to end users, 
 	"id": 3,
 	"method": "settlement_generateMultiPartyInvoice",
 	"params": [
-		"qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+		"qlc_176ap4ygjk8yposnxa5o4doptg8k5c7wh4oo6hb7xyorea7y886opm79939s","qlc_3uegr8u9315dnrskkpe4pdqfnh35pfd311o673cz8xuexa4gf3tuj6bzb6au",
 		0,
 		0
+	]
+}
+```
+:::
+
+## settlement_generateMultiPartySummaryReport
+
+generate multi-party summary report by settlement contract address start and end time. when `start` or `end` is zero, time conditions are ignored.
+
+eg. The SMS went through from Montnets to PCCWG, then through CSL to end users, Montnets would like the the settlement go through PCCWG and CSL together. ONLY the states of the CDRs from Montnets, PCCWG and CSL are all successful is success, otherwise is failure. will not count in invoice.
+
+- **Parameters**: 
+    - `firstAddr`: settlement smart contract address
+    - `secondAddr`: settlement smart contract address, the PartyB of the 1st settlement contract should be PartyA of the 2nd one
+    - `start`: start time
+    - `end`:  end time
+- **Returns**: 
+    - `result`: summary reports
+      - `total`:  partyA and partyB's summary report
+        - `partyA`: from party A's view, sending success is a success, otherwise is a failure.
+          - `matching`: CDR status for both Party A, Party B and Party C, status of both parties are sucessful is a sucess, otherwise is a failure
+          - `orphan`: not all in three parties
+        - `partyB`: from party B's view, sending success is a success, otherwise is a failure.
+          - `matching`: CDR status for both Party A, Party B and Party C, status of both parties are sucessful is a sucess, otherwise is a failure
+          - `orphan`: not all in three parties
+        - `partyC`: from party C's view, sending success is a success, otherwise is a failure.
+          - `matching`: CDR status for both Party A, Party B and Party C, status of both parties are sucessful is a sucess, otherwise is a failure
+          - `orphan`: not all in three parties
+      - `records`: grouped by sender, same as total
+      - `contracts`: content of the 1st and 2nd settlement contract
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateMultiPartySummaryReport",
+	"params": [
+		"qlc_176ap4ygjk8yposnxa5o4doptg8k5c7wh4oo6hb7xyorea7y886opm79939s","qlc_3uegr8u9315dnrskkpe4pdqfnh35pfd311o673cz8xuexa4gf3tuj6bzb6au",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+        "contracts": [
+            {
+                "partyA": {
+                    "address": "qlc_3q4wy8an6j8t34nkf9zh6zmhcjtch3cgmejpmfdxq5ffzdkcn3ot51c47auj",
+                    "name": "MONTNETS"
+                },
+                "partyB": {
+                    "address": "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+                    "name": "PCCWG"
+                },
+                "services": [
+                    {
+                        "serviceId": "880acc1918ef3b9dc7c747d6eb347aa4a5c0341a5007395019b911bef4da9b63",
+                        "mcc": 1,
+                        "mnc": 2,
+                        "totalAmount": 10,
+                        "unitPrice": 0.0426,
+                        "currency": "USD"
+                    },
+                    {
+                        "serviceId": "e876197d52080ec96ded79f1020bedd748b2fc30aa9565d03e23d9b6f215d80b",
+                        "mcc": 22,
+                        "mnc": 1,
+                        "totalAmount": 30,
+                        "unitPrice": 0.023,
+                        "currency": "USD"
+                    }
+                ],
+                "signDate": 1584516392,
+                "startDate": 1584516392,
+                "endDate": 1616484392,
+                "preStops": [
+                    "A2P_MONTNETS"
+                ],
+                "nextStops": [
+                    "A2P_PCCWG"
+                ],
+                "confirmDate": 1584516393,
+                "status": "Activated"
+            },
+            {
+                "partyA": {
+                    "address": "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+                    "name": "PCCWG"
+                },
+                "partyB": {
+                    "address": "qlc_3exbms47d63ywggnhb9iko9twphsnsx563qf6faufp33167o5dqfoawa8gtj",
+                    "name": "HKTCSL"
+                },
+                "services": [
+                    {
+                        "serviceId": "95352f6332e0a4010adb7207c8e4809a6a2586d091986f98ac84e4af853d4f94",
+                        "mcc": 1,
+                        "mnc": 2,
+                        "totalAmount": 10,
+                        "unitPrice": 0.0426,
+                        "currency": "USD"
+                    },
+                    {
+                        "serviceId": "49bcb06822db185c51b6214f2ac4debbc3be4c4f7bf87bc0fe61f5ff47337cac",
+                        "mcc": 22,
+                        "mnc": 1,
+                        "totalAmount": 30,
+                        "unitPrice": 0.023,
+                        "currency": "USD"
+                    }
+                ],
+                "signDate": 1584516396,
+                "startDate": 1584516396,
+                "endDate": 1616484396,
+                "preStops": [
+                    "A2P_PCCWG"
+                ],
+                "nextStops": [
+                    "CSL Hong Kong @ 3397"
+                ],
+                "confirmDate": 1584516397,
+                "status": "Activated"
+            }
+        ],
+        "records": {
+            "WeChat": {
+                "partyA": {
+                    "orphan": {
+                        "total": 0,
+                        "success": 0,
+                        "fail": 0,
+                        "result": 0
+                    },
+                    "matching": {
+                        "total": 1,
+                        "success": 1,
+                        "fail": 0,
+                        "result": 1
+                    }
+                },
+                "partyB": {
+                    "orphan": {
+                        "total": 0,
+                        "success": 0,
+                        "fail": 0,
+                        "result": 0
+                    },
+                    "matching": {
+                        "total": 1,
+                        "success": 1,
+                        "fail": 0,
+                        "result": 1
+                    }
+                },
+                "partyC": {
+                    "orphan": {
+                        "total": 0,
+                        "success": 0,
+                        "fail": 0,
+                        "result": 0
+                    },
+                    "matching": {
+                        "total": 1,
+                        "success": 1,
+                        "fail": 0,
+                        "result": 1
+                    }
+                }
+            }
+        },
+        "total": {
+            "partyA": {
+                "orphan": {
+                    "total": 0,
+                    "success": 0,
+                    "fail": 0,
+                    "result": 0
+                },
+                "matching": {
+                    "total": 1,
+                    "success": 1,
+                    "fail": 0,
+                    "result": 1
+                }
+            },
+            "partyB": {
+                "orphan": {
+                    "total": 0,
+                    "success": 0,
+                    "fail": 0,
+                    "result": 0
+                },
+                "matching": {
+                    "total": 1,
+                    "success": 1,
+                    "fail": 0,
+                    "result": 1
+                }
+            },
+            "partyC": {
+                "orphan": {
+                    "total": 0,
+                    "success": 0,
+                    "fail": 0,
+                    "result": 0
+                },
+                "matching": {
+                    "total": 1,
+                    "success": 1,
+                    "fail": 0,
+                    "result": 1
+                }
+            }
+        }
+    }
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateMultiPartySummaryReport",
+	"params": [
+		"qlc_176ap4ygjk8yposnxa5o4doptg8k5c7wh4oo6hb7xyorea7y886opm79939s","qlc_3uegr8u9315dnrskkpe4pdqfnh35pfd311o673cz8xuexa4gf3tuj6bzb6au",
+		0,
+		0
+	]
+}
+```
+:::
+
+## settlement_getRegisterAssetBlock
+
+Generate register asset contract `ContractSend` block by params, 
+
+- **Parameters**: 
+    - `param`: to be signed settlement contract
+      - `owner`: asset owner
+      - `assets`: array of assets
+        - `sla`: support two types SLA: Latency and DeliveredRate, will sort SLAs in order of priority,first to process the higher priority SLA
+      - `startDate`: effective start time of assets, UTC Unix
+      - `endDate`: effective end time of assets, UTC Unix
+      - `status`: assets status, `Activated` and `Deactivated`
+- **Returns**: 
+    - `block`: `ContractSend` block, without signature, have to sign the block before process it
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "method": "settlement_getRegisterAssetBlock",
+  "params": [
+    {
+      "owner": {
+        "address": "qlc_3pekn1xq8boq1ihpj8q96wnktxiu8cfbe5syaety3bywyd45rkyhmj8b93kq",
+        "name": "HKT-CSL"
+      },
+      "assets": [
+        {
+          "mcc": 42,
+          "mnc": 5,
+          "totalAmount": 1000,
+          "sla": [
+            {
+              "type": "Latency",
+              "priority": 0,
+              "value": 30,
+              "compensations": [
+                {
+                  "low": 50,
+                  "high": 60,
+                  "rate": 10
+                },
+                {
+                  "low": 60,
+                  "high": 80,
+                  "rate": 20.5
+                }
+              ]
+            },
+            {
+              "type": "DeliveredRate",
+              "priority": 1,
+              "value": 0.95,
+              "compensations": [
+                {
+                  "low": 0.8,
+                  "high": 0.9,
+                  "rate": 5
+                },
+                {
+                  "low": 0.7,
+                  "high": 0.8,
+                  "rate": 5.5
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "startDate": 1584607341,
+      "endDate": 1616143341,
+      "status": "Activated"
+    }
+  ]
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "method": "settlement_getSignContractBlock",
+  "result": [
+    {
+      "type": "ContractSend",
+      "token": "89066d747a3c74ff1dec8ea6a7011bde010dd404aec454880f23d58cbf9280e4",
+      "address": "qlc_1sjhgc7ie38ptmabwudzdip8imrs1muzp7no5w8u76ne9j5cbefdc4rte35w",
+      "balance": "100000000000000",
+      "vote": "0",
+      "network": "0",
+      "storage": "0",
+      "oracle": "0",
+      "previous": "0eeb42c92a30133a643fc3578dbecebc0a1182c05e6516ae526b4cd8502c47f0",
+      "link": "0000000000000000000000000000000000000000000000000000000000000019",
+      "message": "0000000000000000000000000000000000000000000000000000000000000000",
+      "data": "jkYR8YKhYccgY8/wcaQGTXAvHw77YyOVjfGB1mlRNchzRL+7sS0Fw4AtomNk0l5N/xE=",
+      "povHeight": 0,
+      "timestamp": 1582169873,
+      "extra": "0000000000000000000000000000000000000000000000000000000000000000",
+      "representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+      "work": "0000000000000000",
+      "signature": "c32bb940769fc4f7f681ffb5f50f79590329ccde90ac4f3011659e12a99625898ef4c6da93e6d15ad5d21a30771051fd85dd4e9cbc8700fcde638daa69942f0f"
+    }
+  ]
+}
+
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "method": "settlement_getRegisterAssetBlock",
+  "params": [
+    {
+      "owner": {
+        "address": "qlc_3pekn1xq8boq1ihpj8q96wnktxiu8cfbe5syaety3bywyd45rkyhmj8b93kq",
+        "name": "HKT-CSL"
+      },
+      "assets": [
+        {
+          "mcc": 42,
+          "mnc": 5,
+          "totalAmount": 1000,
+          "sla": [
+            {
+              "type": "Latency",
+              "priority": 0,
+              "value": 30,
+              "compensations": [
+                {
+                  "low": 50,
+                  "high": 60,
+                  "rate": 10
+                },
+                {
+                  "low": 60,
+                  "high": 80,
+                  "rate": 20.5
+                }
+              ]
+            },
+            {
+              "type": "DeliveredRate",
+              "priority": 1,
+              "value": 0.95,
+              "compensations": [
+                {
+                  "low": 0.8,
+                  "high": 0.9,
+                  "rate": 5
+                },
+                {
+                  "low": 0.7,
+                  "high": 0.8,
+                  "rate": 5.5
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "startDate": 1584607341,
+      "endDate": 1616143341,
+      "status": "Activated"
+    }
+  ]
+}
+```
+:::
+
+
+## settlement_getAllAssets
+
+list all assets
+
+- **Parameters**: 
+    - `count`:  max settlement contract records size
+    - `offset`: offset of all settlement contract records
+- **Returns**: 
+    - `result`: array of assets
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getAllAssets",
+  "params":[10,0]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": [
+        {
+            "owner": {
+                "address": "qlc_3q4wy8an6j8t34nkf9zh6zmhcjtch3cgmejpmfdxq5ffzdkcn3ot51c47auj",
+                "name": "HKT-CSL"
+            },
+            "assets": [
+                {
+                    "mcc": 42,
+                    "mnc": 5,
+                    "totalAmount": 1000,
+                    "sla": [
+                        {
+                            "type": "Latency",
+                            "priority": 0,
+                            "value": 30,
+                            "compensations": [
+                                {
+                                    "low": 50,
+                                    "high": 60,
+                                    "rate": 10
+                                },
+                                {
+                                    "low": 60,
+                                    "high": 80,
+                                    "rate": 20.5
+                                }
+                            ]
+                        },
+                        {
+                            "type": "DeliveredRate",
+                            "priority": 0,
+                            "value": 0.9,
+                            "compensations": [
+                                {
+                                    "low": 0.8,
+                                    "high": 0.9,
+                                    "rate": 10
+                                },
+                                {
+                                    "low": 0.7,
+                                    "high": 0.8,
+                                    "rate": 10.5
+                                }
+                            ]
+                        }
+                    ],
+                    "assetID": "14f6995e96a749a2360f141e78f978cd93fa4a2c1ec23b13282e8e4b17fde956"
+                }
+            ],
+            "signDate": 1584518910,
+            "startDate": 1584605310,
+            "endDate": 1616141310,
+            "status": "Activated",
+            "address": "qlc_3c43fi9qpbdof7yx715kr1uq48r43jb6edxndz6wxd1h1u9pbgwmu4ctb34j"
+        }
+    ]
+}
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getAllAssets",
+  "params":[10,0]
+}
+```
+:::
+
+## settlement_getAssetsByOwner
+
+Query assets by asset's owner
+
+- **Parameters**: 
+    - `owner`: owner's QLC address
+    - `count`:  max settlement contract records size
+    - `offset`: offset of all settlement contract records
+- **Returns**: 
+    - `result`: array of assets
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getAssetsByOwner",
+  "params":["qlc_3q4wy8an6j8t34nkf9zh6zmhcjtch3cgmejpmfdxq5ffzdkcn3ot51c47auj",10,0]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": [
+        {
+            "owner": {
+                "address": "qlc_3q4wy8an6j8t34nkf9zh6zmhcjtch3cgmejpmfdxq5ffzdkcn3ot51c47auj",
+                "name": "HKT-CSL"
+            },
+            "assets": [
+                {
+                    "mcc": 42,
+                    "mnc": 5,
+                    "totalAmount": 1000,
+                    "sla": [
+                        {
+                            "type": "Latency",
+                            "priority": 0,
+                            "value": 30,
+                            "compensations": [
+                                {
+                                    "low": 50,
+                                    "high": 60,
+                                    "rate": 10
+                                },
+                                {
+                                    "low": 60,
+                                    "high": 80,
+                                    "rate": 20.5
+                                }
+                            ]
+                        },
+                        {
+                            "type": "DeliveredRate",
+                            "priority": 0,
+                            "value": 0.9,
+                            "compensations": [
+                                {
+                                    "low": 0.8,
+                                    "high": 0.9,
+                                    "rate": 10
+                                },
+                                {
+                                    "low": 0.7,
+                                    "high": 0.8,
+                                    "rate": 10.5
+                                }
+                            ]
+                        }
+                    ],
+                    "assetID": "14f6995e96a749a2360f141e78f978cd93fa4a2c1ec23b13282e8e4b17fde956"
+                }
+            ],
+            "signDate": 1584518910,
+            "startDate": 1584605310,
+            "endDate": 1616141310,
+            "status": "Activated",
+            "address": "qlc_3c43fi9qpbdof7yx715kr1uq48r43jb6edxndz6wxd1h1u9pbgwmu4ctb34j"
+        }
+    ]
+}
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":3,
+  "method":"settlement_getAssetsByOwner",
+  "params":["qlc_3q4wy8an6j8t34nkf9zh6zmhcjtch3cgmejpmfdxq5ffzdkcn3ot51c47auj",10,0]
+}
+```
+:::
+
+
+## settlement_getAsset
+
+Get asset by asset's address
+
+- **Parameters**: 
+    - `address`: asset's QLC address
+- **Returns**: 
+    - `result`: asset
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getAsset",
+	"params": [
+		"qlc_3c43fi9qpbdof7yx715kr1uq48r43jb6edxndz6wxd1h1u9pbgwmu4ctb34j"
+	]
+}
+```
+
+```json tab:Response
+{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+        "owner": {
+            "address": "qlc_3q4wy8an6j8t34nkf9zh6zmhcjtch3cgmejpmfdxq5ffzdkcn3ot51c47auj",
+            "name": "HKT-CSL"
+        },
+        "assets": [
+            {
+                "mcc": 42,
+                "mnc": 5,
+                "totalAmount": 1000,
+                "sla": [
+                    {
+                        "type": "Latency",
+                        "priority": 0,
+                        "value": 30,
+                        "compensations": [
+                            {
+                                "low": 50,
+                                "high": 60,
+                                "rate": 10
+                            },
+                            {
+                                "low": 60,
+                                "high": 80,
+                                "rate": 20.5
+                            }
+                        ]
+                    },
+                    {
+                        "type": "DeliveredRate",
+                        "priority": 0,
+                        "value": 0.9,
+                        "compensations": [
+                            {
+                                "low": 0.8,
+                                "high": 0.9,
+                                "rate": 10
+                            },
+                            {
+                                "low": 0.7,
+                                "high": 0.8,
+                                "rate": 10.5
+                            }
+                        ]
+                    }
+                ],
+                "assetID": "14f6995e96a749a2360f141e78f978cd93fa4a2c1ec23b13282e8e4b17fde956"
+            }
+        ],
+        "signDate": 1584518910,
+        "startDate": 1584605310,
+        "endDate": 1616141310,
+        "status": "Activated",
+        "address": "qlc_3c43fi9qpbdof7yx715kr1uq48r43jb6edxndz6wxd1h1u9pbgwmu4ctb34j"
+    }
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getAsset",
+	"params": [
+		"qlc_3c43fi9qpbdof7yx715kr1uq48r43jb6edxndz6wxd1h1u9pbgwmu4ctb34j"
 	]
 }
 ```
