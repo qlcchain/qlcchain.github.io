@@ -265,7 +265,7 @@ module.exports = {
             "Ledger",
             "Mintage",
             "P2P",
-            "Util",
+            "Util"
           ),
           "/api/qlcjs/": genSidebarConfig("api/qlcjs", "Javascript SDK", "Client", "Provider"),
         },
@@ -289,9 +289,7 @@ module.exports = {
             "空投",
             "销毁合约",
             "网络",
-            "短信业务",
             "工具集合",
-            "钱包",
             "PoV",
             "矿工",
             "代表",
@@ -307,9 +305,7 @@ module.exports = {
             "账本",
             "铸币合约",
             "P2P",
-            "短信业务",
-            "工具集合",
-            "钱包"
+            "工具集合"
           ),
           "/zh/api/qlcjs/": genSidebarConfig("api/qlcjs", "Javascript SDK", "RPC 客户端", "网络连接层"),
         },
