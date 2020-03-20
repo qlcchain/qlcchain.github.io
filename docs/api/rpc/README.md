@@ -29,16 +29,13 @@
 
 - add timestamp to `ledger_accountsPending` return
 
-- modify `sms_messageBlocks` return
-
-
 2019-3-15 update :
 
 - modify block struct
 
 - add offset for `ledger_accounts`, `ledger_blocks`, `ledger_accountHistoryTopn` interface
 
-- add `SMS` and `Mintage` modules
+- add `Mintage` modules
 
 - modify `ledger_blocksCountByType`, `ledger_delegators` return
 

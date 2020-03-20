@@ -61,20 +61,10 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["net"],
     },
-    // sms
-    {
-      collapsable: false,
-      children: ["sms"],
-    },
     // util
     {
       collapsable: false,
       children: ["util"],
-    },
-    // wallet
-    {
-      collapsable: false,
-      children: ["wallet"],
     },
     // PoV
     {
@@ -153,20 +143,10 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["net"],
     },
-    // sms
-    {
-      collapsable: false,
-      children: ["sms"],
-    },
     // util
     {
       collapsable: false,
       children: ["util"],
-    },
-    // wallet
-    {
-      collapsable: false,
-      children: ["wallet"],
     },
   ],
 };
@@ -269,9 +249,7 @@ module.exports = {
             "Rewards",
             "Destroy",
             "Net",
-            "SMS",
             "Util",
-            "Wallet",
             "PoV",
             "Miner",
             "Representation",
@@ -287,9 +265,7 @@ module.exports = {
             "Ledger",
             "Mintage",
             "P2P",
-            "SMS",
             "Util",
-            "Wallet"
           ),
           "/api/qlcjs/": genSidebarConfig("api/qlcjs", "Javascript SDK", "Client", "Provider"),
         },

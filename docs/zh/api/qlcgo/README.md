@@ -9,7 +9,6 @@ type QLCClient struct {
 	Ledger   *module.LedgerApi
 	Mintage  *module.MintageApi
 	Network  *module.NetApi
-	SMS      *module.SMSApi
 	Util     *module.UtilApi
 } 
 ```
