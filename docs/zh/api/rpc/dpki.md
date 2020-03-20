@@ -18,7 +18,8 @@ Get a verifier register block
   - `account` : account to register verifier
   - `type` : verifier type (email/weChat)
   - `id` : verifier address to receive verify request (email address/weChat id)
-
+- `key`: verifier's public key(be used to encrypt email content)
+  
 - **Returns**: 
   -  `block`: verifier register block
 
@@ -182,12 +183,14 @@ Get all the verifiers
 		{
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
-			"id": "1111@qq.com"
+			"id": "1111@qq.com",
+      "key": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a6"
 		},
 		{
 			"account": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 			"type": "email",
-			"id": "2222@qq.com"
+			"id": "2222@qq.com",
+      "key": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a6"
 		}
 	]
 }
@@ -237,12 +240,14 @@ Get all the specified type of verifiers
 		{
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
-			"id": "1111@qq.com"
+			"id": "1111@qq.com",
+      "key": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a6"
 		},
 		{
 			"account": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 			"type": "email",
-			"id": "2222@qq.com"
+			"id": "2222@qq.com",
+      "key": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a6"
 		}
 	]
 }
@@ -294,12 +299,14 @@ Get up to 5 active verifiers of specified type, active means have sent a oracle 
 		{
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
-			"id": "1111@qq.com"
+			"id": "1111@qq.com",
+      "key": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a6"
 		},
 		{
 			"account": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 			"type": "email",
-			"id": "2222@qq.com"
+			"id": "2222@qq.com",
+      "key": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a6"
 		}
 	]
 }
@@ -351,7 +358,8 @@ Get all the verifiers registered by the specified account
 		{
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
-			"id": "1111@qq.com"
+			"id": "1111@qq.com",
+      "key": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a6"
 		}
 	]
 }
@@ -570,10 +578,11 @@ Get a publish block to publish a id/publicKey pair
    - `account` : account to publish
    - `type` : verifier type (email/weChat)
    - `id` : id address
+   - `keyType`: ed25519/rsa4096
    - `pubKey` : public key
    - `fee` : fee of this publish (5 qgas at least)
-   - `verifiers` : verifiers to verify this id
-
+- `verifiers` : verifiers to verify this id
+   
 -  **Returns**: 
    -  `block`: publish block
    -  `verifiers` : verifier info with a random verification code
@@ -592,6 +601,7 @@ Get a publish block to publish a id/publicKey pair
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
 			"type": "email",
 			"id": "11@qq.com",
+      "keyType":"ed25519",
 			"pubkey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e4942211",
 			"fee": "500000000",
 			"verifiers": [
@@ -654,6 +664,7 @@ Get a publish block to publish a id/publicKey pair
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
 			"type": "email",
 			"id": "11@qq.com",
+      "keyType":"ed25519",
 			"pubkey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e4942211",
 			"fee": "500000000",
 			"verifiers": [
@@ -675,6 +686,7 @@ Get a unpublish block to unpublish a id/publicKey pair
    - `account` : account to publish
    - `type` : verifier type (email/weChat)
    - `id` : id address
+   - `keyType`: ed25519/rsa4096
    - `pubKey`: public key to unpublish
    - `hash`: hash returned by dpki_getPublishBlock
    
@@ -695,6 +707,7 @@ Get a unpublish block to unpublish a id/publicKey pair
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
 			"type": "email",
 			"id": "3@qq.com",
+      "keyType":"ed25519",
 			"pubKey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e4942211",
 			"hash": "a987da2a34d976c320247361be7165462a3e59356fc21cbdb2e11a8708b99ee5"
 		}
@@ -739,6 +752,7 @@ Get a unpublish block to unpublish a id/publicKey pair
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
 			"type": "email",
 			"id": "3@qq.com",
+      "keyType":"ed25519",
 			"pubKey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e4942211",
 			"hash": "a987da2a34d976c320247361be7165462a3e59356fc21cbdb2e11a8708b99ee5"
 		}
@@ -784,6 +798,7 @@ Get publish info by type and id address
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
 			"type": "email",
 			"id": "7c30a50845d87ae02aa7bdcb82a36a4d454a4e9308d4680db4186449b4746d23",
+      "keyType":"ed25519",
 			"pubKey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"fee": "500000000",
 			"verifiers": [
@@ -854,6 +869,7 @@ Get the recommend public key by type and id, will only return one record.
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
 			"type": "email",
 			"id": "7c30a50845d87ae02aa7bdcb82a36a4d454a4e9308d4680db4186449b4746d23",
+      "keyType":"ed25519",
 			"pubKey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"fee": "500000000",
 			"verifiers": [
@@ -931,6 +947,7 @@ Get publish info by type
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
 			"type": "email",
 			"id": "7c30a50845d87ae02aa7bdcb82a36a4d454a4e9308d4680db4186449b4746d23",
+      "keyType":"ed25519",
 			"pubKey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"fee": "500000000",
 			"verifiers": [
@@ -1011,6 +1028,7 @@ Get publish info by account and type
 			"account": "qlc_3t1mwnf8u4oyn7wc7wuptnsfz83wsbrubs8hdhgkty56xrrez4x7fcttk5f3",
 			"type": "email",
 			"id": "7c30a50845d87ae02aa7bdcb82a36a4d454a4e9308d4680db4186449b4746d23",
+      "keyType":"ed25519",
 			"pubKey": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"fee": "500000000",
 			"verifiers": [
@@ -1065,10 +1083,11 @@ Get a oracle block
   - `account` : verify account
   - `type` : verify type (email/weChat)
   - `id` : id address to verify
+  - `keyType`: ed25519/rsa4096
   - `pk` : public key to verify
   - `code` : random code returned by pushlisher_getPublishBlock
-  - `hash` : publish block hash to verify
-
+- `hash` : publish block hash to verify
+  
 - **Returns**: 
   -  `block`: oracle block
 
@@ -1086,6 +1105,7 @@ Get a oracle block
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
 			"id": "4@qq.com",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"code": "2LvHuM8Wt9GNWtjq",
 			"hash": "c4887fd63245fdaa6878e9ccbc7921aa805cb402415cd418645e13a5298047a2"
@@ -1131,6 +1151,7 @@ Get a oracle block
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
 			"id": "4@qq.com",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"code": "2LvHuM8Wt9GNWtjq",
 			"hash": "c4887fd63245fdaa6878e9ccbc7921aa805cb402415cd418645e13a5298047a2"
@@ -1175,6 +1196,7 @@ Get oracle infos by type
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
 			"id": "7c30a50845d87ae02aa7bdcb82a36a4d454a4e9308d4680db4186449b4746d23",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"code": "2LvHuM8Wt9GNWtjq",
 			"hash": "c4887fd63245fdaa6878e9ccbc7921aa805cb402415cd418645e13a5298047a2"
@@ -1183,6 +1205,7 @@ Get oracle infos by type
 			"account": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 			"type": "email",
 			"id": "7c30a50845d87ae02aa7bdcb82a36a4d454a4e9308d4680db4186449b4746d23",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"code": "YZGPvp0iqBQVmxYj",
 			"hash": "c4887fd63245fdaa6878e9ccbc7921aa805cb402415cd418645e13a5298047a2"
@@ -1191,6 +1214,7 @@ Get oracle infos by type
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
 			"id": "da1ff4b765ee04e9a0169326697a013c99655e66c0fc5d0644574a741e361ad6",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a3",
 			"code": "sTCQWjF810K4vrPX",
 			"hash": "51b98440d8d166e39b5f8c341d92fa12c23397cb7f65828f492053173a3da187"
@@ -1199,6 +1223,7 @@ Get oracle infos by type
 			"account": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 			"type": "email",
 			"id": "da1ff4b765ee04e9a0169326697a013c99655e66c0fc5d0644574a741e361ad6",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a3",
 			"code": "VP2a9oqwI8xTBMPT",
 			"hash": "51b98440d8d166e39b5f8c341d92fa12c23397cb7f65828f492053173a3da187"
@@ -1256,6 +1281,7 @@ Get oracle infos by type and id
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
 			"id": "da1ff4b765ee04e9a0169326697a013c99655e66c0fc5d0644574a741e361ad6",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a3",
 			"code": "sTCQWjF810K4vrPX",
 			"hash": "51b98440d8d166e39b5f8c341d92fa12c23397cb7f65828f492053173a3da187"
@@ -1264,6 +1290,7 @@ Get oracle infos by type and id
 			"account": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 			"type": "email",
 			"id": "da1ff4b765ee04e9a0169326697a013c99655e66c0fc5d0644574a741e361ad6",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a3",
 			"code": "VP2a9oqwI8xTBMPT",
 			"hash": "51b98440d8d166e39b5f8c341d92fa12c23397cb7f65828f492053173a3da187"
@@ -1321,6 +1348,7 @@ Get oracle infos by account and type
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
 			"id": "7c30a50845d87ae02aa7bdcb82a36a4d454a4e9308d4680db4186449b4746d23",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"code": "2LvHuM8Wt9GNWtjq",
 			"hash": "c4887fd63245fdaa6878e9ccbc7921aa805cb402415cd418645e13a5298047a2"
@@ -1329,6 +1357,7 @@ Get oracle infos by account and type
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
 			"id": "da1ff4b765ee04e9a0169326697a013c99655e66c0fc5d0644574a741e361ad6",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a3",
 			"code": "sTCQWjF810K4vrPX",
 			"hash": "51b98440d8d166e39b5f8c341d92fa12c23397cb7f65828f492053173a3da187"
@@ -1384,6 +1413,7 @@ Get oracle infos by hash
 			"account": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"type": "email",
 			"id": "7c30a50845d87ae02aa7bdcb82a36a4d454a4e9308d4680db4186449b4746d23",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"code": "2LvHuM8Wt9GNWtjq",
 			"hash": "c4887fd63245fdaa6878e9ccbc7921aa805cb402415cd418645e13a5298047a2"
@@ -1392,6 +1422,7 @@ Get oracle infos by hash
 			"account": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 			"type": "email",
 			"id": "7c30a50845d87ae02aa7bdcb82a36a4d454a4e9308d4680db4186449b4746d23",
+      "keyType":"ed25519",
 			"pk": "0ae6c2ade291b398c3dc4b4c0164bf72813d6150b25da69371bb3008e49422a4",
 			"code": "YZGPvp0iqBQVmxYj",
 			"hash": "c4887fd63245fdaa6878e9ccbc7921aa805cb402415cd418645e13a5298047a2"
