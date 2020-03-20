@@ -8,16 +8,61 @@
 
 
 
-
-
-## net_connectPeersInfo
-Return connect peers
+## net_peersCount
+Return peers count
 
 - **Parameters**: `none`
   
 - **Returns**: 
-  - `peerInfo` 
+  - `peersCount` 
+  - `all`: all nodes in the network
+    - `connect`: how many nodes are connected
+    - `online`: online nodes in the network
+  
+- **Example**:
 
+::: demo
+
+```json tab:Request
+{
+  "jsonrpc": "2.0",
+  "id":2,
+  "method":"net_peersCount"
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": {
+    "all": 3,
+    "connect": 2,
+    "online": 3
+  }
+}
+```
+
+```json test
+{
+  "jsonrpc": "2.0",
+  "id":2,
+  "method":"net_peersCount"
+}
+```
+:::
+
+
+
+## net_getAllPeersInfo
+
+Return all peers info in the network
+
+- **Parameters**: 
+  - `count`:  number of returned peers
+  - `offset`: offset of all peers records
+- **Returns**: 
+  - `peer details`：`peerid`,`address`,`version`,`rtt`,`lastUpdateTime`
 - **Example**:
 
 ::: demo
@@ -25,40 +70,192 @@ Return connect peers
 ```json tab:Request
 {
 	"jsonrpc": "2.0",
-  "id":1,
-  "method":"net_connectPeersInfo"
+	"id": 3,
+	"method": "net_getAllPeersInfo",
+	"params": [
+		3,
+		0
+	]
 }
-
-
-
 ```
 
 ```json tab:Response
 {
   "jsonrpc": "2.0",
-  "id": 1,
-  "result": {
-    "count": 3,
-    "infos": {
-      "QmW9ocg4fRjckCMQvRNYGyKxQd6GiutAY4HBRxMrGrZRfc": "/ip4/47.112.112.138/tcp/19734",
-      "QmXcotWHqn5k9id2ZiTzS61t5MJpJCux4msMX2oMDMuVNx": "/ip4/178.63.50.78/tcp/19734",
-      "QmdFSukPUMF3t1JxjvTo14SEEb5JV9JBT6PukGRo6A2g4f": "/ip4/47.103.40.20/tcp/19734"
+  "id": 18,
+  "result": [
+    {
+      "peerid": "QmToDLHJJ8mgSZcWewTyWBiArqmNMfLhGGkJpA5E62M6yW",
+      "address": "/ip4/10.128.0.5/tcp/19734",
+      "version": "v1.3.4-b444edc",
+      "rtt": 0.000722892,
+      "lastUpdateTime": "2020-03-03T05:34:47Z"
+    },
+    {
+      "peerid": "QmUGgsPH6kaZFHCy392vBDYqZC3HPexewuZrSoEHgNaHYz",
+      "address": "/ip4/10.128.0.7/tcp/19734",
+      "version": "v1.3.4-055c231",
+      "rtt": 0.000471442,
+      "lastUpdateTime": "2020-03-06T06:33:37Z"
+    },
+    {
+      "peerid": "QmfMSZSGBaLobW6WKzqaVhXnbVg8kJEaRbWyEfsxi94dMw",
+      "address": "/ip4/10.128.0.6/tcp/19734",
+      "version": "v1.3.4-055c231",
+      "rtt": 0.000746629,
+      "lastUpdateTime": "2020-03-06T06:33:37Z"
     }
-  }
+  ]
 }
-
-
 ```
 
 ```json test
 {
 	"jsonrpc": "2.0",
-  "id":1,
-  "method":"net_connectPeersInfo"
+	"id": 3,
+	"method": "net_getAllPeersInfo",
+	"params": [
+		3,
+		0
+	]
 }
-
-
 ```
+
+:::
+
+
+
+## net_getOnlinePeersInfo
+
+Return online peers info in the network
+
+- **Parameters**: 
+  - `count`:  number of returned peers
+  - `offset`: offset of online peers
+- **Returns**: 
+  - `peer details`：`peerid`,`address`,`version`,`rtt`,`lastUpdateTime`
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "net_getOnlinePeersInfo",
+	"params": [
+		3,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": [
+    {
+      "peerid": "QmToDLHJJ8mgSZcWewTyWBiArqmNMfLhGGkJpA5E62M6yW",
+      "address": "/ip4/0.0.0.0/tcp/19734",
+      "version": "",
+      "rtt": 0,
+      "lastUpdateTime": "2020-03-06T06:42:07Z"
+    },
+    {
+      "peerid": "QmfMSZSGBaLobW6WKzqaVhXnbVg8kJEaRbWyEfsxi94dMw",
+      "address": "/ip4/10.128.0.6/tcp/19734",
+      "version": "v1.3.4-055c231",
+      "rtt": 0.000899847,
+      "lastUpdateTime": "2020-03-06T06:42:07Z"
+    },
+    {
+      "peerid": "QmUGgsPH6kaZFHCy392vBDYqZC3HPexewuZrSoEHgNaHYz",
+      "address": "/ip4/10.128.0.7/tcp/19734",
+      "version": "v1.3.4-055c231",
+      "rtt": 0.000730122,
+      "lastUpdateTime": "2020-03-06T06:42:07Z"
+    }
+  ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "net_getOnlinePeersInfo",
+	"params": [
+		3,
+		0
+	]
+}
+```
+
+:::
+
+
+
+## net_connectPeersInfo
+
+Return connect peers info
+
+- **Parameters**: 
+  - `count`:  number of returned peers
+  - `offset`: offset of connect peers
+- **Returns**: 
+  - `peer details`：`peerid`,`address`,`version`,`rtt`,`lastUpdateTime`
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "net_connectPeersInfo",
+	"params": [
+		2,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": [
+    {
+      "peerid": "QmfMSZSGBaLobW6WKzqaVhXnbVg8kJEaRbWyEfsxi94dMw",
+      "address": "/ip4/10.128.0.6/tcp/19734",
+      "version": "v1.3.4-055c231",
+      "rtt": 0.000870462,
+      "lastUpdateTime": "2020-03-06T06:43:37Z"
+    },
+    {
+      "peerid": "QmUGgsPH6kaZFHCy392vBDYqZC3HPexewuZrSoEHgNaHYz",
+      "address": "/ip4/10.128.0.7/tcp/19734",
+      "version": "v1.3.4-055c231",
+      "rtt": 0.000461146,
+      "lastUpdateTime": "2020-03-06T06:43:37Z"
+    }
+  ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "net_connectPeersInfo",
+	"params": [
+		2,
+		0
+	]
+}
+```
+
 :::
 
 
@@ -218,8 +415,12 @@ Return online representative info ，validVotes and validVotesPercent
 ```json tab:Request
 {
 	"jsonrpc": "2.0",
-	"id":18,
-	"method":"net_onlineRepsInfo"
+	"id": 3,
+	"method": "net_onlineRepsInfo",
+	"params": [
+		3,
+		0
+	]
 }
 ```
 

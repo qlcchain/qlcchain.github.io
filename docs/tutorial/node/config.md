@@ -74,10 +74,8 @@
 			"account",
 			"net",
 			"util",
-			"wallet",
 			"mintage",
 			"contract",
-			"sms"
 		] // A list of qlcchain modules that are exposed to RPC interface
 	},
 	"p2p": {

@@ -1,6 +1,6 @@
 # Utility
 
-创建SMS模块对象
+创建Util模块对象
 ```go
 func NewUtilApi(c *rpc.Client) *UtilApi
 ```

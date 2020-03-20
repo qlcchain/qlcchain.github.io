@@ -25,8 +25,6 @@
 
 -  `ledger_accountsPending` 返回值增加时间戳
 
-- 修改 `sms_messageBlocks` 返回值
-
 
 2019-3-15 更新 :
 
@@ -34,7 +32,7 @@
 
 - `ledger_accounts`, `ledger_blocks`, `ledger_accountHistoryTopn` 接口增加偏移量
 
-- 增加 `SMS` 和 `Mintage` 模块
+- 增加 `Mintage` 模块
 
 - 修改 `ledger_blocksCountByType`, `ledger_delegators` 接口返回值
 
