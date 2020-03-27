@@ -8,7 +8,7 @@
 
 
 
-## permission_getAdminUpdateSendBlock
+## permission_getAdminHandoverBlock
 
 Get a contractSend block to update admin
 
@@ -28,7 +28,7 @@ Get a contractSend block to update admin
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "permission_getAdminUpdateSendBlock",
+	"method": "permission_getAdminHandoverBlock",
 	"params": [{
 	    "admin":"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
 	    "successor":"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
@@ -68,77 +68,12 @@ Get a contractSend block to update admin
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "permission_getAdminUpdateSendBlock",
+	"method": "permission_getAdminHandoverBlock",
 	"params": [{
 	    "admin":"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
 	    "successor":"qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
 	    "comment":"QLC ADMIN"
 	}]
-}
-```
-
-:::
-
-## permission_getAdminUpdateRewardBlockBySendHash
-
-Get a contractReward block to update to the new admin
-
-- **Parameters**: 
-  - `hash` : contractSend block hash
-
-- **Returns**: 
-  -  `block`: admin update reward block
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "permission_getAdminUpdateRewardBlockBySendHash",
-	"params": [
-	    "25e0bca36030ea9ff51b84570fade274abfe01f3e05e9ef33f7a9cd7f7cd24c0"  
-	 ]
-}
-```
-
-```json tab:Response
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"result": {
-		"type": "ContractReward",
-		"token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
-		"address": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
-		"balance": "60000000000000000",
-		"vote": "0",
-		"network": "0",
-		"storage": "0",
-		"oracle": "0",
-		"previous": "5594c690c3618a170a77d2696688f908efec4da2b94363fcb96749516307031d",
-		"link": "000000000000000000000000000000000000000000000000000000000000001a",
-		"message": "0000000000000000000000000000000000000000000000000000000000000000",
-		"data": "N6HBj7+GyD+0v7n0m5uPpZPIz0EoyeIXIMSHVltS/GZAqejzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACVFMQyBBRE1JTgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-		"povHeight": 0,
-		"timestamp": 1584600499,
-		"extra": "d89931e2b93961b0ef52bae3f7e4898210319c0e4e018f549d179e1b0a5465f9",
-		"representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
-		"work": "0000000000000000",
-		"signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-	}
-}
-```
-
-```json test
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "permission_getAdminUpdateRewardBlockBySendHash",
-	"params": [
-	    "25e0bca36030ea9ff51b84570fade274abfe01f3e05e9ef33f7a9cd7f7cd24c0"  
-	 ]
 }
 ```
 
@@ -153,9 +88,8 @@ Get the current admin
 
 - **Returns**: 
   -  `admin`: admin account
-  -  `status`: active/in hand over
   -  `comment`: comment message
-
+  
 - **Example**:
 
 ::: demo
@@ -164,8 +98,7 @@ Get the current admin
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "permission_getAdmin",
-	"params": []
+	"method": "permission_getAdmin"
 }
 ```
 
@@ -175,7 +108,6 @@ Get the current admin
 	"id": 3,
 	"result": {
 		"admin": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-		"status": "active",
 		"comment": "123123"
 	}
 }
@@ -185,82 +117,7 @@ Get the current admin
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "permission_getAdmin",
-	"params": []
-}
-```
-
-:::
-
-## permission_getNodeAddBlock
-
-Get a contractSend block to add a node
-
-- **Parameters**: 
-  - `admin` : current admin qlc account
-  - `kind` : node addr kind(0:ip+port/1:p2p peer id)
-  - `node`: kind 0 format:(x.x.x.x:x)/kind 1 format(xxxxxxxxxx)
-  - `comment` : comment message(max 128 bytes)
-
-- **Returns**: 
-  -  `block`: node add block
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "permission_getNodeAddBlock",
-	"params": [{
-	    "admin":"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-	    "kind":0,
-	    "node":"1.1.1.1:1234",
-	    "comment":"n1"
-	}]
-}
-```
-
-```json tab:Response
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"result": {
-		"type": "ContractSend",
-		"token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
-		"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-		"balance": "0",
-		"vote": "0",
-		"network": "0",
-		"storage": "0",
-		"oracle": "0",
-		"previous": "a7d4f3612c6c36fa1a4403727e56deaeaa3b235c0a5b6727bca7419fcfe662ee",
-		"link": "000000000000000000000000000000000000000000000000000000000000001a",
-		"message": "0000000000000000000000000000000000000000000000000000000000000000",
-		"data": "S/RxFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMMS4xLjEuMToxMjM0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAm4xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-		"povHeight": 0,
-		"timestamp": 1584670253,
-		"extra": "a1aeb456683394b6dc647fa68a0a5a2b34820ba436f18b625d0cbb8df1891c0f",
-		"representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
-		"work": "0000000000000000",
-		"signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-	}
-}
-```
-
-```json test
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "permission_getNodeAddBlock",
-	"params": [{
-	    "admin":"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-	    "kind":0,
-	    "node":"1.1.1.1:1234",
-	    "comment":"n1"
-	}]
+	"method": "permission_getAdmin"
 }
 ```
 
@@ -272,11 +129,10 @@ Get a contractSend block to update node
 
 - **Parameters**: 
   - `admin` : current admin qlc account
-  - `index` : node index(generated when adding a node)
-  - `kind` : node addr kind(0:ip+port/1:p2p peer id)
-  - `node`: kind 0 format:(x.x.x.x:x)/kind 1 format(xxxxxxxxxx)
+  - `nodeId` : node id
+  - `nodeUrl`: node url, format(1.1.1.1:10000), optional. If set, it will check the peer's ip and port.
   - `comment` : comment message(max 128 bytes)
-
+  
 - **Returns**: 
   -  `block`: node update block
 
@@ -291,9 +147,8 @@ Get a contractSend block to update node
 	"method": "permission_getNodeUpdateBlock",
 	"params": [{
 	    "admin":"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-	    "index":1,
-	    "kind":0,
-	    "node":"1.1.1.1:1234",
+	    "nodeId":"n1",
+	    "nodeUrl":"1.1.1.1:1234",
 	    "comment":"n1"
 	}]
 }
@@ -333,78 +188,9 @@ Get a contractSend block to update node
 	"method": "permission_getNodeUpdateBlock",
 	"params": [{
 	    "admin":"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-	    "index":1,
-	    "kind":0,
-	    "node":"1.1.1.1:1234",
+	    "nodeId":"n1",
+	    "nodeUrl":"1.1.1.1:1234",
 	    "comment":"n1"
-	}]
-}
-```
-
-:::
-
-## permission_getNodeRemoveBlock
-
-Get a contractSend block to remove a node
-
-- **Parameters**: 
-  - `admin` : current admin qlc account
-  - `index` : node index(generated when adding a node)
-
-- **Returns**: 
-  -  `block`: node remove block
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "permission_getNodeRemoveBlock",
-	"params": [{
-	    "admin":"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-	    "index":1
-	}]
-}
-```
-
-```json tab:Response
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"result": {
-		"type": "ContractSend",
-		"token": "a7e8fa30c063e96a489a47bc43909505bd86735da4a109dca28be936118a8582",
-		"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-		"balance": "0",
-		"vote": "0",
-		"network": "0",
-		"storage": "0",
-		"oracle": "0",
-		"previous": "a7d4f3612c6c36fa1a4403727e56deaeaa3b235c0a5b6727bca7419fcfe662ee",
-		"link": "000000000000000000000000000000000000000000000000000000000000001a",
-		"message": "0000000000000000000000000000000000000000000000000000000000000000",
-		"data": "3dgdQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB",
-		"povHeight": 0,
-		"timestamp": 1584670653,
-		"extra": "5eea7d0c96ebe12011ccd18ed3d4c854911ad061e54f9ac304bd8b6d76254bc1",
-		"representative": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
-		"work": "0000000000000000",
-		"signature": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-	}
-}
-```
-
-```json test
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "permission_getNodeRemoveBlock",
-	"params": [{
-	    "admin":"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-	    "index":1
 	}]
 }
 ```
@@ -429,8 +215,7 @@ Get all the valid nodes count
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "permission_getNodesCount",
-	"params": []
+	"method": "permission_getNodesCount"
 }
 ```
 
@@ -446,19 +231,18 @@ Get all the valid nodes count
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "permission_getNodesCount",
-	"params": []
+	"method": "permission_getNodesCount"
 }
 ```
 
 :::
 
-## permission_getNodeByIndex
+## permission_getNode
 
-Get node info by index
+Get node info by node id
 
 - **Parameters**: 
-  - index of the node
+  - node id
 
 - **Returns**: 
   -  node info
@@ -471,8 +255,8 @@ Get node info by index
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "permission_getNodeByIndex",
-	"params": [2]
+	"method": "permission_getNode",
+	"params": ["node id"]
 }
 ```
 
@@ -481,10 +265,9 @@ Get node info by index
 	"jsonrpc": "2.0",
 	"id": 3,
 	"result": {
-		"index": 2,
-		"kind": 1,
-		"node": "QmVLbouTEb9LGQJ56KvQCyoPXqDeqwYSE6j1YSyfLeHgN3",
-		"comment": "t3"
+		"nodeId": "n1",
+		"nodeUrl": "",
+		"comment": "n1Test"
 	}
 }
 ```
@@ -493,8 +276,8 @@ Get node info by index
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "permission_getNodeByIndex",
-	"params": [2]
+	"method": "permission_getNode",
+	"params": ["node id"]
 }
 ```
 
@@ -530,22 +313,29 @@ Get a contractSend block to update node
 	"id": 3,
 	"result": [
 		{
-			"index": 0,
-			"kind": 0,
-			"node": "1.1.1.1:1234",
-			"comment": "t1"
+			"nodeId": "n5",
+			"nodeUrl": "",
+			"comment": "n5Test"
 		},
 		{
-			"index": 2,
-			"kind": 1,
-			"node": "QmVLbouTEb9LGQJ56KvQCyoPXqDeqwYSE6j1YSyfLeHgN3",
-			"comment": "t3"
+			"nodeId": "n4",
+			"nodeUrl": "",
+			"comment": "n4Test"
 		},
 		{
-			"index": 3,
-			"kind": 1,
-			"node": "QmVLbouTEb9LGQJ56KvQCyoPXqDeqwYSE6j1YSyfLeHgN3",
-			"comment": "t4"
+			"nodeId": "n2",
+			"nodeUrl": "",
+			"comment": "n2Test"
+		},
+		{
+			"nodeId": "n3",
+			"nodeUrl": "",
+			"comment": "n3Test"
+		},
+		{
+			"nodeId": "n1",
+			"nodeUrl": "",
+			"comment": "n1Test"
 		}
 	]
 }
