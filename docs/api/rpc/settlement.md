@@ -806,15 +806,16 @@ Generate process CDR `ContractSend` block
 - **Parameters**: 
     - `params`: CDR params
         - `addr`: user's qlc adress, should be party A or party B
-        - `contractAddress`: any qlc address, RPC will fill it with actual settlement contract address
-        - `index`: time sequence, to normalize SMS send time, SMS datetime (UTC Unix) div timespan to 
-        - `smsDt`: cdr date time, UTC Unix
-        - `sender`: SMS sender
-        - `destination`: SMS destination, eg. `85263***704`
-        - `sendingStatus`: SMS sending status
-        - `dlrStatus`: SMS delivery report status
-        - `preStop`: partyB's previous stop as settlement contract filled
-        - `nextStop`: partyA's next stop as settlement contract filled
+        - `params`: array of CDR params, all CDR records should belong to the same settlement contract
+          - `index`: time sequence, to normalize SMS send time, SMS datetime (UTC Unix) div timespan to 
+          - `smsDt`: cdr date time, UTC Unix
+          - `sender`: SMS sender
+          - `customer`: customer name (optional), eg. `Tencent`
+          - `destination`: SMS destination, eg. `85263***704`
+          - `sendingStatus`: SMS sending status
+          - `dlrStatus`: SMS delivery report status
+          - `preStop`: partyB's previous stop as settlement contract filled
+          - `nextStop`: partyA's next stop as settlement contract filled
 - **Returns**: 
     - `block`: `ContractSend` block, without signature, have to sign the block before process it
 
@@ -829,20 +830,20 @@ Generate process CDR `ContractSend` block
   "method": "settlement_getProcessCDRBlock",
   "params": [
     "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
-    {
-      "contractAddress": "qlc_1111111111111111111111111111111111111111111111111111hifc8npp",
-      "index": 1,
-      "smsDt": 1583472852,
-      "sender": "WeChat",
-      "destination": "85257***343",
-      "sendingStatus": "Sent",
-      "dlrStatus": "Delivered",
-      "preStop": "",
-      "nextStop": "HKTCSL"
-    }
+    [
+      {
+        "index": 1,
+        "smsDt": 1583472852,
+        "sender": "WeChat",
+        "destination": "85257***343",
+        "sendingStatus": "Sent",
+        "dlrStatus": "Delivered",
+        "preStop": "",
+        "nextStop": "HKTCSL"
+      }
+    ]
   ]
 }
-
 ```
 
 ```json tab:Response
@@ -875,12 +876,25 @@ Generate process CDR `ContractSend` block
 
 ```json test
 {
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "settlement_getProcessCDRBlock",
-    "params": ["qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47"]
+  "jsonrpc": "2.0",
+  "id": 3,
+  "method": "settlement_getProcessCDRBlock",
+  "params": [
+    "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+    [
+      {
+        "index": 1,
+        "smsDt": 1583472852,
+        "sender": "WeChat",
+        "destination": "85257***343",
+        "sendingStatus": "Sent",
+        "dlrStatus": "Delivered",
+        "preStop": "",
+        "nextStop": "HKTCSL"
+      }
+    ]
+  ]
 }
-
 ```
 :::
 
