@@ -1639,7 +1639,7 @@ Query CDR settlement status by settlement contract address, SMS send datetime. w
     - `count`:  max settlement contract records size
     - `offset`: offset of all settlement contract records
 - **Returns**: 
-    - `info`: total destroyed token amount
+    - `info`: all CDR status which are matched
 
 - **Example**:
 
@@ -1802,6 +1802,189 @@ Get CDR settlement status of specified hash and specified settlement contract
   "id":3,
   "method":"settlement_getCDRStatus",
   "params":["qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",10,0]
+}
+```
+:::
+
+## settlement_getMultiPartyCDRStatus
+
+generate multi-party summary report by settlement contract address start and end time. when `start` or `end` is zero, time conditions are ignored.
+
+eg. The SMS went through from Montnets to PCCWG, then through CSL to end users, Montnets would like the the settlement go through PCCWG and CSL together. ONLY the states of the CDRs from Montnets, PCCWG and CSL are all successful is success, otherwise is failure. will not count in invoice.
+
+- **Parameters**: 
+    - `firstAddr`: settlement smart contract address
+    - `secondAddr`: settlement smart contract address, the PartyB of the 1st settlement contract should be PartyA of the 2nd one
+    - `count`:  max settlement contract records size
+    - `offset`: offset of all settlement contract records
+- **Returns**: 
+    - `result`: an array of all CDR settlement status which are matched, sorted by date and settlement contract address
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getMultiPartyCDRStatus",
+	"params": [
+		"qlc_3mdqbk4w5utsxspss7tupwnetrs4yca68o78ybd433fnhihnftnmdw5g9pmj",
+		"qlc_3n4kx38h5ou7iyupezf4prbx89yxa7zujtf8d6r8ucpf6e9x13ki1dhcdwwk",
+		10,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": [
+    {
+      "contractAddress": "qlc_3mdqbk4w5utsxspss7tupwnetrs4yca68o78ybd433fnhihnftnmdw5g9pmj",
+      "params": {
+        "qlc_1je9h6w3o5b386oig7sb8j71sf6xr9f5ipemw8gojfcqjpk6r5hiu7z3jx3z": [
+          {
+            "index": 5285517,
+            "smsDt": 1585655170,
+            "sender": "Slack",
+            "customer": "",
+            "destination": "85257***3430",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "A2P_PCCWG",
+            "nextStop": ""
+          }
+        ],
+        "qlc_3pbbee5imrf3aik35ay44phaugkqad5a8qkngot6by7h8pzjrwwmxwket4te": [
+          {
+            "index": 5285517,
+            "smsDt": 1585655170,
+            "sender": "Slack",
+            "customer": "",
+            "destination": "85257***3430",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "",
+            "nextStop": "CSL Hong Kong @ 3397"
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "contractAddress": "qlc_3n4kx38h5ou7iyupezf4prbx89yxa7zujtf8d6r8ucpf6e9x13ki1dhcdwwk",
+      "params": {
+        "qlc_3pbbee5imrf3aik35ay44phaugkqad5a8qkngot6by7h8pzjrwwmxwket4te": [
+          {
+            "index": 5285517,
+            "smsDt": 1585655170,
+            "sender": "Slack",
+            "customer": "",
+            "destination": "85257***3430",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "MONTNETS",
+            "nextStop": ""
+          }
+        ],
+        "qlc_3pekn1xq8boq1ihpj8q96wnktxiu8cfbe5syaety3bywyd45rkyhmj8b93kq": [
+          {
+            "index": 5285517,
+            "smsDt": 1585655170,
+            "sender": "Slack",
+            "customer": "",
+            "destination": "85257***3430",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "",
+            "nextStop": "A2P_PCCWG"
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "contractAddress": "qlc_3mdqbk4w5utsxspss7tupwnetrs4yca68o78ybd433fnhihnftnmdw5g9pmj",
+      "params": {
+        "qlc_1je9h6w3o5b386oig7sb8j71sf6xr9f5ipemw8gojfcqjpk6r5hiu7z3jx3z": [
+          {
+            "index": 5285518,
+            "smsDt": 1585655470,
+            "sender": "WeChat",
+            "customer": "",
+            "destination": "85257***3431",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "A2P_PCCWG",
+            "nextStop": ""
+          }
+        ],
+        "qlc_3pbbee5imrf3aik35ay44phaugkqad5a8qkngot6by7h8pzjrwwmxwket4te": [
+          {
+            "index": 5285518,
+            "smsDt": 1585655470,
+            "sender": "WeChat",
+            "customer": "",
+            "destination": "85257***3431",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "",
+            "nextStop": "CSL Hong Kong @ 3397"
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "contractAddress": "qlc_3n4kx38h5ou7iyupezf4prbx89yxa7zujtf8d6r8ucpf6e9x13ki1dhcdwwk",
+      "params": {
+        "qlc_3pbbee5imrf3aik35ay44phaugkqad5a8qkngot6by7h8pzjrwwmxwket4te": [
+          {
+            "index": 5285518,
+            "smsDt": 1585655470,
+            "sender": "WeChat",
+            "customer": "",
+            "destination": "85257***3431",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "MONTNETS",
+            "nextStop": ""
+          }
+        ],
+        "qlc_3pekn1xq8boq1ihpj8q96wnktxiu8cfbe5syaety3bywyd45rkyhmj8b93kq": [
+          {
+            "index": 5285518,
+            "smsDt": 1585655470,
+            "sender": "WeChat",
+            "customer": "",
+            "destination": "85257***3431",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "",
+            "nextStop": "A2P_PCCWG"
+          }
+        ]
+      },
+      "status": "success"
+    }
+  ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getMultiPartyCDRStatus",
+	"params": [
+		"qlc_3hb8j5esewaa3rbkfxzdhr7a7hsyusqy6pd8p6dik7fd9micczzwcbem3g9d",
+		"qlc_3juus6rec3dmad31qbgpmadrrw4oirhxqcxwiris386g5ji986ajwr8y5mxz",
+		10,
+		0
+	]
 }
 ```
 :::
