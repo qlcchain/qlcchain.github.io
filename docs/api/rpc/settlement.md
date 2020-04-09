@@ -1989,6 +1989,326 @@ eg. The SMS went through from Montnets to PCCWG, then through CSL to end users, 
 ```
 :::
 
+## settlement_getSummaryReportByAccount
+
+Generate settlement summary report of the specified settlement contract. when `start` or `end` is zero, time conditions are ignored
+
+- **Parameters**: 
+    - `address`: settlement contract address
+    - `account`: account in CDR record
+    - `start`:
+    - `end`： 
+- **Returns**: 
+    - `result`: summary report
+        - `contract`: settlement contract details
+        - `total`:  partyA and partyB's summary report
+          - `partyA`: from party A's view, sending success is a success, otherwise is a failure.
+            - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+            - `orphan`: only find Party A or Party B's CDR status
+          - `partyB`: from party B's view, sending success is a success, otherwise is a failure.
+            - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+            - `orphan`: only find Party A or Party B's CDR status
+        - `records`: grouped by account, same as total
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getSummaryReportByAccount",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"DIR",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+    "contract": {
+      "partyA": {
+        "address": "qlc_3xcsfde7uyhbeppiaqyhbgf63rutwbhij3imh3e43dnk7r47w8zi9i5ifaf4",
+        "name": "PCCWG"
+      },
+      "partyB": {
+        "address": "qlc_3544kdchykyaawi3gn1c8j7qumoktbq9k1a5ga4pnxkhgcpygd7adgu3did6",
+        "name": "HKT-CSL"
+      },
+      "services": [
+        {
+          "serviceId": "2737511f62af88be52d910c95bffddf78828b07d1633176e60370519b6ccc0a9",
+          "mcc": 1,
+          "mnc": 2,
+          "totalAmount": 10,
+          "UnitPrice": 0.0426,
+          "currency": "USD"
+        },
+        {
+          "serviceId": "647cb3e06f0d50a8436bdd1010b33e1b62c4692b5c8c26eb0e8a5e1363a35990",
+          "mcc": 22,
+          "mnc": 1,
+          "totalAmount": 30,
+          "UnitPrice": 0.023,
+          "currency": "USD"
+        }
+      ],
+      "startDate": 1262275200,
+      "endDate": 1744546677,
+      "preStops": [
+        "A2P_PCCWG"
+      ],
+      "nextStops": [
+        "CSL Hong Kong @ 3397"
+      ],
+      "confirmDate": 1586348279,
+      "status": "Activated",
+      "address": "qlc_1111111111111111111111111111111111111111111111111111hifc8npp"
+    },
+    "records": {
+      "DIR": {
+        "partyA": {
+          "orphan": {
+            "total": 50,
+            "success": 18,
+            "fail": 32,
+            "result": 0.36
+          },
+          "matching": {
+            "total": 43,
+            "success": 17,
+            "fail": 26,
+            "result": 0.3953488372093023
+          }
+        },
+        "partyB": {
+          "orphan": {
+            "total": 41,
+            "success": 14,
+            "fail": 27,
+            "result": 0.34146341463414637
+          },
+          "matching": {
+            "total": 43,
+            "success": 17,
+            "fail": 26,
+            "result": 0.3953488372093023
+          }
+        }
+      }
+    },
+    "total": {
+      "partyA": {
+        "orphan": {
+          "total": 50,
+          "success": 18,
+          "fail": 32,
+          "result": 0.36
+        },
+        "matching": {
+          "total": 43,
+          "success": 17,
+          "fail": 26,
+          "result": 0.3953488372093023
+        }
+      },
+      "partyB": {
+        "orphan": {
+          "total": 41,
+          "success": 14,
+          "fail": 27,
+          "result": 0.34146341463414637
+        },
+        "matching": {
+          "total": 43,
+          "success": 17,
+          "fail": 26,
+          "result": 0.3953488372093023
+        }
+      }
+    }
+  }
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getSummaryReportByAccount",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"DIR",
+		0,
+		0
+	]
+}
+```
+:::
+
+## settlement_getSummaryReportByCustomer
+
+Generate settlement summary report of the specified settlement contract. when `start` or `end` is zero, time conditions are ignored
+
+- **Parameters**: 
+    - `address`: settlement contract address
+    - `customer`: customer name in CDR record
+    - `start`:
+    - `end`： 
+- **Returns**: 
+    - `result`: summary report
+        - `contract`: settlement contract details
+        - `total`:  partyA and partyB's summary report
+          - `partyA`: from party A's view, sending success is a success, otherwise is a failure.
+            - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+            - `orphan`: only find Party A or Party B's CDR status
+          - `partyB`: from party B's view, sending success is a success, otherwise is a failure.
+            - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+            - `orphan`: only find Party A or Party B's CDR status
+        - `records`: grouped by customer, same as total
+
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getSummaryReportByCustomer",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"SAP Mobile Services",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+  "contract": {
+    "partyA": {
+      "address": "qlc_3xcsfde7uyhbeppiaqyhbgf63rutwbhij3imh3e43dnk7r47w8zi9i5ifaf4",
+      "name": "PCCWG"
+    },
+    "partyB": {
+      "address": "qlc_3544kdchykyaawi3gn1c8j7qumoktbq9k1a5ga4pnxkhgcpygd7adgu3did6",
+      "name": "HKT-CSL"
+    },
+    "services": [
+      {
+        "serviceId": "2737511f62af88be52d910c95bffddf78828b07d1633176e60370519b6ccc0a9",
+        "mcc": 1,
+        "mnc": 2,
+        "totalAmount": 10,
+        "UnitPrice": 0.0426,
+        "currency": "USD"
+      },
+      {
+        "serviceId": "647cb3e06f0d50a8436bdd1010b33e1b62c4692b5c8c26eb0e8a5e1363a35990",
+        "mcc": 22,
+        "mnc": 1,
+        "totalAmount": 30,
+        "UnitPrice": 0.023,
+        "currency": "USD"
+      }
+    ],
+    "startDate": 1262275200,
+    "endDate": 1744546677,
+    "preStops": [
+      "A2P_PCCWG"
+    ],
+    "nextStops": [
+      "CSL Hong Kong @ 3397"
+    ],
+    "confirmDate": 1586348279,
+    "status": "Activated",
+    "address": "qlc_1111111111111111111111111111111111111111111111111111hifc8npp"
+  },
+  "records": {
+    "SAP Mobile Services": {
+      "partyA": {
+        "orphan": {
+          "total": 50,
+          "success": 18,
+          "fail": 32,
+          "result": 0.36
+        },
+        "matching": {
+          "total": 43,
+          "success": 17,
+          "fail": 26,
+          "result": 0.3953488372093023
+        }
+      },
+      "partyB": {
+        "orphan": {
+          "total": 41,
+          "success": 14,
+          "fail": 27,
+          "result": 0.34146341463414637
+        },
+        "matching": {
+          "total": 43,
+          "success": 17,
+          "fail": 26,
+          "result": 0.3953488372093023
+        }
+      }
+    }
+  },
+  "total": {
+    "partyA": {
+      "orphan": {
+        "total": 50,
+        "success": 18,
+        "fail": 32,
+        "result": 0.36
+      },
+      "matching": {
+        "total": 43,
+        "success": 17,
+        "fail": 26,
+        "result": 0.3953488372093023
+      }
+    },
+    "partyB": {
+      "orphan": {
+        "total": 41,
+        "success": 14,
+        "fail": 27,
+        "result": 0.34146341463414637
+      },
+      "matching": {
+        "total": 43,
+        "success": 17,
+        "fail": 26,
+        "result": 0.3953488372093023
+      }
+    }
+  }
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getSummaryReportByCustomer",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"SAP Mobile Services",
+		0,
+		0
+	]
+}
+```
+:::
 
 ## settlement_getSummaryReport
 
@@ -2220,6 +2540,145 @@ generate user's invoice by start and end time. when `start` or `end` is zero, ti
 ```
 :::
 
+## settlement_generateInvoicesByAccount
+
+generate user's invoice by start and end time. when `start` or `end` is zero, time conditions are ignored
+
+- **Parameters**: 
+    - `address`: settlement contract address
+    - `account`: account in CDR record
+    - `start`: start time
+    - `end`:  end time
+- **Returns**: 
+    - `result`: invoice
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByAccount",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"DIR",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": [
+    {
+      "contractAddress": "qlc_18qoehsf3s357wkm7319me6yhz435pc6dg837zej17zdk11e3t6hxrgq34hf",
+      "startDate": 1262275200,
+      "endDate": 1744546677,
+      "customer": "DIR",
+      "customerSr": "",
+      "country": "",
+      "operator": "HKT-CSL",
+      "serviceId": "2737511f62af88be52d910c95bffddf78828b07d1633176e60370519b6ccc0a9",
+      "mcc": 1,
+      "mnc": 2,
+      "currency": "USD",
+      "unitPrice": 0.0426,
+      "sumOfBillableSMSCustomer": 17,
+      "sumOfTOTPrice": 0.7242
+    }
+  ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByAccount",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"DIR",
+		0,
+		0
+	]
+}
+```
+:::
+
+## settlement_generateInvoicesByCustomer
+
+generate user's invoice by start and end time. when `start` or `end` is zero, time conditions are ignored
+
+- **Parameters**: 
+    - `address`: settlement contract address
+    - `customer`: customer name in CDR record
+    - `start`: start time
+    - `end`:  end time
+- **Returns**: 
+    - `result`: invoice
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByCustomer",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"SAP Mobile Services",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": [
+    {
+      "contractAddress": "qlc_18qoehsf3s357wkm7319me6yhz435pc6dg837zej17zdk11e3t6hxrgq34hf",
+      "startDate": 1262275200,
+      "endDate": 1744546677,
+      "customer": "SAP Mobile Services",
+      "customerSr": "",
+      "country": "",
+      "operator": "HKT-CSL",
+      "serviceId": "2737511f62af88be52d910c95bffddf78828b07d1633176e60370519b6ccc0a9",
+      "mcc": 1,
+      "mnc": 2,
+      "currency": "USD",
+      "unitPrice": 0.0426,
+      "sumOfBillableSMSCustomer": 17,
+      "sumOfTOTPrice": 0.7242
+    }
+  ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByCustomer",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"SAP Mobile Services",
+		0,
+		0
+	]
+}
+```
+:::
 
 ## settlement_generateInvoicesByContract
 
