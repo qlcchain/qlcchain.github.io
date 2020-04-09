@@ -809,6 +809,7 @@ Generate process CDR `ContractSend` block
         - `params`: array of CDR params, all CDR records should belong to the same settlement contract
           - `index`: time sequence, to normalize SMS send time, SMS datetime (UTC Unix) div timespan to 
           - `smsDt`: cdr date time, UTC Unix
+          - `account`: SMS account
           - `sender`: SMS sender
           - `customer`: customer name (optional), eg. `Tencent`
           - `destination`: SMS destination, eg. `85263***704`

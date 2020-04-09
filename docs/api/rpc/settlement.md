@@ -810,6 +810,7 @@ Generate process CDR `ContractSend` block
           - `index`: time sequence, to normalize SMS send time, SMS datetime (UTC Unix) div timespan to 
           - `smsDt`: cdr date time, UTC Unix
           - `sender`: SMS sender
+          - `account`: SMS account
           - `customer`: customer name (optional), eg. `Tencent`
           - `destination`: SMS destination, eg. `85263***704`
           - `sendingStatus`: SMS sending status
