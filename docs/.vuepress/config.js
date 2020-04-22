@@ -101,6 +101,11 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["permission"],
     },
+    // ptmkey
+    {
+      collapsable: false,
+      children: ["ptmkey"],
+    },
   ],
   "api/qlcjs": [
     {
@@ -261,7 +266,8 @@ module.exports = {
             "Pub–Sub",
             "DPKI",
             "Settlement",
-            "Permission"
+            "Permission",
+            "Ptmkey"
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
