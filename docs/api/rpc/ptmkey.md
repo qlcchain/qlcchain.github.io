@@ -60,7 +60,7 @@ Get a ptm pubkey by account
 
 :::
 
-## ptmkey_getPtmKeyByAccount
+## ptmkey_getPtmKeyByAccountAndBtype
 
 Get a ptm pubkey by account and btype
 
@@ -186,7 +186,7 @@ Get a contractSend block to update ptm pubkey
 
 :::
 
-## ptmkey_getPtmKeyUpdateBlock
+## ptmkey_getPtmKeyDeleteBlock
 
 - Get a contractSend block to delete ptm pubkey
 

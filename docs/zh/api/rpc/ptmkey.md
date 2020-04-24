@@ -60,7 +60,7 @@ Get a ptm pubkey by account
 
 :::
 
-## ptmkey_getPtmKeyByAccount
+## ptmkey_getPtmKeyByAccountAndBtype
 
 Get a ptm pubkey by account and btype
 
@@ -125,7 +125,7 @@ Get a contractSend block to update ptm pubkey
   - pubkey: ptm pubkey
   
 - **Returns**: 
-  -  `block`: node update block
+  -  `block`: node update ptm pubkey block
 
 - **Example**:
 
@@ -186,7 +186,7 @@ Get a contractSend block to update ptm pubkey
 
 :::
 
-## ptmkey_getPtmKeyUpdateBlock
+## ptmkey_getPtmKeyDeleteBlock
 
 - Get a contractSend block to delete ptm pubkey
 
@@ -195,7 +195,7 @@ Get a contractSend block to update ptm pubkey
     - btype: business type
 
   - **Returns**: 
-    -  `block`: node update block
+    -  `block`: node delete ptm pubkey block
 
   - **Example**:
 
