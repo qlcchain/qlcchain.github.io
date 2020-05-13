@@ -101,6 +101,11 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["permission"],
     },
+    // dod_settlement
+    {
+      collapsable: false,
+      children: ["dod_settlement"],
+    },
   ],
   "api/qlcjs": [
     {
@@ -261,7 +266,8 @@ module.exports = {
             "Pub–Sub",
             "DPKI",
             "Settlement",
-            "Permission"
+            "Permission",
+            "DoDSettlement"
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
@@ -302,7 +308,8 @@ module.exports = {
             "订阅-通知",
             "DKPI",
             "结算",
-            "接入控制"
+            "接入控制",
+            "DoD结算"
           ),
           "/zh/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
