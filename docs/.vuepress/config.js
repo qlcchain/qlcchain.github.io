@@ -101,18 +101,16 @@ const sidebarConfigs = {
       collapsable: false,
       children: ["permission"],
     },
-<<<<<<< HEAD
-    // dod_settlement
-    {
-      collapsable: false,
-      children: ["dod_settlement"],
-=======
     // ptmkey
     {
       collapsable: false,
       children: ["ptmkey"],
->>>>>>> 692a9fff3961f100da4bf7b23167595a75e41a9e
     },
+    // dod_settlement
+    {
+      collapsable: false,
+      children: ["dod_settlement"],
+    }
   ],
   "api/qlcjs": [
     {
@@ -274,11 +272,8 @@ module.exports = {
             "DPKI",
             "Settlement",
             "Permission",
-<<<<<<< HEAD
+            "Ptmkey",
             "DoDSettlement"
-=======
-            "Ptmkey"
->>>>>>> 692a9fff3961f100da4bf7b23167595a75e41a9e
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
