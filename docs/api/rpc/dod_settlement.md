@@ -855,7 +855,7 @@ Generate a block to notify the resouce can be used now.
 
 :::
 
-## DoDSettlement_GetOrderIdListByAddress
+## DoDSettlement_getOrderIdListByAddress
 
 Get buyer's all order id.
 

@@ -806,15 +806,17 @@ Generate process CDR `ContractSend` block
 - **Parameters**: 
     - `params`: CDR params
         - `addr`: user's qlc adress, should be party A or party B
-        - `contractAddress`: any qlc address, RPC will fill it with actual settlement contract address
-        - `index`: time sequence, to normalize SMS send time, SMS datetime (UTC Unix) div timespan to 
-        - `smsDt`: cdr date time, UTC Unix
-        - `sender`: SMS sender
-        - `destination`: SMS destination, eg. `85263***704`
-        - `sendingStatus`: SMS sending status
-        - `dlrStatus`: SMS delivery report status
-        - `preStop`: partyB's previous stop as settlement contract filled
-        - `nextStop`: partyA's next stop as settlement contract filled
+        - `params`: array of CDR params, all CDR records should belong to the same settlement contract
+          - `index`: time sequence, to normalize SMS send time, SMS datetime (UTC Unix) div timespan to 
+          - `smsDt`: cdr date time, UTC Unix
+          - `sender`: SMS sender
+          - `account`: SMS account
+          - `customer`: customer name (optional), eg. `Tencent`
+          - `destination`: SMS destination, eg. `85263***704`
+          - `sendingStatus`: SMS sending status
+          - `dlrStatus`: SMS delivery report status
+          - `preStop`: partyB's previous stop as settlement contract filled
+          - `nextStop`: partyA's next stop as settlement contract filled
 - **Returns**: 
     - `block`: `ContractSend` block, without signature, have to sign the block before process it
 
@@ -829,20 +831,20 @@ Generate process CDR `ContractSend` block
   "method": "settlement_getProcessCDRBlock",
   "params": [
     "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
-    {
-      "contractAddress": "qlc_1111111111111111111111111111111111111111111111111111hifc8npp",
-      "index": 1,
-      "smsDt": 1583472852,
-      "sender": "WeChat",
-      "destination": "85257***343",
-      "sendingStatus": "Sent",
-      "dlrStatus": "Delivered",
-      "preStop": "",
-      "nextStop": "HKTCSL"
-    }
+    [
+      {
+        "index": 1,
+        "smsDt": 1583472852,
+        "sender": "WeChat",
+        "destination": "85257***343",
+        "sendingStatus": "Sent",
+        "dlrStatus": "Delivered",
+        "preStop": "",
+        "nextStop": "HKTCSL"
+      }
+    ]
   ]
 }
-
 ```
 
 ```json tab:Response
@@ -875,12 +877,25 @@ Generate process CDR `ContractSend` block
 
 ```json test
 {
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "settlement_getProcessCDRBlock",
-    "params": ["qlc_1chd886muhh8y87bh94mh44jgn3kxu66x49ew4we8ifcq9ta6azftarn4a47"]
+  "jsonrpc": "2.0",
+  "id": 3,
+  "method": "settlement_getProcessCDRBlock",
+  "params": [
+    "qlc_3giz1uwgsmq46xzspo9mbutade6foqh5fuja4m9rwfiuyzp4x8zu5hkorq4z",
+    [
+      {
+        "index": 1,
+        "smsDt": 1583472852,
+        "sender": "WeChat",
+        "destination": "85257***343",
+        "sendingStatus": "Sent",
+        "dlrStatus": "Delivered",
+        "preStop": "",
+        "nextStop": "HKTCSL"
+      }
+    ]
+  ]
 }
-
 ```
 :::
 
@@ -1625,7 +1640,7 @@ Query CDR settlement status by settlement contract address, SMS send datetime. w
     - `count`:  max settlement contract records size
     - `offset`: offset of all settlement contract records
 - **Returns**: 
-    - `info`: total destroyed token amount
+    - `info`: all CDR status which are matched
 
 - **Example**:
 
@@ -1792,6 +1807,509 @@ Get CDR settlement status of specified hash and specified settlement contract
 ```
 :::
 
+## settlement_getMultiPartyCDRStatus
+
+generate multi-party summary report by settlement contract address start and end time. when `start` or `end` is zero, time conditions are ignored.
+
+eg. The SMS went through from Montnets to PCCWG, then through CSL to end users, Montnets would like the the settlement go through PCCWG and CSL together. ONLY the states of the CDRs from Montnets, PCCWG and CSL are all successful is success, otherwise is failure. will not count in invoice.
+
+- **Parameters**: 
+    - `firstAddr`: settlement smart contract address
+    - `secondAddr`: settlement smart contract address, the PartyB of the 1st settlement contract should be PartyA of the 2nd one
+    - `count`:  max settlement contract records size
+    - `offset`: offset of all settlement contract records
+- **Returns**: 
+    - `result`: an array of all CDR settlement status which are matched, sorted by date and settlement contract address
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getMultiPartyCDRStatus",
+	"params": [
+		"qlc_3mdqbk4w5utsxspss7tupwnetrs4yca68o78ybd433fnhihnftnmdw5g9pmj",
+		"qlc_3n4kx38h5ou7iyupezf4prbx89yxa7zujtf8d6r8ucpf6e9x13ki1dhcdwwk",
+		10,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": [
+    {
+      "contractAddress": "qlc_3mdqbk4w5utsxspss7tupwnetrs4yca68o78ybd433fnhihnftnmdw5g9pmj",
+      "params": {
+        "qlc_1je9h6w3o5b386oig7sb8j71sf6xr9f5ipemw8gojfcqjpk6r5hiu7z3jx3z": [
+          {
+            "index": 5285517,
+            "smsDt": 1585655170,
+            "sender": "Slack",
+            "customer": "",
+            "destination": "85257***3430",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "A2P_PCCWG",
+            "nextStop": ""
+          }
+        ],
+        "qlc_3pbbee5imrf3aik35ay44phaugkqad5a8qkngot6by7h8pzjrwwmxwket4te": [
+          {
+            "index": 5285517,
+            "smsDt": 1585655170,
+            "sender": "Slack",
+            "customer": "",
+            "destination": "85257***3430",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "",
+            "nextStop": "CSL Hong Kong @ 3397"
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "contractAddress": "qlc_3n4kx38h5ou7iyupezf4prbx89yxa7zujtf8d6r8ucpf6e9x13ki1dhcdwwk",
+      "params": {
+        "qlc_3pbbee5imrf3aik35ay44phaugkqad5a8qkngot6by7h8pzjrwwmxwket4te": [
+          {
+            "index": 5285517,
+            "smsDt": 1585655170,
+            "sender": "Slack",
+            "customer": "",
+            "destination": "85257***3430",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "MONTNETS",
+            "nextStop": ""
+          }
+        ],
+        "qlc_3pekn1xq8boq1ihpj8q96wnktxiu8cfbe5syaety3bywyd45rkyhmj8b93kq": [
+          {
+            "index": 5285517,
+            "smsDt": 1585655170,
+            "sender": "Slack",
+            "customer": "",
+            "destination": "85257***3430",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "",
+            "nextStop": "A2P_PCCWG"
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "contractAddress": "qlc_3mdqbk4w5utsxspss7tupwnetrs4yca68o78ybd433fnhihnftnmdw5g9pmj",
+      "params": {
+        "qlc_1je9h6w3o5b386oig7sb8j71sf6xr9f5ipemw8gojfcqjpk6r5hiu7z3jx3z": [
+          {
+            "index": 5285518,
+            "smsDt": 1585655470,
+            "sender": "WeChat",
+            "customer": "",
+            "destination": "85257***3431",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "A2P_PCCWG",
+            "nextStop": ""
+          }
+        ],
+        "qlc_3pbbee5imrf3aik35ay44phaugkqad5a8qkngot6by7h8pzjrwwmxwket4te": [
+          {
+            "index": 5285518,
+            "smsDt": 1585655470,
+            "sender": "WeChat",
+            "customer": "",
+            "destination": "85257***3431",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "",
+            "nextStop": "CSL Hong Kong @ 3397"
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "contractAddress": "qlc_3n4kx38h5ou7iyupezf4prbx89yxa7zujtf8d6r8ucpf6e9x13ki1dhcdwwk",
+      "params": {
+        "qlc_3pbbee5imrf3aik35ay44phaugkqad5a8qkngot6by7h8pzjrwwmxwket4te": [
+          {
+            "index": 5285518,
+            "smsDt": 1585655470,
+            "sender": "WeChat",
+            "customer": "",
+            "destination": "85257***3431",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "MONTNETS",
+            "nextStop": ""
+          }
+        ],
+        "qlc_3pekn1xq8boq1ihpj8q96wnktxiu8cfbe5syaety3bywyd45rkyhmj8b93kq": [
+          {
+            "index": 5285518,
+            "smsDt": 1585655470,
+            "sender": "WeChat",
+            "customer": "",
+            "destination": "85257***3431",
+            "sendingStatus": "Sent",
+            "dlrStatus": "Delivered",
+            "preStop": "",
+            "nextStop": "A2P_PCCWG"
+          }
+        ]
+      },
+      "status": "success"
+    }
+  ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getMultiPartyCDRStatus",
+	"params": [
+		"qlc_3hb8j5esewaa3rbkfxzdhr7a7hsyusqy6pd8p6dik7fd9micczzwcbem3g9d",
+		"qlc_3juus6rec3dmad31qbgpmadrrw4oirhxqcxwiris386g5ji986ajwr8y5mxz",
+		10,
+		0
+	]
+}
+```
+:::
+
+## settlement_getSummaryReportByAccount
+
+Generate settlement summary report of the specified settlement contract. when `start` or `end` is zero, time conditions are ignored
+
+- **Parameters**: 
+    - `address`: settlement contract address
+    - `account`: account in CDR record
+    - `start`:
+    - `end`： 
+- **Returns**: 
+    - `result`: summary report
+        - `contract`: settlement contract details
+        - `total`:  partyA and partyB's summary report
+          - `partyA`: from party A's view, sending success is a success, otherwise is a failure.
+            - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+            - `orphan`: only find Party A or Party B's CDR status
+          - `partyB`: from party B's view, sending success is a success, otherwise is a failure.
+            - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+            - `orphan`: only find Party A or Party B's CDR status
+        - `records`: grouped by account, same as total
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getSummaryReportByAccount",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"DIR",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+    "contract": {
+      "partyA": {
+        "address": "qlc_3xcsfde7uyhbeppiaqyhbgf63rutwbhij3imh3e43dnk7r47w8zi9i5ifaf4",
+        "name": "PCCWG"
+      },
+      "partyB": {
+        "address": "qlc_3544kdchykyaawi3gn1c8j7qumoktbq9k1a5ga4pnxkhgcpygd7adgu3did6",
+        "name": "HKT-CSL"
+      },
+      "services": [
+        {
+          "serviceId": "2737511f62af88be52d910c95bffddf78828b07d1633176e60370519b6ccc0a9",
+          "mcc": 1,
+          "mnc": 2,
+          "totalAmount": 10,
+          "UnitPrice": 0.0426,
+          "currency": "USD"
+        },
+        {
+          "serviceId": "647cb3e06f0d50a8436bdd1010b33e1b62c4692b5c8c26eb0e8a5e1363a35990",
+          "mcc": 22,
+          "mnc": 1,
+          "totalAmount": 30,
+          "UnitPrice": 0.023,
+          "currency": "USD"
+        }
+      ],
+      "startDate": 1262275200,
+      "endDate": 1744546677,
+      "preStops": [
+        "A2P_PCCWG"
+      ],
+      "nextStops": [
+        "CSL Hong Kong @ 3397"
+      ],
+      "confirmDate": 1586348279,
+      "status": "Activated",
+      "address": "qlc_1111111111111111111111111111111111111111111111111111hifc8npp"
+    },
+    "records": {
+      "DIR": {
+        "partyA": {
+          "orphan": {
+            "total": 50,
+            "success": 18,
+            "fail": 32,
+            "result": 0.36
+          },
+          "matching": {
+            "total": 43,
+            "success": 17,
+            "fail": 26,
+            "result": 0.3953488372093023
+          }
+        },
+        "partyB": {
+          "orphan": {
+            "total": 41,
+            "success": 14,
+            "fail": 27,
+            "result": 0.34146341463414637
+          },
+          "matching": {
+            "total": 43,
+            "success": 17,
+            "fail": 26,
+            "result": 0.3953488372093023
+          }
+        }
+      }
+    },
+    "total": {
+      "partyA": {
+        "orphan": {
+          "total": 50,
+          "success": 18,
+          "fail": 32,
+          "result": 0.36
+        },
+        "matching": {
+          "total": 43,
+          "success": 17,
+          "fail": 26,
+          "result": 0.3953488372093023
+        }
+      },
+      "partyB": {
+        "orphan": {
+          "total": 41,
+          "success": 14,
+          "fail": 27,
+          "result": 0.34146341463414637
+        },
+        "matching": {
+          "total": 43,
+          "success": 17,
+          "fail": 26,
+          "result": 0.3953488372093023
+        }
+      }
+    }
+  }
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getSummaryReportByAccount",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"DIR",
+		0,
+		0
+	]
+}
+```
+:::
+
+## settlement_getSummaryReportByCustomer
+
+Generate settlement summary report of the specified settlement contract. when `start` or `end` is zero, time conditions are ignored
+
+- **Parameters**: 
+    - `address`: settlement contract address
+    - `customer`: customer name in CDR record
+    - `start`:
+    - `end`： 
+- **Returns**: 
+    - `result`: summary report
+        - `contract`: settlement contract details
+        - `total`:  partyA and partyB's summary report
+          - `partyA`: from party A's view, sending success is a success, otherwise is a failure.
+            - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+            - `orphan`: only find Party A or Party B's CDR status
+          - `partyB`: from party B's view, sending success is a success, otherwise is a failure.
+            - `matching`: CDR status for both Party A and Party B, status of both parties are sucessful is a sucess, otherwise is a failure
+            - `orphan`: only find Party A or Party B's CDR status
+        - `records`: grouped by customer, same as total
+
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getSummaryReportByCustomer",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"SAP Mobile Services",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+  "contract": {
+    "partyA": {
+      "address": "qlc_3xcsfde7uyhbeppiaqyhbgf63rutwbhij3imh3e43dnk7r47w8zi9i5ifaf4",
+      "name": "PCCWG"
+    },
+    "partyB": {
+      "address": "qlc_3544kdchykyaawi3gn1c8j7qumoktbq9k1a5ga4pnxkhgcpygd7adgu3did6",
+      "name": "HKT-CSL"
+    },
+    "services": [
+      {
+        "serviceId": "2737511f62af88be52d910c95bffddf78828b07d1633176e60370519b6ccc0a9",
+        "mcc": 1,
+        "mnc": 2,
+        "totalAmount": 10,
+        "UnitPrice": 0.0426,
+        "currency": "USD"
+      },
+      {
+        "serviceId": "647cb3e06f0d50a8436bdd1010b33e1b62c4692b5c8c26eb0e8a5e1363a35990",
+        "mcc": 22,
+        "mnc": 1,
+        "totalAmount": 30,
+        "UnitPrice": 0.023,
+        "currency": "USD"
+      }
+    ],
+    "startDate": 1262275200,
+    "endDate": 1744546677,
+    "preStops": [
+      "A2P_PCCWG"
+    ],
+    "nextStops": [
+      "CSL Hong Kong @ 3397"
+    ],
+    "confirmDate": 1586348279,
+    "status": "Activated",
+    "address": "qlc_1111111111111111111111111111111111111111111111111111hifc8npp"
+  },
+  "records": {
+    "SAP Mobile Services": {
+      "partyA": {
+        "orphan": {
+          "total": 50,
+          "success": 18,
+          "fail": 32,
+          "result": 0.36
+        },
+        "matching": {
+          "total": 43,
+          "success": 17,
+          "fail": 26,
+          "result": 0.3953488372093023
+        }
+      },
+      "partyB": {
+        "orphan": {
+          "total": 41,
+          "success": 14,
+          "fail": 27,
+          "result": 0.34146341463414637
+        },
+        "matching": {
+          "total": 43,
+          "success": 17,
+          "fail": 26,
+          "result": 0.3953488372093023
+        }
+      }
+    }
+  },
+  "total": {
+    "partyA": {
+      "orphan": {
+        "total": 50,
+        "success": 18,
+        "fail": 32,
+        "result": 0.36
+      },
+      "matching": {
+        "total": 43,
+        "success": 17,
+        "fail": 26,
+        "result": 0.3953488372093023
+      }
+    },
+    "partyB": {
+      "orphan": {
+        "total": 41,
+        "success": 14,
+        "fail": 27,
+        "result": 0.34146341463414637
+      },
+      "matching": {
+        "total": 43,
+        "success": 17,
+        "fail": 26,
+        "result": 0.3953488372093023
+      }
+    }
+  }
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_getSummaryReportByCustomer",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"SAP Mobile Services",
+		0,
+		0
+	]
+}
+```
+:::
 
 ## settlement_getSummaryReport
 
@@ -2023,6 +2541,145 @@ generate user's invoice by start and end time. when `start` or `end` is zero, ti
 ```
 :::
 
+## settlement_generateInvoicesByAccount
+
+generate user's invoice by start and end time. when `start` or `end` is zero, time conditions are ignored
+
+- **Parameters**: 
+    - `address`: settlement contract address
+    - `account`: account in CDR record
+    - `start`: start time
+    - `end`:  end time
+- **Returns**: 
+    - `result`: invoice
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByAccount",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"DIR",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": [
+    {
+      "contractAddress": "qlc_18qoehsf3s357wkm7319me6yhz435pc6dg837zej17zdk11e3t6hxrgq34hf",
+      "startDate": 1262275200,
+      "endDate": 1744546677,
+      "customer": "DIR",
+      "customerSr": "",
+      "country": "",
+      "operator": "HKT-CSL",
+      "serviceId": "2737511f62af88be52d910c95bffddf78828b07d1633176e60370519b6ccc0a9",
+      "mcc": 1,
+      "mnc": 2,
+      "currency": "USD",
+      "unitPrice": 0.0426,
+      "sumOfBillableSMSCustomer": 17,
+      "sumOfTOTPrice": 0.7242
+    }
+  ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByAccount",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"DIR",
+		0,
+		0
+	]
+}
+```
+:::
+
+## settlement_generateInvoicesByCustomer
+
+generate user's invoice by start and end time. when `start` or `end` is zero, time conditions are ignored
+
+- **Parameters**: 
+    - `address`: settlement contract address
+    - `customer`: customer name in CDR record
+    - `start`: start time
+    - `end`:  end time
+- **Returns**: 
+    - `result`: invoice
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByCustomer",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"SAP Mobile Services",
+		0,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": [
+    {
+      "contractAddress": "qlc_18qoehsf3s357wkm7319me6yhz435pc6dg837zej17zdk11e3t6hxrgq34hf",
+      "startDate": 1262275200,
+      "endDate": 1744546677,
+      "customer": "SAP Mobile Services",
+      "customerSr": "",
+      "country": "",
+      "operator": "HKT-CSL",
+      "serviceId": "2737511f62af88be52d910c95bffddf78828b07d1633176e60370519b6ccc0a9",
+      "mcc": 1,
+      "mnc": 2,
+      "currency": "USD",
+      "unitPrice": 0.0426,
+      "sumOfBillableSMSCustomer": 17,
+      "sumOfTOTPrice": 0.7242
+    }
+  ]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "settlement_generateInvoicesByCustomer",
+	"params": [
+		"qlc_3tw8u576md35y8pwmiw7sxzqx9yf14or1tjbxd7fx9jeutsj349wgcpkd5we",
+		"SAP Mobile Services",
+		0,
+		0
+	]
+}
+```
+:::
 
 ## settlement_generateInvoicesByContract
 

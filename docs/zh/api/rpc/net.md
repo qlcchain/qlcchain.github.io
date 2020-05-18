@@ -464,3 +464,42 @@
 ```
 
 :::
+
+
+
+## net_getPeerId
+
+返回节点的peerid
+
+- **Parameters**: `null`
+- **Returns**:
+  - ` peerid`
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "net_getPeerId",
+}
+```
+
+```json tab:Response
+{
+  "jsonrpc": "2.0",
+  "id": 18,
+  "result": "QmX9JEPNShHB8dF7iWSCJHERY2oU6gjZBM953och3CvS3X"
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id":18,
+	"method":"net_getPeerId"
+}
+```
+
+:::
