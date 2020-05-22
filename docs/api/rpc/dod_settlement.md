@@ -66,6 +66,11 @@
 
 Generate a block to create a request for creating a connection or other product.
 - **Parameters**: 
+    
+    - `PrivateFrom`: sender's ptm key, if this is a private transaction
+    - `PrivateFor`: receiver's ptm key, if this is a private transaction
+    - `PrivateGroupID`: ptm group key, if this is a private transaction
+    
     - `buyer`: buyer info
       - `address`: buyer's qlc address
       - `name`: buyer's name
@@ -96,7 +101,9 @@ Generate a block to create a request for creating a connection or other product.
       - `startTime`: need to be set when billingType is DOD
       - `endTime`: need to be set when billingType is DOD
       - `serviceClass`: gold/silver/bronze
+    
 - **Returns**: 
+  
   - `block`: a block
   
 - **Example**:
@@ -229,11 +236,18 @@ Generate a block to create a request for creating a connection or other product.
 Generate a block to confirm or reject a creating request.
 
 - **Parameters**: 
+  
+  - `PrivateFrom`: sender's ptm key, if this is a private transaction
+  - `PrivateFor`: receiver's ptm key, if this is a private transaction
+  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  
   - `requestHash`: request block hash
   - `action`: confirm/reject this request
+  
 - **Returns**: 
-  - `block`: a block
-
+  
+- `block`: a block
+  
 - **Example**:
 
 ::: demo
@@ -300,6 +314,11 @@ Generate a block to confirm or reject a creating request.
 Generate a block to update order id and product id to chain.
 
 - **Parameters**: 
+  
+  - `PrivateFrom`: sender's ptm key, if this is a private transaction
+  - `PrivateFor`: receiver's ptm key, if this is a private transaction
+  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  
   - `buyer`: buyer's qlc address
   - `internalId`: order's internal id in qlcchain
   - `orderId`: order's id from sonata api
@@ -308,9 +327,11 @@ Generate a block to update order id and product id to chain.
     - `itemId`: item id of this product, required when updating create order
   - `orderStatus`: success/fail, result of sonata api
   - `failReason`: fail reason of sonata api
+  
 - **Returns**: 
-  - `block`: a block
-
+  
+- `block`: a block
+  
 - **Example**:
 
 ::: demo
@@ -391,9 +412,17 @@ Generate a block to update order id and product id to chain.
 Generate a block to update order state to complete when all products in this order can be used normally.
 
 - **Parameters**: 
+  
+  - `PrivateFrom`: sender's ptm key, if this is a private transaction
+  - `PrivateFor`: receiver's ptm key, if this is a private transaction
+  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  
   - `requestHash`: request block hash
+  
 - **Returns**: 
+  
   - `block`: a block
+  
 - **Example**:
 
 ::: demo
@@ -458,6 +487,11 @@ Generate a block to update order state to complete when all products in this ord
 Generate a block to create a request for changing a connection or other product.
 
 - **Parameters**: 
+  
+  - `PrivateFrom`: sender's ptm key, if this is a private transaction
+  - `PrivateFor`: receiver's ptm key, if this is a private transaction
+  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  
   - `buyer`: buyer info
     - `address`: buyer's qlc address
     - `name`: buyer's name
@@ -478,9 +512,11 @@ Generate a block to create a request for changing a connection or other product.
     - `startTime`: need to be set when billingType is DOD
     - `endTime`: need to be set when billingType is DOD
     - `serviceClass`: gold/silver/bronze
+  
 - **Returns**: 
-  - `block`: a block
-
+  
+- `block`: a block
+  
 - **Example**:
 
 ::: demo
@@ -575,11 +611,18 @@ Generate a block to create a request for changing a connection or other product.
 Generate a block to confirm or reject a changing request.
 
 - **Parameters**: 
+  
+  - `PrivateFrom`: sender's ptm key, if this is a private transaction
+  - `PrivateFor`: receiver's ptm key, if this is a private transaction
+  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  
   - `requestHash`: request block hash
   - `action`: confirm/reject this request
+  
 - **Returns**: 
-  - `block`: a block
-
+  
+- `block`: a block
+  
 - **Example**:
 
 ::: demo
@@ -646,6 +689,11 @@ Generate a block to confirm or reject a changing request.
 Generate a block to create a request for terminating a connection or other product.
 
 - **Parameters**: 
+  
+  - `PrivateFrom`: sender's ptm key, if this is a private transaction
+  - `PrivateFor`: receiver's ptm key, if this is a private transaction
+  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  
   - `buyer`: buyer info
     - `address`: buyer's qlc address
     - `name`: buyer's name
@@ -653,9 +701,11 @@ Generate a block to create a request for terminating a connection or other produ
     - `address`: seller's qlc address
     - `name`: seller's name
   - `productId`: array of product id that will be terminated
+  
 - **Returns**: 
-  - `block`: a block
-
+  
+- `block`: a block
+  
 - **Example**:
 
 ::: demo
@@ -736,11 +786,18 @@ Generate a block to create a request for terminating a connection or other produ
 Generate a block to confirm or reject a terminating request.
 
 - **Parameters**: 
+  
+  - `PrivateFrom`: sender's ptm key, if this is a private transaction
+  - `PrivateFor`: receiver's ptm key, if this is a private transaction
+  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  
   - `requestHash`: request block hash
   - `action`: confirm/reject this request
+  
 - **Returns**: 
-  - `block`: a block
-
+  
+- `block`: a block
+  
 - **Example**:
 
 ::: demo
@@ -807,12 +864,19 @@ Generate a block to confirm or reject a terminating request.
 Generate a block to notify the resouce can be used now.
 
 - **Parameters**: 
+  
+  - `PrivateFrom`: sender's ptm key, if this is a private transaction
+  - `PrivateFor`: receiver's ptm key, if this is a private transaction
+  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  
   - `address`: operator's qlc address
   - `internalId`: internal id of this order
   - `productId`: array of product's id from sonata api
+  
 - **Returns**: 
-  - `block`: a block
-
+  
+- `block`: a block
+  
 - **Example**:
 
 ::: demo
