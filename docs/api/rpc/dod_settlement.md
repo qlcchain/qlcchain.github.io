@@ -66,10 +66,10 @@
 
 Generate a block to create a request for creating a connection or other product.
 - **Parameters**: 
-    
-    - `PrivateFrom`: sender's ptm key, if this is a private transaction
-    - `PrivateFor`: receiver's ptm key, if this is a private transaction
-    - `PrivateGroupID`: ptm group key, if this is a private transaction
+  
+    - `privateFrom`: sender's ptm key, if this is a private transaction
+    - `privateFor`: receiver's ptm key, if this is a private transaction
+    - `privateGroupID`: ptm group key, if this is a private transaction
     
     - `buyer`: buyer info
       - `address`: buyer's qlc address
@@ -240,9 +240,9 @@ Generate a block to confirm or reject a creating request.
 
 - **Parameters**: 
   
-  - `PrivateFrom`: sender's ptm key, if this is a private transaction
-  - `PrivateFor`: receiver's ptm key, if this is a private transaction
-  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  - `privateFrom`: sender's ptm key, if this is a private transaction
+  - `privateFor`: receiver's ptm key, if this is a private transaction
+  - `privateGroupID`: ptm group key, if this is a private transaction
   
   - `requestHash`: request block hash
   - `action`: confirm/reject this request
@@ -318,9 +318,9 @@ Generate a block to update order id and product id to chain.
 
 - **Parameters**: 
   
-  - `PrivateFrom`: sender's ptm key, if this is a private transaction
-  - `PrivateFor`: receiver's ptm key, if this is a private transaction
-  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  - `privateFrom`: sender's ptm key, if this is a private transaction
+  - `privateFor`: receiver's ptm key, if this is a private transaction
+  - `privateGroupID`: ptm group key, if this is a private transaction
   
   - `buyer`: buyer's qlc address
   - `internalId`: order's internal id in qlcchain
@@ -328,7 +328,7 @@ Generate a block to update order id and product id to chain.
   - `productIds`: array of product's id from sonata api
     - `productId`: id of this product
     - `buyerProductId`: buyer product id, required when updating create order
-  - `orderStatus`: success/fail, result of sonata api
+  - `status`: success/fail, result of sonata api
   - `failReason`: fail reason of sonata api
   
 - **Returns**: 
@@ -353,7 +353,7 @@ Generate a block to update order id and product id to chain.
         {"productId": "product001", "buyerProductId": "buyerProductId001"},
         {"productId": "product002", "buyerProductId": "buyerProductId002"}
       ],
-			"orderStatus": "success",
+			"status": "success",
 			"failReason": ""
 		}
 	]
@@ -401,7 +401,7 @@ Generate a block to update order id and product id to chain.
         {"productId": "product001", "buyerProductId": "buyerProductId001"},
         {"productId": "product002", "buyerProductId": "buyerProductId002"}
       ],
-			"orderStatus": "success",
+			"status": "success",
 			"failReason": ""
 		}
 	]
@@ -416,9 +416,9 @@ Generate a block to update order state to complete when all products in this ord
 
 - **Parameters**: 
   
-  - `PrivateFrom`: sender's ptm key, if this is a private transaction
-  - `PrivateFor`: receiver's ptm key, if this is a private transaction
-  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  - `privateFrom`: sender's ptm key, if this is a private transaction
+  - `privateFor`: receiver's ptm key, if this is a private transaction
+  - `privateGroupID`: ptm group key, if this is a private transaction
   
   - `requestHash`: request block hash
   
@@ -491,9 +491,9 @@ Generate a block to create a request for changing a connection or other product.
 
 - **Parameters**: 
   
-  - `PrivateFrom`: sender's ptm key, if this is a private transaction
-  - `PrivateFor`: receiver's ptm key, if this is a private transaction
-  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  - `privateFrom`: sender's ptm key, if this is a private transaction
+  - `privateFor`: receiver's ptm key, if this is a private transaction
+  - `privateGroupID`: ptm group key, if this is a private transaction
   
   - `buyer`: buyer info
     - `address`: buyer's qlc address
@@ -502,7 +502,7 @@ Generate a block to create a request for changing a connection or other product.
     - `address`: seller's qlc address
     - `name`: seller's name
   - `connections`: array of connection params
-    - `ProductId`: product's id from sonata api 
+    - `productId`: product's id from sonata api 
     - `connectionName`: 
     - `quoteId`: id of the quotation
     - `quoteItemId`: item id of the quotation
@@ -617,9 +617,9 @@ Generate a block to confirm or reject a changing request.
 
 - **Parameters**: 
   
-  - `PrivateFrom`: sender's ptm key, if this is a private transaction
-  - `PrivateFor`: receiver's ptm key, if this is a private transaction
-  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  - `privateFrom`: sender's ptm key, if this is a private transaction
+  - `privateFor`: receiver's ptm key, if this is a private transaction
+  - `privateGroupID`: ptm group key, if this is a private transaction
   
   - `requestHash`: request block hash
   - `action`: confirm/reject this request
@@ -695,9 +695,9 @@ Generate a block to create a request for terminating a connection or other produ
 
 - **Parameters**: 
   
-  - `PrivateFrom`: sender's ptm key, if this is a private transaction
-  - `PrivateFor`: receiver's ptm key, if this is a private transaction
-  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  - `privateFrom`: sender's ptm key, if this is a private transaction
+  - `privateFor`: receiver's ptm key, if this is a private transaction
+  - `privateGroupID`: ptm group key, if this is a private transaction
   
   - `buyer`: buyer info
     - `address`: buyer's qlc address
@@ -810,9 +810,9 @@ Generate a block to confirm or reject a terminating request.
 
 - **Parameters**: 
   
-  - `PrivateFrom`: sender's ptm key, if this is a private transaction
-  - `PrivateFor`: receiver's ptm key, if this is a private transaction
-  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  - `privateFrom`: sender's ptm key, if this is a private transaction
+  - `privateFor`: receiver's ptm key, if this is a private transaction
+  - `privateGroupID`: ptm group key, if this is a private transaction
   
   - `requestHash`: request block hash
   - `action`: confirm/reject this request
@@ -888,9 +888,9 @@ Generate a block to notify the resouce can be used now.
 
 - **Parameters**: 
   
-  - `PrivateFrom`: sender's ptm key, if this is a private transaction
-  - `PrivateFor`: receiver's ptm key, if this is a private transaction
-  - `PrivateGroupID`: ptm group key, if this is a private transaction
+  - `privateFrom`: sender's ptm key, if this is a private transaction
+  - `privateFor`: receiver's ptm key, if this is a private transaction
+  - `privateGroupID`: ptm group key, if this is a private transaction
   
   - `address`: operator's qlc address
   - `internalId`: internal id of this order
@@ -1698,16 +1698,16 @@ Get all pending orders for seller to check. Seller need to check every product's
 - Array of pending info.
   
     - `sendHash`: hash of send block
-  
+    
     - `orderId`: id of order that needs to check
-  
+    
     - `internalId`: internal id of order that needs to check
-  
+    
     - `products`: product ino
-  
+    
       - `ProductId`: id of product
       - `active`: if this product is active
-  
+    
       
   
 - **Example**:
