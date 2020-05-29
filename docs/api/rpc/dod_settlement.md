@@ -127,10 +127,10 @@ Generate a block to create a request for creating a connection or other product.
 			},
 			"connections": [
 				{
-          "itemId": "item001",
-          "buyerProductId": "buyProductId001",
-          "quoteId": "quote001",
-          "quoteItemId": "quoteItemId001",
+					"itemId": "item001",
+					"buyerProductId": "buyProductId001",
+					"quoteId": "quote001",
+					"quoteItemId": "quoteItemId001",
 					"connectionName": "connection665737529435949039",
 					"srcCompanyName": "CBC",
 					"srcRegion": "CHN",
@@ -202,10 +202,10 @@ Generate a block to create a request for creating a connection or other product.
 			},
 			"connections": [
 				{
-          "itemId": "item001",
-          "buyerProductId": "buyProductId001",
-          "quoteId": "quote001",
-          "quoteItemId": "quoteItemId001",
+					"itemId": "item001",
+					"buyerProductId": "buyProductId001",
+					"quoteId": "quote001",
+					"quoteItemId": "quoteItemId001",
 					"connectionName": "connection665737529435949039",
 					"srcCompanyName": "CBC",
 					"srcRegion": "CHN",
@@ -350,9 +350,9 @@ Generate a block to update order id and product id to chain.
 			"internalId": "01a88fc4afc87b866d3d0e7b15bed6e36ba9bd7ec5b4c02e1970189415f96901",
 			"orderId": "order000001",
 			"productIds": [
-        {"productId": "product001", "buyerProductId": "buyerProductId001"},
-        {"productId": "product002", "buyerProductId": "buyerProductId002"}
-      ],
+				{"productId": "product001", "buyerProductId": "buyerProductId001"},
+				{"productId": "product002", "buyerProductId": "buyerProductId002"}
+			],
 			"status": "success",
 			"failReason": ""
 		}
@@ -398,9 +398,9 @@ Generate a block to update order id and product id to chain.
 			"internalId": "01a88fc4afc87b866d3d0e7b15bed6e36ba9bd7ec5b4c02e1970189415f96901",
 			"orderId": "order000001",
 			"productIds": [
-        {"productId": "product001", "buyerProductId": "buyerProductId001"},
-        {"productId": "product002", "buyerProductId": "buyerProductId002"}
-      ],
+				{"productId": "product001", "buyerProductId": "buyerProductId001"},
+				{"productId": "product002", "buyerProductId": "buyerProductId002"}
+			],
 			"status": "success",
 			"failReason": ""
 		}
@@ -544,8 +544,8 @@ Generate a block to create a request for changing a connection or other product.
 					"productId": "product9104893720245486982",
 					"bandwidth": "200 Mbps",
 					"price": 2,
-          "quoteId": "quote001",
-          "quoteItemId": "quote001"
+					"quoteId": "quote001",
+					"quoteItemId": "quote001"
 				}
 			]
 		}
@@ -600,8 +600,8 @@ Generate a block to create a request for changing a connection or other product.
 					"productId": "product9104893720245486982",
 					"bandwidth": "200 Mbps",
 					"price": 2,
-          "quoteId": "quote001",
-          "quoteItemId": "quote001"
+					"quoteId": "quote001",
+					"quoteItemId": "quote001"
 				}
 			]
 		}
@@ -735,13 +735,13 @@ Generate a block to create a request for terminating a connection or other produ
 				"name": "PCCWG"
 			},
 			"connections": [
-      	{
-          "productId": "product9104893720245486982",
+				{
+					"productId": "product9104893720245486982",
 					"price": 2,
-          "quoteId": "quote001",
-          "quoteItemId": "quote001"
-        }
-      ]
+					"quoteId": "quote001",
+					"quoteItemId": "quote001"
+				}
+			]
 		}
 	]
 }
@@ -790,13 +790,13 @@ Generate a block to create a request for terminating a connection or other produ
 				"name": "PCCWG"
 			},
 			"connections": [
-      	{
-          "productId": "product9104893720245486982",
+				{
+					"productId": "product9104893720245486982",
 					"price": 2,
-          "quoteId": "quote001",
-          "quoteItemId": "quote001"
-        }
-      ]
+					"quoteId": "quote001",
+					"quoteItemId": "quote001"
+				}
+			]
 		}
 	]
 }
@@ -1042,7 +1042,7 @@ Get buyer's all order id with a specified seller.
 	"method": "DoDSettlement_getOrderIdListByAddressAndSeller",
 	"params": [
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-    "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
 	]
 }
 ```
@@ -1075,7 +1075,7 @@ Get buyer's all order id with a specified seller.
 	"method": "DoDSettlement_getOrderIdListByAddressAndSeller",
 	"params": [
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-    "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
 	]
 }
 ```
@@ -1157,7 +1157,7 @@ Get buyer's all product id with a specified seller.
 	"method": "DoDSettlement_getProductIdListByAddressAndSeller",
 	"params": [
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-    "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
 	]
 }
 ```
@@ -1186,7 +1186,7 @@ Get buyer's all product id with a specified seller.
 	"method": "DoDSettlement_getProductIdListByAddressAndSeller",
 	"params": [
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-    "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
 	]
 }
 ```
@@ -1456,7 +1456,7 @@ get order info by internal id.
 
 :::
 
-## DoDSettlement_getConnectionInfoBySellerAndProductId
+## DoDSettlement_getProductInfoBySellerAndProductId
 
 get product info by seller address and product id.
 
@@ -1477,7 +1477,7 @@ get product info by seller address and product id.
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "DoDSettlement_getConnectionInfoBySellerAndProductId",
+	"method": "DoDSettlement_getProductInfoBySellerAndProductId",
 	"params": [
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 		"product8770789891961219555"
@@ -1578,7 +1578,7 @@ get product info by seller address and product id.
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "DoDSettlement_getConnectionInfoBySellerAndProductId",
+	"method": "DoDSettlement_getProductInfoBySellerAndProductId",
 	"params": [
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 		"product8770789891961219555"
@@ -2062,7 +2062,7 @@ Get buyer's all product ids with specified seller.
 	"id": 3,
 	"method": "DoDSettlement_getProductIdListByAddressAndSeller",
 	"params": [
-    "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
 	]
 }
@@ -2091,7 +2091,7 @@ Get buyer's all product ids with specified seller.
 	"id": 3,
 	"method": "DoDSettlement_getProductIdListByAddressAndSeller",
 	"params": [
-    "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
 	]
 }
@@ -2128,7 +2128,7 @@ Get buyer's all order ids with specified seller.
 	"method": "DoDSettlement_getOrderIdListByAddressAndSeller",
 	"params": [
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-    "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
 	]
 }
 ```
@@ -2161,7 +2161,7 @@ Get buyer's all order ids with specified seller.
 	"method": "DoDSettlement_getOrderIdListByAddressAndSeller",
 	"params": [
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-    "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
 	]
 }
 ```
@@ -2179,7 +2179,7 @@ Generate invoice by order id.
   - startTime
   - endTime
   - inFlight order allowed (true: in-flight order will be included)
-  - split order allowed (true: cacl completed duration false: calc whole duration)
+  - split order allowed (true: cacl completed duration false: calc whole duration or exclueded, depends on if the startTime of the order was in the invoice duration)
 
 - **Returns**: 
 
@@ -2201,8 +2201,8 @@ Generate invoice by order id.
 		"order003",
 		1590063500,
 		1590063550,
-    true,
-    true
+		true,
+		true
 	]
 }
 ```
@@ -2308,8 +2308,8 @@ Generate invoice by order id.
 		"order003",
 		1590063500,
 		1590063550,
-    true,
-    true
+		true,
+		true
 	]
 }
 ```
@@ -2327,7 +2327,7 @@ Generate invoice by buyer's qlc address.
   - startTime
   - endTime
   - inFlight order allowed (true: in-flight order will be included)
-  - split order allowed (true: cacl completed duration false: calc whole duration)
+  - split order allowed (true: cacl completed duration false: calc whole duration or exclueded, depends on if the startTime of the order was in the invoice duration)
 
 - **Returns**: 
 
@@ -2349,8 +2349,8 @@ Generate invoice by buyer's qlc address.
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 		1590063500,
 		1590063550,
-    false,
-    false
+		false,
+		false
 	]
 }
 ```
@@ -2574,8 +2574,8 @@ Generate invoice by buyer's qlc address.
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 		1590063500,
 		1590063550,
-    false,
-    false
+		false,
+		false
 	]
 }
 ```
@@ -2593,7 +2593,7 @@ Generate invoice by product id.
   - startTime
   - endTime
   - inFlight order allowed (true: in-flight order will be included)
-  - split order allowed (true: cacl completed duration false: calc whole duration)
+  - split order allowed (true: cacl completed duration false: calc whole duration or exclueded, depends on if the startTime of the order was in the invoice duration)
 
 - **Returns**: 
 
@@ -2615,8 +2615,8 @@ Generate invoice by product id.
 		"product003",
 		1590063500,
 		1590063550,
-    true,
-    false
+		true,
+		false
 	]
 }
 ```
@@ -2705,8 +2705,886 @@ Generate invoice by product id.
 		"product003",
 		1590063500,
 		1590063550,
-    true,
-    false
+		true,
+		false
+	]
+}
+```
+
+:::
+
+## DoDSettlement_getOrderCountByAddress
+
+Get order count by buyer's address.
+
+- **Parameters**: 
+
+  - buyer's qlc address
+
+- **Returns**: 
+
+  - order count
+
+    
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getOrderCountByAddress",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": 3
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getOrderCountByAddress",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
+	]
+}
+```
+
+:::
+
+## DoDSettlement_getOrderInfoByAddress
+
+Get order info by buyer's address.
+
+- **Parameters**: 
+
+  - buyer's qlc address
+  - count
+  - offset
+
+- **Returns**: 
+
+  - order array (ordered by create time desc)
+
+    
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getOrderInfoByAddress",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		5,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": [
+		{
+			"buyer": {
+				"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+				"name": "CBC"
+			},
+			"seller": {
+				"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+				"name": "PCCWG"
+			},
+			"orderId": "order003",
+			"orderType": "change",
+			"orderState": "complete",
+			"contractState": "confirmed",
+			"connections": [
+				{
+					"productId": "product001",
+					"quoteId": "quote4197810719442062891",
+					"quoteItemId": "quoteItem7326938129530071554",
+					"currency": "USD",
+					"bandwidth": "30 Mbps",
+					"price": 330,
+					"addition": 0,
+					"startTime": 1590076800,
+					"endTime": 1591372800
+				}
+			],
+			"track": [
+				{
+					"contractState": "request",
+					"orderState": "null",
+					"time": 1590717470,
+					"hash": "5bd701accb161c3e81a1631826a0c496ebbc1cb2b7b374bcda0f16d008cef1b7"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "null",
+					"time": 1590717480,
+					"hash": "781203794a36b1e55df43f7373439dd70960a0e535ef6114b6ced0c12c7130fb"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "success",
+					"time": 1590717503,
+					"hash": "182c4f83595baa00bba024e0c67d0d6b226cef23a6faff440de83e5100c4bd77"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "complete",
+					"time": 1590717512,
+					"hash": "fadaa97f1d7154110058f95619729f093bac1e15c12609dac3d528e09fdf73fd"
+				}
+			]
+		},
+		{
+			"buyer": {
+				"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+				"name": "CBC"
+			},
+			"seller": {
+				"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+				"name": "PCCWG"
+			},
+			"orderId": "order002",
+			"orderType": "change",
+			"orderState": "complete",
+			"contractState": "confirmed",
+			"connections": [
+				{
+					"productId": "product001",
+					"quoteId": "quote5339833170131078171",
+					"quoteItemId": "quoteItem20288420106995345",
+					"currency": "USD",
+					"bandwidth": "20 Mbps",
+					"price": 100,
+					"addition": 0,
+					"startTime": 1589904000,
+					"endTime": 1590336000
+				}
+			],
+			"track": [
+				{
+					"contractState": "request",
+					"orderState": "null",
+					"time": 1590717382,
+					"hash": "fa4474a792ea60a93139ed47786bf135a0cf9c1a03b8e9a8116e38255519ef39"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "null",
+					"time": 1590717404,
+					"hash": "4db010243f85a8827f5beb01361b5c24bbfed7ac918f7db46d79ecd3fd3d9745"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "success",
+					"time": 1590717423,
+					"hash": "392ec08da6eca8703985b8182d3328bdc5d07ff7237fc65b38dca0698ea84f58"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "complete",
+					"time": 1590717433,
+					"hash": "cb947d94062c1f02b8550b535ef4f96d6364d8aeda12d7f604c903fab4b1396a"
+				}
+			]
+		},
+		{
+			"buyer": {
+				"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+				"name": "CBC"
+			},
+			"seller": {
+				"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+				"name": "PCCWG"
+			},
+			"orderId": "order001",
+			"orderType": "create",
+			"orderState": "complete",
+			"contractState": "confirmed",
+			"connections": [
+				{
+					"itemId": "item3683248281921503753",
+					"buyerProductId": "buyerProduct774847696419776906",
+					"productId": "product001",
+					"srcCompanyName": "CBC",
+					"srcRegion": "CHN",
+					"srcCity": "HK",
+					"srcDataCenter": "DCX",
+					"srcPort": "port1",
+					"dstCompanyName": "CBC",
+					"dstRegion": "USA",
+					"dstCity": "NYC",
+					"dstDataCenter": "DCY",
+					"dstPort": "port2",
+					"quoteId": "quote256896256719277793",
+					"quoteItemId": "quoteItem4629235557499493669",
+					"connectionName": "connection8634530631046857655",
+					"paymentType": "invoice",
+					"billingType": "DOD",
+					"currency": "USD",
+					"serviceClass": "gold",
+					"bandwidth": "10 Mbps",
+					"price": 300,
+					"addition": 0,
+					"startTime": 1589472000,
+					"endTime": 1592064000
+				}
+			],
+			"track": [
+				{
+					"contractState": "request",
+					"orderState": "null",
+					"time": 1590717103,
+					"hash": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b0"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "null",
+					"time": 1590717116,
+					"hash": "97cc19c87bde8e5cfe040a5e93f831173d9de33caf9dd9ae98ae353b3721b6f7"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "success",
+					"time": 1590717146,
+					"hash": "52ce9ac4d6be519f6c6a0aa97a54c06d728a630b0df3af9345ce93273dccd62c"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "complete",
+					"time": 1590717159,
+					"hash": "878e582f7de5a0efddddd718424938a2498b032d1c498bc1b0c93e860ad996c2"
+				}
+			]
+		}
+	]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getOrderInfoByAddress",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		5,
+		0
+	]
+}
+```
+
+:::
+
+## DoDSettlement_getOrderCountByAddressAndSeller
+
+Get order count by buyer's address and seller's address.
+
+- **Parameters**: 
+
+  - buyer's qlc address
+  - seller's qlc address
+
+- **Returns**: 
+
+  - order count
+
+    
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getOrderCountByAddressAndSeller",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": 3
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getOrderCountByAddressAndSeller",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+	]
+}
+```
+
+:::
+
+## DoDSettlement_getOrderInfoByAddressAndSeller
+
+Get order info by buyer's address and seller's address.
+
+- **Parameters**: 
+
+  - buyer's qlc address
+  - seller's qlc address
+
+- **Returns**: 
+
+  - order info array
+
+    
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getOrderInfoByAddressAndSeller",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+		3,
+		2
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": [
+		{
+			"buyer": {
+				"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+				"name": "CBC"
+			},
+			"seller": {
+				"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+				"name": "PCCWG"
+			},
+			"orderId": "order001",
+			"orderType": "create",
+			"orderState": "complete",
+			"contractState": "confirmed",
+			"connections": [
+				{
+					"itemId": "item3683248281921503753",
+					"buyerProductId": "buyerProduct774847696419776906",
+					"productId": "product001",
+					"srcCompanyName": "CBC",
+					"srcRegion": "CHN",
+					"srcCity": "HK",
+					"srcDataCenter": "DCX",
+					"srcPort": "port1",
+					"dstCompanyName": "CBC",
+					"dstRegion": "USA",
+					"dstCity": "NYC",
+					"dstDataCenter": "DCY",
+					"dstPort": "port2",
+					"quoteId": "quote256896256719277793",
+					"quoteItemId": "quoteItem4629235557499493669",
+					"connectionName": "connection8634530631046857655",
+					"paymentType": "invoice",
+					"billingType": "DOD",
+					"currency": "USD",
+					"serviceClass": "gold",
+					"bandwidth": "10 Mbps",
+					"price": 300,
+					"addition": 0,
+					"startTime": 1589472000,
+					"endTime": 1592064000
+				}
+			],
+			"track": [
+				{
+					"contractState": "request",
+					"orderState": "null",
+					"time": 1590717103,
+					"hash": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b0"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "null",
+					"time": 1590717116,
+					"hash": "97cc19c87bde8e5cfe040a5e93f831173d9de33caf9dd9ae98ae353b3721b6f7"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "success",
+					"time": 1590717146,
+					"hash": "52ce9ac4d6be519f6c6a0aa97a54c06d728a630b0df3af9345ce93273dccd62c"
+				},
+				{
+					"contractState": "confirmed",
+					"orderState": "complete",
+					"time": 1590717159,
+					"hash": "878e582f7de5a0efddddd718424938a2498b032d1c498bc1b0c93e860ad996c2"
+				}
+			]
+		}
+	]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getOrderInfoByAddressAndSeller",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+		3,
+		2
+	]
+}
+```
+
+:::
+
+## DoDSettlement_getProductCountByAddress
+
+Get product count by buyer's address.
+
+- **Parameters**: 
+
+  - buyer's qlc address
+
+- **Returns**: 
+
+  - product count
+
+    
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getProductCountByAddress",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": 3
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getProductCountByAddress",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
+	]
+}
+```
+
+:::
+
+## DoDSettlement_getProductInfoByAddress
+
+Get product info by buyer's address.
+
+- **Parameters**: 
+
+  - buyer's qlc address
+
+- **Returns**: 
+
+  - product info array
+
+    
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getProductInfoByAddress",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		5,
+		0
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": [
+		{
+			"itemId": "item3683248281921503753",
+			"buyerProductId": "buyerProduct774847696419776906",
+			"productId": "product001",
+			"srcCompanyName": "CBC",
+			"srcRegion": "CHN",
+			"srcCity": "HK",
+			"srcDataCenter": "DCX",
+			"srcPort": "port1",
+			"dstCompanyName": "CBC",
+			"dstRegion": "USA",
+			"dstCity": "NYC",
+			"dstDataCenter": "DCY",
+			"dstPort": "port2",
+			"active": {
+				"orderId": "order003",
+				"connectionName": "connection8634530631046857655",
+				"paymentType": "invoice",
+				"billingType": "DOD",
+				"currency": "USD",
+				"serviceClass": "gold",
+				"bandwidth": "30 Mbps",
+				"price": 330,
+				"addition": 150,
+				"startTime": 1590076800,
+				"endTime": 1591372800
+			},
+			"done": [
+				{
+					"orderId": "order001",
+					"connectionName": "connection8634530631046857655",
+					"paymentType": "invoice",
+					"billingType": "DOD",
+					"currency": "USD",
+					"serviceClass": "gold",
+					"bandwidth": "10 Mbps",
+					"price": 300,
+					"addition": 300,
+					"startTime": 1589472000,
+					"endTime": 1592064000
+				},
+				{
+					"orderId": "order002",
+					"connectionName": "connection8634530631046857655",
+					"paymentType": "invoice",
+					"billingType": "DOD",
+					"currency": "USD",
+					"serviceClass": "gold",
+					"bandwidth": "20 Mbps",
+					"price": 100,
+					"addition": 50,
+					"startTime": 1589904000,
+					"endTime": 1590336000
+				}
+			],
+			"disconnect": null,
+			"track": [
+				{
+					"orderType": "create",
+					"orderId": "order001",
+					"time": 1590717146,
+					"changed": {
+						"connectionName": "connection8634530631046857655",
+						"paymentType": "invoice",
+						"billingType": "DOD",
+						"currency": "USD",
+						"serviceClass": "gold",
+						"bandwidth": "10 Mbps",
+						"price": 300,
+						"addition": 0,
+						"startTime": 1589472000,
+						"endTime": 1592064000
+					}
+				},
+				{
+					"orderType": "change",
+					"orderId": "order002",
+					"time": 1590717423,
+					"changed": {
+						"currency": "USD",
+						"bandwidth": "20 Mbps",
+						"price": 100,
+						"addition": 0,
+						"startTime": 1589904000,
+						"endTime": 1590336000
+					}
+				},
+				{
+					"orderType": "change",
+					"orderId": "order003",
+					"time": 1590717503,
+					"changed": {
+						"currency": "USD",
+						"bandwidth": "30 Mbps",
+						"price": 330,
+						"addition": 0,
+						"startTime": 1590076800,
+						"endTime": 1591372800
+					}
+				}
+			]
+		}
+	]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getProductInfoByAddress",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		5,
+		0
+	]
+}
+```
+
+:::
+
+## DoDSettlement_getProductCountByAddressAndSeller
+
+Get product count by buyer's address and seller's address.
+
+- **Parameters**: 
+
+  - buyer's qlc address
+  - seller's qlc address
+
+- **Returns**: 
+
+  - product count
+
+    
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getProductCountByAddressAndSeller",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": [
+		{
+			"itemId": "item3683248281921503753",
+			"buyerProductId": "buyerProduct774847696419776906",
+			"productId": "product001",
+			"srcCompanyName": "CBC",
+			"srcRegion": "CHN",
+			"srcCity": "HK",
+			"srcDataCenter": "DCX",
+			"srcPort": "port1",
+			"dstCompanyName": "CBC",
+			"dstRegion": "USA",
+			"dstCity": "NYC",
+			"dstDataCenter": "DCY",
+			"dstPort": "port2",
+			"active": {
+				"orderId": "order003",
+				"connectionName": "connection8634530631046857655",
+				"paymentType": "invoice",
+				"billingType": "DOD",
+				"currency": "USD",
+				"serviceClass": "gold",
+				"bandwidth": "30 Mbps",
+				"price": 330,
+				"addition": 150,
+				"startTime": 1590076800,
+				"endTime": 1591372800
+			},
+			"done": [
+				{
+					"orderId": "order001",
+					"connectionName": "connection8634530631046857655",
+					"paymentType": "invoice",
+					"billingType": "DOD",
+					"currency": "USD",
+					"serviceClass": "gold",
+					"bandwidth": "10 Mbps",
+					"price": 300,
+					"addition": 300,
+					"startTime": 1589472000,
+					"endTime": 1592064000
+				},
+				{
+					"orderId": "order002",
+					"connectionName": "connection8634530631046857655",
+					"paymentType": "invoice",
+					"billingType": "DOD",
+					"currency": "USD",
+					"serviceClass": "gold",
+					"bandwidth": "20 Mbps",
+					"price": 100,
+					"addition": 50,
+					"startTime": 1589904000,
+					"endTime": 1590336000
+				}
+			],
+			"disconnect": null,
+			"track": [
+				{
+					"orderType": "create",
+					"orderId": "order001",
+					"time": 1590717146,
+					"changed": {
+						"connectionName": "connection8634530631046857655",
+						"paymentType": "invoice",
+						"billingType": "DOD",
+						"currency": "USD",
+						"serviceClass": "gold",
+						"bandwidth": "10 Mbps",
+						"price": 300,
+						"addition": 0,
+						"startTime": 1589472000,
+						"endTime": 1592064000
+					}
+				},
+				{
+					"orderType": "change",
+					"orderId": "order002",
+					"time": 1590717423,
+					"changed": {
+						"currency": "USD",
+						"bandwidth": "20 Mbps",
+						"price": 100,
+						"addition": 0,
+						"startTime": 1589904000,
+						"endTime": 1590336000
+					}
+				},
+				{
+					"orderType": "change",
+					"orderId": "order003",
+					"time": 1590717503,
+					"changed": {
+						"currency": "USD",
+						"bandwidth": "30 Mbps",
+						"price": 330,
+						"addition": 0,
+						"startTime": 1590076800,
+						"endTime": 1591372800
+					}
+				}
+			]
+		}
+	]
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getProductCountByAddressAndSeller",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+	]
+}
+```
+
+:::
+
+## DoDSettlement_GetProductInfoByAddressAndSeller
+
+Get product info by buyer's address and seller's address.
+
+- **Parameters**: 
+
+  - buyer's qlc address
+  - seller's qlc address
+
+- **Returns**: 
+
+  - product info array
+
+    
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_GetProductInfoByAddressAndSeller",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": 3
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getOrderCountByAddress",
+	"params": [
+		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
 	]
 }
 ```
