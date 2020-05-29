@@ -77,10 +77,11 @@ Generate a block to create a request for creating a connection or other product.
     - `seller`: seller info
       - `address`: seller's qlc address
       - `name`: seller's name
-    - `quoteId`: id of the quotation
     - `connections`: array of connection params
-      - `itemId`: item id of this connection
-      - `quoteItemId`: item id of the quotation
+      - `itemId`: item id of this connection (required)
+      - `buyerProductId`: buyer product id, unique in this order at least (required)
+      - `quoteId`: id of the quotation (required)
+      - `quoteItemId`: item id of the quotation (required)
       - `connectionName`: 
       - `srcCompanyName`: 
       - `srcRegion`:
@@ -124,10 +125,11 @@ Generate a block to create a request for creating a connection or other product.
 				"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 				"name": "PCCWG"
 			},
-      "quoteId": "quote001",
 			"connections": [
 				{
           "itemId": "item001",
+          "buyerProductId": "buyProductId001",
+          "quoteId": "quote001",
           "quoteItemId": "quoteItemId001",
 					"connectionName": "connection665737529435949039",
 					"srcCompanyName": "CBC",
@@ -198,10 +200,11 @@ Generate a block to create a request for creating a connection or other product.
 				"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 				"name": "PCCWG"
 			},
-      "quoteId": "quote001",
 			"connections": [
 				{
           "itemId": "item001",
+          "buyerProductId": "buyProductId001",
+          "quoteId": "quote001",
           "quoteItemId": "quoteItemId001",
 					"connectionName": "connection665737529435949039",
 					"srcCompanyName": "CBC",
@@ -324,7 +327,7 @@ Generate a block to update order id and product id to chain.
   - `orderId`: order's id from sonata api
   - `productIds`: array of product's id from sonata api
     - `productId`: id of this product
-    - `itemId`: item id of this product, required when updating create order
+    - `buyerProductId`: buyer product id, required when updating create order
   - `orderStatus`: success/fail, result of sonata api
   - `failReason`: fail reason of sonata api
   
@@ -346,9 +349,9 @@ Generate a block to update order id and product id to chain.
 			"buyer": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"internalId": "01a88fc4afc87b866d3d0e7b15bed6e36ba9bd7ec5b4c02e1970189415f96901",
 			"orderId": "order000001",
-			"productId": [
-        {"productId": "product001", "itemId": "item001"},
-        {"productId": "product002", "itemId": "item002"}
+			"productIds": [
+        {"productId": "product001", "buyerProductId": "buyerProductId001"},
+        {"productId": "product002", "buyerProductId": "buyerProductId002"}
       ],
 			"orderStatus": "success",
 			"failReason": ""
@@ -394,9 +397,9 @@ Generate a block to update order id and product id to chain.
 			"buyer": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"internalId": "01a88fc4afc87b866d3d0e7b15bed6e36ba9bd7ec5b4c02e1970189415f96901",
 			"orderId": "order000001",
-			"productId": [
-        {"productId": "product001", "itemId": "item001"},
-        {"productId": "product002", "itemId": "item002"}
+			"productIds": [
+        {"productId": "product001", "buyerProductId": "buyerProductId001"},
+        {"productId": "product002", "buyerProductId": "buyerProductId002"}
       ],
 			"orderStatus": "success",
 			"failReason": ""
@@ -498,10 +501,10 @@ Generate a block to create a request for changing a connection or other product.
   - `seller`: seller info
     - `address`: seller's qlc address
     - `name`: seller's name
-  - `quoteId`: id of the quotation
   - `connections`: array of connection params
     - `ProductId`: product's id from sonata api 
     - `connectionName`: 
+    - `quoteId`: id of the quotation
     - `quoteItemId`: item id of the quotation
     - `paymentType`: invoice/stablecoin
     - `billingType`: PAYG/DOD
@@ -536,12 +539,12 @@ Generate a block to create a request for changing a connection or other product.
 				"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 				"name": "PCCWG"
 			},
-      "quoteId": "quote001",
 			"connections": [
 				{
 					"productId": "product9104893720245486982",
 					"bandwidth": "200 Mbps",
 					"price": 2,
+          "quoteId": "quote001",
           "quoteItemId": "quote001"
 				}
 			]
@@ -596,7 +599,9 @@ Generate a block to create a request for changing a connection or other product.
 				{
 					"productId": "product9104893720245486982",
 					"bandwidth": "200 Mbps",
-					"price": 2
+					"price": 2,
+          "quoteId": "quote001",
+          "quoteItemId": "quote001"
 				}
 			]
 		}
@@ -700,7 +705,11 @@ Generate a block to create a request for terminating a connection or other produ
   - `seller`: seller info
     - `address`: seller's qlc address
     - `name`: seller's name
-  - `productId`: array of product id that will be terminated
+  - `connections`: array of product id that will be terminated
+    - `productId`: id of product to be terminated
+    - `quoteId`: quote id for this product
+    - `quoteItemId`: quote item id for this product
+    - `price`: price of this quote
   
 - **Returns**: 
   
@@ -725,7 +734,14 @@ Generate a block to create a request for terminating a connection or other produ
 				"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 				"name": "PCCWG"
 			},
-			"productId": ["product001","product002"]
+			"connections": [
+      	{
+          "productId": "product9104893720245486982",
+					"price": 2,
+          "quoteId": "quote001",
+          "quoteItemId": "quote001"
+        }
+      ]
 		}
 	]
 }
@@ -773,7 +789,14 @@ Generate a block to create a request for terminating a connection or other produ
 				"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 				"name": "PCCWG"
 			},
-			"productId": ["product001","product002"]
+			"connections": [
+      	{
+          "productId": "product9104893720245486982",
+					"price": 2,
+          "quoteId": "quote001",
+          "quoteItemId": "quote001"
+        }
+      ]
 		}
 	]
 }
@@ -2155,6 +2178,8 @@ Generate invoice by order id.
   - order id
   - startTime
   - endTime
+  - inFlight order allowed (true: in-flight order will be included)
+  - split order allowed (true: cacl completed duration false: calc whole duration)
 
 - **Returns**: 
 
@@ -2175,7 +2200,9 @@ Generate invoice by order id.
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 		"order003",
 		1590063500,
-		1590063550
+		1590063550,
+    true,
+    true
 	]
 }
 ```
@@ -2280,7 +2307,9 @@ Generate invoice by order id.
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 		"order003",
 		1590063500,
-		1590063550
+		1590063550,
+    true,
+    true
 	]
 }
 ```
@@ -2297,6 +2326,8 @@ Generate invoice by buyer's qlc address.
   - buyer's qlc address
   - startTime
   - endTime
+  - inFlight order allowed (true: in-flight order will be included)
+  - split order allowed (true: cacl completed duration false: calc whole duration)
 
 - **Returns**: 
 
@@ -2317,7 +2348,9 @@ Generate invoice by buyer's qlc address.
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 		1590063500,
-		1590063550
+		1590063550,
+    false,
+    false
 	]
 }
 ```
@@ -2540,7 +2573,9 @@ Generate invoice by buyer's qlc address.
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 		1590063500,
-		1590063550
+		1590063550,
+    false,
+    false
 	]
 }
 ```
@@ -2557,6 +2592,8 @@ Generate invoice by product id.
   - product id
   - startTime
   - endTime
+  - inFlight order allowed (true: in-flight order will be included)
+  - split order allowed (true: cacl completed duration false: calc whole duration)
 
 - **Returns**: 
 
@@ -2577,7 +2614,9 @@ Generate invoice by product id.
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 		"product003",
 		1590063500,
-		1590063550
+		1590063550,
+    true,
+    false
 	]
 }
 ```
@@ -2665,7 +2704,9 @@ Generate invoice by product id.
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 		"product003",
 		1590063500,
-		1590063550
+		1590063550,
+    true,
+    false
 	]
 }
 ```
