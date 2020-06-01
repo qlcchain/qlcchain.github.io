@@ -2774,7 +2774,7 @@ Get order info by buyer's address.
 - **Returns**: 
 
   - `orderInfo`: order array (ordered by create time desc)
-- `totalOrders`: total order count
+  - `totalOrders`: total order count
   
 - **Example**:
 
@@ -3058,7 +3058,7 @@ Get order info by buyer's address and seller's address.
 - **Returns**: 
 
   - `orderinfo`:  order array
-- `totalOrders`: total order count
+  - `totalOrders`: total order count
   
 - **Example**:
 
@@ -3338,7 +3338,7 @@ Get product info by buyer's address.
   - buyer's qlc address
 
 - **Returns**: 
-- `productInfo`: product info array (order by create time desc)
+  - `productInfo`: product info array (order by create time desc)
   - `totalProducts`: total product count
 
 - **Example**:
@@ -3550,7 +3550,7 @@ Get product info by buyer's address and seller's address.
 - **Returns**: 
 
   - `productInfo`: prdocut info array
-- `totalProducts`: total product count
+  - `totalProducts`: total product count
   
 - **Example**:
 
