@@ -963,236 +963,6 @@ Generate a block to notify the resouce can be used now.
 
 :::
 
-## DoDSettlement_getOrderIdListByAddress
-
-Get buyer's all order id.
-
-- **Parameters**: 
-  - buyer's qlc address
-- **Returns**: 
-  - Array of order id and seller's qlc address pairs.
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "DoDSettlement_getOrderIdListByAddress",
-	"params": [
-		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
-	]
-}
-```
-
-```json tab:Response
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"result": [
-		{
-			"seller": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-			"orderId": "order001"
-		},
-		{
-			"seller": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-			"orderId": "order002"
-		},
-		{
-			"seller": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-			"orderId": "order003"
-		}
-	]
-}
-```
-
-```json test
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "DoDSettlement_getOrderIdListByAddress",
-	"params": [
-		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
-	]
-}
-```
-
-:::
-
-## DoDSettlement_getOrderIdListByAddressAndSeller
-
-Get buyer's all order id with a specified seller.
-
-- **Parameters**: 
-  - buyer's qlc address
-  - seller's qlc address
-- **Returns**: 
-  - Array of order id and seller's qlc address pairs.
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "DoDSettlement_getOrderIdListByAddressAndSeller",
-	"params": [
-		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
-	]
-}
-```
-
-```json tab:Response
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"result": [
-		{
-			"seller": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-			"orderId": "order001"
-		},
-		{
-			"seller": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-			"orderId": "order002"
-		},
-		{
-			"seller": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-			"orderId": "order003"
-		}
-	]
-}
-```
-
-```json test
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "DoDSettlement_getOrderIdListByAddressAndSeller",
-	"params": [
-		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
-	]
-}
-```
-
-:::
-
-## DoDSettlement_getProductIdListByAddress
-
-Get buyer's all product id.
-
-- **Parameters**: 
-  - buyer's qlc address
-- **Returns**: 
-  - Array of product id and seller's qlc address pairs.
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "DoDSettlement_getProductIdListByAddress",
-	"params": [
-		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
-	]
-}
-```
-
-```json tab:Response
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"result": [
-		{
-			"seller": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-			"productId": "product8770789891961219555"
-		},
-		{
-			"seller": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-			"productId": "product8762813907531150227"
-		}
-	]
-}
-```
-
-```json test
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "DoDSettlement_getProductIdListByAddress",
-	"params": [
-		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe"
-	]
-}
-```
-
-:::
-
-## DoDSettlement_getProductIdListByAddressAndSeller
-
-Get buyer's all product id with a specified seller.
-
-- **Parameters**: 
-  - buyer's qlc address
-  - seller's qlc address
-- **Returns**: 
-  - Array of product id and seller's qlc address pairs.
-
-- **Example**:
-
-::: demo
-
-```json tab:Request
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "DoDSettlement_getProductIdListByAddressAndSeller",
-	"params": [
-		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
-	]
-}
-```
-
-```json tab:Response
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"result": [
-		{
-			"seller": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-			"productId": "product8770789891961219555"
-		},
-		{
-			"seller": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-			"productId": "product8762813907531150227"
-		}
-	]
-}
-```
-
-```json test
-{
-	"jsonrpc": "2.0",
-	"id": 3,
-	"method": "DoDSettlement_getProductIdListByAddressAndSeller",
-	"params": [
-		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
-	]
-}
-```
-
-:::
-
 ## DoDSettlement_getOrderInfoBySellerAndOrderId
 
 get order info by seller address and order id.
@@ -1921,8 +1691,6 @@ Get buyer's all product ids.
     - `productId`: id of product
     - `seller`: seller's qlc address
 
-    
-
 - **Example**:
 
 ::: demo
@@ -1978,12 +1746,10 @@ Get buyer's all order ids.
 
 - **Returns**: 
 
-  - Array of order info.
+  - Array of order id.
 
     - `orderId`: id of order
     - `seller`: seller's qlc address
-
-    
 
 - **Example**:
 
@@ -2045,12 +1811,11 @@ Get buyer's all product ids with specified seller.
 
 - **Returns**: 
 
-  Array of product id.
+  - Array of product id.
 
-  - `productId`: id of product
-  - `seller`: seller's qlc address
+    - `productId`: id of product
 
-  
+    - `seller`: seller's qlc address
 
 - **Example**:
 
@@ -2110,12 +1875,10 @@ Get buyer's all order ids with specified seller.
 
 - **Returns**: 
 
-  - Array of order info.
+  - Array of order id.
 
     - `orderId`: id of order
     - `seller`: seller's qlc address
-
-    
 
 - **Example**:
 
@@ -3054,6 +2817,8 @@ Get order info by buyer's address and seller's address.
 
   - buyer's qlc address
   - seller's qlc address
+  - count
+  - offset
 
 - **Returns**: 
 
@@ -3336,6 +3101,8 @@ Get product info by buyer's address.
 - **Parameters**: 
 
   - buyer's qlc address
+  - count
+  - offset
 
 - **Returns**: 
   - `productInfo`: product info array (order by create time desc)
@@ -3546,6 +3313,8 @@ Get product info by buyer's address and seller's address.
 
   - buyer's qlc address
   - seller's qlc address
+  - count
+  - offset
 
 - **Returns**: 
 
