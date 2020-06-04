@@ -80,6 +80,7 @@ Generate a block to create a request for creating a connection or other product.
     - `connections`: array of connection params
       - `itemId`: item id of this connection (required)
       - `buyerProductId`: buyer product id, unique in this order at least (required)
+      - `productOfferingId`: productOffering id (required)
       - `quoteId`: id of the quotation (required)
       - `quoteItemId`: item id of the quotation (required)
       - `connectionName`: 
@@ -129,6 +130,7 @@ Generate a block to create a request for creating a connection or other product.
 				{
 					"itemId": "item001",
 					"buyerProductId": "buyProductId001",
+					"productOfferingId": "productOfferingId001",
 					"quoteId": "quote001",
 					"quoteItemId": "quoteItemId001",
 					"connectionName": "connection665737529435949039",
@@ -204,6 +206,7 @@ Generate a block to create a request for creating a connection or other product.
 				{
 					"itemId": "item001",
 					"buyerProductId": "buyProductId001",
+					"productOfferingId": "productOfferingId001",
 					"quoteId": "quote001",
 					"quoteItemId": "quoteItemId001",
 					"connectionName": "connection665737529435949039",
@@ -1009,6 +1012,9 @@ get order info by seller address and order id.
 		"contractState": "confirmed",
 		"connections": [
 			{
+				"itemId": "item496704013227867488",
+				"buyerProductId": "buyerProduct1917910293729382797",
+				"productOfferingId": "productOfferingId001",
 				"productId": "product8859633503872504239",
 				"srcCompanyName": "CBC",
 				"srcRegion": "CHN",
@@ -1032,6 +1038,9 @@ get order info by seller address and order id.
 				"endTime": 0
 			},
 			{
+				"itemId": "item496704013227867489",
+				"buyerProductId": "buyerProduct1917910293729382792",
+				"productOfferingId": "productOfferingId001",
 				"productId": "product2301480569929582637",
 				"srcCompanyName": "CBC",
 				"srcRegion": "CHN",
@@ -1140,6 +1149,9 @@ get order info by internal id.
 		"contractState": "confirmed",
 		"connections": [
 			{
+				"itemId": "item496704013227867488",
+				"buyerProductId": "buyerProduct1917910293729382797",
+				"productOfferingId": "productOfferingId001",
 				"productId": "product8859633503872504239",
 				"srcCompanyName": "CBC",
 				"srcRegion": "CHN",
@@ -1163,6 +1175,9 @@ get order info by internal id.
 				"endTime": 0
 			},
 			{
+				"itemId": "item496704013227867482",
+				"buyerProductId": "buyerProduct1917910293729382792",
+				"productOfferingId": "productOfferingId001",
 				"productId": "product2301480569929582637",
 				"srcCompanyName": "CBC",
 				"srcRegion": "CHN",
@@ -1260,6 +1275,9 @@ get product info by seller address and product id.
 	"jsonrpc": "2.0",
 	"id": 3,
 	"result": {
+		"itemId": "item496704013227867488",
+		"buyerProductId": "buyerProduct1917910293729382797",
+		"productOfferingId": "productOfferingId001",
 		"productId": "product8770789891961219555",
 		"srcCompanyName": "CBC",
 		"srcRegion": "CHN",
@@ -1405,6 +1423,9 @@ Get all pending requests for seller.
 				"contractState": "request",
 				"connections": [
 					{
+						"itemId": "item496704013227867488",
+						"buyerProductId": "buyerProduct1917910293729382797",
+						"productOfferingId": "productOfferingId001",
 						"productId": "",
 						"srcCompanyName": "CBC",
 						"srcRegion": "CHN",
@@ -1501,9 +1522,9 @@ Get all pending orders for seller to check. Seller need to check every product's
 	"id": 3,
 	"result": [
 		{
-      "sendHash": "45f39c6907586af092efc7750674d8bf8f56e003a1ce482530194c253c6c749a",
+			"sendHash": "45f39c6907586af092efc7750674d8bf8f56e003a1ce482530194c253c6c749a",
 			"orderId": "order002",
-      "internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b0",
+			"internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b0",
 			"products": [
 				{
 					"productId": "product2397676495791057537",
@@ -1512,9 +1533,9 @@ Get all pending orders for seller to check. Seller need to check every product's
 			]
 		},
 		{
-      "sendHash": "45f39c6907586af092efc7750674d8bf8f56e003a1ce482530194c253c6c749a",
+			"sendHash": "45f39c6907586af092efc7750674d8bf8f56e003a1ce482530194c253c6c749a",
 			"orderId": "order001",
-      "internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b2",
+			"internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b2",
 			"products": [
 				{
 					"productId": "product7507455791188971715",
@@ -1547,17 +1568,13 @@ Get all placing orders (contractState = confirmed && orderState == null)
 
   - buyer's qlc address
   - seller's qlc address
-
+  - count
+  - offset
 - **Returns**: 
-
-  - Array of placing order.
-
+  - `totalOrders`: total placing order count
+  - `orderList`: Array of placing order list.
     - `internalId`: internal id of the order
-
     - `orderInfo`: detail info the order
-
-      
-
 - **Example**:
 
 ::: demo
@@ -1570,6 +1587,8 @@ Get all placing orders (contractState = confirmed && orderState == null)
 	"params": [
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+		1,
+		1
 	]
 }
 ```
@@ -1578,87 +1597,71 @@ Get all placing orders (contractState = confirmed && orderState == null)
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"result": [
-		{
-			"internalId": "8cfb5cfbbc6af630a105c038e0a9912bef950c782e90eb7e0f2e28c38cbb35b9",
-			"orderInfo": {
-				"buyer": {
-					"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-					"name": "CBC"
-				},
-				"seller": {
-					"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
-					"name": "PCCWG"
-				},
-				"quoteId": "quote010",
-				"orderType": "create",
-				"orderState": "null",
-				"contractState": "confirmed",
-				"connections": [
-					{
-						"itemId": "item5369971299831324653",
-						"srcCompanyName": "CBC",
-						"srcRegion": "CHN",
-						"srcCity": "HK",
-						"srcDataCenter": "DCX",
-						"srcPort": "port1",
-						"dstCompanyName": "CBC",
-						"dstRegion": "USA",
-						"dstCity": "NYC",
-						"dstDataCenter": "DCY",
-						"dstPort": "port2",
-						"quoteItemId": "quoteItem2343919744548390990",
-						"connectionName": "connection3563592678537211153",
-						"paymentType": "invoice",
-						"billingType": "DOD",
-						"currency": "USD",
-						"serviceClass": "gold",
-						"bandwidth": "100 Mbps",
-						"price": 100,
-						"startTime": 1590063500,
-						"endTime": 1590063550
+	"result": {
+		"totalOrders": 2,
+		"orderList": [
+			{
+				"internalId": "6b07c3e08449ed82b154eef3befacb0c590787fccd4a701789d7d0ca493b209e",
+				"orderInfo": {
+					"buyer": {
+						"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
+						"name": "CBC"
 					},
-					{
-						"itemId": "item7485218530270967308",
-						"srcCompanyName": "CBC",
-						"srcRegion": "CHN",
-						"srcCity": "HK",
-						"srcDataCenter": "DCX",
-						"srcPort": "port1",
-						"dstCompanyName": "CBC",
-						"dstRegion": "USA",
-						"dstCity": "NYC",
-						"dstDataCenter": "DCY",
-						"dstPort": "port2",
-						"quoteItemId": "quoteItem2354497211633616723",
-						"connectionName": "connection7618275438432431357",
-						"paymentType": "invoice",
-						"billingType": "DOD",
-						"currency": "USD",
-						"serviceClass": "gold",
-						"bandwidth": "100 Mbps",
-						"price": 100,
-						"startTime": 1590063500,
-						"endTime": 1590063550
-					}
-				],
-				"track": [
-					{
-						"contractState": "request",
-						"orderState": "null",
-						"time": 1590111916,
-						"hash": "8cfb5cfbbc6af630a105c038e0a9912bef950c782e90eb7e0f2e28c38cbb35b9"
+					"seller": {
+						"address": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+						"name": "PCCWG"
 					},
-					{
-						"contractState": "confirmed",
-						"orderState": "null",
-						"time": 1590111940,
-						"hash": "85d03d337bd1833b47d6b2e2f74f4b7e53a49ca13ddf12f6801969ac73ccc61f"
-					}
-				]
+					"orderType": "create",
+					"orderState": "null",
+					"contractState": "confirmed",
+					"connections": [
+						{
+							"itemId": "item916717806947573250",
+							"buyerProductId": "buyerProduct1132820389241880867",
+							"productOfferingId": "productOfferingId001",
+							"srcCompanyName": "CBC",
+							"srcRegion": "CHN",
+							"srcCity": "HK",
+							"srcDataCenter": "DCX",
+							"srcPort": "port1",
+							"dstCompanyName": "CBC",
+							"dstRegion": "USA",
+							"dstCity": "NYC",
+							"dstDataCenter": "DCY",
+							"dstPort": "port2",
+							"quoteId": "quote2719901657945912755",
+							"quoteItemId": "quoteItem8946258944903715135",
+							"connectionName": "connection5940817643077128079",
+							"paymentType": "invoice",
+							"billingType": "PAYG",
+							"currency": "USD",
+							"serviceClass": "gold",
+							"bandwidth": "100 Mbps",
+							"billingUnit": "second",
+							"price": 1,
+							"addition": 0,
+							"startTime": 0,
+							"endTime": 0
+						}
+					],
+					"track": [
+						{
+							"contractState": "request",
+							"orderState": "null",
+							"time": 1591274271,
+							"hash": "6b07c3e08449ed82b154eef3befacb0c590787fccd4a701789d7d0ca493b209e"
+						},
+						{
+							"contractState": "confirmed",
+							"orderState": "null",
+							"time": 1591274280,
+							"hash": "8a1d9ef3be92c84b6078b63b875c3b01c9f424703340804368732a33480c8232"
+						}
+					]
+				}
 			}
-		}
-	]
+		]
+	}
 }
 ```
 
@@ -1669,7 +1672,9 @@ Get all placing orders (contractState = confirmed && orderState == null)
 	"method": "DoDSettlement_getPlacingOrder",
 	"params": [
 		"qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3"
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+		1,
+		1
 	]
 }
 ```
@@ -2572,46 +2577,64 @@ Get order info by buyer's address.
 					"name": "PCCWG"
 				},
 				"orderId": "order003",
-				"orderType": "change",
+				"orderType": "terminate",
 				"orderState": "complete",
 				"contractState": "confirmed",
 				"connections": [
 					{
+						"itemId": "item496704013227867488",
+						"buyerProductId": "buyerProduct1917910293729382797",
+						"productOfferingId": "productOfferingId001",
 						"productId": "product001",
-						"quoteId": "quote4197810719442062891",
-						"quoteItemId": "quoteItem7326938129530071554",
+						"srcCompanyName": "CBC",
+						"srcRegion": "CHN",
+						"srcCity": "HK",
+						"srcDataCenter": "DCX",
+						"srcPort": "port1",
+						"dstCompanyName": "CBC",
+						"dstRegion": "USA",
+						"dstCity": "NYC",
+						"dstDataCenter": "DCY",
+						"dstPort": "port2",
+						"quoteId": "quote7270827408837322169",
+						"quoteItemId": "quoteItem9147229863603776145",
+						"connectionName": "connection4030270824757057501",
+						"paymentType": "invoice",
+						"billingType": "PAYG",
 						"currency": "USD",
-						"bandwidth": "30 Mbps",
-						"price": 330,
+						"serviceClass": "gold",
+						"bandwidth": "200 Mbps",
+						"billingUnit": "second",
+						"price": 20,
 						"addition": 0,
-						"startTime": 1590076800,
-						"endTime": 1591372800
+						"startTime": 0,
+						"endTime": 0
 					}
 				],
 				"track": [
 					{
 						"contractState": "request",
 						"orderState": "null",
-						"time": 1590717470,
-						"hash": "5bd701accb161c3e81a1631826a0c496ebbc1cb2b7b374bcda0f16d008cef1b7"
+						"time": 1591095653,
+						"hash": "ded8f414c9e042ee0116f0a46e37b4574710e800d23ef50d598aa84af49c70c0"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "null",
-						"time": 1590717480,
-						"hash": "781203794a36b1e55df43f7373439dd70960a0e535ef6114b6ced0c12c7130fb"
+						"time": 1591095669,
+						"hash": "38f63d7706641019606fdede4fce5f68a85d741d30f69946ae886a6103b9dd54"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "success",
-						"time": 1590717503,
-						"hash": "182c4f83595baa00bba024e0c67d0d6b226cef23a6faff440de83e5100c4bd77"
+						"time": 1591095809,
+						"hash": "ebf4ff89bc11707b6973e7d4d7e8efbb51bf8755bcb29d1161143ed0bbfdbef1"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "complete",
-						"time": 1590717512,
-						"hash": "fadaa97f1d7154110058f95619729f093bac1e15c12609dac3d528e09fdf73fd"
+						"time": 1591095818,
+						"hash": "c2fdea6ed8ecd2808019cb27413fcb96318cc413a94c6c59cbfb2c9d07c0b248"
 					}
 				]
 			},
@@ -2630,41 +2653,59 @@ Get order info by buyer's address.
 				"contractState": "confirmed",
 				"connections": [
 					{
+						"itemId": "item496704013227867488",
+						"buyerProductId": "buyerProduct1917910293729382797",
+						"productOfferingId": "productOfferingId001",
 						"productId": "product001",
-						"quoteId": "quote5339833170131078171",
-						"quoteItemId": "quoteItem20288420106995345",
+						"srcCompanyName": "CBC",
+						"srcRegion": "CHN",
+						"srcCity": "HK",
+						"srcDataCenter": "DCX",
+						"srcPort": "port1",
+						"dstCompanyName": "CBC",
+						"dstRegion": "USA",
+						"dstCity": "NYC",
+						"dstDataCenter": "DCY",
+						"dstPort": "port2",
+						"quoteId": "quote6031908666772364622",
+						"quoteItemId": "quoteItem5467873725997985832",
+						"connectionName": "connection4030270824757057501",
+						"paymentType": "invoice",
+						"billingType": "PAYG",
 						"currency": "USD",
-						"bandwidth": "20 Mbps",
-						"price": 100,
+						"serviceClass": "gold",
+						"bandwidth": "200 Mbps",
+						"billingUnit": "second",
+						"price": 2,
 						"addition": 0,
-						"startTime": 1589904000,
-						"endTime": 1590336000
+						"startTime": 0,
+						"endTime": 0
 					}
 				],
 				"track": [
 					{
 						"contractState": "request",
 						"orderState": "null",
-						"time": 1590717382,
-						"hash": "fa4474a792ea60a93139ed47786bf135a0cf9c1a03b8e9a8116e38255519ef39"
+						"time": 1591095499,
+						"hash": "ad1bcded1f32385d3e92f0dee29cb0f9452dae3da5500a5e36ec37717ab2ff7c"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "null",
-						"time": 1590717404,
-						"hash": "4db010243f85a8827f5beb01361b5c24bbfed7ac918f7db46d79ecd3fd3d9745"
+						"time": 1591095512,
+						"hash": "fe3d9be943c547460a1eb3a45b1f6baa5985c99e4656794943cb79f4960db816"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "success",
-						"time": 1590717423,
-						"hash": "392ec08da6eca8703985b8182d3328bdc5d07ff7237fc65b38dca0698ea84f58"
+						"time": 1591095572,
+						"hash": "a1e14557945861e02b13413cfe06374896b41526a11844fd637b591d0c0b0f1c"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "complete",
-						"time": 1590717433,
-						"hash": "cb947d94062c1f02b8550b535ef4f96d6364d8aeda12d7f604c903fab4b1396a"
+						"time": 1591095580,
+						"hash": "4159bef23c29cdb51fa4c7726529382760c6b6fb17b6ac563713c1c5a0da0214"
 					}
 				]
 			},
@@ -2683,8 +2724,9 @@ Get order info by buyer's address.
 				"contractState": "confirmed",
 				"connections": [
 					{
-						"itemId": "item3683248281921503753",
-						"buyerProductId": "buyerProduct774847696419776906",
+						"itemId": "item496704013227867488",
+						"buyerProductId": "buyerProduct1917910293729382797",
+						"productOfferingId": "productOfferingId001",
 						"productId": "product001",
 						"srcCompanyName": "CBC",
 						"srcRegion": "CHN",
@@ -2696,44 +2738,45 @@ Get order info by buyer's address.
 						"dstCity": "NYC",
 						"dstDataCenter": "DCY",
 						"dstPort": "port2",
-						"quoteId": "quote256896256719277793",
-						"quoteItemId": "quoteItem4629235557499493669",
-						"connectionName": "connection8634530631046857655",
+						"quoteId": "quote4647401443521770947",
+						"quoteItemId": "quoteItem4919214398518384874",
+						"connectionName": "connection4030270824757057501",
 						"paymentType": "invoice",
-						"billingType": "DOD",
+						"billingType": "PAYG",
 						"currency": "USD",
 						"serviceClass": "gold",
-						"bandwidth": "10 Mbps",
-						"price": 300,
+						"bandwidth": "100 Mbps",
+						"billingUnit": "second",
+						"price": 1,
 						"addition": 0,
-						"startTime": 1589472000,
-						"endTime": 1592064000
+						"startTime": 0,
+						"endTime": 0
 					}
 				],
 				"track": [
 					{
 						"contractState": "request",
 						"orderState": "null",
-						"time": 1590717103,
+						"time": 1591095353,
 						"hash": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b0"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "null",
-						"time": 1590717116,
-						"hash": "97cc19c87bde8e5cfe040a5e93f831173d9de33caf9dd9ae98ae353b3721b6f7"
+						"time": 1591095363,
+						"hash": "37524bad540da71c60cda801f0f9025401a2f9da8e33d7ea9003318774d8d057"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "success",
-						"time": 1590717146,
-						"hash": "52ce9ac4d6be519f6c6a0aa97a54c06d728a630b0df3af9345ce93273dccd62c"
+						"time": 1591095406,
+						"hash": "e531dfcc38f0aa760487d4deb91573285e7f889cb564c53c9189497e6cf66297"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "complete",
-						"time": 1590717159,
-						"hash": "878e582f7de5a0efddddd718424938a2498b032d1c498bc1b0c93e860ad996c2"
+						"time": 1591095416,
+						"hash": "8d27d72a5b2ba82498958c6a0413ac031bf1b54085adcf11eee403d827a34c15"
 					}
 				]
 			}
@@ -2859,46 +2902,64 @@ Get order info by buyer's address and seller's address.
 					"name": "PCCWG"
 				},
 				"orderId": "order003",
-				"orderType": "change",
+				"orderType": "terminate",
 				"orderState": "complete",
 				"contractState": "confirmed",
 				"connections": [
 					{
+						"itemId": "item496704013227867488",
+						"buyerProductId": "buyerProduct1917910293729382797",
+						"productOfferingId": "productOfferingId001",
 						"productId": "product001",
-						"quoteId": "quote4197810719442062891",
-						"quoteItemId": "quoteItem7326938129530071554",
+						"srcCompanyName": "CBC",
+						"srcRegion": "CHN",
+						"srcCity": "HK",
+						"srcDataCenter": "DCX",
+						"srcPort": "port1",
+						"dstCompanyName": "CBC",
+						"dstRegion": "USA",
+						"dstCity": "NYC",
+						"dstDataCenter": "DCY",
+						"dstPort": "port2",
+						"quoteId": "quote7270827408837322169",
+						"quoteItemId": "quoteItem9147229863603776145",
+						"connectionName": "connection4030270824757057501",
+						"paymentType": "invoice",
+						"billingType": "PAYG",
 						"currency": "USD",
-						"bandwidth": "30 Mbps",
-						"price": 330,
+						"serviceClass": "gold",
+						"bandwidth": "200 Mbps",
+						"billingUnit": "second",
+						"price": 20,
 						"addition": 0,
-						"startTime": 1590076800,
-						"endTime": 1591372800
+						"startTime": 0,
+						"endTime": 0
 					}
 				],
 				"track": [
 					{
 						"contractState": "request",
 						"orderState": "null",
-						"time": 1590717470,
-						"hash": "5bd701accb161c3e81a1631826a0c496ebbc1cb2b7b374bcda0f16d008cef1b7"
+						"time": 1591095653,
+						"hash": "ded8f414c9e042ee0116f0a46e37b4574710e800d23ef50d598aa84af49c70c0"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "null",
-						"time": 1590717480,
-						"hash": "781203794a36b1e55df43f7373439dd70960a0e535ef6114b6ced0c12c7130fb"
+						"time": 1591095669,
+						"hash": "38f63d7706641019606fdede4fce5f68a85d741d30f69946ae886a6103b9dd54"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "success",
-						"time": 1590717503,
-						"hash": "182c4f83595baa00bba024e0c67d0d6b226cef23a6faff440de83e5100c4bd77"
+						"time": 1591095809,
+						"hash": "ebf4ff89bc11707b6973e7d4d7e8efbb51bf8755bcb29d1161143ed0bbfdbef1"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "complete",
-						"time": 1590717512,
-						"hash": "fadaa97f1d7154110058f95619729f093bac1e15c12609dac3d528e09fdf73fd"
+						"time": 1591095818,
+						"hash": "c2fdea6ed8ecd2808019cb27413fcb96318cc413a94c6c59cbfb2c9d07c0b248"
 					}
 				]
 			},
@@ -2917,41 +2978,59 @@ Get order info by buyer's address and seller's address.
 				"contractState": "confirmed",
 				"connections": [
 					{
+						"itemId": "item496704013227867488",
+						"buyerProductId": "buyerProduct1917910293729382797",
+						"productOfferingId": "productOfferingId001",
 						"productId": "product001",
-						"quoteId": "quote5339833170131078171",
-						"quoteItemId": "quoteItem20288420106995345",
+						"srcCompanyName": "CBC",
+						"srcRegion": "CHN",
+						"srcCity": "HK",
+						"srcDataCenter": "DCX",
+						"srcPort": "port1",
+						"dstCompanyName": "CBC",
+						"dstRegion": "USA",
+						"dstCity": "NYC",
+						"dstDataCenter": "DCY",
+						"dstPort": "port2",
+						"quoteId": "quote6031908666772364622",
+						"quoteItemId": "quoteItem5467873725997985832",
+						"connectionName": "connection4030270824757057501",
+						"paymentType": "invoice",
+						"billingType": "PAYG",
 						"currency": "USD",
-						"bandwidth": "20 Mbps",
-						"price": 100,
+						"serviceClass": "gold",
+						"bandwidth": "200 Mbps",
+						"billingUnit": "second",
+						"price": 2,
 						"addition": 0,
-						"startTime": 1589904000,
-						"endTime": 1590336000
+						"startTime": 0,
+						"endTime": 0
 					}
 				],
 				"track": [
 					{
 						"contractState": "request",
 						"orderState": "null",
-						"time": 1590717382,
-						"hash": "fa4474a792ea60a93139ed47786bf135a0cf9c1a03b8e9a8116e38255519ef39"
+						"time": 1591095499,
+						"hash": "ad1bcded1f32385d3e92f0dee29cb0f9452dae3da5500a5e36ec37717ab2ff7c"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "null",
-						"time": 1590717404,
-						"hash": "4db010243f85a8827f5beb01361b5c24bbfed7ac918f7db46d79ecd3fd3d9745"
+						"time": 1591095512,
+						"hash": "fe3d9be943c547460a1eb3a45b1f6baa5985c99e4656794943cb79f4960db816"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "success",
-						"time": 1590717423,
-						"hash": "392ec08da6eca8703985b8182d3328bdc5d07ff7237fc65b38dca0698ea84f58"
+						"time": 1591095572,
+						"hash": "a1e14557945861e02b13413cfe06374896b41526a11844fd637b591d0c0b0f1c"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "complete",
-						"time": 1590717433,
-						"hash": "cb947d94062c1f02b8550b535ef4f96d6364d8aeda12d7f604c903fab4b1396a"
+						"time": 1591095580,
+						"hash": "4159bef23c29cdb51fa4c7726529382760c6b6fb17b6ac563713c1c5a0da0214"
 					}
 				]
 			},
@@ -2970,8 +3049,9 @@ Get order info by buyer's address and seller's address.
 				"contractState": "confirmed",
 				"connections": [
 					{
-						"itemId": "item3683248281921503753",
-						"buyerProductId": "buyerProduct774847696419776906",
+						"itemId": "item496704013227867488",
+						"buyerProductId": "buyerProduct1917910293729382797",
+						"productOfferingId": "productOfferingId001",
 						"productId": "product001",
 						"srcCompanyName": "CBC",
 						"srcRegion": "CHN",
@@ -2983,44 +3063,45 @@ Get order info by buyer's address and seller's address.
 						"dstCity": "NYC",
 						"dstDataCenter": "DCY",
 						"dstPort": "port2",
-						"quoteId": "quote256896256719277793",
-						"quoteItemId": "quoteItem4629235557499493669",
-						"connectionName": "connection8634530631046857655",
+						"quoteId": "quote4647401443521770947",
+						"quoteItemId": "quoteItem4919214398518384874",
+						"connectionName": "connection4030270824757057501",
 						"paymentType": "invoice",
-						"billingType": "DOD",
+						"billingType": "PAYG",
 						"currency": "USD",
 						"serviceClass": "gold",
-						"bandwidth": "10 Mbps",
-						"price": 300,
+						"bandwidth": "100 Mbps",
+						"billingUnit": "second",
+						"price": 1,
 						"addition": 0,
-						"startTime": 1589472000,
-						"endTime": 1592064000
+						"startTime": 0,
+						"endTime": 0
 					}
 				],
 				"track": [
 					{
 						"contractState": "request",
 						"orderState": "null",
-						"time": 1590717103,
+						"time": 1591095353,
 						"hash": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b0"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "null",
-						"time": 1590717116,
-						"hash": "97cc19c87bde8e5cfe040a5e93f831173d9de33caf9dd9ae98ae353b3721b6f7"
+						"time": 1591095363,
+						"hash": "37524bad540da71c60cda801f0f9025401a2f9da8e33d7ea9003318774d8d057"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "success",
-						"time": 1590717146,
-						"hash": "52ce9ac4d6be519f6c6a0aa97a54c06d728a630b0df3af9345ce93273dccd62c"
+						"time": 1591095406,
+						"hash": "e531dfcc38f0aa760487d4deb91573285e7f889cb564c53c9189497e6cf66297"
 					},
 					{
 						"contractState": "confirmed",
 						"orderState": "complete",
-						"time": 1590717159,
-						"hash": "878e582f7de5a0efddddd718424938a2498b032d1c498bc1b0c93e860ad996c2"
+						"time": 1591095416,
+						"hash": "8d27d72a5b2ba82498958c6a0413ac031bf1b54085adcf11eee403d827a34c15"
 					}
 				]
 			}
@@ -3134,6 +3215,7 @@ Get product info by buyer's address.
 			{
 				"itemId": "item3683248281921503753",
 				"buyerProductId": "buyerProduct774847696419776906",
+				"productOfferingId": "productOfferingId001",
 				"productId": "product001",
 				"srcCompanyName": "CBC",
 				"srcRegion": "CHN",
@@ -3346,6 +3428,7 @@ Get product info by buyer's address and seller's address.
 			{
 				"itemId": "item3683248281921503753",
 				"buyerProductId": "buyerProduct774847696419776906",
+				"productOfferingId": "productOfferingId001",
 				"productId": "product001",
 				"srcCompanyName": "CBC",
 				"srcRegion": "CHN",
