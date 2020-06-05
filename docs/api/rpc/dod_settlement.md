@@ -1980,6 +1980,7 @@ Generate invoice by order id.
 	"jsonrpc": "2.0",
 	"id": 3,
 	"result": {
+		"invoiceId": "a9d212581a36f89dd1caa77809d25bd220b0b620b71258541521e05ba9147c5a",
 		"totalConnectionCount": 2,
 		"totalAmount": 200,
 		"currency": "USD",
@@ -1995,6 +1996,7 @@ Generate invoice by order id.
 		},
 		"order": {
 			"orderId": "order003",
+			"internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b0",
 			"connectionCount": 2,
 			"orderAmount": 200,
 			"connections": [
@@ -2128,6 +2130,7 @@ Generate invoice by buyer's qlc address.
 	"jsonrpc": "2.0",
 	"id": 3,
 	"result": {
+		"invoiceId": "098bb4342d1026fadac01c85022a1e0b6aa8a0d0c80e94a20beb8f8f24293fe2",
 		"orderCount": 4,
 		"totalConnectionCount": 5,
 		"totalAmount": 500,
@@ -2145,6 +2148,7 @@ Generate invoice by buyer's qlc address.
 		"orders": [
 			{
 				"orderId": "order001",
+				"internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b0",
 				"connectionCount": 1,
 				"orderAmount": 0,
 				"connections": [
@@ -2168,6 +2172,7 @@ Generate invoice by buyer's qlc address.
 			},
 			{
 				"orderId": "order002",
+				"internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b1",
 				"connectionCount": 1,
 				"orderAmount": 100,
 				"connections": [
@@ -2187,8 +2192,6 @@ Generate invoice by buyer's qlc address.
 						"dstPort": "port2",
 						"usage": [
 							{
-								"orderId": "",
-								"quoteItemId": "",
 								"connectionName": "connection4117279165879118174",
 								"paymentType": "invoice",
 								"billingType": "PAYG",
@@ -2210,6 +2213,7 @@ Generate invoice by buyer's qlc address.
 			},
 			{
 				"orderId": "order003",
+				"internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b2",
 				"connectionCount": 2,
 				"orderAmount": 200,
 				"connections": [
@@ -2229,8 +2233,6 @@ Generate invoice by buyer's qlc address.
 						"dstPort": "port2",
 						"usage": [
 							{
-								"orderId": "",
-								"quoteItemId": "",
 								"connectionName": "connection5251568543453672711",
 								"paymentType": "invoice",
 								"billingType": "DOD",
@@ -2264,8 +2266,6 @@ Generate invoice by buyer's qlc address.
 						"dstPort": "port2",
 						"usage": [
 							{
-								"orderId": "",
-								"quoteItemId": "",
 								"connectionName": "connection2486610007254462746",
 								"paymentType": "invoice",
 								"billingType": "DOD",
@@ -2287,6 +2287,7 @@ Generate invoice by buyer's qlc address.
 			},
 			{
 				"orderId": "order004",
+				"internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b4",
 				"connectionCount": 1,
 				"orderAmount": 200,
 				"connections": [
@@ -2306,8 +2307,6 @@ Generate invoice by buyer's qlc address.
 						"dstPort": "port2",
 						"usage": [
 							{
-								"orderId": "",
-								"quoteItemId": "",
 								"connectionName": "connection5251568543453672711",
 								"paymentType": "invoice",
 								"billingType": "DOD",
@@ -2407,6 +2406,7 @@ Generate invoice by product id.
 			"name": "PCCWG"
 		},
 		"connection": {
+			"invoiceId": "4468df37277c4ab350c7fa2893d11f44804af62b5631f90f159fea24554c200e",
 			"connectionAmount": 300,
 			"itemId": "",
 			"productId": "product003",
@@ -2423,7 +2423,7 @@ Generate invoice by product id.
 			"usage": [
 				{
 					"orderId": "order004",
-					"quoteItemId": "",
+					"internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b0",
 					"connectionName": "connection5251568543453672711",
 					"paymentType": "invoice",
 					"billingType": "DOD",
@@ -2441,7 +2441,7 @@ Generate invoice by product id.
 				},
 				{
 					"orderId": "order003",
-					"quoteItemId": "",
+					"internalId": "d792df87b66a59f78550d29a8fb2867b4d68a2fe14156ba9c5ab78828d72a2b3",
 					"connectionName": "connection5251568543453672711",
 					"paymentType": "invoice",
 					"billingType": "DOD",
