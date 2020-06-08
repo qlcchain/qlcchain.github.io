@@ -17,7 +17,7 @@ Get a ptm pubkey by account
   
 - **Returns**: 
   -  account: target account
--  btype: business type
+  -  btype: business type
   -  pubkey: ptm pubkey
   
 - **Example**:
@@ -29,9 +29,8 @@ Get a ptm pubkey by account
 	"jsonrpc": "2.0",
 	"id": 3,
 	"method": "ptmkey_getPtmKeyByAccount",
-	"params": [{
-	    "qlc_1s77torrs38rkm4eh7z5rxei3sqsdfjq9am93cjuf15h9y3cjyq8tf6u8d7j"
-	}]
+	"params": [    "qlc_1s77torrs38rkm4eh7z5rxei3sqsdfjq9am93cjuf15h9y3cjyq8tf6u8d7j"
+	]
 }
 ```
 
@@ -52,9 +51,8 @@ Get a ptm pubkey by account
 	"jsonrpc": "2.0",
 	"id": 3,
 	"method": "ptmkey_getPtmKeyByAccount",
-	"params": [{
-	    "qlc_1s77torrs38rkm4eh7z5rxei3sqsdfjq9am93cjuf15h9y3cjyq8tf6u8d7j"
-	}]
+	"params": [ "qlc_1s77torrs38rkm4eh7z5rxei3sqsdfjq9am93cjuf15h9y3cjyq8tf6u8d7j"
+	]
 }
 ```
 
@@ -67,7 +65,6 @@ Get a ptm pubkey by account and btype
 - **Parameters**: 
   - `account` : target account
   - btype: business type
-- btype: business type
 - **Returns**: 
   -  account: target account
   -  btype: business type
@@ -83,7 +80,7 @@ Get a ptm pubkey by account and btype
 	"id": 1,
 	"method": "ptmkey_getPtmKeyByAccountAndBtype",
 	"params": [
-	  "qlc_1s77torrs38rkm4eh7z5rxei3sqsdfjq9am93cjuf15h9y3cjyq8tf6u8d7j",
+ "qlc_1s77torrs38rkm4eh7z5rxei3sqsdfjq9am93cjuf15h9y3cjyq8tf6u8d7j",
 	  "default"
 	]
 }
@@ -107,7 +104,7 @@ Get a ptm pubkey by account and btype
 	"id": 1,
 	"method": "ptmkey_getPtmKeyByAccountAndBtype",
 	"params": [
-	  "qlc_1s77torrs38rkm4eh7z5rxei3sqsdfjq9am93cjuf15h9y3cjyq8tf6u8d7j",
+ "qlc_1s77torrs38rkm4eh7z5rxei3sqsdfjq9am93cjuf15h9y3cjyq8tf6u8d7j",
 	  "default"
 	]
 }
@@ -188,16 +185,16 @@ Get a contractSend block to update ptm pubkey
 
 ## ptmkey_getPtmKeyDeleteBlock
 
-- Get a contractSend block to delete ptm pubkey
+Get a contractSend block to delete ptm pubkey
 
-  - **Parameters**: 
-    - account: target account
-    - btype: business type
+- **Parameters**: 
+  - account: target account
+  - btype: business type
 
-  - **Returns**: 
-    -  `block`: node update block
+- **Returns**: 
+  -  `block`: node update block
 
-  - **Example**:
+- **Example**:
 
 ::: demo
 
