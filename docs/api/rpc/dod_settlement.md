@@ -22,7 +22,9 @@
 
   DoDSettlement_GetPendingResourceCheck By Seller
 
-  DoDSettlement_getResourceReadyBlock By Seller
+  DoDSettlement_getUpdateProductInfoBlock By Seller (update product id and product status)
+
+  *can update product id and product status in one block or update product id first and then update product status*
 
   DoDSettlement_getUpdateOrderInfoRewardBlock By Seller
 
@@ -38,7 +40,9 @@
 
   DoDSettlement_getUpdateOrderInfoBlock By Buyer
 
-  DoDSettlement_getResourceReadyBlock By Seller
+  DoDSettlement_getUpdateProductInfoBlock By Seller (update product id and product status)
+
+  *can update product id and product status in one block or update product id first and then update product status*
 
   DoDSettlement_getUpdateOrderInfoRewardBlock By Seller
 
@@ -56,8 +60,10 @@
 
   DoDSettlement_GetPendingResourceCheck By Seller
 
-  DoDSettlement_getResourceReadyBlock By Seller
+  DoDSettlement_getUpdateProductInfoBlock By Seller (update product id and product status)
 
+  *can update product id and product status in one block or update product id first and then update product status*
+  
   DoDSettlement_getUpdateOrderInfoRewardBlock By Seller
 
 
@@ -79,7 +85,7 @@ Generate a block to create a request for creating a connection or other product.
       - `name`: seller's name
     - `connections`: array of connection params
       - `itemId`: item id of this connection (required)
-      - `buyerProductId`: buyer product id, unique in this order at least (required)
+      - `buyerProductId`: buyer product id, unique in this order at least
       - `productOfferingId`: productOffering id (required)
       - `quoteId`: id of the quotation (required)
       - `quoteItemId`: item id of the quotation (required)
@@ -328,9 +334,9 @@ Generate a block to update order id and product id to chain.
   - `buyer`: buyer's qlc address
   - `internalId`: order's internal id in qlcchain
   - `orderId`: order's id from sonata api
-  - `productIds`: array of product's id from sonata api
-    - `productId`: id of this product
-    - `buyerProductId`: buyer product id, required when updating create order
+  - `orderItemId`: array of order item id from sonata api
+    - `itemId`: externalId of this product
+    - `orderItemId`: order item id
   - `status`: success/fail, result of sonata api
   - `failReason`: fail reason of sonata api
   
@@ -353,8 +359,8 @@ Generate a block to update order id and product id to chain.
 			"internalId": "01a88fc4afc87b866d3d0e7b15bed6e36ba9bd7ec5b4c02e1970189415f96901",
 			"orderId": "order000001",
 			"productIds": [
-				{"productId": "product001", "buyerProductId": "buyerProductId001"},
-				{"productId": "product002", "buyerProductId": "buyerProductId002"}
+				{"itemId": "item001", "orderItemId": "orderItemId001"},
+				{"itemId": "item002", "orderItemId": "orderItemId002"}
 			],
 			"status": "success",
 			"failReason": ""
@@ -401,8 +407,8 @@ Generate a block to update order id and product id to chain.
 			"internalId": "01a88fc4afc87b866d3d0e7b15bed6e36ba9bd7ec5b4c02e1970189415f96901",
 			"orderId": "order000001",
 			"productIds": [
-				{"productId": "product001", "buyerProductId": "buyerProductId001"},
-				{"productId": "product002", "buyerProductId": "buyerProductId002"}
+				{"itemId": "item001", "orderItemId": "orderItemId001"},
+				{"itemId": "item002", "orderItemId": "orderItemId002"}
 			],
 			"status": "success",
 			"failReason": ""
@@ -497,7 +503,6 @@ Generate a block to create a request for changing a connection or other product.
   - `privateFrom`: sender's ptm key, if this is a private transaction
   - `privateFor`: receiver's ptm key, if this is a private transaction
   - `privateGroupID`: ptm group key, if this is a private transaction
-  
   - `buyer`: buyer info
     - `address`: buyer's qlc address
     - `name`: buyer's name
@@ -505,7 +510,8 @@ Generate a block to create a request for changing a connection or other product.
     - `address`: seller's qlc address
     - `name`: seller's name
   - `connections`: array of connection params
-    - `productId`: product's id from sonata api 
+    - `productId`: product's id from sonata api  (required)
+    - `itemId`: item id of this connection (required)
     - `connectionName`: 
     - `quoteId`: id of the quotation
     - `quoteItemId`: item id of the quotation
@@ -544,6 +550,7 @@ Generate a block to create a request for changing a connection or other product.
 			},
 			"connections": [
 				{
+					"itemId": "item001",
 					"productId": "product9104893720245486982",
 					"bandwidth": "200 Mbps",
 					"price": 2,
@@ -600,6 +607,7 @@ Generate a block to create a request for changing a connection or other product.
 			},
 			"connections": [
 				{
+					"itemId": "item001",
 					"productId": "product9104893720245486982",
 					"bandwidth": "200 Mbps",
 					"price": 2,
@@ -710,6 +718,7 @@ Generate a block to create a request for terminating a connection or other produ
     - `name`: seller's name
   - `connections`: array of product id that will be terminated
     - `productId`: id of product to be terminated
+    - `itemId`: item id of this connection (required)
     - `quoteId`: quote id for this product
     - `quoteItemId`: quote item id for this product
     - `price`: price of this quote
@@ -739,6 +748,7 @@ Generate a block to create a request for terminating a connection or other produ
 			},
 			"connections": [
 				{
+					"itemId": "itemId001",
 					"productId": "product9104893720245486982",
 					"price": 2,
 					"quoteId": "quote001",
@@ -794,6 +804,7 @@ Generate a block to create a request for terminating a connection or other produ
 			},
 			"connections": [
 				{
+					"itemId": "itemId001",
 					"productId": "product9104893720245486982",
 					"price": 2,
 					"quoteId": "quote001",
@@ -885,23 +896,24 @@ Generate a block to confirm or reject a terminating request.
 
 :::
 
-## DoDSettlement_getResourceReadyBlock
+## DoDSettlement_getUpdateProductInfoBlock
 
-Generate a block to notify the resouce can be used now.
+Generate a block to update product id and product status.
 
 - **Parameters**: 
   
   - `privateFrom`: sender's ptm key, if this is a private transaction
   - `privateFor`: receiver's ptm key, if this is a private transaction
   - `privateGroupID`: ptm group key, if this is a private transaction
-  
   - `address`: operator's qlc address
-  - `internalId`: internal id of this order
-  - `productId`: array of product's id from sonata api
+  - `orderId`: order id of this order
+  - `productInfo`: array of product info from sonata api
+    - `orderItemId`: order item id of this product
+    - `productId`: id of this product
+    - `active`: if product is active
   
 - **Returns**: 
-  
-- `block`: a block
+  - `block`: a block
   
 - **Example**:
 
@@ -911,12 +923,18 @@ Generate a block to notify the resouce can be used now.
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "DoDSettlement_getResourceReadyBlock",
+	"method": "DoDSettlement_getUpdateProductInfoBlock",
 	"params": [
 		{
 			"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-			"internalId": "fcde1a26c11de74eb94653c689486a6026d49c6e03e7650991f47b4091120997",
-			"productId": ["product001", "product001"]
+			"orderId": "order001",
+			"productInfo": [
+				{
+					"orderItemId": "orderItem001",
+					"productId": "product001",
+					"active": false
+				}
+			]
 		}
 	]
 }
@@ -953,12 +971,18 @@ Generate a block to notify the resouce can be used now.
 {
 	"jsonrpc": "2.0",
 	"id": 3,
-	"method": "DoDSettlement_getResourceReadyBlock",
+	"method": "DoDSettlement_getUpdateProductInfoBlock",
 	"params": [
 		{
 			"address": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
-			"internalId": "fcde1a26c11de74eb94653c689486a6026d49c6e03e7650991f47b4091120997",
-			"productId": ["product001", "product001"]
+			"orderId": "order001",
+			"productInfo": [
+				{
+					"orderItemId": "orderItem001",
+					"productId": "product001",
+					"active": false
+				}
+			]
 		}
 	]
 }
@@ -1496,11 +1520,10 @@ Get all pending orders for seller to check. Seller need to check every product's
     
     - `products`: product ino
     
-      - `ProductId`: id of product
+      - `orderItemId`: order item id of this product
+      - `productId`: product id
       - `active`: if this product is active
     
-      
-  
 - **Example**:
 
 ::: demo
