@@ -358,7 +358,7 @@ Generate a block to update order id and product id to chain.
 			"buyer": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"internalId": "01a88fc4afc87b866d3d0e7b15bed6e36ba9bd7ec5b4c02e1970189415f96901",
 			"orderId": "order000001",
-			"productIds": [
+			"orderItemId": [
 				{"itemId": "item001", "orderItemId": "orderItemId001"},
 				{"itemId": "item002", "orderItemId": "orderItemId002"}
 			],
@@ -406,7 +406,7 @@ Generate a block to update order id and product id to chain.
 			"buyer": "qlc_1bwjtpipkzc7aj6hmuodncjmfsb4tou9word8bj9jxcm68cheipad54q66xe",
 			"internalId": "01a88fc4afc87b866d3d0e7b15bed6e36ba9bd7ec5b4c02e1970189415f96901",
 			"orderId": "order000001",
-			"productIds": [
+			"orderItemId": [
 				{"itemId": "item001", "orderItemId": "orderItemId001"},
 				{"itemId": "item002", "orderItemId": "orderItemId002"}
 			],
