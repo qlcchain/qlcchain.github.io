@@ -1400,6 +1400,54 @@ get product info by seller address and product id.
 
 :::
 
+## DoDSettlement_getInternalIdByOrderId
+
+get internal id by seller address and order id.
+
+- **Parameters**: 
+  - seller's qlc address
+  - order id
+- **Returns**: 
+  - Internal id
+
+- **Example**:
+
+::: demo
+
+```json tab:Request
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getInternalIdByOrderId",
+	"params": [
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+		"order009"
+	]
+}
+```
+
+```json tab:Response
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"result": "4ffe1343875f9beb403d1f10a57866dad517a59517b96c6f2ff3d44c337f6f8c"
+}
+```
+
+```json test
+{
+	"jsonrpc": "2.0",
+	"id": 3,
+	"method": "DoDSettlement_getInternalIdByOrderId",
+	"params": [
+		"qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
+		"order009"
+	]
+}
+```
+
+:::
+
 ## DoDSettlement_getPendingRequest
 
 Get all pending requests for seller.
