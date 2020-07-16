@@ -110,6 +110,11 @@ const sidebarConfigs = {
     {
       collapsable: false,
       children: ["dod_settlement"],
+    },
+    // KYC
+    {
+      collapsable: false,
+      children: ["kyc"],
     }
   ],
   "api/qlcjs": [
@@ -273,7 +278,8 @@ module.exports = {
             "Settlement",
             "Permission",
             "Ptmkey",
-            "DoDSettlement"
+            "DoDSettlement",
+            "KYC"
           ),
           "/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
@@ -315,7 +321,8 @@ module.exports = {
             "DKPI",
             "结算",
             "接入控制",
-            "DoD结算"
+            "DoD结算",
+            "KYC"
           ),
           "/zh/api/qlcgo/": genSidebarConfig(
             "api/qlcgo",
