@@ -340,7 +340,7 @@ Get a contractSend block to add/remove user's stable coin address
 	"method": "KYC_getUpdateTradeAddressBlock",
 	"params": [
 		{
-			"admin": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+			"operator": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
 			"chainAddress": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 			"action": "add",
 			"tradeAddress": "0xcd2a3d9f938e13cd947ec05abc7fe734df8dd826",
