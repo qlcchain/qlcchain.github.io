@@ -8,13 +8,23 @@
 
 
 
-## Scenario
+## Introduction
 
-All these interfaces are used to update user's KYC status to chain.
+The KYC smart contract is used to update user's KYC status to chain.
 
-The genesis account is the initial admin user, it can handover the right to another account by calling **KYC_getAdminHandoverBlock** , the admin can add/remove operator by calling **KYC_getUpdateOperatorBlock**, the admin can add/remove user's stable coin address by calling **KYC_getUpdateTradeAddressBlock**. A user means a qlc address, it can have more than one stable coin address. The operator and admin can update user's KYC status by calling **KYC_getUpdateStatusBlock**.
+For this smart contract, we have three kind of roles:
 
+1. **Administrator**	
 
+   there is only one admin in the chain, the initial administrator is the genesis account of the qlc chian, the admin can be handovered to another account by invoking **KYC_getAdminHandoverBlock** to get a block and send it to the chain, and the admin can also add/remove operators by invoking **KYC_getUpdateOperatorBlock** to get a block and send it to the chain.
+
+2. **Operator**
+
+   there can be multiple operators, operators can update KYC status of the customer to the chain by invoking **KYC_getUpdateStatusBlock** to get a block and send it to the chain, and they can alse add/remove trade address of the customer by invoking **KYC_getUpdateTradeAddressBlock** to get a block and send it to the chain. Each costomer can have multiple trade addresses.
+
+3. **Customer**
+
+   
 
 ## KYC_getAdminHandoverBlock
 
@@ -266,7 +276,7 @@ Get a contractSend block to update KYC status
 Get a contractSend block to add/remove user's stable coin address
 
 - **Parameters**: 
-  - `admin` : current admin's qlc address
+  - `operator` : current admin's qlc address
   - `chainAddress` : user's qlc address
   - `add`: add/remove
   - `tradeAddress`: stable coin address
@@ -286,7 +296,7 @@ Get a contractSend block to add/remove user's stable coin address
 	"method": "KYC_getUpdateTradeAddressBlock",
 	"params": [
 		{
-			"admin": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
+			"operator": "qlc_3hw8s1zubhxsykfsq5x7kh6eyibas9j3ga86ixd7pnqwes1cmt9mqqrngap4",
 			"chainAddress": "qlc_3gwf5kgcsdjkermpquc9y83fscibp3prk6wdd8hfpduoo81ojrfrfp7zoko3",
 			"action": "add",
 			"tradeAddress": "0xcd2a3d9f938e13cd947ec05abc7fe734df8dd826",
