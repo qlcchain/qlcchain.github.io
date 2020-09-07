@@ -43,7 +43,7 @@
     "vue-tabs-component": "^1.5.0",
     "vue-toasted": "^1.1.28",
     "vuepress-plugin-pangu": "^1.0.1",
-    "vuepress-plugin-redirect": "^1.2.4",
+    "vuepress-plugin-redirect": "^1.2.5",
     "vuepress-plugin-seo": "^0.1.4",
     "vuepress-plugin-server-push": "^0.2.1",
     "vuepress-plugin-sitemap": "^2.3.1",
