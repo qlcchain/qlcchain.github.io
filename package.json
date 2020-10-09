@@ -30,15 +30,15 @@
     "vuepress": "^1.6.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-solid-svg-icons": "^5.15.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/vue-fontawesome": "^2.0.0",
     "@vuepress/plugin-google-analytics": "^1.6.0",
     "@vuepress/plugin-medium-zoom": "^1.6.0",
     "@vuepress/plugin-notification": "^1.0.0-alpha.42",
     "deepmerge": "^4.2.2",
     "markdown-it-mathjax-chtml": "^0.1.0",
-    "moment": "^2.29.0",
+    "moment": "^2.29.1",
     "vue-codemirror": "^4.0.6",
     "vue-tabs-component": "^1.5.0",
     "vue-toasted": "^1.1.28",
