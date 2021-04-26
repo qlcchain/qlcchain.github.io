@@ -5767,10 +5767,10 @@ markdown-it-emoji@^1.4.0:
   resolved "https://registry.yarnpkg.com/markdown-it-emoji/-/markdown-it-emoji-1.4.0.tgz#9bee0e9a990a963ba96df6980c4fddb05dfb4dcc"
   integrity sha1-m+4OmpkKljupbfaYDE/dsF37Tcw=
 
-markdown-it-mathjax-chtml@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/markdown-it-mathjax-chtml/-/markdown-it-mathjax-chtml-0.2.0.tgz#f0bf423498316be772c1c1afc64b3ecd2a867a12"
-  integrity sha512-8f1y8Ai9Lzd/RSjXjhwq9UpT8t6x4o82YX7zLwG7F3yW6OzhWe1rchQCktNTi5qRxEwy18X1QfbUt9t96+kI6g==
+markdown-it-mathjax-chtml@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-mathjax-chtml/-/markdown-it-mathjax-chtml-0.3.0.tgz#7f8a5158e1924a6ed01251f971047af52c62c025"
+  integrity sha512-SkhcQqpBTetFCIgsPrZglTPj4RZ9pE87Za2jayg9Sl80iY4u9dsPkWboXadJr1kBAzzs5NOATPPmjSuK1oFsKw==
   dependencies:
     mathjax-full "^3.1.2"
 
